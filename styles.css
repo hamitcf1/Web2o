@@ -1,0 +1,650 @@
+:root {
+    --background: #ffffff;
+    --text: #000000;
+    --secondary-text: #666666;
+    --accent: #007AFF;
+    --card-bg: #f5f5f7;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+.dark-theme {
+    --background: #000000;
+    --text: #ffffff;
+    --secondary-text: #999999;
+    --card-bg: #1c1c1e;
+    --nav-bg: rgba(0, 0, 0, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: var(--nav-bg);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-brand {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--accent);
+}
+
+/* Active state for nav links */
+.nav-links a.active {
+    color: var(--accent);
+    background: rgba(0, 122, 255, 0.1);
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 122, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Dark theme adjustments */
+.dark-theme .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Add active class handling in JavaScript */
+.nav-links a.active {
+    color: var(--accent);
+    background: rgba(0, 122, 255, 0.1);
+}
+
+.dark-theme .nav-links a.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+}
+
+.cta-button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+.projects {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.project-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    background-color: var(--secondary-text);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-links {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+    background: rgba(0, 122, 255, 0.1);
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.project-link:hover {
+    background: var(--accent);
+    color: white;
+    transform: scale(1.05);
+}
+
+.calculator-img {
+    background-image: url('assets/calculator.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.todo-img {
+    background-image: url('assets/todo.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.rps-img {
+    background-image: url('assets/rps.png');
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+}
+
+.section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--text);
+}
+
+/* Timeline styles for Experience */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    margin-bottom: 3rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--accent);
+}
+
+.timeline-content {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-content h3 {
+    color: var(--text);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.company {
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.period {
+    color: var(--secondary-text);
+    margin-bottom: 1rem;
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Education styles */
+.education-content {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.education-content:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.education-main {
+    margin-bottom: 2rem;
+}
+
+.education-main h3 {
+    font-size: 1.8rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.degree {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.courses h4 {
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.courses ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.courses li {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.courses li:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .courses li {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .courses li:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Reviews styles */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.review-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.review-text {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.reviewer-name {
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.reviewer-title {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+    }
+
+    .education-content {
+        padding: 1.5rem;
+    }
+
+    .courses ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Smooth scrolling for the whole page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add transition properties to animated elements */
+.project-card,
+.timeline-item,
+.education-content,
+.review-card {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Dark theme adjustments */
+.dark-theme .project-card:hover,
+.dark-theme .timeline-content:hover,
+.dark-theme .education-content:hover,
+.dark-theme .review-card:hover {
+    background: rgba(28, 28, 30, 0.95);
+}
+
+/* Add subtle gradient border on hover */
+.project-card::before,
+.timeline-content::before,
+.education-content::before,
+.review-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.5),
+        rgba(0, 122, 255, 0.5)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                 linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.project-card:hover::before,
+.timeline-content:hover::before,
+.education-content:hover::before,
+.review-card:hover::before {
+    opacity: 1;
+}
+
+/* Add relative positioning for gradient border */
+.project-card,
+.timeline-content,
+.education-content,
+.review-card {
+    position: relative;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.contact-links {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    transform: translateX(10px);
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--accent);
+}
+
+.contact-link i {
+    font-size: 1.2rem;
+}
+
+/* Update course items styling */
+.courses ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.courses li {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.courses li.animate {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Stagger the animations */
+.courses li:nth-child(1) { animation-delay: 0.1s; }
+.courses li:nth-child(2) { animation-delay: 0.2s; }
+.courses li:nth-child(3) { animation-delay: 0.3s; }
+.courses li:nth-child(4) { animation-delay: 0.4s; }
+.courses li:nth-child(5) { animation-delay: 0.5s; }
+.courses li:nth-child(6) { animation-delay: 0.6s; }
+
+/* Ensure the content inside cards is clickable */
+.project-card *,
+.timeline-content *,
+.education-content *,
+.review-card * {
+    position: relative;
+    z-index: 2;
+}
+
+.scroll-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-animation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add staggered delays for multiple elements */
+.scroll-animation:nth-child(2) { transition-delay: 0.2s; }
+.scroll-animation:nth-child(3) { transition-delay: 0.4s; }
+.scroll-animation:nth-child(4) { transition-delay: 0.6s; } 
