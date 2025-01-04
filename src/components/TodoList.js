@@ -10,8 +10,10 @@ function TodoList() {
 
   // Fetch todos from Firebase
   useEffect(() => {
+    console.log("Connecting to database...");
     onValue(todosRef, (snapshot) => {
       const data = snapshot.val();
+      console.log("Database data:", data);
       if (data) {
         // Convert the object to array and add the key as id
         const todosArray = Object.entries(data).map(([id, todo]) => ({
@@ -29,11 +31,17 @@ function TodoList() {
   const addTodo = async (e) => {
     e.preventDefault(); // Prevent form submission
     if (newTodo.trim() !== "") {
-      push(todosRef, {
-        text: newTodo,
-        completed: false
-      });
-      setNewTodo("");
+      console.log("Adding todo:", newTodo);
+      try {
+        await push(todosRef, {
+          text: newTodo,
+          completed: false
+        });
+        console.log("Todo added successfully");
+        setNewTodo("");
+      } catch (error) {
+        console.error("Error adding todo:", error);
+      }
     }
   };
 
