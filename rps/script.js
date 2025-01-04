@@ -1,71 +1,97 @@
 class RockPaperScissors {
     constructor() {
-        this.choices = ['rock', 'paper', 'scissors'];
-        this.playerScore = 0;
-        this.computerScore = 0;
+        this.storageKey = 'rpsGameState-v2';
+        this.scores = {
+            player: 0,
+            computer: 0,
+            ties: 0
+        };
+        this.history = [];
+        this.isAutoPlaying = false;
+        this.autoPlayInterval = null;
         this.setupEventListeners();
+        this.loadGameState();
     }
 
     setupEventListeners() {
         document.querySelectorAll('.choice').forEach(button => {
-            button.addEventListener('click', () => {
-                this.playRound(button.dataset.choice);
-            });
+            button.addEventListener('click', () => this.handleChoice(button.dataset.choice));
         });
 
-        document.getElementById('reset').addEventListener('click', () => {
-            this.resetGame();
+        document.getElementById('reset').addEventListener('click', () => this.resetGame());
+        document.getElementById('autoplay').addEventListener('click', () => this.toggleAutoPlay());
+    }
+
+    handleChoice(playerChoice) {
+        if (this.isAutoPlaying) return;
+
+        const choices = ['rock', 'paper', 'scissors'];
+        const computerChoice = choices[Math.floor(Math.random() * 3)];
+        
+        this.animateChoice(playerChoice, computerChoice);
+        this.updateGame(playerChoice, computerChoice);
+    }
+
+    animateChoice(playerChoice, computerChoice) {
+        const choices = document.querySelectorAll('.choice');
+        choices.forEach(choice => {
+            if (choice.dataset.choice === playerChoice) {
+                choice.classList.add('selected');
+                setTimeout(() => choice.classList.remove('selected'), 500);
+            }
         });
     }
 
-    getComputerChoice() {
-        return this.choices[Math.floor(Math.random() * this.choices.length)];
-    }
-
-    playRound(playerChoice) {
-        const computerChoice = this.getComputerChoice();
-        const result = this.determineWinner(playerChoice, computerChoice);
-        
-        // Animate choices
-        this.animateChoices(playerChoice, computerChoice);
-        
-        // Update scores and display
-        this.updateScore(result);
+    updateGame(playerChoice, computerChoice) {
+        const result = this.getResult(playerChoice, computerChoice);
+        this.updateScores(result);
+        this.addToHistory(playerChoice, computerChoice, result);
         this.displayResult(result, playerChoice, computerChoice);
+        this.saveGameState();
     }
 
-    determineWinner(player, computer) {
-        if (player === computer) return 'draw';
-        
-        const winConditions = {
+    getResult(player, computer) {
+        if (player === computer) return 'tie';
+        const wins = {
             rock: 'scissors',
             paper: 'rock',
             scissors: 'paper'
         };
-        
-        return winConditions[player] === computer ? 'win' : 'lose';
+        return wins[player] === computer ? 'win' : 'lose';
     }
 
-    animateChoices(playerChoice, computerChoice) {
-        // Remove previous selections
-        document.querySelectorAll('.choice').forEach(btn => {
-            btn.classList.remove('selected', 'animated');
-        });
+    updateScores(result) {
+        if (result === 'win') this.scores.player++;
+        else if (result === 'lose') this.scores.computer++;
+        else this.scores.ties++;
 
-        // Add new selections with animation
-        const playerButton = document.querySelector(`[data-choice="${playerChoice}"]`);
-        const computerButton = document.querySelector(`[data-choice="${computerChoice}"]`);
-
-        playerButton.classList.add('selected', 'animated');
-        computerButton.classList.add('selected', 'animated');
+        document.getElementById('player-score').textContent = this.scores.player;
+        document.getElementById('computer-score').textContent = this.scores.computer;
+        document.getElementById('tie-score').textContent = this.scores.ties;
     }
 
-    updateScore(result) {
-        if (result === 'win') this.playerScore++;
-        if (result === 'lose') this.computerScore++;
+    addToHistory(playerChoice, computerChoice, result) {
+        const historyItem = {
+            playerChoice,
+            computerChoice,
+            result,
+            timestamp: new Date().toISOString()
+        };
+        this.history.unshift(historyItem);
+        if (this.history.length > 10) this.history.pop();
+        this.renderHistory();
+    }
 
-        document.getElementById('player-score').textContent = this.playerScore;
-        document.getElementById('computer-score').textContent = this.computerScore;
+    renderHistory() {
+        const historyList = document.getElementById('history-list');
+        historyList.innerHTML = this.history.map(item => `
+            <div class="history-item">
+                <span>You chose ${item.playerChoice} vs Computer's ${item.computerChoice}</span>
+                <span class="result-${item.result}">
+                    ${item.result.toUpperCase()}
+                </span>
+            </div>
+        `).join('');
     }
 
     displayResult(result, playerChoice, computerChoice) {
@@ -73,23 +99,79 @@ class RockPaperScissors {
         const messages = {
             win: `You win! ${playerChoice} beats ${computerChoice}`,
             lose: `You lose! ${computerChoice} beats ${playerChoice}`,
-            draw: `It's a draw! Both chose ${playerChoice}`
+            tie: `It's a tie! Both chose ${playerChoice}`
         };
-
         resultDiv.textContent = messages[result];
-        resultDiv.className = 'result ' + result;
+        resultDiv.className = `result ${result}`;
+        this.showToast(messages[result], result);
+    }
+
+    showToast(message, type) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast toast-${type} show`;
+        setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
     resetGame() {
-        this.playerScore = 0;
-        this.computerScore = 0;
-        document.getElementById('player-score').textContent = '0';
-        document.getElementById('computer-score').textContent = '0';
-        document.getElementById('result').textContent = 'Choose your weapon!';
-        document.getElementById('result').className = 'result';
-        document.querySelectorAll('.choice').forEach(btn => {
-            btn.classList.remove('selected', 'animated');
-        });
+        if (confirm('Are you sure you want to reset the game?')) {
+            this.scores = { player: 0, computer: 0, ties: 0 };
+            this.history = [];
+            this.updateScores('tie');
+            this.renderHistory();
+            document.getElementById('result').textContent = 'Choose your weapon!';
+            document.getElementById('result').className = 'result';
+            if (this.isAutoPlaying) this.toggleAutoPlay();
+            this.saveGameState();
+            this.showToast('Game reset!', 'info');
+        }
+    }
+
+    toggleAutoPlay() {
+        this.isAutoPlaying = !this.isAutoPlaying;
+        const autoPlayBtn = document.getElementById('autoplay');
+        const icon = autoPlayBtn.querySelector('i');
+        
+        if (this.isAutoPlaying) {
+            autoPlayBtn.textContent = 'Stop Auto Play';
+            autoPlayBtn.insertBefore(icon, autoPlayBtn.firstChild);
+            icon.className = 'fas fa-stop';
+            this.autoPlayInterval = setInterval(() => {
+                const choices = ['rock', 'paper', 'scissors'];
+                const randomChoice = choices[Math.floor(Math.random() * 3)];
+                this.handleChoice(randomChoice);
+            }, 1500);
+        } else {
+            autoPlayBtn.textContent = 'Auto Play';
+            autoPlayBtn.insertBefore(icon, autoPlayBtn.firstChild);
+            icon.className = 'fas fa-play';
+            clearInterval(this.autoPlayInterval);
+        }
+    }
+
+    saveGameState() {
+        const gameState = {
+            scores: this.scores,
+            history: this.history,
+            version: 2
+        };
+        localStorage.setItem(this.storageKey, JSON.stringify(gameState));
+    }
+
+    loadGameState() {
+        const savedState = localStorage.getItem(this.storageKey);
+        if (savedState) {
+            const gameState = JSON.parse(savedState);
+            if (gameState.version === 2) {
+                this.scores = gameState.scores;
+                this.history = gameState.history;
+                this.updateScores('tie');
+                this.renderHistory();
+            } else {
+                localStorage.removeItem('rpsGameState');
+                localStorage.removeItem(this.storageKey);
+            }
+        }
     }
 }
 

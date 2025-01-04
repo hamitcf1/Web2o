@@ -5,6 +5,17 @@
     --completed: #86868b;
     --border: #d2d2d7;
     --card-bg: rgba(255, 255, 255, 0.8);
+    --toast-success: #34C759;
+    --toast-warning: #FF3B30;
+    --toast-info: #007AFF;
+}
+
+[data-theme="dark"] {
+    --background: #000000;
+    --text: #ffffff;
+    --completed: #666666;
+    --border: #333333;
+    --card-bg: rgba(28, 28, 30, 0.8);
 }
 
 * {
@@ -15,12 +26,13 @@
 }
 
 body {
-    background: linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%);
+    background-color: var(--background);
     color: var(--text);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     padding: 2rem;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -31,6 +43,7 @@ body {
     width: 100%;
     max-width: 600px;
     padding: 2rem;
+    margin: 4rem auto;
 }
 
 h1 {
@@ -43,101 +56,125 @@ h1 {
 
 #todo-form {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
     margin-bottom: 2rem;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
 }
 
 #todo-input {
     flex: 1;
     padding: 0.8rem 1rem;
     border: none;
-    border-radius: 12px;
+    border-radius: 1rem;
+    background: var(--card-bg);
+    color: var(--text);
     font-size: 1rem;
-    background: rgba(0, 0, 0, 0.05);
-    transition: all 0.3s;
 }
 
-#todo-input:focus {
-    outline: none;
-    background: rgba(0, 0, 0, 0.08);
-    box-shadow: 0 0 0 2px var(--primary-color);
+#todo-date {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 1rem;
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
 }
 
 #todo-form button {
     background: var(--primary-color);
     color: white;
     border: none;
-    padding: 0 1.2rem;
-    border-radius: 12px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 #todo-form button:hover {
     transform: scale(1.05);
-    background-color: #0056b3;
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
 }
 
 .todo-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 1rem;
     margin-bottom: 0.5rem;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 12px;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
     animation: slideIn 0.3s ease;
-    transition: transform 0.2s;
 }
 
-.todo-item:hover {
-    transform: translateY(-2px);
+.todo-item.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.todo-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
 }
 
-.todo-item.completed span {
+.todo-item input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.todo-text {
+    flex: 1;
+    transition: color 0.3s ease;
+}
+
+.todo-item.completed .todo-text {
     text-decoration: line-through;
     color: var(--completed);
 }
 
-.todo-item input[type="checkbox"] {
-    margin-right: 1rem;
-    width: 1.2rem;
-    height: 1.2rem;
-}
-
-.todo-item span {
-    flex: 1;
+.todo-date {
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    background: rgba(0, 122, 255, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
 }
 
 .delete-btn {
     background: none;
     border: none;
-    color: #ff3b30;
+    color: var(--secondary-text);
     cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
 }
 
-.todo-item:hover .delete-btn {
-    opacity: 1;
+.delete-btn:hover {
+    color: var(--toast-warning);
+    background: rgba(255, 59, 48, 0.1);
 }
 
 .todo-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 2rem;
     padding-top: 1rem;
-    font-size: 0.9rem;
+    border-top: 1px solid var(--card-bg);
 }
 
 .filters {
@@ -145,21 +182,120 @@ h1 {
     gap: 0.5rem;
 }
 
-.filter-btn, #clear-completed {
+.filter-btn {
     background: none;
     border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
     cursor: pointer;
-    color: var(--text);
-    padding: 0.3rem 0.8rem;
-    border-radius: 0.3rem;
-    transition: all 0.3s;
+    color: var(--secondary-text);
+    transition: all 0.3s ease;
 }
 
-.filter-btn:hover, #clear-completed:hover {
-    background-color: var(--border);
-}
-
+.filter-btn:hover,
 .filter-btn.active {
-    background-color: var(--primary-color);
-    color: white;
+    background: var(--card-bg);
+    color: var(--primary-color);
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: var(--toast-warning);
+    cursor: pointer;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.clear-btn:hover {
+    background: rgba(255, 59, 48, 0.1);
+}
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast-success {
+    border-left: 4px solid var(--toast-success);
+}
+
+.toast-warning {
+    border-left: 4px solid var(--toast-warning);
+}
+
+.toast-info {
+    border-left: 4px solid var(--toast-info);
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .todo-footer {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .filters {
+        justify-content: center;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes completeTask {
+    50% {
+        background: var(--win-color);
+        transform: scale(1.02);
+    }
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    color: var(--secondary-text);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
 } 

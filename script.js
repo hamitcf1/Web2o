@@ -1,6 +1,8 @@
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 const themeIcon = document.querySelector('.theme-icon');
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
 
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-theme');
@@ -99,3 +101,16 @@ function handleScrollAnimation() {
 }
 
 document.addEventListener('DOMContentLoaded', handleScrollAnimation); 
+
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+}); 

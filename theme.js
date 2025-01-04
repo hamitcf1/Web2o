@@ -1,30 +1,26 @@
-// Create a new shared JavaScript file for theme handling
-function initializeTheme() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const themeIcon = document.querySelector('.theme-icon');
-    
-    // Check saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-theme');
-        themeIcon.textContent = '☀️';
-    }
+// Create a new file: theme.js in the root directory
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+const themeIcon = themeToggle.querySelector('i');
 
-    // Theme toggle handler
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        
-        // Update theme icon
-        if (body.classList.contains('dark-theme')) {
-            themeIcon.textContent = '☀️';
-            localStorage.setItem('theme', 'dark');
-        } else {
-            themeIcon.textContent = '🌙';
-            localStorage.setItem('theme', 'light');
-        }
-    });
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    body.classList.add(savedTheme);
+    updateThemeIcon();
 }
 
-// Initialize theme when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeTheme); 
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    updateThemeIcon();
+    // Save theme preference
+    localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark-theme' : '');
+});
+
+function updateThemeIcon() {
+    if (body.classList.contains('dark-theme')) {
+        themeIcon.className = 'fas fa-sun';
+    } else {
+        themeIcon.className = 'fas fa-moon';
+    }
+} 

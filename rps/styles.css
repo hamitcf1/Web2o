@@ -1,154 +1,304 @@
 :root {
-    --primary-color: #007AFF;
     --win-color: #34C759;
     --lose-color: #FF3B30;
     --draw-color: #FF9500;
-    --background: #fbfbfd;
-    --card-bg: rgba(255, 255, 255, 0.8);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', sans-serif;
-}
-
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #fbfbfd 0%, #f5f5f7 100%);
-    padding: 2rem;
 }
 
 .container {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    padding: 3rem;
     border-radius: 24px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 600px;
+    padding: 2rem;
+    max-width: 800px;
     width: 100%;
+    margin: 4rem auto;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
+    text-align: center;
+    margin-bottom: 2rem;
     color: var(--text);
-    margin-bottom: 2.5rem;
     font-weight: 600;
     font-size: 2.5rem;
 }
 
+/* Score board styling */
 .score-board {
-    display: flex;
-    justify-content: center;
-    gap: 6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     margin-bottom: 3rem;
 }
 
 .score {
-    text-align: center;
-    padding: 1.5rem 2rem;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--card-bg);
+    padding: 1.5rem;
     border-radius: 16px;
-    min-width: 120px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.score:hover {
+    transform: translateY(-5px);
 }
 
 .score p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: var(--text);
-    font-weight: 500;
 }
 
 .score span {
     font-size: 2.5rem;
     font-weight: 600;
-    color: var(--primary-color);
-    display: block;
+    color: var(--accent);
+}
+
+/* Game area styling */
+.game-area {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .result {
     font-size: 1.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     min-height: 2em;
-    font-weight: 500;
+    color: var(--text);
 }
 
 .choices {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .choice {
-    font-size: 2.5rem;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--card-bg);
     border: none;
-    border-radius: 20px;
-    width: 100px;
-    height: 100px;
+    padding: 2rem;
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
 }
 
 .choice:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.choice.selected {
-    background-color: var(--primary-color);
-    color: white;
-    transform: scale(1.1);
+.choice-icon {
+    font-size: 3rem;
 }
 
-.reset-btn {
-    background-color: var(--primary-color);
+.choice-label {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+/* Controls styling */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.control-btn {
+    background: var(--accent);
     color: white;
     border: none;
-    padding: 1rem 2.5rem;
-    border-radius: 20px;
-    font-size: 1.1rem;
-    font-weight: 500;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
     cursor: pointer;
-    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    justify-content: center;
 }
 
-.reset-btn:hover {
-    transform: scale(1.05);
-    background-color: #0056b3;
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
 }
 
-@keyframes shake {
-    0%, 100% { transform: translateX(0) scale(1.1); }
-    25% { transform: translateX(-5px) scale(1.1); }
-    75% { transform: translateX(5px) scale(1.1); }
+.control-btn i {
+    font-size: 1rem;
 }
 
-.choice.animated {
-    animation: shake 0.5s ease-in-out;
+/* History section styling */
+.history-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 2rem;
 }
 
-/* Status colors with Apple's aesthetic */
-.result.win { 
+.history-section h2 {
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    animation: slideIn 0.3s ease;
+}
+
+.history-item .result-win {
     color: var(--win-color);
-    text-shadow: 0 0 20px rgba(52, 199, 89, 0.2);
+    font-weight: 600;
 }
 
-.result.lose { 
+.history-item .result-lose {
     color: var(--lose-color);
-    text-shadow: 0 0 20px rgba(255, 59, 48, 0.2);
+    font-weight: 600;
 }
 
-.result.draw { 
+.history-item .result-tie {
     color: var(--draw-color);
-    text-shadow: 0 0 20px rgba(255, 149, 0, 0.2);
+    font-weight: 600;
+}
+
+/* Toast notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .score-board {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .choices {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choice {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .control-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Add choice selection animation */
+.choice.selected {
+    animation: selectChoice 0.5s ease;
+}
+
+@keyframes selectChoice {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(0, 122, 255, 0.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Improve control buttons spacing and clarity */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.control-btn {
+    min-width: 150px;
+    justify-content: center;
+}
+
+/* Enhance history items */
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    animation: slideIn 0.3s ease;
+}
+
+.result-win {
+    color: var(--win-color);
+    font-weight: 600;
+}
+
+.result-lose {
+    color: var(--lose-color);
+    font-weight: 600;
+}
+
+.result-tie {
+    color: var(--draw-color);
+    font-weight: 600;
 } 

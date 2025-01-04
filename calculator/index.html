@@ -1,46 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iOS Calculator</title>
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../shared-theme.css">
-    <script src="../theme.js" defer></script>
+    <link rel="stylesheet" href="../project-nav.css">
+    <link rel="stylesheet" href="../theme-toggle.css">
 </head>
 <body>
-    <a href="../index.html" class="home-button">
-        <i class="fas fa-chevron-left"></i>
-        Back to Portfolio
-    </a>
-    <button id="theme-toggle" class="theme-toggle">
-        <span class="theme-icon">🌙</span>
-    </button>
-    <div class="calculator">
+    <div class="project-nav">
+        <a href="../index.html" class="project-nav-button">
+            <i class="fas fa-arrow-left"></i>
+            Back to Portfolio
+        </a>
+        <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+            <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                <mask class="moon" id="moon-mask">
+                    <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                    <circle cx="24" cy="10" r="6" fill="black" />
+                </mask>
+                <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                <g class="sun-beams" stroke="currentColor">
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </g>
+            </svg>
+        </button>
+    </div>
+    <div class="container">
         <div class="display">
             <div class="previous-operand"></div>
             <div class="current-operand">0</div>
         </div>
-        <button class="special">AC</button>
-        <button class="special">±</button>
-        <button class="special">%</button>
-        <button class="operator">÷</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button class="operator">×</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button class="operator">−</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button class="operator">+</button>
-        <button class="span-two">0</button>
-        <button>.</button>
-        <button class="operator">=</button>
+        <div class="calculator">
+            <button class="special">AC</button>
+            <button class="special">±</button>
+            <button class="special">%</button>
+            <button class="operator">÷</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">×</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">−</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">+</button>
+            <button class="span-two">0</button>
+            <button>.</button>
+            <button class="operator">=</button>
+        </div>
+        <div id="contact-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Get in Touch</h2>
+                <div class="contact-links">
+                    <a href="https://github.com/hamitcf1" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/hamitcf" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://twitter.com/hamitcf" class="contact-link">
+                        <i class="fab fa-x-twitter"></i>
+                        X
+                    </a>
+                    <a href="mailto:hamitfindik2@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        hamitfindik2@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="mailto:contact@hamitcf.dev?subject=Let's%20Work%20Together&body=Hi%20Hamit%2C%0D%0A%0D%0AI'd%20like%20to%20discuss%20a%20potential%20project%20with%20you.%0D%0A%0D%0ABest%20regards" class="contact-btn">
+                <i class="fas fa-envelope"></i>
+                Get in Touch
+            </a>
+            <p class="copyright">© 2024 HamitCF. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
+    <script src="../theme-toggle.js"></script>
+    <script src="../modal.js"></script>
 </body>
 </html> 

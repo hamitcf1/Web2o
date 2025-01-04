@@ -1,23 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <title>Portfolio | Junior Software Developer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="animations.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="theme-toggle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body class="light-theme">
+<body>
     <nav class="navbar">
         <div class="nav-brand">HamitCF</div>
+        <button class="mobile-menu-btn">
+            <span class="hamburger"></span>
+        </button>
         <div class="nav-links">
             <a href="#projects">Projects</a>
             <a href="#experience">Experience</a>
             <a href="#education">Education</a>
             <a href="#reviews">Reviews</a>
-            <button id="theme-toggle" class="theme-toggle">
-                <span class="theme-icon">🌙</span>
+            <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                    <mask class="moon" id="moon-mask">
+                        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                        <circle cx="24" cy="10" r="6" fill="black" />
+                    </mask>
+                    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                    <g class="sun-beams" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </g>
+                </svg>
             </button>
         </div>
     </nav>
@@ -70,6 +92,45 @@
                     <a href="https://github.com/hamitcf/rps" class="project-link" target="_blank">
                         <i class="fab fa-github"></i> GitHub
                     </a>
+                </div>
+            </div>
+            <div class="project-card animate scale-up delay-4">
+                <div class="project-image upcoming-img"></div>
+                <h3>E-Commerce Platform</h3>
+                <p>Full-stack e-commerce website with shopping cart and payment integration (Coming Soon)</p>
+                <div class="project-links">
+                    <span class="project-link disabled">
+                        <i class="fas fa-clock"></i> Coming Soon
+                    </span>
+                    <span class="project-link disabled">
+                        <i class="fab fa-github"></i> Coming Soon
+                    </span>
+                </div>
+            </div>
+            <div class="project-card animate scale-up delay-5">
+                <div class="project-image upcoming-img"></div>
+                <h3>Weather Dashboard</h3>
+                <p>Real-time weather application with location tracking and forecast features (Coming Soon)</p>
+                <div class="project-links">
+                    <span class="project-link disabled">
+                        <i class="fas fa-clock"></i> Coming Soon
+                    </span>
+                    <span class="project-link disabled">
+                        <i class="fab fa-github"></i> Coming Soon
+                    </span>
+                </div>
+            </div>
+            <div class="project-card animate scale-up delay-6">
+                <div class="project-image upcoming-img"></div>
+                <h3>Chat Application</h3>
+                <p>Real-time chat application with websockets and user authentication (Coming Soon)</p>
+                <div class="project-links">
+                    <span class="project-link disabled">
+                        <i class="fas fa-clock"></i> Coming Soon
+                    </span>
+                    <span class="project-link disabled">
+                        <i class="fab fa-github"></i> Coming Soon
+                    </span>
                 </div>
             </div>
         </div>
@@ -159,9 +220,9 @@
                     <i class="fab fa-linkedin"></i>
                     LinkedIn
                 </a>
-                <a href="https://twitter.com/hamitcf" target="_blank" class="contact-link">
-                    <i class="fab fa-twitter"></i>
-                    Twitter
+                <a href="https://x.com/hamitcf" target="_blank" class="contact-link">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    X
                 </a>
                 <a href="mailto:hamitfindik2@gmail.com" class="contact-link">
                     <i class="fas fa-envelope"></i>
@@ -171,7 +232,15 @@
         </div>
     </div>
 
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 HamitCF. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
     <script src="animations.js"></script>
+    <script src="theme-toggle.js"></script>
+    <script src="modal.js"></script>
 </body>
 </html> 
