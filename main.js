@@ -1,4 +1,4 @@
-import { addTask } from './writeData';
+import { addTask, removeTodoItem } from './writeData';
 import { readTasks } from './readData';
 
 // Function to display tasks
@@ -11,7 +11,7 @@ function displayTasks(data) {
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
         removeButton.onclick = () => {
-            // Implement remove functionality if needed
+            removeTodoItem('user123', key); // Assuming user ID is 'user123'
         };
         todoItem.appendChild(removeButton);
         todoList.appendChild(todoItem);
@@ -21,9 +21,13 @@ function displayTasks(data) {
 // Adding a new task
 document.getElementById('addTodoButton').onclick = () => {
     const todoInput = document.getElementById('todoInput');
-    const todoText = todoInput.value;
-    addTask(todoText); // Use the addTask function
-    todoInput.value = ''; // Clear input field
+    const todoText = todoInput.value.trim(); // Trim whitespace
+    if (todoText) { // Validate input
+        addTask(todoText); // Use the addTask function
+        todoInput.value = ''; // Clear input field
+    } else {
+        alert("Please enter a task."); // Alert user if input is empty
+    }
 };
 
 // Reading all tasks
