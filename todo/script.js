@@ -1,9 +1,39 @@
+// Import Firebase functions
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDB770zA8kQZTdCMqyZ0EO52KhGA4dlV6c",
+    authDomain: "web2o-34840.firebaseapp.com",
+    databaseURL: "https://web2o-34840-default-rtdb.firebaseio.com",
+    projectId: "web2o-34840",
+    storageBucket: "web2o-34840.appspot.com",
+    messagingSenderId: "94338182985",
+    appId: "1:94338182985:web:0da6cb9c254471c4cdb498",
+    measurementId: "G-WCB0FLGL1S"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
 class TodoList {
     constructor() {
-        this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+        this.todos = [];
         this.filter = 'all';
         this.setupEventListeners();
-        this.render();
+        this.loadTodos();
+    }
+
+    loadTodos() {
+        const todosRef = ref(database, 'todos');
+        onValue(todosRef, snapshot => {
+            this.todos = snapshot.val() || [];
+            this.render();
+        }, error => {
+            console.error("Error loading todos: ", error);
+        });
     }
 
     setupEventListeners() {
@@ -110,7 +140,11 @@ class TodoList {
     }
 
     save() {
-        localStorage.setItem('todos', JSON.stringify(this.todos));
+        const todosRef = ref(database, 'todos');
+        set(todosRef, this.todos)
+            .catch(error => {
+                console.error("Error saving todos: ", error);
+            });
     }
 
     render() {
