@@ -1,0 +1,56 @@
+/* Add these styles to your existing CSS */
+
+.footer-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.courses-section, .reviews-section {
+    background: var(--surface-2);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.courses-section h3, .reviews-section h3 {
+    margin-bottom: 1rem;
+    color: var(--text-1);
+}
+
+.courses-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.courses-section li {
+    margin-bottom: 0.5rem;
+    color: var(--text-2);
+}
+
+.reviews {
+    display: grid;
+    gap: 1rem;
+}
+
+.review {
+    background: var(--surface-1);
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.review p {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-1);
+}
+
+.review span {
+    color: var(--text-2);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .footer-sections {
+        grid-template-columns: 1fr;
+    }
+} 

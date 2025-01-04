@@ -32,3 +32,14 @@ document.getElementById('addTodoButton').onclick = () => {
 
 // Reading all tasks
 readTasks(displayTasks); // Pass the display function as a callback 
+
+const handleClick = ({ target }) => {
+    const data = target.dataset.value;
+    if (!data) return;
+    
+    try {
+        doSomething(data);
+    } catch (error) {
+        console.error('Error processing click:', error);
+    }
+}; 

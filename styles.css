@@ -1,20 +1,24 @@
 :root {
     --background: #ffffff;
-    --text: #000000;
-    --secondary-text: #666666;
-    --accent: #007AFF;
-    --card-bg: #f5f5f7;
+    --text: #1d1d1f;
+    --secondary-text: #86868b;
+    --accent: #0066cc;
+    --card-bg: rgba(255, 255, 255, 0.8);
     --nav-bg: rgba(255, 255, 255, 0.8);
-    --nav-text: #000000;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --container-width: 1200px;
+    --spacing-lg: 20px;
+    --font-primary: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+    --font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 .dark-theme {
     --background: #000000;
-    --text: #ffffff;
-    --secondary-text: #999999;
-    --card-bg: #1c1c1e;
+    --text: #f5f5f7;
+    --secondary-text: #86868b;
+    --card-bg: rgba(28, 28, 30, 0.8);
     --nav-bg: rgba(0, 0, 0, 0.8);
-    --nav-text: #ffffff;
+    --border-color: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -24,101 +28,166 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-primary);
     background-color: var(--background);
     color: var(--text);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.navbar {
+.sidebar {
     position: fixed;
+    left: 0;
     top: 0;
-    width: 100%;
-    padding: 1rem 2rem;
+    height: 100vh;
+    width: 250px;
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
+    padding: 2rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     z-index: 1000;
     transition: all 0.3s ease;
+    border-right: 1px solid var(--border-color);
 }
 
-.navbar.scrolled {
-    background: var(--nav-bg);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+/* Collapsed sidebar state */
+.sidebar.collapsed {
+    width: 80px;
+    padding: 2rem 1rem;
 }
 
-.nav-brand {
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-.nav-links {
+.sidebar-header {
     display: flex;
-    gap: 2rem;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
 }
 
-.nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.8rem;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.nav-links a:hover {
-    background: rgba(0, 122, 255, 0.1);
-    color: var(--accent);
-}
-
-/* Active state for nav links */
-.nav-links a.active {
-    color: var(--accent);
-    background: rgba(0, 122, 255, 0.1);
-}
-
-/* Theme toggle button styling */
-.theme-toggle {
+.sidebar-toggle {
     background: none;
     border: none;
+    color: var(--text);
     cursor: pointer;
-    font-size: 1.2rem;
     padding: 0.5rem;
     border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
 }
 
+.sidebar-toggle:hover {
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--accent);
+}
+
+/* Rotate icon when sidebar is collapsed */
+.sidebar.collapsed .sidebar-toggle i {
+    transform: rotate(180deg);
+}
+
+/* Adjust nav links in collapsed state */
+.sidebar.collapsed .nav-links a span {
+    opacity: 0;
+    width: 0;
+    display: none;
+}
+
+.sidebar.collapsed .nav-brand {
+    font-size: 0;
+}
+
+.sidebar.collapsed .nav-brand::first-letter {
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+.nav-links a i {
+    min-width: 24px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.theme-toggle {
+    margin-top: auto;
+    align-self: flex-start;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background: transparent;
+}
+
 .theme-toggle:hover {
     background: rgba(0, 122, 255, 0.1);
-    transform: scale(1.1);
 }
 
-/* Dark theme adjustments */
-.dark-theme .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.1);
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    transition: margin-left 0.3s ease;
 }
 
-.dark-theme .theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
+.main-content.expanded {
+    margin-left: 80px;
 }
 
-/* Add active class handling in JavaScript */
-.nav-links a.active {
-    color: var(--accent);
+/* Update mobile styles */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        width: 250px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .main-content.expanded {
+        margin-left: 0;
+    }
+}
+
+/* Clean up redundant styles */
+.navbar,
+.nav-brand,
+.nav-links a {
+    /* Keep existing styles but update for sidebar context */
+    color: var(--nav-text);
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
     background: rgba(0, 122, 255, 0.1);
-}
-
-.dark-theme .nav-links a.active {
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
 }
 
 .hero {
@@ -272,18 +341,17 @@ body {
 }
 
 .section {
-    padding: 6rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    min-height: 100vh;
+    padding: 8rem 0;
+    position: relative;
+    scroll-margin-top: 2rem;
 }
 
 .section h2 {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
-    padding: 0 2rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
     color: var(--text);
 }
 
@@ -356,12 +424,12 @@ body {
 
 /* Education styles */
 .education-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    padding: 2.5rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    border-radius: 20px;
+    padding: 2rem;
 }
 
 .education-content:hover {
@@ -388,29 +456,30 @@ body {
 
 .courses h4 {
     color: var(--text);
-    margin-bottom: 1rem;
     font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
 .courses ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1rem;
 }
 
 .courses li {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 1rem 1.5rem;
-    border-radius: 1rem;
     color: var(--text);
+    padding: 0.8rem 1rem;
+    background: rgba(0, 122, 255, 0.1);
+    border-radius: 8px;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
 }
 
 .courses li:hover {
-    background: rgba(255, 255, 255, 0.8);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(5px);
+    background: rgba(0, 122, 255, 0.2);
 }
 
 .dark-theme .courses li {
@@ -550,35 +619,42 @@ html {
 
 /* Modal styles */
 .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    right: 0;
+    bottom: 0;
     background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
     backdrop-filter: blur(5px);
     z-index: 2000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
 .modal.show {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     opacity: 1;
+    visibility: visible;
 }
 
 .modal-content {
     background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    padding: 2.5rem;
-    border-radius: 1.5rem;
+    padding: 2rem;
+    border-radius: 20px;
     position: relative;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(20px);
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
 }
 
 .modal-close {
@@ -590,9 +666,12 @@ html {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text);
-    width: 2rem;
-    height: 2rem;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
 }
 
@@ -603,7 +682,7 @@ html {
 .contact-links {
     display: grid;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .contact-link {
@@ -611,21 +690,21 @@ html {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 122, 255, 0.1);
+    border-radius: 12px;
     color: var(--text);
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .contact-link:hover {
-    transform: translateX(10px);
-    background: rgba(0, 122, 255, 0.1);
-    color: var(--accent);
+    background: rgba(0, 122, 255, 0.2);
+    transform: translateX(5px);
 }
 
 .contact-link i {
     font-size: 1.2rem;
+    color: var(--accent);
 }
 
 /* Update course items styling */
@@ -874,4 +953,393 @@ html {
 .nav-links .theme-toggle svg {
     width: 18px;
     height: 18px;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    padding: var(--spacing-lg);
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Use efficient selectors */
+/* Before */
+.header .nav .menu .item {
+    color: blue;
+}
+
+/* After */
+.menu-item {
+    color: blue;
+}
+
+/* Reduce specificity */
+/* Before */
+#header .nav-menu .nav-item.active {
+    color: red;
+}
+
+/* After */
+.nav-item--active {
+    color: red;
+}
+
+/* Update theme toggle position in sidebar */
+.theme-toggle {
+    margin-top: auto; /* Push to bottom of sidebar */
+    align-self: center;
+}
+
+/* Update the nav link styles */
+.nav-links a {
+    color: var(--nav-text);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    margin: 0.3rem 0;
+}
+
+/* Active state styling */
+.nav-links a.active {
+    color: var(--accent);
+    background: rgba(0, 122, 255, 0.1);
+    opacity: 1;
+    font-weight: 600;
+    transform: translateX(5px) !important;
+}
+
+/* Active indicator for nav links */
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleX(0);
+    width: 4px;
+    height: 70%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a.active::before {
+    transform: translateY(-50%) scaleX(1);
+}
+
+/* Section styling */
+section {
+    min-height: 100vh;
+    padding: 8rem 0;
+    position: relative;
+    scroll-margin-top: 2rem;
+}
+
+/* Active section indicator */
+section.active {
+    position: relative;
+}
+
+section.active::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    width: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+/* Container styles */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Apple-like typography */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+/* Enhanced card styling */
+.project-card, .timeline-content, .education-content, .review-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dark/Light mode toggle styling */
+.theme-toggle {
+    background: var(--card-bg);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(0, 122, 255, 0.1);
+}
+
+/* Apple-style typography system */
+:root {
+    /* Add font variables */
+    --font-primary: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+    --font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+/* Apply fonts globally */
+body {
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+}
+
+/* Project page header styles */
+.project-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.home-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.home-button:hover {
+    opacity: 1;
+}
+
+/* Education section styles */
+.education-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.education-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.education-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.education-card .degree {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.education-card .period,
+.education-card .gpa {
+    color: var(--secondary-text);
+    margin-bottom: 0.5rem;
+}
+
+/* Certificates section */
+.certificates-section {
+    margin-top: 2rem;
+}
+
+.certificates-section h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.cert-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+}
+
+.cert-card i {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.cert-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.cert-card ul {
+    list-style: none;
+}
+
+.cert-card li {
+    color: var(--secondary-text);
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.cert-card li::before {
+    content: '•';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+}
+
+/* Make HamitCF text a button */
+.nav-brand {
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-brand:hover {
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--accent);
+}
+
+/* Update nav links for better collapse handling */
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.nav-links a i {
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Sidebar collapsed state adjustments */
+.sidebar.collapsed .nav-links {
+    align-items: center;
+}
+
+.sidebar.collapsed .nav-links a {
+    justify-content: center;
+    padding: 0.8rem;
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar.collapsed .nav-links a i {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.sidebar.collapsed .theme-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+    align-self: center;
+}
+
+/* Ensure consistent icon sizing */
+.nav-links a i,
+.theme-toggle i,
+.sidebar-toggle i {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Adjust theme toggle for both states */
+.theme-toggle {
+    margin-top: auto;
+    align-self: flex-start;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Ensure consistent hover effects */
+.sidebar.collapsed .nav-links a:hover,
+.sidebar.collapsed .theme-toggle:hover {
+    background: rgba(0, 122, 255, 0.1);
+    transform: scale(1.1);
 }

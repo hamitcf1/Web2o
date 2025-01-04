@@ -1,85 +1,39 @@
-class ThemeManager {
-    constructor() {
-        // Wait for DOM to be ready before initializing
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.init());
-        } else {
-            this.init();
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Function to update theme
+    const updateTheme = (isDark) => {
+        document.documentElement.classList.toggle('dark-theme', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        
+        // Update meta theme-color
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+            metaThemeColor.content = isDark ? '#000000' : '#ffffff';
         }
+    };
+    
+    // Initialize theme based on system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+        // No saved preference, use system preference
+        updateTheme(prefersDarkScheme.matches);
+    } else {
+        // Use saved preference
+        updateTheme(savedTheme === 'dark');
     }
-
-    init() {
-        this.themeToggle = document.getElementById('theme-toggle');
-        this.storageKey = 'theme-preference';
-        this.moonMask = document.querySelector('.moon');
-        this.sunBeams = document.querySelector('.sun-beams');
-
-        // Apply theme immediately
-        this.applyInitialTheme();
-        
-        if (this.themeToggle) {
-            this.setupEventListeners();
-            this.updateToggleAppearance(document.documentElement.getAttribute('data-theme'));
+    
+    // Listen for theme toggle clicks
+    themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+    
+    // Listen for system theme changes
+    prefersDarkScheme.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            updateTheme(e.matches);
         }
-    }
-
-    applyInitialTheme() {
-        const storedTheme = localStorage.getItem(this.storageKey);
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const themeToApply = storedTheme || (systemPrefersDark ? 'dark' : 'light');
-        
-        document.documentElement.setAttribute('data-theme', themeToApply);
-        this.updateToggleAppearance(themeToApply);
-    }
-
-    setupEventListeners() {
-        this.themeToggle.addEventListener('click', () => this.toggleTheme());
-        
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            if (!localStorage.getItem(this.storageKey)) {
-                this.setTheme(e.matches ? 'dark' : 'light');
-            }
-        });
-    }
-
-    toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        this.setTheme(newTheme);
-        localStorage.setItem(this.storageKey, newTheme);
-        this.animateToggle();
-    }
-
-    setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        if (this.themeToggle) {
-            this.themeToggle.setAttribute('aria-label', theme);
-            this.updateToggleAppearance(theme);
-        }
-    }
-
-    updateToggleAppearance(theme) {
-        if (!this.moonMask || !this.sunBeams) return;
-
-        if (theme === 'dark') {
-            this.moonMask.style.transform = 'translateX(0)';
-            this.sunBeams.style.opacity = '0';
-        } else {
-            this.moonMask.style.transform = 'translateX(-100%)';
-            this.sunBeams.style.opacity = '1';
-        }
-    }
-
-    animateToggle() {
-        if (!this.themeToggle) return;
-        
-        this.themeToggle.classList.add('theme-toggle--toggling');
-        setTimeout(() => {
-            this.themeToggle.classList.remove('theme-toggle--toggling');
-        }, 500);
-    }
-}
-
-// Create and initialize theme manager
-const themeManager = new ThemeManager(); 
+    });
+}); 

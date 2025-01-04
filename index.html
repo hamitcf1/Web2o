@@ -5,23 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <title>Portfolio | Junior Software Developer</title>
+    <title>Portfolio | Junior Software Developer / Quality Assurance Engineer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="theme-toggle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">HamitCF</div>
-        <button class="mobile-menu-btn">
-            <span class="hamburger"></span>
-        </button>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="nav-brand">HamitCF</div>
+            <button class="sidebar-toggle" aria-label="Toggle sidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
         <div class="nav-links">
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-            <a href="#reviews">Reviews</a>
+            <a href="#projects">
+                <i class="fas fa-code-branch"></i>
+                <span>Projects</span>
+            </a>
+            <a href="#experience">
+                <i class="fas fa-briefcase"></i>
+                <span>Experience</span>
+            </a>
+            <a href="#education">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Education</span>
+            </a>
+            <a href="#reviews">
+                <i class="fas fa-star"></i>
+                <span>Reviews</span>
+            </a>
             <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
                 <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
                     <mask class="moon" id="moon-mask">
@@ -44,199 +58,288 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-content animate fade-in-left">
-            <h1>Junior Software Developer</h1>
-            <p>I am a software developer and I love to code</p>
-        </div>
-        <button class="cta-button animate fade-in-right">Get in Touch</button>
-    </section>
+    <main class="main-content">
+        <header class="container">
+            <h1>Welcome</h1>
+        </header>
 
-    <section id="projects" class="projects">
-        <h2 class="animate fade-in-up">Projects</h2>
-        <div class="project-grid">
-            <div class="project-card animate scale-up delay-1">
-                <div class="project-image calculator-img"></div>
-                <h3>Web Calculator</h3>
-                <p>A sleek calculator app with basic arithmetic operations and keyboard support</p>
-                <div class="project-links">
-                    <a href="calculator/index.html" class="project-link">
-                        <i class="fas fa-play"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/hamitcf/calculator" class="project-link">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
+        <section class="hero">
+            <div class="hero-content animate fade-in-left">
+                <h1>Junior Software Developer 
+                    <br> Quality Assurance Engineer</h1>
+                <p>I am a Software Developer and Quality Assurance Engineer and I love what I do!</p>
             </div>
-            <div class="project-card animate scale-up delay-2">
-                <div class="project-image todo-img"></div>
-                <h3>To-Do List</h3>
-                <p>A minimalist to-do list app with local storage and drag-and-drop functionality</p>
-                <div class="project-links">
-                    <a href="todo/index.html" class="project-link">
-                        <i class="fas fa-play"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/hamitcf/todo" class="project-link">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-            <div class="project-card animate scale-up delay-3">
-                <div class="project-image rps-img"></div>
-                <h3>Rock Paper Scissors</h3>
-                <p>Classic game with animated transitions and score tracking</p>
-                <div class="project-links">
-                    <a href="rps/index.html" class="project-link">
-                        <i class="fas fa-play"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/hamitcf/rps" class="project-link">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-            <div class="project-card animate scale-up delay-4">
-                <div class="project-image upcoming-img"></div>
-                <h3>E-Commerce Platform</h3>
-                <p>Full-stack e-commerce website with shopping cart and payment integration (Coming Soon)</p>
-                <div class="project-links">
-                    <span class="project-link disabled">
-                        <i class="fas fa-clock"></i> Coming Soon
-                    </span>
-                    <span class="project-link disabled">
-                        <i class="fab fa-github"></i> Coming Soon
-                    </span>
-                </div>
-            </div>
-            <div class="project-card animate scale-up delay-5">
-                <div class="project-image upcoming-img"></div>
-                <h3>Weather Dashboard</h3>
-                <p>Real-time weather application with location tracking and forecast features (Coming Soon)</p>
-                <div class="project-links">
-                    <span class="project-link disabled">
-                        <i class="fas fa-clock"></i> Coming Soon
-                    </span>
-                    <span class="project-link disabled">
-                        <i class="fab fa-github"></i> Coming Soon
-                    </span>
-                </div>
-            </div>
-            <div class="project-card animate scale-up delay-6">
-                <div class="project-image upcoming-img"></div>
-                <h3>Chat Application</h3>
-                <p>Real-time chat application with websockets and user authentication (Coming Soon)</p>
-                <div class="project-links">
-                    <span class="project-link disabled">
-                        <i class="fas fa-clock"></i> Coming Soon
-                    </span>
-                    <span class="project-link disabled">
-                        <i class="fab fa-github"></i> Coming Soon
-                    </span>
-                </div>
-            </div>
-        </div>
-    </section>
+            <button class="cta-button animate fade-in-right">Get in Touch</button>
+        </section>
 
-    <section id="experience" class="section">
-        <h2 class="animate fade-in-up">Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item animate fade-in-left delay-1">
-                <div class="timeline-content">
-                    <h3>Senior Developer</h3>
-                    <p class="company">Tech Corp</p>
-                    <p class="period">2020 - Present</p>
-                    <p class="description">Led development of multiple high-impact projects.</p>
+        <section id="projects" class="projects">
+            <div class="section-container">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card animate scale-up delay-1">
+                        <div class="project-image calculator-img"></div>
+                        <h3>Web Calculator</h3>
+                        <p>A sleek calculator app with basic arithmetic operations and keyboard support</p>
+                        <div class="project-links">
+                            <a href="calculator/index.html" class="project-link">
+                                <i class="fas fa-play"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/hamitcf/calculator" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card animate scale-up delay-2">
+                        <div class="project-image todo-img"></div>
+                        <h3>To-Do List</h3>
+                        <p>A minimalist to-do list app with local storage and drag-and-drop functionality</p>
+                        <div class="project-links">
+                            <a href="todo/index.html" class="project-link">
+                                <i class="fas fa-play"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/hamitcf/todo" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card animate scale-up delay-3">
+                        <div class="project-image rps-img"></div>
+                        <h3>Rock Paper Scissors</h3>
+                        <p>Classic game with animated transitions and score tracking</p>
+                        <div class="project-links">
+                            <a href="rps/index.html" class="project-link">
+                                <i class="fas fa-play"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/hamitcf/rps" class="project-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-card animate scale-up delay-4">
+                        <div class="project-image upcoming-img"></div>
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce website with shopping cart and payment integration (Coming Soon)</p>
+                        <div class="project-links">
+                            <span class="project-link disabled">
+                                <i class="fas fa-clock"></i> Coming Soon
+                            </span>
+                            <span class="project-link disabled">
+                                <i class="fab fa-github"></i> Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-card animate scale-up delay-5">
+                        <div class="project-image upcoming-img"></div>
+                        <h3>Weather Dashboard</h3>
+                        <p>Real-time weather application with location tracking and forecast features (Coming Soon)</p>
+                        <div class="project-links">
+                            <span class="project-link disabled">
+                                <i class="fas fa-clock"></i> Coming Soon
+                            </span>
+                            <span class="project-link disabled">
+                                <i class="fab fa-github"></i> Coming Soon
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-card animate scale-up delay-6">
+                        <div class="project-image upcoming-img"></div>
+                        <h3>Chat Application</h3>
+                        <p>Real-time chat application with websockets and user authentication (Coming Soon)</p>
+                        <div class="project-links">
+                            <span class="project-link disabled">
+                                <i class="fas fa-clock"></i> Coming Soon
+                            </span>
+                            <span class="project-link disabled">
+                                <i class="fab fa-github"></i> Coming Soon
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="timeline-item animate fade-in-left delay-2">
-                <div class="timeline-content">
-                    <h3>Full Stack Developer</h3>
-                    <p class="company">Startup Inc</p>
-                    <p class="period">2018 - 2020</p>
-                    <p class="description">Developed and maintained various web applications.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="education" class="section">
-        <h2 class="animate fade-in-up">Education</h2>
-        <div class="education-content animate scale-up delay-1">
-            <div class="education-main">
-                <h3>Yildiz Technical University</h3>
-                <p class="degree">Computer Science</p>
-                <p class="period">Graduating in 2024</p>
-            </div>
-            <div class="courses">
-                <h4>Courses and certificates:</h4>
-                <ul>
-                    <li>Introduction to Programming</li>
-                    <li>Data Structures and Algorithms</li>
-                    <li>Web Development</li>
-                    <li>Software Development</li>
-                    <li>Quality Assurance</li>
-                    <li>Test Automation</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="reviews" class="section">
-        <h2 class="animate fade-in-up">Reviews</h2>
-        <div class="reviews-grid">
-            <div class="review-card animate fade-in-up delay-1">
-                <p class="review-text">"A dedicated student with exceptional problem-solving skills."</p>
-                <div class="reviewer">
-                    <p class="reviewer-name">Prof. Smith</p>
-                    <p class="reviewer-title">Yildiz Technical University</p>
+        <section id="experience" class="section">
+            <div class="section-container">
+                <h2>Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item animate fade-in-left delay-1">
+                        <div class="timeline-content">
+                            <h3>Quality Assurance Engineer</h3>
+                            <p class="company">Tech Solutions Inc</p>
+                            <p class="period">2020 - Present</p>
+                            <p class="description">Led test automation initiatives and implemented comprehensive QA processes. Reduced bug detection time by 40%.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item animate fade-in-left delay-2">
+                        <div class="timeline-content">
+                            <h3>Software QA Analyst</h3>
+                            <p class="company">Digital Systems Ltd</p>
+                            <p class="period">2018 - 2020</p>
+                            <p class="description">Developed and executed test plans for web and mobile applications. Implemented automated testing solutions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item animate fade-in-left delay-3">
+                        <div class="timeline-content">
+                            <h3>Test Engineer</h3>
+                            <p class="company">Innovation Labs</p>
+                            <p class="period">2017 - 2018</p>
+                            <p class="description">Conducted manual and automated testing for web applications. Created detailed test documentation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item animate fade-in-left delay-4">
+                        <div class="timeline-content">
+                            <h3>QA Intern</h3>
+                            <p class="company">Software Solutions Co</p>
+                            <p class="period">2016 - 2017</p>
+                            <p class="description">Assisted in test case development and bug tracking. Learned test automation fundamentals.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="review-card animate fade-in-up delay-2">
-                <p class="review-text">"Shows great potential in software development and algorithmic thinking."</p>
-                <div class="reviewer">
-                    <p class="reviewer-name">Dr. Johnson</p>
-                    <p class="reviewer-title">Computer Science Department</p>
+        </section>
+
+        <section id="education" class="section">
+            <div class="section-container">
+                <h2>Education</h2>
+                <div class="education-wrapper">
+                    <div class="education-main">
+                        <div class="education-card">
+                            <h3>Yildiz Technical University</h3>
+                            <p class="degree">Computer Science</p>
+                            <p class="period">Graduating in 2024</p>
+                            <p class="gpa">GPA: 3.75/4.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="certificates-section">
+                        <h3>Certifications & Skills</h3>
+                        <div class="certificates-grid">
+                            <div class="cert-card">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Test Automation</h4>
+                                <ul>
+                                    <li>Selenium WebDriver</li>
+                                    <li>Cypress</li>
+                                    <li>TestNG & JUnit</li>
+                                </ul>
+                            </div>
+                            <div class="cert-card">
+                                <i class="fas fa-tools"></i>
+                                <h4>Testing Tools</h4>
+                                <ul>
+                                    <li>JIRA & TestRail</li>
+                                    <li>Postman API Testing</li>
+                                    <li>Jenkins CI/CD</li>
+                                </ul>
+                            </div>
+                            <div class="cert-card">
+                                <i class="fas fa-code"></i>
+                                <h4>Programming</h4>
+                                <ul>
+                                    <li>Java for Testing</li>
+                                    <li>Python Scripting</li>
+                                    <li>JavaScript Testing</li>
+                                </ul>
+                            </div>
+                            <div class="cert-card">
+                                <i class="fas fa-certificate"></i>
+                                <h4>Certifications</h4>
+                                <ul>
+                                    <li>ISTQB Foundation</li>
+                                    <li>Agile Testing</li>
+                                    <li>AWS Testing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="review-card animate fade-in-up delay-3">
-                <p class="review-text">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
-                <div class="reviewer">
-                    <p class="reviewer-name">Prof. Williams</p>
-                    <p class="reviewer-title">Web Development Course</p>
+        </section>
+
+        <section id="reviews" class="section">
+            <div class="section-container">
+                <h2>Reviews</h2>
+                <div class="reviews-grid">
+                    <div class="review-card animate fade-in-up delay-1">
+                        <p class="review-text">"A dedicated student with exceptional problem-solving skills."</p>
+                        <div class="reviewer">
+                            <p class="reviewer-name">Prof. Smith</p>
+                            <p class="reviewer-title">Yildiz Technical University</p>
+                        </div>
+                    </div>
+                    <div class="review-card animate fade-in-up delay-2">
+                        <p class="review-text">"Shows great potential in software development and algorithmic thinking."</p>
+                        <div class="reviewer">
+                            <p class="reviewer-name">Dr. Johnson</p>
+                            <p class="reviewer-title">Computer Science Department</p>
+                        </div>
+                    </div>
+                    <div class="review-card animate fade-in-up delay-3">
+                        <p class="review-text">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
+                        <div class="reviewer">
+                            <p class="reviewer-name">Prof. Williams</p>
+                            <p class="reviewer-title">Web Development Course</p>
+                        </div>
+                    </div>
+                    <div class="review-card animate fade-in-up delay-4">
+                        <p class="review-text">"Exceptional ability to grasp complex concepts and implement innovative solutions."</p>
+                        <div class="reviewer">
+                            <p class="reviewer-name">Dr. Anderson</p>
+                            <p class="reviewer-title">Software Architecture Lead</p>
+                        </div>
+                    </div>
+                    <div class="review-card animate fade-in-up delay-5">
+                        <p class="review-text">"Outstanding collaboration skills and technical expertise in full-stack development."</p>
+                        <div class="reviewer">
+                            <p class="reviewer-name">Prof. Martinez</p>
+                            <p class="reviewer-title">Database Systems Department</p>
+                        </div>
+                    </div>
+                    <div class="review-card animate fade-in-up delay-6">
+                        <p class="review-text">"Demonstrates remarkable initiative and creativity in solving complex problems."</p>
+                        <div class="reviewer">
+                            <p class="reviewer-name">Dr. Thompson</p>
+                            <p class="reviewer-title">AI Research Division</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="contact-modal" class="modal">
+            <div class="modal-content animate scale-up">
+                <button class="modal-close">×</button>
+                <h2>Get in Touch</h2>
+                <div class="contact-links">
+                    <a href="https://github.com/hamitcf" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/hamitcf" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://x.com/hamitcf" class="contact-link">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        X
+                    </a>
+                    <a href="mailto:hamitfindik2@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        hamitfindik2@gmail.com
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <div id="contact-modal" class="modal">
-        <div class="modal-content animate scale-up">
-            <button class="modal-close">×</button>
-            <h2>Get in Touch</h2>
-            <div class="contact-links">
-                <a href="https://github.com/hamitcf" class="contact-link">
-                    <i class="fab fa-github"></i>
-                    GitHub
-                </a>
-                <a href="https://linkedin.com/in/hamitcf" class="contact-link">
-                    <i class="fab fa-linkedin"></i>
-                    LinkedIn
-                </a>
-                <a href="https://x.com/hamitcf" class="contact-link">
-                    <i class="fa-brands fa-x-twitter"></i>
-                    X
-                </a>
-                <a href="mailto:hamitfindik2@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    hamitfindik2@gmail.com
-                </a>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 HamitCF. All rights reserved.</p>
             </div>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 HamitCF. All rights reserved.</p>
-        </div>
-    </footer>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
     <script src="animations.js"></script>

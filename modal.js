@@ -1,24 +1,38 @@
-function setupContactModal() {
+document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('contact-modal');
-    const contactBtns = document.querySelectorAll('.contact-btn');
-    const closeBtn = modal.querySelector('.close');
+    const ctaButton = document.querySelector('.cta-button');
+    const modalClose = document.querySelector('.modal-close');
 
-    contactBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.style.display = 'flex';
-        });
+    if (!modal || !ctaButton || !modalClose) {
+        console.error('Required modal elements not found');
+        return;
+    }
+
+    // Open modal
+    ctaButton.addEventListener('click', () => {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     });
 
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
+    // Close modal
+    modalClose.addEventListener('click', () => {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
     });
 
-    window.addEventListener('click', (e) => {
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.style.display = 'none';
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
         }
     });
-}
 
-document.addEventListener('DOMContentLoaded', setupContactModal); 
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
+}); 

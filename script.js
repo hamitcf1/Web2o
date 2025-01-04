@@ -1,116 +1,200 @@
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-const themeIcon = document.querySelector('.theme-icon');
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelector('.nav-links');
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-theme');
-    
-    // Update theme icon
-    if (body.classList.contains('dark-theme')) {
-        themeIcon.textContent = '☀️';
-    } else {
-        themeIcon.textContent = '🌙';
-    }
-}); 
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Get all nav links
+    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
-    
-    // Function to update active link
-    const updateActiveLink = () => {
-        const fromTop = window.scrollY;
+    const sidebar = document.querySelector('.sidebar');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const mainContent = document.querySelector('.main-content');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    let lastScrollTop = 0;
+    let ticking = false;
+
+    // Update active section highlight
+    function updateSectionHighlight(section) {
+        if (!section) return;
+        
+        const rect = section.getBoundingClientRect();
+        const sectionBefore = section.querySelector('::before');
+        
+        if (section.classList.contains('active')) {
+            // Update the highlight position and height
+            section.style.setProperty('--highlight-top', `${rect.top}px`);
+            section.style.setProperty('--highlight-height', `${rect.height}px`);
+            
+            // Add CSS custom properties for the highlight
+            const style = document.createElement('style');
+            style.textContent = `
+                section.active::before {
+                    top: var(--highlight-top);
+                    height: var(--highlight-height);
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // Update active link and section
+    function updateActiveLink(currentId) {
+        // Remove active class from all sections and links
+        sections.forEach(section => {
+            section.classList.remove('active');
+            section.style.removeProperty('--highlight-top');
+            section.style.removeProperty('--highlight-height');
+        });
         
         navLinks.forEach(link => {
-            const section = document.querySelector(link.hash);
+            link.classList.remove('active');
+            link.style.transform = 'translateX(0)';
+        });
+
+        // Add active class to current section and its link
+        if (currentId) {
+            const currentSection = document.getElementById(currentId);
+            const activeLink = document.querySelector(`.nav-links a[href="#${currentId}"]`);
             
-            if (
-                section.offsetTop <= fromTop + 150 &&
-                section.offsetTop + section.offsetHeight > fromTop + 150
-            ) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
+            if (currentSection) {
+                currentSection.classList.add('active');
+                updateSectionHighlight(currentSection);
+            }
+            
+            if (activeLink) {
+                activeLink.classList.add('active');
+                activeLink.style.transform = 'translateX(5px)';
+            }
+        }
+    }
+
+    // Intersection Observer callback
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.intersectionRatio > 0.5) {
+                updateActiveLink(entry.target.id);
             }
         });
     };
-    
-    // Update active link on scroll
-    window.addEventListener('scroll', updateActiveLink);
-    updateActiveLink();
-}); 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('contact-modal');
-    const ctaButton = document.querySelector('.cta-button');
-    const modalClose = document.querySelector('.modal-close');
-
-    // Open modal
-    ctaButton.addEventListener('click', () => {
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
+    // Create and start the observer
+    const observer = new IntersectionObserver(observerCallback, {
+        root: null,
+        rootMargin: '-10% 0px -10% 0px',
+        threshold: [0.5]
     });
 
-    // Close modal
-    modalClose.addEventListener('click', () => {
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-    });
+    // Observe all sections
+    sections.forEach(section => observer.observe(section));
 
-    // Close modal when clicking outside
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('show');
-            document.body.style.overflow = '';
+    // Handle scroll events with debouncing
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                // Find the current section
+                const current = Array.from(sections).find(section => {
+                    const rect = section.getBoundingClientRect();
+                    return rect.top <= 100 && rect.bottom >= 100;
+                });
+
+                if (current) {
+                    updateActiveLink(current.id);
+                    updateSectionHighlight(current);
+                }
+
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Add resize event listener to update highlight positions
+    window.addEventListener('resize', () => {
+        const activeSection = document.querySelector('section.active');
+        if (activeSection) {
+            updateSectionHighlight(activeSection);
         }
     });
 
-    // Animate course items when they come into view
-    const courseItems = document.querySelectorAll('.courses li');
-    const courseObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                courseObserver.unobserve(entry.target);
+    // Handle click events on nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').slice(1);
+            const targetSection = document.getElementById(targetId);
+            
+            updateActiveLink(targetId);
+            
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('active');
+                menuBtn.classList.remove('active');
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '50px'
     });
 
-    courseItems.forEach(item => {
-        courseObserver.observe(item);
+    // Initial check for active section
+    const initialSection = Array.from(sections).find(section => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
     });
-}); 
 
-function handleScrollAnimation() {
-    const elements = document.querySelectorAll('.scroll-animation');
+    if (initialSection) {
+        updateActiveLink(initialSection.id);
+    }
+
+    const brandButton = document.querySelector('.nav-brand');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    brandButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-    }, { threshold: 0.1 });
-
-    elements.forEach(element => observer.observe(element));
-}
-
-document.addEventListener('DOMContentLoaded', handleScrollAnimation); 
-
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenuBtn.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
-        navLinks.classList.remove('active');
     });
+
+    // Function to handle sidebar toggle
+    function toggleSidebar() {
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('expanded');
+        
+        // Save sidebar state to localStorage
+        const isCollapsed = sidebar.classList.contains('collapsed');
+        localStorage.setItem('sidebarCollapsed', isCollapsed);
+    }
+
+    // Handle sidebar toggle click
+    sidebarToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleSidebar();
+    });
+
+    // Load saved sidebar state
+    const savedState = localStorage.getItem('sidebarCollapsed');
+    if (savedState === 'true' && !mediaQuery.matches) {
+        sidebar.classList.add('collapsed');
+        mainContent.classList.add('expanded');
+    }
+
+    // Handle window resize
+    function handleResize() {
+        if (mediaQuery.matches) {
+            sidebar.classList.remove('collapsed');
+            mainContent.classList.remove('expanded');
+        } else {
+            // Restore saved state on desktop
+            const savedState = localStorage.getItem('sidebarCollapsed');
+            if (savedState === 'true') {
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+            }
+        }
+    }
+
+    // Listen for window resize
+    window.addEventListener('resize', handleResize);
+    
+    // Initial check
+    handleResize();
 }); 

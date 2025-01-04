@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Modern To-Do List</title>
+    <!-- Add system font -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+                         Helvetica, Arial, sans-serif, "Apple Color Emoji", 
+                         "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../shared-theme.css">
+    <link rel="stylesheet" href="../project-nav.css">
+    <link rel="stylesheet" href="../theme-toggle.css">
+    <link rel="stylesheet" href="../home-button.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+</head>
+<body>
+    <div class="project-nav">
+        <a href="../index.html" class="home-button">
+            <div class="button-content">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </div>
+        </a>
+        <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+            <!-- ... rest of theme toggle content remains the same ... -->
+        </button>
+    </div>
+    <!-- ... rest of the content remains the same until the footer ... -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-sections">
+                <section class="courses-section">
+                    <h3>Courses & Certificates</h3>
+                    <ul>
+                        <li>Advanced Web Development - Udemy</li>
+                        <li>React.js Masterclass - Coursera</li>
+                        <li>UI/UX Design Fundamentals - Google</li>
+                        <li>Full Stack Development - FreeCodeCamp</li>
+                    </ul>
+                </section>
+                <section class="reviews-section">
+                    <h3>Client Reviews</h3>
+                    <div class="reviews">
+                        <div class="review">
+                            <p>"Exceptional attention to detail and great communication!"</p>
+                            <span>- Sarah J., Marketing Director</span>
+                        </div>
+                        <div class="review">
+                            <p>"Delivered the project ahead of schedule with outstanding quality."</p>
+                            <span>- Michael R., Tech Lead</span>
+                        </div>
+                        <div class="review">
+                            <p>"A true professional who goes above and beyond."</p>
+                            <span>- Emma T., Startup Founder</span>
+                        </div>
+                        <div class="review">
+                            <p>"Innovative solutions and excellent problem-solving skills."</p>
+                            <span>- David L., Product Manager</span>
+                        </div>
+                        <div class="review">
+                            <p>"Transformed our vision into reality perfectly."</p>
+                            <span>- Lisa M., Creative Director</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <button class="contact-btn">
+                <i class="fas fa-envelope"></i>
+                Get in Touch
+            </button>
+            <p class="copyright">© 2024 HamitCF. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="../theme-toggle.js"></script>
+    <script src="../modal.js"></script>
+</body>
+</html> 
