@@ -26,7 +26,8 @@ function TodoList() {
   }, []);
 
   // Add todo
-  const addTodo = async () => {
+  const addTodo = async (e) => {
+    e.preventDefault(); // Prevent form submission
     if (newTodo.trim() !== "") {
       push(todosRef, {
         text: newTodo,
@@ -53,15 +54,15 @@ function TodoList() {
   return (
     <div className="todo-container">
       <h1>Todo List</h1>
-      <div className="input-container">
+      <form className="input-container" onSubmit={addTodo}>
         <input
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
           placeholder="Add a new todo"
         />
-        <button onClick={addTodo}>Add Todo</button>
-      </div>
+        <button type="submit">Add Todo</button>
+      </form>
       <ul className="todo-list">
         {todos.map((todo) => (
           <li key={todo.id} className={todo.completed ? "completed" : ""}>
