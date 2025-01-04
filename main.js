@@ -1,34 +1,30 @@
-import { addTodoItem, removeTodoItem } from './writeData';
-import { readTodoItems } from './readData';
+import { addTask } from './writeData';
+import { readTasks } from './readData';
 
-// Example user ID
-const userId = 'user123';
-
-// Function to display to-do items
-function displayTodoItems(data) {
+// Function to display tasks
+function displayTasks(data) {
     const todoList = document.getElementById('todo-list');
     todoList.innerHTML = ''; // Clear existing items
     for (const [key, value] of Object.entries(data)) {
         const todoItem = document.createElement('div');
-        todoItem.textContent = value.text;
+        todoItem.textContent = value.task;
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
         removeButton.onclick = () => {
-            removeTodoItem(userId, key);
+            // Implement remove functionality if needed
         };
         todoItem.appendChild(removeButton);
         todoList.appendChild(todoItem);
     }
 }
 
-// Adding a new to-do item
+// Adding a new task
 document.getElementById('addTodoButton').onclick = () => {
     const todoInput = document.getElementById('todoInput');
     const todoText = todoInput.value;
-    const todoId = Date.now().toString(); // Unique ID based on timestamp
-    addTodoItem(userId, todoId, todoText);
+    addTask(todoText); // Use the addTask function
     todoInput.value = ''; // Clear input field
 };
 
-// Reading all to-do items
-readTodoItems(userId, displayTodoItems); 
+// Reading all tasks
+readTasks(displayTasks); // Pass the display function as a callback 

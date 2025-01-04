@@ -1,5 +1,5 @@
 import { database } from './firebaseConfig';
-import { ref, set, remove } from "firebase/database";
+import { ref, set, remove, push } from "firebase/database";
 
 function writeUserData(userId, name, email) {
     set(ref(database, 'users/' + userId), {
@@ -19,4 +19,23 @@ export function addTodoItem(userId, todoId, todoText) {
 // Function to remove a to-do item
 export function removeTodoItem(userId, todoId) {
     remove(ref(database, 'todos/' + userId + '/' + todoId));
+}
+
+// Function to add a new task
+export function addTask(taskText) {
+    const dbRef = ref(database, 'tasks/');
+    // Add new task with a unique key
+    push(dbRef, {
+        task: taskText,
+        completed: false
+    });
+}
+
+// Function to set a specific task (overwrites if exists)
+export function setTask(taskId, taskText) {
+    const dbRef = ref(database, 'tasks/' + taskId);
+    set(dbRef, {
+        task: taskText,
+        completed: false
+    });
 } 
