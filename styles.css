@@ -345,15 +345,15 @@ body {
 }
 
 .calculator-img {
-    background-image: url('assets/calculator.png');
+    background-image: url('../assets/calculator.png');
 }
 
 .chatbot-img {
-    background-image: url('assets/chatbot.png');
+    background-image: url('../assets/chatbot.png');
 }
 
 .rps-img {
-    background-image: url('assets/rps.png');
+    background-image: url('../assets/rps.png');
 }
 
 .upcoming-img {
