@@ -167,21 +167,62 @@ body {
 .hero {
     height: 100vh;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 0 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-image: url('https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: -1;
+    filter: grayscale(100%);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -52%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    color: var(--text);
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .hero p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--secondary-text);
+    margin-bottom: 2rem;
+    max-width: 600px;
 }
 
 .cta-button {
