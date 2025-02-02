@@ -203,6 +203,38 @@ body {
     background-color: var(--secondary-text);
     border-radius: 0.5rem;
     margin-bottom: 1rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.calculator-img {
+    background-image: url('assets/calculator.png');
+}
+
+.chatbot-img {
+    background-image: url('assets/chatbot.png');
+}
+
+.rps-img {
+    background-image: url('assets/rps.png');
+}
+
+.upcoming-img {
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.upcoming-img::after {
+    content: 'Image Coming Soon';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+    text-align: center;
+    width: 100%;
 }
 
 .project-links {
