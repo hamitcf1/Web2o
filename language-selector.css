@@ -1,0 +1,66 @@
+.language-selector {
+    position: relative;
+    margin-left: 10px;
+}
+
+.language-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    color: inherit;
+}
+
+.language-btn:hover {
+    background-color: var(--hover-color, rgba(0, 0, 0, 0.1));
+}
+
+.language-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--background-color, #fff);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+    min-width: 150px;
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+}
+
+.language-menu.show {
+    display: block;
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: inherit;
+}
+
+.language-option:hover {
+    background-color: var(--hover-color, rgba(0, 0, 0, 0.05));
+}
+
+.language-option.active {
+    background-color: var(--active-color, rgba(0, 0, 0, 0.1));
+}
+
+[data-theme="dark"] .language-btn {
+    color: #fff;
+}
+
+[data-theme="dark"] .language-menu {
+    background: var(--background-color, #1a1a1a);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
