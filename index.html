@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <title>Portfolio | Software Developer</title>
+    <title data-translate="title">Portfolio | Software Developer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="theme-toggle.css">
+    <link rel="stylesheet" href="language-selector.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true" type="image/x-icon" /> 
+    <script src="translations.js" defer></script>
 </head>
 <body>
     <nav class="navbar">
@@ -24,19 +26,19 @@
         <div class="nav-links">
             <a href="#projects">
                 <i class="fas fa-laptop-code"></i>
-                <span>Projects</span>
+                <span data-translate="projects">Projects</span>
             </a>
             <a href="#experience">
                 <i class="fas fa-briefcase"></i>
-                <span>Experience</span>
+                <span data-translate="experience">Experience</span>
             </a>
             <a href="#education">
                 <i class="fas fa-graduation-cap"></i>
-                <span>Education</span>
+                <span data-translate="education">Education</span>
             </a>
             <a href="#reviews">
                 <i class="fas fa-star"></i>
-                <span>Reviews</span>
+                <span data-translate="reviews">Reviews</span>
             </a>
             <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
                 <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
@@ -57,34 +59,50 @@
                     </g>
                 </svg>
             </button>
+            <div class="language-selector">
+                <button class="language-btn" title="Change Language">
+                    <i class="fas fa-globe" style="font-size: 1.2em;"></i>
+                </button>
+                <ul class="language-menu">
+                    <li class="language-option" data-lang="en">
+                        <span data-translate="english">English</span>
+                    </li>
+                    <li class="language-option" data-lang="tr">
+                        <span data-translate="turkish">Türkçe</span>
+                    </li>
+                    <li class="language-option" data-lang="ru">
+                        <span data-translate="russian">Русский</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content animate fade-in-left">
-            <h1> Software Developer</h1>
-            <p>I am a software developer and I love to code</p>
+            <h1 data-translate="hero_title">Software Developer</h1>
+            <p data-translate="hero_subtitle">I am a software developer and I love to code</p>
         </div>
-        <button class="cta-button animate fade-in-right">Get in Touch</button>
+        <button class="cta-button animate fade-in-right" data-translate="get_in_touch">Get in Touch</button>
     </section>
 
     <section id="projects" class="projects">
-        <h2 class="animate fade-in-up">Projects</h2>
+        <h2 class="animate fade-in-up" data-translate="projects">Projects</h2>
         <div class="project-grid">
             <div class="project-card animate scale-up delay-1">
                 <div class="project-image chatbot-img"></div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>Ollama Local Chatbot</h3>
+                        <h3 data-translate="ollama_title">Ollama Local Chatbot</h3>
                         <i class="fas fa-robot project-icon"></i>
                     </div>
-                    <p>Local chatbot using Ollama and DeepSeek-R1 + DeepSeek-Coder - FastAPI </p>
+                    <p data-translate="ollama_desc">Local chatbot using Ollama and DeepSeek-R1 + DeepSeek-Coder - FastAPI</p>
                     <div class="project-links">
                         <a href="https://hamitcfchatbot.netlify.app" class="project-link">
-                            <i class="fas fa-play"></i> Live Demo
+                            <i class="fas fa-play"></i> <span data-translate="live_demo">Live Demo</span>
                         </a>
                         <a href="https://github.com/hamitcf1/deepseek-coder-chat" class="project-link">
-                            <i class="fab fa-github"></i> GitHub
+                            <i class="fab fa-github"></i> <span data-translate="github">GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -93,16 +111,16 @@
                 <div class="project-image calculator-img"></div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>Web Calculator</h3>
+                        <h3 data-translate="calculator_title">Web Calculator</h3>
                         <i class="fas fa-calculator project-icon"></i>
                     </div>
-                    <p>A sleek calculator app with basic arithmetic operations and keyboard support</p>
+                    <p data-translate="calculator_desc">A sleek calculator app with basic arithmetic operations and keyboard support</p>
                     <div class="project-links">
                         <a href="calculator/index.html" class="project-link">
-                            <i class="fas fa-play"></i> Live Demo
+                            <i class="fas fa-play"></i> <span data-translate="live_demo">Live Demo</span>
                         </a>
                         <a href="https://github.com/hamitcf1/calculator" class="project-link">
-                            <i class="fab fa-github"></i> GitHub
+                            <i class="fab fa-github"></i> <span data-translate="github">GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -111,16 +129,16 @@
                 <div class="project-image rps-img"></div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>Rock Paper Scissors</h3>
+                        <h3 data-translate="rps_title">Rock Paper Scissors</h3>
                         <i class="fas fa-hand-rock project-icon"></i>
                     </div>
-                    <p>Classic game with animated transitions and score tracking</p>
+                    <p data-translate="rps_desc">Classic game with animated transitions and score tracking</p>
                     <div class="project-links">
                         <a href="rps/index.html" class="project-link">
-                            <i class="fas fa-play"></i> Live Demo
+                            <i class="fas fa-play"></i> <span data-translate="live_demo">Live Demo</span>
                         </a>
                         <a href="https://github.com/hamitcf1/rps" class="project-link">
-                            <i class="fab fa-github"></i> GitHub
+                            <i class="fab fa-github"></i> <span data-translate="github">GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -129,16 +147,16 @@
                 <div class="project-image upcoming-img"></div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>Weather Dashboard</h3>
+                        <h3 data-translate="weather_title">Weather Dashboard</h3>
                         <i class="fas fa-cloud-sun project-icon"></i>
                     </div>
-                    <p>Real-time weather application with location tracking and forecast features (Coming Soon)</p>
+                    <p data-translate="weather_desc">Real-time weather application with location tracking and forecast features (Coming Soon)</p>
                     <div class="project-links">
                         <span class="project-link disabled">
-                            <i class="fas fa-clock"></i> Coming Soon
+                            <i class="fas fa-clock"></i> <span data-translate="coming_soon">Coming Soon</span>
                         </span>
                         <span class="project-link disabled">
-                            <i class="fab fa-github"></i> Coming Soon
+                            <i class="fab fa-github"></i> <span data-translate="coming_soon">Coming Soon</span>
                         </span>
                     </div>
                 </div>
@@ -147,16 +165,16 @@
                 <div class="project-image upcoming-img"></div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>Upcoming Project</h3>
+                        <h3 data-translate="upcoming_project">Upcoming Project</h3>
                         <i class="fas fa-rocket project-icon"></i>
                     </div>
-                    <p>Its a undisclosed project, but its coming soon!</p>
+                    <p data-translate="upcoming_desc">Its a undisclosed project, but its coming soon!</p>
                     <div class="project-links">
                         <span class="project-link disabled">
-                            <i class="fas fa-clock"></i> Coming Soon
+                            <i class="fas fa-clock"></i> <span data-translate="coming_soon">Coming Soon</span>
                         </span>
                         <span class="project-link disabled">
-                            <i class="fab fa-github"></i> Coming Soon
+                            <i class="fab fa-github"></i> <span data-translate="coming_soon">Coming Soon</span>
                         </span>
                     </div>
                 </div>
@@ -165,16 +183,16 @@
                 <div class="project-image upcoming-img"></div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>Upcoming Project</h3>
+                        <h3 data-translate="upcoming_project">Upcoming Project</h3>
                         <i class="fas fa-rocket project-icon"></i>
                     </div>
-                    <p>Its a undisclosed project, but its coming soon!</p>
+                    <p data-translate="upcoming_desc">Its a undisclosed project, but its coming soon!</p>
                     <div class="project-links">
                         <span class="project-link disabled">
-                            <i class="fas fa-clock"></i> Coming Soon
+                            <i class="fas fa-clock"></i> <span data-translate="coming_soon">Coming Soon</span>
                         </span>
                         <span class="project-link disabled">
-                            <i class="fab fa-github"></i> Coming Soon
+                            <i class="fab fa-github"></i> <span data-translate="coming_soon">Coming Soon</span>
                         </span>
                     </div>
                 </div>
@@ -183,100 +201,100 @@
     </section>
 
     <section id="experience" class="section">
-        <h2 class="animate fade-in-up">Experience</h2>
+        <h2 class="animate fade-in-up" data-translate="experience">Experience</h2>
         <div class="timeline">
             <div class="timeline-item animate fade-in-left delay-1">
                 <div class="timeline-content">
-                    <h3>Senior Developer</h3>
+                    <h3 data-translate="senior_dev">Senior Developer</h3>
                     <div class="company-info">
                         <p class="company">KFK Craft</p>
                         <i class="fas fa-building company-icon"></i>
                     </div>
                     <p class="period">2024 - Present</p>
-                    <p class="description">Web development and maintenance of the company e-commerce website.</p>
+                    <p class="description" data-translate="senior_dev_desc">Web development and maintenance of the company e-commerce website.</p>
                 </div>
             </div>
             <div class="timeline-item animate fade-in-left delay-2">
                 <div class="timeline-content">
-                    <h3>Full Stack Developer</h3>
+                    <h3 data-translate="full_stack_dev">Full Stack Developer</h3>
                     <div class="company-info">
                         <p class="company">Efe Tourism Antalya</p>
                         <i class="fas fa-umbrella-beach company-icon"></i>
                     </div>
                     <p class="period">2023 - 2024</p>
-                    <p class="description">Web development and maintenance of the company website.</p>
+                    <p class="description" data-translate="full_stack_dev_desc">Web development and maintenance of the company website.</p>
                 </div>
             </div>
             <div class="timeline-item animate fade-in-left delay-3">
                 <div class="timeline-content">
-                    <h3>Full Stack Developer</h3>
+                    <h3 data-translate="full_stack_dev">Full Stack Developer</h3>
                     <div class="company-info">
                         <p class="company">Can Taşıma</p>
                         <i class="fas fa-truck company-icon"></i>
                     </div>
                     <p class="period">2022 - 2023</p>
-                    <p class="description">Web development and maintenance of the company website.</p>
+                    <p class="description" data-translate="full_stack_dev_desc">Web development and maintenance of the company website.</p>
                 </div>
             </div>
             <div class="timeline-item animate fade-in-left delay-4">
                 <div class="timeline-content">
-                    <h3>Front-End Developer</h3>
+                    <h3 data-translate="front_end_dev">Front-End Developer</h3>
                     <div class="company-info">
                         <p class="company">Pearly Hotel</p>
                         <i class="fas fa-hotel company-icon"></i>
                     </div>
                     <p class="period">2021 - 2022</p>
-                    <p class="description">Web development and maintenance of the company website.</p>
+                    <p class="description" data-translate="front_end_dev_desc">Web development and maintenance of the company website.</p>
                 </div>
             </div>
             <div class="timeline-item animate fade-in-left delay-5">
                 <div class="timeline-content">
-                    <h3>Front-End Developer</h3>
+                    <h3 data-translate="front_end_dev">Front-End Developer</h3>
                     <div class="company-info">
                         <p class="company">Riviera Costa</p>
                         <i class="fas fa-umbrella-beach company-icon"></i>
                     </div>
                     <p class="period">2020 - 2021</p>
-                    <p class="description">Web development and maintenance of the company website.</p>
+                    <p class="description" data-translate="front_end_dev_desc">Web development and maintenance of the company website.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="education" class="section">
-        <h2 class="animate fade-in-up">Education</h2>
+        <h2 class="animate fade-in-up" data-translate="education">Education</h2>
         <div class="education-content animate scale-up delay-1">
             <div class="education-main">
-                <h3>Yildiz Technical University</h3>
-                <p class="degree">Computer Science</p>
+                <h3 data-translate="yildiz_university">Yildiz Technical University</h3>
+                <p class="degree" data-translate="computer_science">Computer Science</p>
                 <p class="period">Graduated in 2024</p>
             </div>
             <div class="courses">
-                <h4>Courses and certificates:</h4>
+                <h4 data-translate="courses">Courses and certificates:</h4>
                 <ul>
                     <li>
                         <i class="fas fa-code course-icon"></i>
-                        <span>Introduction to Programming</span>
+                        <span data-translate="intro_to_programming">Introduction to Programming</span>
                     </li>
                     <li>
                         <i class="fas fa-diagram-project course-icon"></i>
-                        <span>Data Structures and Algorithms</span>
+                        <span data-translate="data_structures">Data Structures and Algorithms</span>
                     </li>
                     <li>
                         <i class="fas fa-globe course-icon"></i>
-                        <span>Web Development</span>
+                        <span data-translate="web_development">Web Development</span>
                     </li>
                     <li>
                         <i class="fas fa-laptop-code course-icon"></i>
-                        <span>Software Development</span>
+                        <span data-translate="software_development">Software Development</span>
                     </li>
                     <li>
                         <i class="fas fa-check-circle course-icon"></i>
-                        <span>Quality Assurance</span>
+                        <span data-translate="quality_assurance">Quality Assurance</span>
                     </li>
                     <li>
                         <i class="fas fa-robot course-icon"></i>
-                        <span>Test Automation</span>
+                        <span data-translate="test_automation">Test Automation</span>
                     </li>
                 </ul>
             </div>
@@ -284,20 +302,20 @@
     </section>
 
     <section id="reviews" class="section">
-        <h2 class="animate fade-in-up">Reviews</h2>
+        <h2 class="animate fade-in-up" data-translate="reviews">Reviews</h2>
         <div class="reviews-grid">
             <div class="review-card animate fade-in-up delay-1">
                 <div class="review-icon">
                     <i class="fas fa-quote-left"></i>
                 </div>
-                <p class="review-text">"A dedicated student with exceptional problem-solving skills."</p>
+                <p class="review-text" data-translate="review1">"A dedicated student with exceptional problem-solving skills."</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="reviewer-info">
-                        <p class="reviewer-name">Hakan Karaduman</p>
-                        <p class="reviewer-title">Yildiz Technical University</p>
+                        <p class="reviewer-name" data-translate="hakan_karaduman">Hakan Karaduman</p>
+                        <p class="reviewer-title" data-translate="yildiz_university">Yildiz Technical University</p>
                     </div>
                 </div>
             </div>
@@ -305,14 +323,14 @@
                 <div class="review-icon">
                     <i class="fas fa-quote-left"></i>
                 </div>
-                <p class="review-text">"Shows great potential in software development and algorithmic thinking."</p>
+                <p class="review-text" data-translate="review2">"Shows great potential in software development and algorithmic thinking."</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="reviewer-info">
-                        <p class="reviewer-name">Dr. Adnan Ceylan</p>
-                        <p class="reviewer-title">Computer Science Department</p>
+                        <p class="reviewer-name" data-translate="dr_adnan_ceylan">Dr. Adnan Ceylan</p>
+                        <p class="reviewer-title" data-translate="computer_science_department">Computer Science Department</p>
                     </div>
                 </div>
             </div>
@@ -320,14 +338,14 @@
                 <div class="review-icon">
                     <i class="fas fa-quote-left"></i>
                 </div>
-                <p class="review-text">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
+                <p class="review-text" data-translate="review3">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="reviewer-info">
-                        <p class="reviewer-name">Canan Gündüz</p>
-                        <p class="reviewer-title">Web Development Course</p>
+                        <p class="reviewer-name" data-translate="canan_gunduz">Canan Gündüz</p>
+                        <p class="reviewer-title" data-translate="web_development_course">Web Development Course</p>
                     </div>
                 </div>
             </div>
@@ -335,14 +353,14 @@
                 <div class="review-icon">
                     <i class="fas fa-quote-left"></i>
                 </div>
-                <p class="review-text">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
+                <p class="review-text" data-translate="review3">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="reviewer-info">
-                        <p class="reviewer-name">Canan Gündüz</p>
-                        <p class="reviewer-title">Web Development Course</p>
+                        <p class="reviewer-name" data-translate="canan_gunduz">Canan Gündüz</p>
+                        <p class="reviewer-title" data-translate="web_development_course">Web Development Course</p>
                     </div>
                 </div>
             </div>
@@ -350,14 +368,14 @@
                 <div class="review-icon">
                     <i class="fas fa-quote-left"></i>
                 </div>
-                <p class="review-text">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
+                <p class="review-text" data-translate="review3">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="reviewer-info">
-                        <p class="reviewer-name">Canan Gündüz</p>
-                        <p class="reviewer-title">Web Development Course</p>
+                        <p class="reviewer-name" data-translate="canan_gunduz">Canan Gündüz</p>
+                        <p class="reviewer-title" data-translate="web_development_course">Web Development Course</p>
                     </div>
                 </div>
             </div>
@@ -365,14 +383,14 @@
                 <div class="review-icon">
                     <i class="fas fa-quote-left"></i>
                 </div>
-                <p class="review-text">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
+                <p class="review-text" data-translate="review3">"Consistently delivers high-quality work and demonstrates strong coding practices."</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar">
                         <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="reviewer-info">
-                        <p class="reviewer-name">Canan Gündüz</p>
-                        <p class="reviewer-title">Web Development Course</p>
+                        <p class="reviewer-name" data-translate="canan_gunduz">Canan Gündüz</p>
+                        <p class="reviewer-title" data-translate="web_development_course">Web Development Course</p>
                     </div>
                 </div>
             </div>
@@ -382,31 +400,31 @@
     <div id="contact-modal" class="modal">
         <div class="modal-content animate scale-up">
             <button class="modal-close">×</button>
-            <h2>Get in Touch</h2>
+            <h2 data-translate="get_in_touch">Get in Touch</h2>
             <div class="contact-links">
                 <a href="https://github.com/hamitcf1" class="contact-link">
                     <i class="fab fa-github"></i>
-                    GitHub
+                    <span data-translate="github">GitHub</span>
                 </a>
                 <a href="https://linkedin.com/in/hamitcf" class="contact-link">
                     <i class="fab fa-linkedin"></i>
-                    LinkedIn
+                    <span data-translate="linkedin">LinkedIn</span>
                 </a>
                 <a href="https://instagram.com/hamitcf" class="contact-link">
                     <i class="fab fa-instagram"></i>
-                    Instagram
+                    <span data-translate="instagram">Instagram</span>
                 </a>
                 <a href="https://t.me/hamitcf" class="contact-link">
                     <i class="fab fa-telegram"></i>
-                    Telegram
+                    <span data-translate="telegram">Telegram</span>
                 </a>
                 <a href="https://x.com/hamitcf" class="contact-link">
                     <i class="fa-brands fa-x-twitter"></i>
-                    X
+                    <span data-translate="x">X</span>
                 </a>
                 <a href="mailto:hamitfindik2@gmail.com" class="contact-link">
                     <i class="fas fa-envelope"></i>
-                    hamitfindik2@gmail.com
+                    <span data-translate="email">hamitfindik2@gmail.com</span>
                 </a>
             </div>
         </div>
@@ -414,13 +432,14 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2024 HamitCF. All rights reserved.</p>
+            <p data-translate="copyright">&copy; 2024 HamitCF. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
-    <script src="animations.js"></script>
-    <script src="theme-toggle.js"></script>
     <script src="modal.js"></script>
+    <script src="theme-toggle.js"></script>
+    <script src="language-selector.js"></script>
 </body>
 </html>
