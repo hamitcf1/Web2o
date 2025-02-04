@@ -268,13 +268,13 @@ body {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
     border-radius: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-content {
@@ -564,6 +564,20 @@ body {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Timeline content hover */
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Education content hover */
+.education-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
 /* Project card hover */
 .project-card:hover {
     transform: translateY(-5px);
@@ -573,13 +587,6 @@ body {
 
 /* Review card hover */
 .review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-/* Education content hover */
-.education-content:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     background: rgba(255, 255, 255, 0.9);
@@ -599,46 +606,6 @@ body {
 .dark-theme .review-card:hover,
 .dark-theme .courses li:hover {
     background: rgba(255, 255, 255, 0.15);
-}
-
-/* Animation classes */
-.animate.scale-up {
-    opacity: 0;
-    transform: scale(0.95);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.animate.scale-up.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.animate.scale-up.show:hover {
-    transform: translateY(-5px);
-}
-
-.animate.fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.animate.fade-in-up.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.animate.fade-in-up.show:hover {
-    transform: translateY(-5px);
-}
-
-/* Remove any animation keyframes and use transform directly */
-.project-card.animate.scale-up.show:hover,
-.review-card.animate.fade-in-up.show:hover,
-.education-content.animate.scale-up.delay-1.show:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
 }
 
 /* Education styles */

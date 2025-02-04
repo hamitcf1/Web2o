@@ -55,7 +55,7 @@ window.translations = {
         software_development_course: "Software Development Course",
         colleague: "Colleague",
         computer_science_department: "Computer Science Department",
-        copyright: " © 2024 HamitCF. All rights reserved.",
+        copyright: " 2024 HamitCF. All rights reserved.",
         english: "English",
         turkish: "Türkçe",
         russian: "Русский"
