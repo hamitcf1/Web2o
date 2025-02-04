@@ -401,7 +401,7 @@ body {
 }
 
 .weather-img {
-    background-image: url('../assets/weather.png');
+    background-image: url('https://github.com/hamitcf1/Web2o/blob/main/assets/weather.png?raw=true');
 }
 
 .upcoming-img {
