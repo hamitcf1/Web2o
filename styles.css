@@ -401,8 +401,9 @@ body {
 }
 
 .rps-img {
-    background-image: url('./assets/rps.png');
+    background-image: url('../assets/rps.png');
 }
+
 
 .upcoming-img {
     background-color: #f0f0f0;

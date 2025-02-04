@@ -102,7 +102,7 @@ window.translations = {
         review2: "Yazılım geliştirme ve algoritmik düşünmede büyük potansiyel gösteriyor.",
         review3: "Sürekli olarak yüksek kaliteli iş çıkarıyor ve güçlü kodlama pratikleri sergiliyor.",
         review4: "Bootcamp'te karşılaştığım en iyi öğrencilerden biri.",
-        review5: "Hızlı, güvenilir ve güvenilir.",
+        review5: "Hızlı, takdir edilesi ve güvenilir.",
         review6: "Mükemmel bir öğrenci, her zaman yeni şeyler öğrenmeye istekli.",
         hakan_karaduman: "Hakan Karaduman",
         dr_adnan_ceylan: "Dr. Adnan Ceylan",
