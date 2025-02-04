@@ -397,6 +397,10 @@ body {
     background-image: url('../assets/rps.png');
 }
 
+.weather-img {
+    background-image: url('../assets/weather.png');
+}
+
 .upcoming-img {
     background-color: #f0f0f0;
     position: relative;
