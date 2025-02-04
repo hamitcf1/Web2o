@@ -268,19 +268,13 @@ body {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
     border-radius: 1.5rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s ease;
 }
 
 .project-content {
@@ -316,6 +310,12 @@ body {
     opacity: 1;
 }
 
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
 .project-card p {
     color: var(--secondary-text);
     margin-bottom: 1.5rem;
@@ -347,7 +347,6 @@ body {
     white-space: nowrap;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 0.5rem;
 }
 
@@ -477,10 +476,14 @@ body {
 }
 
 .timeline-item {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     position: relative;
     padding-left: 2rem;
     max-width: 800px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
 }
 
 .timeline-item::before {
@@ -510,7 +513,16 @@ body {
     padding: 2rem;
     border-radius: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .timeline-content h3 {
@@ -519,11 +531,9 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.company-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
+.timeline-content p {
+    flex-grow: 1;
+    margin-bottom: 1rem;
 }
 
 .company {
@@ -546,13 +556,104 @@ body {
 
 .period {
     color: var(--secondary-text);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.timeline-item:hover .timeline-content {
-    transform: translateX(10px);
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Common styles for all cards */
+.timeline-content,
+.education-content,
+.project-card,
+.review-card,
+.courses li {
+    transition: transform 0.3s ease;
+}
+
+/* Review card hover */
+.review-card:hover {
+    transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     background: rgba(255, 255, 255, 0.9);
+}
+
+/* Education content hover */
+.education-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Course item hover */
+.courses li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Dark theme hover effects */
+.dark-theme .timeline-content:hover,
+.dark-theme .education-content:hover,
+.dark-theme .project-card:hover,
+.dark-theme .review-card:hover,
+.dark-theme .courses li:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Animation classes */
+.animate.scale-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.animate.scale-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate.scale-up.show:hover {
+    transform: translateY(-5px);
+}
+
+.animate.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.animate.fade-in-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate.fade-in-up.show:hover {
+    transform: translateY(-5px);
+}
+
+/* Common hover styles */
+.project-card:hover,
+.review-card:hover,
+.education-content:hover,
+.timeline-content:hover,
+.courses li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Dark theme hover effects */
+.dark-theme .timeline-content:hover,
+.dark-theme .education-content:hover,
+.dark-theme .project-card:hover,
+.dark-theme .review-card:hover,
+.dark-theme .courses li:hover {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* Education styles */
@@ -562,13 +663,7 @@ body {
     padding: 2.5rem;
     border-radius: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.education-content:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s ease;
 }
 
 .education-main {
@@ -601,6 +696,8 @@ body {
 }
 
 .courses li {
+    opacity: 1;
+    transform: translateY(0);
     background: rgba(255, 255, 255, 0.5);
     padding: 1rem 1.5rem;
     border-radius: 1rem;
@@ -616,6 +713,13 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+
+.courses li:nth-child(1) { transition-delay: 0.1s; }
+.courses li:nth-child(2) { transition-delay: 0.2s; }
+.courses li:nth-child(3) { transition-delay: 0.3s; }
+.courses li:nth-child(4) { transition-delay: 0.4s; }
+.courses li:nth-child(5) { transition-delay: 0.5s; }
+.courses li:nth-child(6) { transition-delay: 0.6s; }
 
 .course-icon {
     color: var(--accent);
@@ -652,7 +756,7 @@ body {
     padding: 2rem;
     border-radius: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -780,7 +884,7 @@ html {
 .timeline-item,
 .education-content,
 .review-card {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 /* Dark theme adjustments */
@@ -921,23 +1025,6 @@ html {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 }
-
-.courses li {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.courses li.animate {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Stagger the animations */
-.courses li:nth-child(1) { animation-delay: 0.1s; }
-.courses li:nth-child(2) { animation-delay: 0.2s; }
-.courses li:nth-child(3) { animation-delay: 0.3s; }
-.courses li:nth-child(4) { animation-delay: 0.4s; }
-.courses li:nth-child(5) { animation-delay: 0.5s; }
-.courses li:nth-child(6) { animation-delay: 0.6s; }
 
 /* Ensure the content inside cards is clickable */
 .project-card *,
