@@ -655,6 +655,9 @@ body {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
 }
 
 .review-card:hover {
@@ -683,6 +686,7 @@ body {
     font-style: italic;
     position: relative;
     z-index: 1;
+    flex-grow: 1;
 }
 
 .reviewer {
@@ -690,6 +694,8 @@ body {
     align-items: center;
     gap: 1rem;
     margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .reviewer-avatar {
@@ -697,6 +703,7 @@ body {
     font-size: 2rem;
     opacity: 0.8;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
 }
 
 .review-card:hover .reviewer-avatar {
@@ -706,17 +713,24 @@ body {
 
 .reviewer-info {
     flex: 1;
+    min-width: 0;
 }
 
 .reviewer-name {
     color: var(--accent);
     font-weight: 500;
     margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .reviewer-title {
     color: var(--secondary-text);
     font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Dark theme adjustments */
@@ -726,6 +740,10 @@ body {
 
 .dark-theme .review-card:hover {
     background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .reviewer {
+    border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Responsive adjustments */
