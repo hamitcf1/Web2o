@@ -285,24 +285,33 @@ body {
 }
 
 .project-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-bottom: 1rem;
-    gap: 1rem;
 }
 
-.project-header h3 {
+.project-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-title h3 {
+    margin: 0;
     font-size: 1.5rem;
     color: var(--text);
-    margin: 0;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
 }
 
 .project-icon {
     color: var(--accent);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     opacity: 0.8;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    height: 1.5rem;
 }
 
 .project-card:hover .project-icon {
@@ -525,10 +534,21 @@ body {
     margin-bottom: 1rem;
 }
 
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .company {
     color: var(--accent);
     font-weight: 500;
     margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 1;
+    padding-top: 15px;
 }
 
 .company-icon {
@@ -536,6 +556,11 @@ body {
     font-size: 1.1rem;
     opacity: 0.8;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1rem;
+    height: 1.1rem;
 }
 
 .timeline-item:hover .company-icon {
@@ -546,66 +571,6 @@ body {
 .period {
     color: var(--secondary-text);
     margin-bottom: 0.5rem;
-}
-
-.company-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Common styles for all cards */
-.timeline-content,
-.education-content,
-.project-card,
-.review-card,
-.courses li {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Timeline content hover */
-.timeline-item:hover .timeline-content {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-/* Education content hover */
-.education-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-/* Project card hover */
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-/* Review card hover */
-.review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-/* Course item hover */
-.courses li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.8);
-}
-
-/* Dark theme hover effects */
-.dark-theme .timeline-content:hover,
-.dark-theme .education-content:hover,
-.dark-theme .project-card:hover,
-.dark-theme .review-card:hover,
-.dark-theme .courses li:hover {
-    background: rgba(255, 255, 255, 0.15);
 }
 
 /* Education styles */
@@ -1206,4 +1171,57 @@ html {
 .nav-links .theme-toggle svg {
     width: 18px;
     height: 18px;
+}
+
+/* Common styles for all cards */
+.timeline-content,
+.education-content,
+.project-card,
+.review-card,
+.courses li {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Timeline content hover */
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Education content hover */
+.education-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Project card hover */
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Review card hover */
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Course item hover */
+.courses li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Dark theme hover effects */
+.dark-theme .timeline-content:hover,
+.dark-theme .education-content:hover,
+.dark-theme .project-card:hover,
+.dark-theme .review-card:hover,
+.dark-theme .courses li:hover {
+    background: rgba(255, 255, 255, 0.15);
 }
