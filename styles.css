@@ -414,6 +414,13 @@ body {
     width: 100%;
 }
 
+.weather-img {
+    background-image: url('../Web2o/assets/weather.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px 10px 0 0;
+}
+
 /* Dark theme adjustments */
 .dark-theme .project-card {
     background: rgba(255, 255, 255, 0.05);
