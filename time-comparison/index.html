@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title data-translate="time_comparison">Time Comparison - NY & Istanbul</title>
+    <link rel="stylesheet" href="../shared-theme.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true" type="image/x-icon" />
+    <script src="../translations.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html#projects" class="back-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span data-translate="back_to_portfolio">Back to Portfolio</span>
+        </a>
+
+        <div class="time-comparison-container animate fade-in-up">
+            <h1 class="title" data-translate="time_comparison">Time Comparison</h1>
+            
+            <div class="current-time-container animate fade-in-up">
+                <button id="currentTimeBtn" class="current-time-btn">
+                    <i class="fas fa-clock"></i>
+                    <span>Current Time</span>
+                </button>
+            </div>
+
+            <div class="cities-container">
+                <div class="city-time animate fade-in-left">
+                    <div class="city-card">
+                        <div class="city-header">
+                            <i class="fas fa-building"></i>
+                            <h2 class="city-label">New York</h2>
+                        </div>
+                        <div class="time-selector">
+                            <div class="time-display">
+                                <input type="text" id="nyHours" class="time-part" maxlength="2" placeholder="00">
+                                <span class="time-separator">:</span>
+                                <input type="text" id="nyMinutes" class="time-part" maxlength="2" placeholder="00">
+                                <select id="nyPeriod" class="period-select">
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="date" id="nyDate"></div>
+                    </div>
+                </div>
+
+                <div class="time-divider animate fade-in-up">
+                    <div class="time-difference">
+                        <div class="arrow-container">
+                            <button id="switchTimesBtn" class="switch-times-btn">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="city-time animate fade-in-right">
+                    <div class="city-card">
+                        <div class="city-header">
+                            <i class="fas fa-building"></i>
+                            <h2 class="city-label">Istanbul</h2>
+                        </div>
+                        <div class="time-selector">
+                            <div class="time-display">
+                                <input type="text" id="istHours" class="time-part" maxlength="2" placeholder="00">
+                                <span class="time-separator">:</span>
+                                <input type="text" id="istMinutes" class="time-part" maxlength="2" placeholder="00">
+                                <select id="istPeriod" class="period-select">
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="date" id="istDate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

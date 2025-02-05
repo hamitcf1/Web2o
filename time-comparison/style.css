@@ -1,0 +1,325 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--background-color);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    transition: opacity 0.3s ease;
+}
+
+.back-button:hover {
+    opacity: 0.7;
+}
+
+.time-comparison-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--card-background);
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    font-weight: 700;
+    text-align: center;
+}
+
+.current-time-container {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.current-time-btn {
+    background: transparent;
+    color: var(--text);
+    border: none;
+    border-radius: 0.8rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.current-time-btn i {
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.current-time-btn:hover {
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.current-time-btn:active {
+    transform: scale(0.95);
+}
+
+.cities-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.city-time {
+    flex: 1;
+    min-width: 300px;
+}
+
+.city-card {
+    background: var(--card-background);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+.city-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.city-header i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.city-label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.time-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--background-color);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+}
+
+.time-part {
+    width: 3ch;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 0.25rem;
+    border-radius: 6px;
+}
+
+.time-part:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.time-separator {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin: 0 0.25rem;
+}
+
+.period-select {
+    background: black;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    border-radius: 6px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.period-select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.period-select option {
+    background: black;
+    color: white;
+}
+
+.date {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.time-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.switch-times-btn {
+    background: transparent;
+    color: var(--text);
+    border: none;
+    border-radius: 0.8rem;
+    padding: 0.5rem 1rem;
+    padding-left: 2.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.switch-times-btn i {
+    font-size: 1rem;
+    position: absolute;
+    left: 0.5rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.switch-times-btn:hover {
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--accent);
+    transform: translateY(-1px);
+
+}
+
+
+.time-difference {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card-background);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.arrow-container {
+    height: 2px;
+    width: 100px;
+    background: var(--accent-color);
+    position: relative;
+    margin: 0.5rem 0;
+}
+
+.arrow {
+    position: absolute;
+    right: -10px;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .cities-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .city-time {
+        min-width: 100%;
+    }
+
+    .time-divider {
+        width: 100%;
+        padding: 1.5rem 0;
+    }
+
+    .time-difference {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .arrow-container {
+        transform: rotate(90deg);
+        margin: 0 1rem;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .time-part {
+        font-size: 1.75rem;
+    }
+
+    .time-separator {
+        font-size: 1.75rem;
+    }
+
+    .period-select {
+        font-size: 1.25rem;
+    }
+
+    .city-header {
+        padding-bottom: 0.75rem;
+    }
+}
