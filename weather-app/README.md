@@ -1,47 +1,39 @@
-# Dynamic Weather App
+# Dynamic Weather App 🌤️
 
-A modern weather application with dynamic backgrounds, real-time updates, and 3-day forecast. Features beautiful animations and time-based themes.
-
-![Weather App Preview](screenshots/preview.png)
+## Overview
+A sophisticated weather application that provides real-time weather updates with dynamic, adaptive backgrounds.
 
 ## Features
+- 🌍 Location-based weather forecasts
+- 🎨 Dynamic background colors based on time and weather conditions
+- 🕒 Real-time local time display
+- 📱 Fully responsive design
+- 🌡️ Temperature and weather condition details
 
-- Real-time weather data using WeatherAPI.com
-- Dynamic backgrounds that change based on:
-  - Time of day (sunrise, morning, noon, afternoon, sunset, night)
-  - Weather conditions (clear, cloudy, rainy, snowy)
-- Beautiful particle animations for different weather conditions
-- 24-hour forecast with scrollable timeline
-- 3-day weather forecast
-- Sound effects for different weather conditions
-- Mobile-responsive design
-- iOS-style interface elements
-- Smooth animations and transitions
-
-## Technologies Used
-
+## Technologies
 - HTML5
-- CSS3 (with modern features like backdrop-filter)
-- JavaScript (ES6+)
-- WeatherAPI.com for weather data
-- Font Awesome for icons
+- CSS3
+- JavaScript
+- WeatherAPI
 
 ## Installation
-
 1. Clone the repository
-2. Add your WeatherAPI.com API key to `config.js`
-3. Open `index.html` in a modern web browser
+2. Open `index.html` in your browser
+3. Allow location access for best results
 
-## Usage
+## API Usage
+Uses WeatherAPI for real-time weather data
+- API Key: Required (configure in `config.js`)
+- Supports multiple location searches
 
-- Enter a city name to get weather information
-- Click the location icon to use your current location
-- Toggle sound effects with the sound button
-- View hourly forecast by scrolling horizontally
-- Check 3-day forecast below
+## Customization
+- Theme toggle (light/dark)
+- Background color generation based on:
+  - Time of day
+  - Weather conditions
 
-## Credits
+## Contributing
+Pull requests welcome. Please follow coding standards and add tests for new features.
 
-- Weather data provided by [WeatherAPI.com](https://www.weatherapi.com/)
-- Icons by [Font Awesome](https://fontawesome.com/)
-- Created by [HamitCF](https://github.com/hamitcf1)
+## License
+MIT License

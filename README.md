@@ -1,80 +1,61 @@
-# Personal Portfolio Website
+# Web2o Project Collection
 
-A modern, responsive personal portfolio website showcasing my professional experience, projects, and skills. Built with HTML, CSS, and JavaScript.
+## 🚀 Overview
+Web2o is a comprehensive collection of modern web applications and tools, showcasing innovative web development techniques and interactive user experiences.
 
-## Features
+## 📦 Projects
 
-- 🌐 Multi-language support (English, Turkish, Russian)
-- 🌙 Dark/Light mode toggle
-- 📱 Fully responsive design
-- ⚡ Smooth animations and transitions
-- 📊 Interactive timeline for work experience
-- 🎓 Education and certifications section
-- 💼 Project showcase with live demos
-- 📝 Reviews and testimonials
-- 🎯 Skills and expertise display
+### 1. Dynamic Weather App
+- **Description**: A sophisticated weather application with real-time updates and dynamic backgrounds
+- **Features**:
+  - Location-based forecasts
+  - Time and weather-adaptive backgrounds
+  - Responsive design
+- **Technologies**: HTML, CSS, JavaScript, WeatherAPI
 
-## Technologies Used
+### 2. Time Comparison Tool
+- **Description**: An Apple-style time zone comparison application
+- **Features**:
+  - Real-time local time display
+  - Multiple city comparisons
+  - Responsive and intuitive UI
+- **Technologies**: HTML, CSS, JavaScript
 
-- HTML5
-- CSS3 (Custom properties, Flexbox, Grid)
-- JavaScript (ES6+)
-- Font Awesome Icons
-- Google Fonts
+### 3. Rock Paper Scissors Game
+- **Description**: Classic game with modern interactive UI
+- **Features**:
+  - Animated transitions
+  - Score tracking
+  - Responsive design
+- **Technologies**: HTML, CSS, JavaScript
 
-## Project Structure
+### 4. Web Calculator
+- **Description**: Sleek calculator with comprehensive functionality
+- **Features**:
+  - Basic arithmetic operations
+  - Keyboard support
+  - Clean, modern design
+- **Technologies**: HTML, CSS, JavaScript
 
-```
-Web2o/
-├── index.html          # Main HTML file
-├── styles.css          # Main stylesheet
-├── translations.js     # Language translations
-├── weather-app/        # Weather application demo
-└── README.md          # Project documentation
-```
+### 5. Ollama Local Chatbot
+- **Description**: Local AI chatbot using advanced language models
+- **Features**:
+  - DeepSeek-R1 and DeepSeek-Coder integration
+  - FastAPI backend
+  - Local AI processing
+- **Technologies**: Python, FastAPI, DeepSeek Models
 
-## Setup and Installation
+## 🔜 Upcoming Projects
+Stay tuned for more exciting innovations in web development!
 
-1. Clone the repository:
-```bash
-git clone https://github.com/hamitcf1/Web2o.git
-```
+## 🛠 Technologies
+- Frontend: HTML5, CSS3, JavaScript
+- Backend: FastAPI, Node.js
+- Design: Responsive, Modern UI/UX
+- APIs: WeatherAPI, Custom AI Integrations
 
-2. Open `index.html` in your preferred browser.
+## 📝 License
+MIT License
 
-## Features in Detail
-
-### Multi-language Support
-- Seamlessly switch between English, Turkish, and Russian
-- All content dynamically updates based on selected language
-
-### Dark/Light Mode
-- Toggle between dark and light themes
-- Preference is saved in local storage
-
-### Experience Timeline
-- Interactive timeline showing professional experience
-- Company icons with hover effects
-- Detailed role descriptions
-
-### Projects Section
-- Showcase of personal and professional projects
-- Live demo links
-- Project descriptions and technologies used
-
-### Responsive Design
-- Mobile-first approach
-- Adapts to all screen sizes
-- Optimized for both desktop and mobile viewing
-
-## Contributing
-
-Feel free to fork this project and submit pull requests for any improvements.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Contact
-
-- GitHub: [@hamitcf1](https://github.com/hamitcf1)
+## 🤝 Contributions
+Contributions, issues, and feature requests are welcome!

@@ -68,7 +68,8 @@ body.night { background: linear-gradient(180deg, #1a1a1a, #2c3e50); }
 }
 
 .back-to-portfolio:hover {
-    background: rgba(40, 40, 40, 0.8);
+    background: rgba(0, 122, 255, 0.2);
+    color: #007AFF;
 }
 
 .local-time {
@@ -153,6 +154,19 @@ body.night { background: linear-gradient(180deg, #1a1a1a, #2c3e50); }
     opacity: 0.8;
 }
 
+.search-box button,
+.sound-toggle,
+.back-to-portfolio {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-box button:hover,
+.sound-toggle:hover,
+.back-to-portfolio:hover {
+    background: rgba(0, 122, 255, 0.2);
+    color: #007AFF;
+}
+
 .search-box button {
     background: rgba(255, 255, 255, 0.1);
     border: none;
@@ -167,13 +181,25 @@ body.night { background: linear-gradient(180deg, #1a1a1a, #2c3e50); }
     justify-content: center;
 }
 
-.search-box button:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
 .search-box button i {
     font-size: 16px;
     opacity: 0.9;
+}
+
+.sound-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px;
+    border: none;
+    color: var(--text-color);
+}
+
+.card-header .sound-toggle i {
+    transition: color 0.3s ease;
+}
+
+.card-header .sound-toggle:hover i {
+    color: #007AFF;
 }
 
 .popular-cities {
@@ -210,6 +236,17 @@ body.night { background: linear-gradient(180deg, #1a1a1a, #2c3e50); }
     padding: 24px;
     margin-bottom: 24px;
     animation: fadeIn 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform, box-shadow;
+}
+
+.weather-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+}
+
+.weather-card * {
+    transition: none;
 }
 
 @keyframes fadeIn {

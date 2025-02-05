@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#000000">
-    <title data-translate="time_comparison">Time Comparison - NY & Istanbul</title>
+    <title>Time Sync: Istanbul & New York</title>
     <link rel="stylesheet" href="../shared-theme.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -12,74 +12,168 @@
     <script src="../translations.js" defer></script>
 </head>
 <body>
+    <a href="https://hamitcf.netlify.app" class="back-to-portfolio">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Portfolio</span>
+    </a>
+
+    <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+        <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+            <mask class="moon" id="moon-mask">
+                <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                <circle cx="24" cy="10" r="6" fill="black" />
+            </mask>
+            <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+            <g class="sun-beams" stroke="currentColor">
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+        </svg>
+    </button>
+
     <div class="container">
-        <a href="../index.html#projects" class="back-button">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span data-translate="back_to_portfolio">Back to Portfolio</span>
-        </a>
+        <!-- <div class="project-nav">
+            <a href="../index.html#projects" class="project-nav-button">
+                <i class="fas fa-arrow-left"></i>
+                <span data-translate="back_to_portfolio">Back to Portfolio</span>
+            </a>
+        </div> -->
 
         <div class="time-comparison-container animate fade-in-up">
-            <h1 class="title" data-translate="time_comparison">Time Comparison</h1>
-            
-            <div class="current-time-container animate fade-in-up">
-                <button id="currentTimeBtn" class="current-time-btn">
-                    <i class="fas fa-clock"></i>
-                    <span>Current Time</span>
-                </button>
+            <div class="time-comparison-header">
+                <h1 class="title" style="text-align: center;">Time Synchronization</h1>
             </div>
 
-            <div class="cities-container">
-                <div class="city-time animate fade-in-left">
-                    <div class="city-card">
+            <div class="time-comparison-wrapper">
+                <div class="time-block-container">
+                    <div class="city-time-block primary" data-city="istanbul">
                         <div class="city-header">
-                            <i class="fas fa-building"></i>
-                            <h2 class="city-label">New York</h2>
+                            <div class="city-icon">🕌</div>
+                            <h2>Istanbul</h2>
                         </div>
-                        <div class="time-selector">
+                        <div class="time-display-container">
                             <div class="time-display">
-                                <input type="text" id="nyHours" class="time-part" maxlength="2" placeholder="00">
-                                <span class="time-separator">:</span>
-                                <input type="text" id="nyMinutes" class="time-part" maxlength="2" placeholder="00">
-                                <select id="nyPeriod" class="period-select">
-                                    <option value="AM">AM</option>
-                                    <option value="PM">PM</option>
-                                </select>
+                                <div class="digital-clock" id="istDigitalClock">00:00 AM</div>
+                                <div class="date-display" id="istDateDisplay">-</div>
+                            </div>
+                            <div class="time-adjustment">
+                                <div class="time-control-group">
+                                    <div class="control-label">Hours</div>
+                                    <div class="control-buttons">
+                                        <button class="adjust-time minus" data-city="ist" data-adjustment="-1" data-unit="hour">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button class="adjust-time plus" data-city="ist" data-adjustment="1" data-unit="hour">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="time-control-group">
+                                    <div class="control-label">Minutes</div>
+                                    <div class="control-buttons">
+                                        <button class="adjust-time minus" data-city="ist" data-adjustment="-1" data-unit="minute">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button class="adjust-time plus" data-city="ist" data-adjustment="1" data-unit="minute">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="direct-input-container" id="istDirectInputContainer" style="display: none;">
+                                <div class="direct-input-group">
+                                    <label for="istDirectTime">Time</label>
+                                    <input type="time" id="istDirectTime" class="direct-time-input">
+                                </div>
+                                <div class="direct-input-group">
+                                    <label for="istDirectDate">Date</label>
+                                    <input type="date" id="istDirectDate" class="direct-date-input">
+                                </div>
                             </div>
                         </div>
-                        <div class="date" id="nyDate"></div>
+                    </div>
+
+                    <div class="city-time-block primary" data-city="newyork">
+                        <div class="city-header">
+                            <div class="city-icon">🗽</div>
+                            <h2>New York</h2>
+                        </div>
+                        <div class="time-display-container">
+                            <div class="time-display">
+                                <div class="digital-clock" id="nyDigitalClock">00:00 AM</div>
+                                <div class="date-display" id="nyDateDisplay">-</div>
+                            </div>
+                            <div class="time-adjustment">
+                                <div class="time-control-group">
+                                    <div class="control-label">Hours</div>
+                                    <div class="control-buttons">
+                                        <button class="adjust-time minus" data-city="ny" data-adjustment="-1" data-unit="hour">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button class="adjust-time plus" data-city="ny" data-adjustment="1" data-unit="hour">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="time-control-group">
+                                    <div class="control-label">Minutes</div>
+                                    <div class="control-buttons">
+                                        <button class="adjust-time minus" data-city="ny" data-adjustment="-1" data-unit="minute">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button class="adjust-time plus" data-city="ny" data-adjustment="1" data-unit="minute">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="direct-input-container" id="nyDirectInputContainer" style="display: none;">
+                                <div class="direct-input-group">
+                                    <label for="nyDirectTime">Time</label>
+                                    <input type="time" id="nyDirectTime" class="direct-time-input">
+                                </div>
+                                <div class="direct-input-group">
+                                    <label for="nyDirectDate">Date</label>
+                                    <input type="date" id="nyDirectDate" class="direct-date-input">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="time-divider animate fade-in-up">
-                    <div class="time-difference">
-                        <div class="arrow-container">
-                            <button id="switchTimesBtn" class="switch-times-btn">
-                                <i class="fas fa-exchange-alt"></i>
+                <div class="global-controls">
+                    <div class="time-toggles">
+                        <div class="time-difference-toggle">
+                            <div class="time-difference" id="timeDifferenceDisplay">+8 hours</div>
+                            <button id="syncTimeBtn" class="sync-button">
+                                <i class="fas fa-sync-alt"></i>
+                                Sync Times
                             </button>
                         </div>
-                    </div>
-                </div>
-
-                <div class="city-time animate fade-in-right">
-                    <div class="city-card">
-                        <div class="city-header">
-                            <i class="fas fa-building"></i>
-                            <h2 class="city-label">Istanbul</h2>
+                        <div class="direct-input-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="directInputToggle">
+                                <span class="slider"></span>
+                                <span class="toggle-label">Direct Input</span>
+                            </label>
                         </div>
-                        <div class="time-selector">
-                            <div class="time-display">
-                                <input type="text" id="istHours" class="time-part" maxlength="2" placeholder="00">
-                                <span class="time-separator">:</span>
-                                <input type="text" id="istMinutes" class="time-part" maxlength="2" placeholder="00">
-                                <select id="istPeriod" class="period-select">
-                                    <option value="AM">AM</option>
-                                    <option value="PM">PM</option>
-                                </select>
-                            </div>
+                        <div class="time-format-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="24HourToggle">
+                                <span class="slider"></span>
+                                <span class="toggle-label">24-Hour</span>
+                            </label>
                         </div>
-                        <div class="date" id="istDate"></div>
+                        <div class="footer-content">
+                            <p data-translate="copyright">&copy; 2024 HamitCF. All rights reserved.</p>
+                            <p data-translate="made_with">Made with <i class="fas fa-heart"></i> of K.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,5 +181,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="../translations.js" defer></script>
+    <script src="../theme-toggle.js" defer></script>
 </body>
 </html>

@@ -18,6 +18,18 @@
 
 .language-btn:hover {
     background-color: var(--hover-color, rgba(0, 0, 0, 0.1));
+    animation: language-btn-hover 0.5s ease-in-out;
+    color: #007AFF;
+}
+
+.language-btn:hover i {
+    color: #007AFF;
+}
+
+@keyframes language-btn-hover {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(5deg); }
 }
 
 .language-menu {
@@ -44,12 +56,19 @@
     align-items: center;
     padding: 8px 16px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: color 0.2s, background-color 0.2s;
     color: inherit;
 }
 
 .language-option:hover {
-    background-color: var(--hover-color, rgba(0, 0, 0, 0.05));
+    background-color: rgba(0, 122, 255, 0.1);
+    color: #007AFF;
+}
+
+.language-option.selected {
+    background-color: rgba(0, 122, 255, 0.2);
+    color: #007AFF;
+    font-weight: bold;
 }
 
 .language-option.active {

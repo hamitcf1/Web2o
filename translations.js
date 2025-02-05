@@ -64,7 +64,16 @@ window.translations = {
         copyright: " 2024 HamitCF. All rights reserved.",
         english: "English",
         turkish: "Türkçe",
-        russian: "Русский"
+        russian: "Русский",
+        review7: "\"Meow meow. Meow meow meow, meow meow!🐾🐱✨\"",
+        riba_chicklos: "Riba Chicklos",
+        pet: "Pet",
+        review8: "\"With a strong foundation in IT and a keen eye for detail, the journey into Quality Assurance is progressing steadily. Continuous learning and hands-on experience are shaping a solid skill set for the field.\"",
+        vefa_alas: "Vefa Alas",
+        childhood_friend: "Childhood Friend",
+        review9: "\"A structured approach to software testing is evident, with a focus on industry tools and best practices. The ability to identify issues and ensure quality highlights a promising future in QA.\"",
+        altay_uslu: "Altay Uslu",
+        api_course: "API Course"
     },
     tr: {
         projects: "Projeler",
@@ -131,7 +140,16 @@ window.translations = {
         copyright: " 2024 HamitCF. Tüm hakları saklıdır.",
         english: "English",
         turkish: "Türkçe",
-        russian: "Русский"
+        russian: "Русский",
+        review7: "\"Miyav miyav. Miyav miyav miyav, miyav miyav!🐾🐱✨\"",
+        riba_chicklos: "Riba Chicklos",
+        pet: "Evcil Hayvan",
+        review8: "\"BT'de sağlam bir temel ve detaylara karşı keskin bir bakış açısıyla, Kalite Güvence yolculuğu istikrarlı bir şekilde ilerliyor. Sürekli öğrenme ve pratik deneyim, alanda sağlam bir beceri seti oluşturuyor.\"",
+        vefa_alas: "Vefa Alas",
+        childhood_friend: "Çocukluk Arkadaşı",
+        review9: "\"Yazılım testinde yapılandırılmış bir yaklaşım göze çarpıyor, endüstri araçları ve en iyi uygulamalara odaklanılmış. Sorunları tespit etme ve kaliteyi sağlama yeteneği, QA'de parlak bir gelecek vaadediyor.\"",
+        altay_uslu: "Altay Uslu",
+        api_course: "API Kursu"
     },
     ru: {
         projects: "Проекты",
@@ -198,6 +216,78 @@ window.translations = {
         copyright: " 2024 HamitCF. Все права защищены.",
         english: "English",
         turkish: "Türkçe",
-        russian: "Русский"
+        russian: "Русский",
+        review7: "\"Мяу мяу. Мяу мяу мяу, мяу мяу!🐾🐱✨\"",
+        riba_chicklos: "Риба Чиклос",
+        pet: "Домашнее животное",
+        review8: "\"Прочный фундамент в IT и острый глаз к деталям, путешествие в Обеспечение Качества продолжается стабильно. Непрерывное обучение и практический опыт формируют солидный набор навыков в этой области.\"",
+        vefa_alas: "Вефа Алас",
+        childhood_friend: "Друг детства",
+        review9: "\"Очевиден структурированный подход к тестированию программного обеспечения, с фокусом на инструменты отрасли и лучшие практики. Способность выявлять проблемы и обеспечивать качество подчеркивает многообещающее будущее в QA.\"",
+        altay_uslu: "Алтай Услу",
+        api_course: "Курс по API"
     }
 };
+
+// Add language selection and highlighting functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const languageBtn = document.querySelector('.language-btn');
+    const languageMenu = document.querySelector('.language-menu');
+    const languageOptions = document.querySelectorAll('.language-option');
+    
+    // Get current language from localStorage or default to 'en'
+    const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+    
+    // Set initial selected language
+    languageOptions.forEach(option => {
+        const lang = option.getAttribute('data-lang');
+        if (lang === currentLang) {
+            option.classList.add('selected');
+        } else {
+            option.classList.remove('selected');
+        }
+    });
+
+    // Toggle language menu
+    languageBtn.addEventListener('click', () => {
+        languageMenu.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!languageMenu.contains(event.target) && !languageBtn.contains(event.target)) {
+            languageMenu.classList.remove('show');
+        }
+    });
+
+    // Language selection
+    languageOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const selectedLang = option.getAttribute('data-lang');
+            
+            // Remove selected class from all options
+            languageOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            option.classList.add('selected');
+            
+            // Update translations
+            translatePage(selectedLang);
+            
+            // Store selected language
+            localStorage.setItem('selectedLanguage', selectedLang);
+            
+            // Close language menu
+            languageMenu.classList.remove('show');
+        });
+    });
+});
+
+// Function to translate page
+function translatePage(lang) {
+    const translateElements = document.querySelectorAll('[data-translate]');
+    translateElements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        element.textContent = window.translations[lang][key];
+    });
+}
