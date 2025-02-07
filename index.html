@@ -60,20 +60,25 @@
                 </svg>
             </button>
             <div class="language-selector">
-                <button class="language-btn" title="Change Language">
-                    <i class="fas fa-globe" style="font-size: 1.2em;"></i>
-                </button>
-                <ul class="language-menu">
-                    <li class="language-option" data-lang="en">
-                        <span data-translate="english">English</span>
-                    </li>
-                    <li class="language-option" data-lang="tr">
-                        <span data-translate="turkish">Türkçe</span>
-                    </li>
-                    <li class="language-option" data-lang="ru">
-                        <span data-translate="russian">Русский</span>
-                    </li>
-                </ul>
+                <div class="selected-language">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">English</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-dropdown">
+                    <div class="language-option" data-lang="en">
+                        <i class="fas fa-check"></i>
+                        <span>English</span>
+                    </div>
+                    <div class="language-option" data-lang="tr">
+                        <i class="fas fa-check"></i>
+                        <span>Türkçe</span>
+                    </div>
+                    <div class="language-option" data-lang="ru">
+                        <i class="fas fa-check"></i>
+                        <span>Русский</span>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -113,20 +118,20 @@
             </div>
 
             <div class="project-card animate scale-up delay-2">
-                <div class="project-image chatbot-img"></div>
+                <div class="project-image qr-code-img"></div>
                 <div class="project-content">
                     <div class="project-header">
                         <div class="project-title">
-                            <i class="fas fa-robot project-icon"></i>
-                            <h3 data-translate="ollama_title">Ollama Local Chatbot</h3>
+                            <i class="fas fa-qrcode project-icon"></i>
+                            <h3 data-translate="qr_code_title">QR Code Generator & Scanner</h3>
                         </div>
                     </div>
-                    <p data-translate="ollama_desc">Local chatbot using Ollama and DeepSeek-R1 + DeepSeek-Coder - FastAPI</p>
+                    <p data-translate="qr_code_desc">A modern web application that allows users to generate and scan QR codes. Features a beautiful UI with dark mode support and multi-language functionality.</p>
                     <div class="project-links">
-                        <a href="https://hamitcfchatbot.netlify.app" class="project-link">
+                        <a href="qr-code/index.html" class="project-link">
                             <i class="fas fa-play"></i> <span data-translate="live_demo">Live Demo</span>
                         </a>
-                        <a href="https://github.com/hamitcf1/deepseek-coder-chat" class="project-link">
+                        <a href="https://github.com/hamitcf1/Web2o/tree/main/qr-code" class="project-link">
                             <i class="fab fa-github"></i> <span data-translate="github">GitHub</span>
                         </a>
                     </div>
@@ -197,22 +202,22 @@
             </div>
 
             <div class="project-card animate scale-up delay-6">
-                <div class="project-image upcoming-img"></div>
+                <div class="project-image chatbot-img"></div>
                 <div class="project-content">
                     <div class="project-header">
                         <div class="project-title">
-                            <i class="fas fa-rocket project-icon"></i>
-                            <h3 data-translate="upcoming_project">Upcoming Project 1</h3>
+                            <i class="fas fa-robot project-icon"></i>
+                            <h3 data-translate="ollama_title">Ollama Local Chatbot</h3>
                         </div>
                     </div>
-                    <p data-translate="upcoming_desc">An innovative project in development, coming soon to showcase cutting-edge technology!</p>
+                    <p data-translate="ollama_desc">Local chatbot using Ollama and DeepSeek-R1 + DeepSeek-Coder - FastAPI</p>
                     <div class="project-links">
-                        <span class="project-link disabled">
-                            <i class="fas fa-clock"></i> <span data-translate="coming_soon">Coming Soon</span>
-                        </span>
-                        <span class="project-link disabled">
-                            <i class="fab fa-github"></i> <span data-translate="coming_soon">Coming Soon</span>
-                        </span>
+                        <a href="https://hamitcfchatbot.netlify.app" class="project-link">
+                            <i class="fas fa-play"></i> <span data-translate="live_demo">Live Demo</span>
+                        </a>
+                        <a href="https://github.com/hamitcf1/deepseek-coder-chat" class="project-link">
+                            <i class="fab fa-github"></i> <span data-translate="github">GitHub</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -569,8 +574,8 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p data-translate="copyright">©️ 2025 HamitCF. All rights reserved.</p>
-            <p data-translate="made_with">Made with 🫶🏻 of Karina.</p>
+            <p data-translate="copyright"> 2025 HamitCF. All rights reserved.</p>
+            <p data-translate="made_with">Made with of Karina.</p>
         </div>
     </footer>
 

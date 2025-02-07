@@ -484,6 +484,22 @@ body {
     opacity: 0.8;
 }
 
+.qr-code-img {
+    background: linear-gradient(45deg, #1a1a1a, #333);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-code-img::after {
+    content: '\f029';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 4rem;
+    color: #fff;
+    opacity: 0.8;
+}
+
 /* Dark theme adjustments */
 [data-theme="dark"] .project-card {
     background: rgba(255, 255, 255, 0.05);

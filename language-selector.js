@@ -25,72 +25,102 @@ const translations = {
     }
 };
 
-// Get the saved language or use default
-let currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
-
-// Function to update content based on selected language
-function updateContent(lang) {
-    if (!window.translations || !window.translations[lang]) {
-        console.error('Translations not loaded or language not found:', lang);
-        return;
+class LanguageSelector {
+    constructor() {
+        this.selector = document.querySelector('.language-selector');
+        this.selectedLang = this.selector.querySelector('.selected-language');
+        this.currentLangText = this.selector.querySelector('.current-lang');
+        this.dropdown = this.selector.querySelector('.language-dropdown');
+        this.options = this.selector.querySelectorAll('.language-option');
+        
+        // Get saved language or default to 'en'
+        this.currentLang = localStorage.getItem('language') || 'en';
+        
+        // Initialize
+        this.init();
+        this.bindEvents();
     }
-
-    currentLanguage = lang;
-    localStorage.setItem('selectedLanguage', lang);
-    document.documentElement.setAttribute('lang', lang);
-
-    const elements = document.querySelectorAll('[data-translate]');
-    elements.forEach(element => {
-        const key = element.getAttribute('data-translate');
-        if (window.translations[lang][key]) {
-            element.textContent = window.translations[lang][key];
-        }
-    });
-}
-
-// Initialize language selector functionality
-document.addEventListener('DOMContentLoaded', () => {
-    const languageBtn = document.querySelector('.language-btn');
-    const languageMenu = document.querySelector('.language-menu');
-    const languageOptions = document.querySelectorAll('.language-option');
-
-    if (!languageBtn || !languageMenu || !languageOptions.length) {
-        console.error('Language selector elements not found');
-        return;
+    
+    init() {
+        // Set initial language
+        document.documentElement.lang = this.currentLang;
+        
+        // Update UI
+        this.updateLanguageUI();
+        
+        // Translate page
+        this.translatePage();
     }
-
-    // Toggle language menu
-    languageBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        languageMenu.classList.toggle('show');
-    });
-
-    // Handle language selection
-    languageOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const lang = option.getAttribute('data-lang');
-            if (lang) {
-                updateContent(lang);
-                languageMenu.classList.remove('show');
-
-                // Update active state
-                languageOptions.forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
+    
+    bindEvents() {
+        // Toggle dropdown
+        this.selectedLang.addEventListener('click', () => {
+            this.selector.classList.toggle('active');
+        });
+        
+        // Handle language selection
+        this.options.forEach(option => {
+            option.addEventListener('click', () => {
+                const newLang = option.dataset.lang;
+                if (newLang !== this.currentLang) {
+                    this.currentLang = newLang;
+                    localStorage.setItem('language', newLang);
+                    document.documentElement.lang = newLang;
+                    this.updateLanguageUI();
+                    this.translatePage();
+                }
+                this.selector.classList.remove('active');
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!this.selector.contains(e.target)) {
+                this.selector.classList.remove('active');
             }
         });
-    });
-
-    // Close language menu when clicking outside
-    document.addEventListener('click', () => {
-        languageMenu.classList.remove('show');
-    });
-
-    // Set initial language and active state
-    updateContent(currentLanguage);
-    languageOptions.forEach(option => {
-        if (option.getAttribute('data-lang') === currentLanguage) {
-            option.classList.add('active');
+    }
+    
+    updateLanguageUI() {
+        // Update selected language text
+        const selectedOption = this.selector.querySelector(`[data-lang="${this.currentLang}"]`);
+        if (selectedOption) {
+            this.currentLangText.textContent = selectedOption.querySelector('span').textContent;
         }
-    });
+        
+        // Update checkmarks
+        this.options.forEach(option => {
+            if (option.dataset.lang === this.currentLang) {
+                option.classList.add('selected');
+            } else {
+                option.classList.remove('selected');
+            }
+        });
+    }
+    
+    translatePage() {
+        if (!window.translations || !window.translations[this.currentLang]) {
+            console.error(`Translations not found for language: ${this.currentLang}`);
+            return;
+        }
+        
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(element => {
+            const key = element.dataset.translate;
+            const translation = window.translations[this.currentLang][key];
+            
+            if (translation) {
+                if (element.tagName === 'INPUT' && element.type === 'text') {
+                    element.placeholder = translation;
+                } else {
+                    element.textContent = translation;
+                }
+            }
+        });
+    }
+}
+
+// Initialize language selector when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new LanguageSelector();
 });

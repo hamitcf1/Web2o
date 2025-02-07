@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title data-translate="title">QR Code Generator & Reader</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../animations.css">
+    <link rel="stylesheet" href="../theme-toggle.css">
+    <link rel="stylesheet" href="../language-selector.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="../translations.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="../index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span data-translate="back">Back to Portfolio</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                    <mask class="moon" id="moon-mask">
+                        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                        <circle cx="24" cy="10" r="6" fill="black" />
+                    </mask>
+                    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                    <g class="sun-beams" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </g>
+                </svg>
+            </button>
+            <div class="language-selector">
+                <div class="selected-language">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">English</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="language-dropdown">
+                    <div class="language-option" data-lang="en">
+                        <i class="fas fa-check"></i>
+                        <span>English</span>
+                    </div>
+                    <div class="language-option" data-lang="tr">
+                        <i class="fas fa-check"></i>
+                        <span>Türkçe</span>
+                    </div>
+                    <div class="language-option" data-lang="ru">
+                        <i class="fas fa-check"></i>
+                        <span>Русский</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="qr-section">
+            <div class="generator-section">
+                <h2 data-translate="generate_qr">Generate QR Code</h2>
+                <div class="input-group">
+                    <input type="text" id="qr-text" placeholder="Enter text or URL" data-translate="enter_text_placeholder">
+                    <button id="generate-btn" class="action-button primary" data-translate="generate">
+                        <i class="fas fa-magic"></i> Generate
+                    </button>
+                </div>
+                <div id="qr-result">
+                    <div class="qr-placeholder">
+                        <i class="fas fa-qrcode"></i>
+                        <span data-translate="enter_text_placeholder">Enter text or URL</span>
+                    </div>
+                    <img id="qr-code" src="" alt="QR Code" style="display: none;">
+                    <a id="download-link" download="qr-code.png" class="download-btn" style="display: none;" data-translate="download">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+
+            <div class="scanner-section">
+                <h2 data-translate="scan_qr">Scan QR Code</h2>
+                <div class="scanner-controls">
+                    <button id="start-scan" class="action-button" data-translate="start_scan">
+                        <i class="fas fa-camera"></i> Start Scanner
+                    </button>
+                    <button id="stop-scan" class="action-button danger" style="display: none;" data-translate="stop_scan">
+                        <i class="fas fa-stop"></i> Stop Scanner
+                    </button>
+                </div>
+                <div class="video-container" style="display: none;">
+                    <video id="preview"></video>
+                </div>
+                <div id="scan-result" class="scan-result" style="display: none;">
+                    <p data-translate="scanned_result">Scanned Result:</p>
+                    <div id="result-text"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

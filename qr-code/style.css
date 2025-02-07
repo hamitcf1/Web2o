@@ -1,0 +1,411 @@
+.container {
+    max-width: 1200px;
+    margin: 6rem auto 2rem;
+    padding: 0 2rem;
+}
+
+.qr-section {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.generator-section,
+.scanner-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.generator-section:hover,
+.scanner-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--card-bg);
+    border-radius: 0.8rem;
+    background: var(--background);
+    color: var(--text);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1rem;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.action-button {
+    padding: 0.8rem 1.5rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.action-button i {
+    font-size: 1.1rem;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+}
+
+.action-button.primary {
+    background: linear-gradient(135deg, var(--accent) 0%, #0056b3 100%);
+}
+
+.action-button.primary:hover {
+    background: linear-gradient(135deg, #0056b3 0%, var(--accent) 100%);
+}
+
+.action-button.danger {
+    background: linear-gradient(135deg, #FF3B30 0%, #dc3545 100%);
+}
+
+.action-button.danger:hover {
+    background: linear-gradient(135deg, #dc3545 0%, #FF3B30 100%);
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
+}
+
+#generate-btn {
+    background: var(--accent);
+    color: white;
+}
+
+#qr-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.qr-placeholder {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border-radius: 0.8rem;
+    margin: 1rem 0;
+    gap: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.qr-placeholder i {
+    font-size: 3rem;
+    color: var(--text);
+    opacity: 0.5;
+}
+
+.qr-placeholder span {
+    color: var(--text);
+    opacity: 0.5;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+#qr-code {
+    max-width: 200px;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.8rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+#qr-code::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-image: url('https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+#qr-code:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: #34C759;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.8rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.2);
+}
+
+.video-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 1rem auto;
+    position: relative;
+}
+
+#preview {
+    width: 100%;
+    border-radius: 0.8rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scan-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--background);
+    border-radius: 0.8rem;
+    border: 2px solid var(--card-bg);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#result-text {
+    word-break: break-all;
+    margin-top: 0.5rem;
+}
+
+#result-text a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#result-text a:hover {
+    text-decoration: underline;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-button:hover {
+    color: var(--accent);
+    transform: translateX(-5px);
+}
+
+.scanner-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.language-selector {
+    position: relative;
+    user-select: none;
+}
+
+.selected-language {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--card-bg);
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.selected-language:hover {
+    border-color: var(--accent);
+}
+
+.selected-language i {
+    color: var(--text);
+    opacity: 0.7;
+    font-size: 1rem;
+}
+
+.selected-language .fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.language-selector.active .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.current-lang {
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: var(--background);
+    border-radius: 0.8rem;
+    padding: 0.5rem;
+    min-width: 150px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--card-bg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.language-selector.active .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    color: var(--text);
+}
+
+.language-option:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.language-option i {
+    opacity: 0;
+    width: 16px;
+}
+
+.language-option.selected {
+    color: var(--accent);
+}
+
+.language-option.selected i {
+    opacity: 1;
+}
+
+.language-option:hover i {
+    opacity: 1;
+    color: white;
+}
+
+.language-option span {
+    font-size: 0.9rem;
+}
+
+.language-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 120px;
+    background: var(--background);
+    border: 1px solid var(--card-bg);
+    border-radius: 0.8rem;
+    padding: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.language-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.language-option {
+    display: block;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    color: var(--text);
+    text-align: left;
+    width: 100%;
+    background: none;
+    border: none;
+}
+
+.language-option:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.language-option.active {
+    background: var(--accent);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 5rem;
+        padding: 0 1rem;
+    }
+    
+    .qr-section {
+        gap: 1rem;
+    }
+    
+    .generator-section,
+    .scanner-section {
+        padding: 1.5rem;
+    }
+    
+    .selected-language {
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .current-lang {
+        display: none;
+    }
+}
