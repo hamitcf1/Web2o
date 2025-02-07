@@ -100,6 +100,12 @@
                         <i class="fas fa-stop"></i> Stop Scanner
                     </button>
                 </div>
+                <div class="camera-controls">
+                    <button id="camera-switch" class="control-button">
+                        <i class="fas fa-camera-rotate"></i>
+                        <span data-translate="switch_camera">Switch Camera</span>
+                    </button>
+                </div>
                 <div class="video-container" style="display: none;">
                     <video id="preview"></video>
                 </div>
@@ -109,6 +115,24 @@
                 </div>
             </div>
         </div>
+
+        <div class="history-section">
+            <h3 data-translate="history">History</h3>
+            <div class="history-controls">
+                <button id="clear-history" class="control-button">
+                    <i class="fas fa-trash"></i>
+                    <span data-translate="clear_history">Clear History</span>
+                </button>
+            </div>
+            <div id="history-list"></div>
+        </div>
     </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p data-translate="copyright"> 2025 HamitCF. All rights reserved.</p>
+            <p data-translate="made_with">Made with of Karina.</p>
+        </div>
+    </footer>
 </body>
 </html>

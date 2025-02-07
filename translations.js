@@ -87,6 +87,10 @@ window.translations = {
         back: "Back to Portfolio",
         qr_code_title: "QR Code Generator & Scanner",
         qr_code_desc: "A modern web application that allows users to generate and scan QR codes. Features a beautiful UI with dark mode support and multi-language functionality.",
+        history: "History",
+        clear_history: "Clear History",
+        switch_camera: "Switch Camera",
+        use_qr: "Use QR Code",
     },
     tr: {
         projects: "Projeler",
@@ -176,6 +180,10 @@ window.translations = {
         back: "Portfolyoya Dön",
         qr_code_title: "QR Kod Oluşturucu & Tarayıcı",
         qr_code_desc: "Kullanıcıların QR kodları oluşturmasına ve taramasına olanak tanıyan modern bir web uygulaması. Karanlık mod desteği ve çoklu dil işlevselliği ile güzel bir kullanıcı arayüzüne sahiptir.",
+        history: "Geçmiş",
+        clear_history: "Geçmişi Temizle",
+        switch_camera: "Kamerayı Değiştir",
+        use_qr: "QR Kodu Kullan",
     },
     ru: {
         projects: "Проекты",
@@ -265,6 +273,10 @@ window.translations = {
         back: "Вернуться к портфолио",
         qr_code_title: "Генератор и сканер QR-кодов",
         qr_code_desc: "Современное веб-приложение, позволяющее пользователям генерировать и сканировать QR-коды. Имеет красивый интерфейс с поддержкой темного режима и многоязычной функциональностью.",
+        history: "История",
+        clear_history: "Очистить историю",
+        switch_camera: "Переключить камеру",
+        use_qr: "Использовать QR-код",
     }
 };
 

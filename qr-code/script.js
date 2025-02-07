@@ -43,6 +43,62 @@ function generateQRCode() {
 
     qrCode.src = apiUrl;
     downloadLink.href = apiUrl;
+    saveToHistory(text, apiUrl);
+}
+
+// QR History Management
+const MAX_HISTORY_ITEMS = 10;
+
+function saveToHistory(qrContent, qrImageUrl) {
+    let history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+    
+    // Add new item at the beginning
+    history.unshift({
+        content: qrContent,
+        imageUrl: qrImageUrl,
+        timestamp: new Date().toISOString()
+    });
+    
+    // Keep only the last MAX_HISTORY_ITEMS items
+    history = history.slice(0, MAX_HISTORY_ITEMS);
+    
+    // Save to localStorage
+    localStorage.setItem('qrHistory', JSON.stringify(history));
+    
+    // Update UI
+    displayHistory();
+}
+
+function displayHistory() {
+    const historyList = document.getElementById('history-list');
+    const history = JSON.parse(localStorage.getItem('qrHistory') || '[]');
+    
+    historyList.innerHTML = '';
+    
+    history.forEach(item => {
+        addHistoryItem(item.content, item.timestamp, item.imageUrl);
+    });
+}
+
+function addHistoryItem(qrContent, timestamp, qrImageUrl) {
+    const historyList = document.getElementById('history-list');
+    const historyItem = document.createElement('div');
+    historyItem.className = 'history-item';
+    
+    historyItem.innerHTML = `
+        <div class="history-qr-image">
+            <img src="${qrImageUrl || `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(qrContent)}`}" alt="QR Code" width="50" height="50">
+        </div>
+        <div class="history-content">${qrContent}</div>
+        <div class="history-time">${new Date(timestamp).toLocaleString()}</div>
+        <button class="history-use" onclick="useQRCode('${qrContent.replace(/'/g, "\\'")}')">
+            <i class="fas fa-redo"></i>
+            <span data-translate="use_qr">Use QR Code</span>
+        </button>
+    `;
+    
+    historyList.insertBefore(historyItem, historyList.firstChild);
+    updateTranslations();
 }
 
 // QR Code Scanner
@@ -52,36 +108,43 @@ const startScanBtn = document.getElementById('start-scan');
 const stopScanBtn = document.getElementById('stop-scan');
 const videoContainer = document.querySelector('.video-container');
 const scanResult = document.getElementById('scan-result');
+const cameraSwitch = document.getElementById('camera-switch');
 
 let scanner = null;
+let currentCameraIndex = 0;
+let cameras = [];
 
 startScanBtn.addEventListener('click', startScanner);
 stopScanBtn.addEventListener('click', stopScanner);
+cameraSwitch.addEventListener('click', switchCamera);
 
 function startScanner() {
     videoContainer.style.display = 'block';
     scanResult.style.display = 'block';
     resultText.textContent = '';
 
-    // Initialize scanner
     scanner = new Instascan.Scanner({ video: video });
 
     scanner.addListener('scan', function (content) {
         resultText.textContent = content;
-        // If the content is a URL, make it clickable
+        saveToHistory(content, null);
+        
         if (content.startsWith('http://') || content.startsWith('https://')) {
             resultText.innerHTML = `<a href="${content}" target="_blank">${content}</a>`;
         }
     });
 
-    // Start camera
     Instascan.Camera.getCameras()
-        .then(function (cameras) {
+        .then(function (availableCameras) {
+            cameras = availableCameras;
             if (cameras.length > 0) {
-                scanner.start(cameras[0])
+                scanner.start(cameras[currentCameraIndex])
                     .then(() => {
                         startScanBtn.style.display = 'none';
                         stopScanBtn.style.display = 'inline-flex';
+                        if (cameras.length > 1) {
+                            cameraSwitch.style.display = 'inline-flex';
+                        }
                     })
                     .catch(handleError);
             } else {
@@ -97,8 +160,25 @@ function stopScanner() {
         scanner = null;
     }
     videoContainer.style.display = 'none';
+    scanResult.style.display = 'none';
     startScanBtn.style.display = 'inline-flex';
     stopScanBtn.style.display = 'none';
+    cameraSwitch.style.display = 'none';
+}
+
+async function switchCamera() {
+    if (cameras.length <= 1) return;
+    
+    currentCameraIndex = (currentCameraIndex + 1) % cameras.length;
+    
+    if (scanner) {
+        await scanner.stop();
+        try {
+            await scanner.start(cameras[currentCameraIndex]);
+        } catch (err) {
+            handleError(err);
+        }
+    }
 }
 
 function handleError(error) {
@@ -106,6 +186,21 @@ function handleError(error) {
     resultText.textContent = typeof error === 'string' ? error : 'Error accessing camera: ' + error.message;
     stopScanner();
 }
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize language selector
+    new LanguageSelector();
+    
+    // Display existing history
+    displayHistory();
+    
+    // Clear history button
+    const clearHistoryBtn = document.getElementById('clear-history');
+    if (clearHistoryBtn) {
+        clearHistoryBtn.addEventListener('click', clearHistory);
+    }
+});
 
 // Theme Toggle
 const themeToggle = document.getElementById('theme-toggle');
@@ -214,7 +309,29 @@ class LanguageSelector {
     }
 }
 
-// Initialize language selector when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new LanguageSelector();
-});
+function updateTranslations() {
+    const elements = document.querySelectorAll('[data-translate]');
+    elements.forEach(element => {
+        const key = element.dataset.translate;
+        const translation = window.translations[document.documentElement.lang][key];
+        
+        if (translation) {
+            if (element.tagName === 'INPUT' && element.type === 'text') {
+                element.placeholder = translation;
+            } else {
+                element.textContent = translation;
+            }
+        }
+    });
+}
+
+function clearHistory() {
+    localStorage.removeItem('qrHistory');
+    displayHistory();
+}
+
+function useQRCode(content) {
+    const qrInput = document.getElementById('qr-text');
+    qrInput.value = content;
+    generateQRCode();
+}
