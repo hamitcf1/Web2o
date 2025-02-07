@@ -33,8 +33,27 @@ class ThemeManager {
     }
 
     setupEventListeners() {
-        this.themeToggle.addEventListener('click', () => this.toggleTheme());
-        
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+
+            // Get the current theme from localStorage or default to 'dark'
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            html.setAttribute('data-theme', currentTheme);
+
+            toggle.addEventListener('click', () => {
+                const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+
+                // Add animation class
+                toggle.classList.add('theme-toggle--toggling');
+                setTimeout(() => {
+                    toggle.classList.remove('theme-toggle--toggling');
+                }, 500);
+            });
+        });
+
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
             if (!localStorage.getItem(this.storageKey)) {
                 this.setTheme(e.matches ? 'dark' : 'light');

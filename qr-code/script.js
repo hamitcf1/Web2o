@@ -85,11 +85,26 @@ function addHistoryItem(qrContent, timestamp, qrImageUrl) {
     const historyItem = document.createElement('div');
     historyItem.className = 'history-item';
     
+    // Try to create URL object to get hostname
+    let displayText = qrContent;
+    let urlDisplay = '';
+    try {
+        const url = new URL(qrContent);
+        displayText = url.hostname;
+        urlDisplay = qrContent;
+    } catch (e) {
+        // Not a URL, use content as is
+        displayText = qrContent;
+    }
+    
     historyItem.innerHTML = `
         <div class="history-qr-image">
             <img src="${qrImageUrl || `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(qrContent)}`}" alt="QR Code" width="50" height="50">
         </div>
-        <div class="history-content">${qrContent}</div>
+        <div class="history-content">
+            <div class="history-content-text">${displayText}</div>
+            ${urlDisplay ? `<div class="history-content-url">${urlDisplay}</div>` : ''}
+        </div>
         <div class="history-time">${new Date(timestamp).toLocaleString()}</div>
         <button class="history-use" onclick="useQRCode('${qrContent.replace(/'/g, "\\'")}')">
             <i class="fas fa-redo"></i>
@@ -123,14 +138,37 @@ function startScanner() {
     scanResult.style.display = 'block';
     resultText.textContent = '';
 
-    scanner = new Instascan.Scanner({ video: video });
+    scanner = new Instascan.Scanner({ 
+        video: video,
+        mirror: false  // Prevent mirroring of camera
+    });
 
     scanner.addListener('scan', function (content) {
         resultText.textContent = content;
         saveToHistory(content, null);
         
-        if (content.startsWith('http://') || content.startsWith('https://')) {
-            resultText.innerHTML = `<a href="${content}" target="_blank">${content}</a>`;
+        // Function to check if string looks like a domain
+        function isValidDomain(str) {
+            // Match common domain patterns (e.g., example.com, sub.example.co.uk)
+            const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\.[a-zA-Z]{2,})+$/;
+            return domainRegex.test(str);
+        }
+
+        let urlToUse = content;
+        
+        // If content doesn't start with a protocol but looks like a domain, add https://
+        if (!content.match(/^[a-zA-Z]+:\/\//) && isValidDomain(content)) {
+            urlToUse = 'https://' + content;
+        }
+
+        // Try to create a URL object to check if content is a valid URL
+        try {
+            new URL(urlToUse);
+            // If no error is thrown, it's a valid URL
+            resultText.innerHTML = `<a href="${urlToUse}" target="_blank">${content}</a>`;
+        } catch (e) {
+            // If error is thrown, it's not a valid URL
+            resultText.textContent = content;
         }
     });
 
@@ -192,6 +230,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize language selector
     new LanguageSelector();
     
+    // Initialize history toggle
+    const toggleHistoryBtn = document.getElementById('toggle-history');
+    const historyContent = document.getElementById('history-content');
+    
+    // Set initial state (closed by default)
+    historyContent.style.maxHeight = '0px';
+    
+    toggleHistoryBtn.addEventListener('click', () => {
+        toggleHistoryBtn.classList.toggle('active');
+        historyContent.classList.toggle('active');
+        
+        if (historyContent.classList.contains('active')) {
+            historyContent.style.maxHeight = historyContent.scrollHeight + 'px';
+        } else {
+            historyContent.style.maxHeight = '0px';
+        }
+    });
+    
     // Display existing history
     displayHistory();
     
@@ -200,6 +256,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (clearHistoryBtn) {
         clearHistoryBtn.addEventListener('click', clearHistory);
     }
+    
+    const qrText = document.getElementById('qr-text');
+    const generateBtn = document.getElementById('generate-btn');
+    
+    // Handle enter key press
+    qrText.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent default form submission
+            generateQRCode();
+        }
+    });
+    
+    // Handle mobile keyboard "Go" or "Done" button
+    qrText.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            // Close mobile keyboard
+            qrText.blur();
+        }
+    });
 });
 
 // Theme Toggle
