@@ -5,6 +5,8 @@ window.translations = {
         experience: "Experience",
         education: "Education",
         reviews: "Reviews",
+        qr_title: "QR Code Generator and Scanner",
+        weather_title: "Weather App",
         // section titles //
 
         // hero //
