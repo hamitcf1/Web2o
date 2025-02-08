@@ -66,6 +66,14 @@
     color: #2ecc71; /* Green for Russian */
 }
 
+.language-selector.es .current-lang {
+    color: #f1c40f; /* Yellow for Spanish */
+}
+
+.language-selector.az .current-lang {
+    color: #e74c3c; /* Orange for Azerbaijani */
+}
+
 .language-dropdown {
     display: none;
 }

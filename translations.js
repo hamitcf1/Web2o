@@ -407,6 +407,355 @@ window.translations = {
             wind_speed: "Rüzgar",
 
     },
+    es: {
+        // títulos de sección //
+        projects: "Proyectos",
+        experience: "Experiencia",
+        education: "Educación",
+        reviews: "Reseñas",
+        // títulos de sección //
+
+        // héroe //
+        hero_title: "Desarrollador de Software",
+        hero_subtitle: "Soy un desarrollador de software y me encanta programar.",
+        hero_subtitle2: "Este sitio web es un reflejo de mi trabajo.",
+        hero_subtitle3: "Aquí puedes encontrar todos mis proyectos, experiencias, detalles educativos y reseñas sobre mí.",
+        hero_subtitle4: "Si tienes alguna pregunta o consulta, no dudes en hacer clic en el botón.",
+        // héroe //
+
+        get_in_touch: "Contáctame",
+        
+        // proyectos //
+        ollama_title: "Chatbot Local con Ollama",
+        ollama_desc: "Chatbot local utilizando Ollama y DeepSeek-R1 + DeepSeek-Coder - FastAPI.",
+        calculator_title: "Calculadora Web",
+        calculator_desc: "Una elegante aplicación de calculadora con operaciones aritméticas básicas y soporte para teclado.",
+        rps_title: "Piedra, Papel o Tijeras",
+        rps_desc: "Juego clásico con transiciones animadas y seguimiento de puntuaciones.",
+        weather_title: "Aplicación Meteorológica Dinámica",
+        weather_desc: "Aplicación meteorológica moderna con fondos dinámicos, actualizaciones en tiempo real y pronóstico de 3 días.",
+        time_comparison_title: "Comparación de Horario",
+        time_comparison_desc: "Herramienta moderna de comparación de horarios para Nueva York e Estambul.",
+        live_demo: "Demo en Vivo",
+        upcoming_project: "Próximo Proyecto",
+        upcoming_desc: "Es un proyecto no revelado, ¡pero llegará pronto!",
+        coming_soon: "¡Próximamente!",
+        qr_code_title: "Generador y Escáner de Códigos QR",
+        qr_code_desc: "Una aplicación web moderna que permite a los usuarios generar y escanear códigos QR. Cuenta con una hermosa interfaz de usuario con soporte para modo oscuro y funcionalidad multilingüe.",
+        // proyectos //
+
+        // otros //
+        close: "×",
+        back_to_portfolio: "Volver al Portafolio",
+        time_comparison: "Comparación de Horario",
+        
+        // comparación de tiempo //
+        minutes: "minutos",
+        hours: "horas",
+        time_difference: "+8 Horas",
+        sync_times: "Sincronizar Horarios",
+        direct_input: "Entrada Directa",
+        a24_hour: "24 Horas",
+        time: "Hora",
+        date: "Fecha",
+        // comparación de tiempo //
+
+        // piedra, papel o tijeras //
+        rock_paper_scissors: "¡Piedra! ¡Papel! ¡Tijeras!",
+        you: "Tú",
+        ties: "Empates",
+        computer: "Computadora",
+        rock: "Piedra",
+        paper: "Papel",
+        scissors: "Tijeras",
+        auto_play: "Reproducción Automática",
+        reset: "Reiniciar",
+        choose_your_weapon: "¡Elige tu arma!",
+        game_history: "Historial del Juego",
+        // piedra, papel o tijeras //
+
+        // clima //
+        weather: "Clima",
+        location: "Ubicación",
+        search: "Buscar ciudad...",
+        feels_like: "Sensación térmica",
+        humidity: "Humedad",
+        wind: "Viento",
+        temperature: "Temperatura",
+        a24_hour_forecast: "Pronóstico de 24 Horas",
+        a3_day_forecast: "Pronóstico de 3 Días",
+        powered_by: "Desarrollado por WeatherAPI.com",
+        // clima //
+
+        // senior_dev //
+        senior_dev: "Desarrollador Senior",
+        senior_dev_desc: "Desarrollo y mantenimiento web del sitio e-commerce de la empresa.",
+
+        // can_tasima //
+        can_tasima: "Can Tasima",
+
+        // full_stack_dev //
+        full_stack_dev: "Desarrollador Full Stack",
+        full_stack_dev_desc: "Desarrollo y mantenimiento web del sitio de la empresa.",
+
+        // front_end_dev //
+        front_end_dev: "Desarrollador Front-End",
+        front_end_dev_desc: "Desarrollo y mantenimiento web del sitio de la empresa.",
+        // front_end_dev //
+
+        // educación //
+        yildiz_university: "Universidad Técnica de Yildiz",
+        computer_science: "Ciencias de la Computación",
+        courses: "Cursos, Habilidades y Certificados:",
+        // educación //
+
+        // cursos //
+        intro_to_programming: "Introducción a la Programación",
+        data_structures: "Estructuras de Datos y Algoritmos",
+        web_development: "Desarrollo Web",
+        software_development: "Desarrollo de Software",
+        quality_assurance: "Garantía de Calidad",
+        test_automation: "Automatización de Pruebas",
+        software_engineering: "Ingeniería de Software",
+        manual_testing: "Pruebas Manuales",
+        // cursos //
+
+        // reseñas //
+        review1: "\"¡Me encanta, me encanta, me encanta!\"",
+        review2: "\"Muestra un gran potencial en desarrollo de software y pensamiento algorítmico.\"",
+        review3: "\"Entrega constantemente un trabajo de alta calidad y demuestra sólidas prácticas de codificación.\"",
+        review4: "\"Uno de los mejores estudiantes que he conocido en el bootcamp.\"",
+        review5: "\"Rápido, confiable y de confianza.\"",
+        review6: "\"Excelente estudiante, siempre dispuesto a aprender cosas nuevas.\"",
+        review7: "\"Miau Miau. Miau Miau Miau, Miau Miau! 😼🐱‍💻\"",
+        review8: "\"Con una base sólida en TI y un gran ojo para los detalles, el camino hacia la Garantía de Calidad avanza de manera constante. El aprendizaje continuo y la experiencia práctica están dando forma a un conjunto de habilidades sólidas para el campo.\"",
+        review9: "\"Se nota un enfoque estructurado en las pruebas de software, con énfasis en herramientas de la industria y mejores prácticas. La capacidad de identificar problemas y garantizar la calidad resalta un futuro prometedor en QA.\"",
+        // reseñas //
+
+        // personas //
+        karina_blanchette: "Karina Blanchette",
+        dr_adnan_ceylan: "Dr. Adnan Ceylan",
+        canan_gunduz: "Canan Gündüz",
+        kaan_seckin: "Kaan Seçkin",
+        teoman_yucel: "Teoman Yücel",
+        omer_ozan_cayli: "Omer Ozan Caylı",
+        riba_chickenlegs: "Riba Chickenlegs",
+        vefa_alas: "Vefa Alas",
+        altay_uslu: "Altay Uslu",
+        // personas //
+
+        // dónde //
+        kocaeli_101_bootcamp: "Bootcamp Kocaeli 101",
+        web_development_course: "Curso de Desarrollo Web",
+        front_end_course: "Curso de Front-End",
+        software_development_course: "Curso de Desarrollo de Software",
+        colleague: "Colega",
+        computer_science_department: "Departamento de Ciencias de la Computación",
+        pet: "Mascota",
+        childhood_friend: "Amigo de la infancia",
+        api_course: "Curso de API",
+        // dónde //
+
+        // pie de página //
+        copyright: "©️ 2025 HamitCF. Todos los derechos reservados.",
+        made_with: "Hecho con 🫶🏻 por Karina.",
+        // pie de página //
+
+        // idioma //
+        english: "Inglés",
+        turkish: "Turco",
+        russian: "Ruso",
+        // idioma //
+
+        // QR Code //
+        qr_title: "Generador y Lector de Códigos QR",
+        generate_qr: "Generar Código QR",
+        scan_qr: "Escanear Código QR",
+        enter_text_placeholder: "Introduce texto o URL",
+        generate: "Generar",
+        download: "Descargar",
+        start_scan: "Iniciar Escaneo",
+        stop_scan: "Detener Escaneo",
+        scanned_result: "Resultado Escaneado:",
+        back: "Volver al Portafolio",
+        history: "Historial",
+        clear_history: "Borrar Historial",
+        switch_camera: "Cambiar Cámara",
+        use_qr: "Usar Código QR",
+        
+        // Descripciones del Clima //
+        clear_sky: "Cielo Despejado",
+        few_clouds: "Pocas Nubes",
+        scattered_clouds: "Nubes Dispersas",
+        broken_clouds: "Nubes Rotas",
+        overcast_clouds: "Cielo Nublado",
+        light_rain: "Lluvia Ligera",
+        moderate_rain: "Lluvia Moderada",
+        heavy_rain: "Lluvia Fuerte",
+        thunderstorm: "Tormenta",
+        snow: "Nieve",
+        mist: "Niebla",
+        fog: "Neblina",
+    },
+    az: {
+        // bölmə başlıqları //
+        projects: "Layihələr",
+        experience: "Təcrübə",
+        education: "Təhsil",
+        reviews: "Rəylər",
+        // bölmə başlıqları //
+
+        // qəhrəman hissəsi //
+        hero_title: "Proqram Təminatı Tərtibatçısı",
+        hero_subtitle: "Mən proqram təminatı tərtibatçısıyam və kod yazmağı sevirəm.",
+        hero_subtitle2: "Bu vebsayt mənim işimin əksidir.",
+        hero_subtitle3: "Aşağıda bütün layihələrimi, təcrübələrimi, təhsil detalları və haqqımdakı rəyləri tapa bilərsiniz.",
+        hero_subtitle4: "Hər hansı bir sualınız və ya sorğunuz varsa, düyməyə klikləməkdən çəkinməyin.",
+        // qəhrəman hissəsi //
+
+        get_in_touch: "Əlaqə saxlayın",
+        
+        // layihələr //
+        ollama_title: "Ollama Yerli Çatbot",
+        ollama_desc: "Ollama və DeepSeek-R1 + DeepSeek-Coder - FastAPI istifadə edərək yerli çatbot.",
+        calculator_title: "Veb Kalkulyator",
+        calculator_desc: "Sadə riyazi əməliyyatları və klaviatura dəstəyini dəstəkləyən şık kalkulyator tətbiqi.",
+        rps_title: "Daş, Kağız, Qayçı",
+        rps_desc: "Animasiya keçidləri və xal izləmə funksiyası olan klassik oyun.",
+        weather_title: "Dinamik Hava Proqramı",
+        weather_desc: "Dinamik arxa planlar, real vaxt yeniləmələri və 3 günlük proqnoz ilə müasir hava tətbiqi.",
+        time_comparison_title: "Vaxt Müqayisəsi",
+        time_comparison_desc: "Nyu-York və İstanbul üçün müasir vaxt müqayisəsi aləti.",
+        live_demo: "Canlı Demo",
+        upcoming_project: "Gələcək Layihə",
+        upcoming_desc: "Bu, açıqlanmayan bir layihədir, lakin tezliklə gələcək!",
+        coming_soon: "Tezliklə!",
+        qr_code_title: "QR Kod Yaradıcı və Oxuyucu",
+        qr_code_desc: "İstifadəçilərə QR kodları yaratmaq və skan etmək imkanı verən müasir veb tətbiq. Gözəl interfeys, qaranlıq rejim dəstəyi və çoxdilli funksionallıq mövcuddur.",
+        // layihələr //
+
+        // digər //
+        close: "×",
+        back_to_portfolio: "Portfelə Geri Dön",
+        time_comparison: "Vaxt Müqayisəsi",
+        
+        // vaxt müqayisəsi //
+        minutes: "dəqiqə",
+        hours: "saat",
+        time_difference: "+8 Saat",
+        sync_times: "Vaxtları Sinxron Et",
+        direct_input: "Birbaşa Daxil Et",
+        a24_hour: "24 Saat",
+        time: "Vaxt",
+        date: "Tarix",
+        // vaxt müqayisəsi //
+
+        // daş, kağız, qayçı //
+        rock_paper_scissors: "Daş! Kağız! Qayçı!",
+        you: "Siz",
+        ties: "Bərabərə",
+        computer: "Kompüter",
+        rock: "Daş",
+        paper: "Kağız",
+        scissors: "Qayçı",
+        auto_play: "Avtomatik Oynatma",
+        reset: "Sıfırla",
+        choose_your_weapon: "Silahınızı Seçin!",
+        game_history: "Oyun Tarixi",
+        // daş, kağız, qayçı //
+
+        // hava //
+        weather: "Hava",
+        location: "Məkan",
+        search: "Şəhər axtar...",
+        feels_like: "Hiss Olunan",
+        humidity: "Rütubət",
+        wind: "Külək",
+        temperature: "Temperatur",
+        a24_hour_forecast: "24 Saatlıq Proqnoz",
+        a3_day_forecast: "3 Günlük Proqnoz",
+        powered_by: "WeatherAPI.com tərəfindən təmin olunur",
+        // hava //
+
+        // senior_dev //
+        senior_dev: "Baş Tərtibatçı",
+        senior_dev_desc: "Şirkətin e-ticarət saytının inkişafı və texniki dəstəyi.",
+
+        // can_tasima //
+        can_tasima: "Can Taşıma",
+
+        // full_stack_dev //
+        full_stack_dev: "Full Stack Tərtibatçı",
+        full_stack_dev_desc: "Şirkət veb saytının inkişafı və texniki dəstəyi.",
+
+        // front_end_dev //
+        front_end_dev: "Front-End Tərtibatçı",
+        front_end_dev_desc: "Şirkət veb saytının inkişafı və texniki dəstəyi.",
+        // front_end_dev //
+
+        // təhsil //
+        yildiz_university: "Yıldız Texniki Universiteti",
+        computer_science: "Kompüter Elmləri",
+        courses: "Kurslar, Bacarıqlar və Sertifikatlar:",
+        // təhsil //
+
+        // kurslar //
+        intro_to_programming: "Proqramlaşdırmaya Giriş",
+        data_structures: "Verilənlərin Strukturu və Alqoritmlər",
+        web_development: "Veb İnkişaf",
+        software_development: "Proqram Təminatı İnkişafı",
+        quality_assurance: "Keyfiyyətə Nəzarət",
+        test_automation: "Test Avtomatlaşdırması",
+        software_engineering: "Proqram Mühəndisliyi",
+        manual_testing: "Əl ilə Test",
+        // kurslar //
+
+                // footer //
+                copyright: "©️ 2025 HamitCF. Tüm hakları saklıdır.",
+                made_with: "Karina'nın 🫶🏻 ile yapılmıştır.",
+                // footer //
+
+        // rəylər //
+        review1: "\"Mükəmməl, mükəmməl, mükəmməl!\"",
+        review2: "\"Proqramlaşdırma və alqoritmik düşünmə qabiliyyətində böyük potensial göstərir.\"",
+        review3: "\"Daim yüksək keyfiyyətli iş təqdim edir və güclü kodlaşdırma təcrübəsi nümayiş etdirir.\"",
+        review4: "\"Bootcamp-da tanış olduğum ən yaxşı tələbələrdən biridir.\"",
+        review5: "\"Sürətli, etibarlı və güvənilir.\"",
+        review6: "\"Əla tələbədir, hər zaman yeni şeylər öyrənməyə can atır.\"",
+        review7: "\"Miyav Miyav. Miyav Miyav Miyav, Miyav Miyav! 😼🐱‍💻\"",
+        review8: "\"İT sahəsində möhkəm bir təməl və detallara diqqətli yanaşma ilə Keyfiyyətə Nəzarət sahəsində inkişaf davam edir. Davamlı öyrənmə və praktiki təcrübə sahədə möhkəm bacarıqlar formalaşdırır.\"",
+        review9: "\"Proqram testinə struktur yanaşma müşahidə olunur, sənaye alətləri və ən yaxşı təcrübələrə diqqət yetirilir. Problemləri müəyyən etmək və keyfiyyəti təmin etmək qabiliyyəti QA sahəsində perspektivli gələcək vəd edir.\"",
+        // rəylər //
+
+        // dillər //
+        english: "İngilis",
+        turkish: "Türk",
+        russian: "Rus",
+        // dillər //
+
+        // QR Kod //
+        qr_title: "QR Kod Generatoru və Oxuyucusu",
+        generate_qr: "QR Kod Yarat",
+        scan_qr: "QR Kod Oxu",
+        enter_text_placeholder: "Mətn və ya URL daxil edin",
+        generate: "Yarat",
+        download: "Yüklə",
+        start_scan: "Skan Etməyə Başla",
+        stop_scan: "Skan Etməni Dayandır",
+        scanned_result: "Skan Edilmiş Nəticə:",
+        back: "Portfelə Qayıt",
+        
+        // Hava Təsvirləri //
+        clear_sky: "Açıq Səma",
+        few_clouds: "Az Bulud",
+        scattered_clouds: "Səpələnmiş Buludlar",
+        overcast_clouds: "Tutqun Hava",
+        light_rain: "Yüngül Yağış",
+        heavy_rain: "Güclü Yağış",
+        thunderstorm: "İldırım",
+        snow: "Qar",
+        fog: "Duman"
+    },
     ru: {
         // section titles //
         projects: "Проекты",
@@ -596,17 +945,9 @@ window.translations = {
             thunderstorm: "Гроза",
             snow: "Снег",
             mist: "Легкий Туман",
-
-        daily_forecast: {
-            today: "Сегодня",
-            tomorrow: "Завтра",
-            day_after_tomorrow: "Послезавтра",
-            high_temp: "Макс",
-            low_temp: "Мин",
-            precipitation: "Осадки",
-            wind_speed: "Ветер",
-        },
         }
+
+        
 };
 
 // Add language selection and highlighting functionality

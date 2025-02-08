@@ -22,6 +22,14 @@ const translations = {
         reviews: "Отзывы",
         getInTouch: "Связаться",
         upcoming: "Предстоящий проект"
+    },
+    es: {
+        projects: "Proyectos",
+        experience: "Experiencia",
+        education: "Educación",
+        reviews: "Resenias",
+        getInTouch: "Contacto",
+        upcoming: "Proyecto Futuro"
     }
 };
 
@@ -35,8 +43,10 @@ class LanguageSelector {
         // Define the order of languages with additional info
         this.languageData = [
             { code: 'en', name: 'English', color: '#3498db', soundFile: 'en_select.mp3' },
-            { code: 'tr', name: 'Türkçe', color: '#e74c3c', soundFile: 'tr_select.mp3' },
-            { code: 'ru', name: 'Русский', color: '#2ecc71', soundFile: 'ru_select.mp3' }
+            { code: 'tr', name: 'Türkçe', color: '#e74c3c', soundFile: 'en_select.mp3' },
+            { code: 'ru', name: 'Русский', color: '#2ecc71', soundFile: 'en_select.mp3' },
+            { code: 'es', name: 'Español', color: '#9b59b6', soundFile: 'en_select.mp3' },
+            { code: 'az', name: 'Azerbaijani', color: '#f1c40f', soundFile: 'en_select.mp3'}
         ];
         
         // Get saved language or default to 'en'
@@ -105,7 +115,7 @@ class LanguageSelector {
     
     updateLanguageUI() {
         // Remove previous language classes
-        this.selector.classList.remove('en', 'tr', 'ru');
+        this.selector.classList.remove('en', 'tr', 'ru', 'es', 'az');
         
         // Add current language class
         this.selector.classList.add(this.currentLang);
