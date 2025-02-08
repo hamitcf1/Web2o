@@ -87,6 +87,7 @@ body.night { background: linear-gradient(180deg, #1a1a1a, #2c3e50); }
 
 .local-date-display {
     opacity: 0.8;
+    padding-right: 85px;
 }
 
 .language-dropdown,
@@ -154,6 +155,7 @@ body.night { background: linear-gradient(180deg, #1a1a1a, #2c3e50); }
     opacity: 0.8;
 }
 
+
 .search-box button,
 .sound-toggle,
 .back-to-portfolio {
@@ -179,6 +181,10 @@ body.night { background: linear-gradient(180deg, #1a1a1a, #2c3e50); }
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.language-selector {
+    padding-left: 16px;
 }
 
 .search-box button i {

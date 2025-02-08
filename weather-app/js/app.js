@@ -5,14 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearSearchBtn = document.getElementById('clear-search');
     const popularCitiesList = document.getElementById('popular-cities');
     const weatherCard = document.getElementById('weather-card');
-    const localTimeDisplay = document.querySelector('.local-time-display');
-    const localDateDisplay = document.querySelector('.local-date-display');
+    //const localTimeDisplay = document.querySelector('.local-time-display');
+    //const localDateDisplay = document.querySelector('.local-date-display');
     
     let currentSound = null;
     let isSoundPlaying = false;
     const MAX_CARDS = 6;
     const activeCards = new Set();
 
+    /*
     // Yerel saat ve tarih gösterimi için
     function updateLocalTime() {
         const now = new Date();
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             soundToggleBtn.classList.add('active');
         }
     }
-
+*/
     // Hava durumu emojisini al
     function getWeatherEmoji(condition) {
         const conditionLower = condition.toLowerCase();
@@ -290,17 +291,53 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hava durumu verilerini getir
     async function getWeatherData(city) {
         try {
-            const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no`);
-            if (!response.ok) throw new Error('Weather data not found');
+            // First check if API key is available
+            if (!API_KEY) {
+                throw new Error('API key is not defined. Please check config.js');
+            }
+
+            const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=3&aqi=no`;
+            console.log('Attempting to fetch weather data...');
+            
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors' // Explicitly set CORS mode
+            });
+            
+            if (!response.ok) {
+                if (response.status === 401) {
+                    throw new Error('Invalid API key. Please check your WeatherAPI.com credentials.');
+                } else if (response.status === 403) {
+                    throw new Error('API key has expired or reached its limit.');
+                } else {
+                    throw new Error(`Weather API error: ${response.status} ${response.statusText}`);
+                }
+            }
             
             const data = await response.json();
+            if (!data || !data.location) {
+                throw new Error('Invalid data received from weather API');
+            }
+
+            console.log('Weather data received successfully:', data);
             updateWeatherCard(data);
             updateHourlyForecast(data.forecast.forecastday[0].hour);
             updateDailyForecast(data.forecast.forecastday);
             
         } catch (error) {
-            console.error('Error:', error);
-            alert('Could not find weather data for this location');
+            console.error('Weather API Error:', error);
+            
+            if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+                alert('Network error: Please check your internet connection or try again later');
+            } else if (error.message.includes('API key')) {
+                alert(error.message);
+            } else {
+                alert(`Error getting weather data: ${error.message}`);
+            }
         }
     }
 
@@ -332,6 +369,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Günlük tahmini güncelle
     function updateDailyForecast(dailyData) {
         const dailyContainer = document.querySelector('.daily-items');
+        if (!dailyContainer) {
+            console.log('Daily forecast container not found - feature is disabled');
+            return;
+        }
+        
         dailyContainer.innerHTML = '';
         
         dailyData.forEach((day, index) => {

@@ -1,5 +1,5 @@
 // WeatherAPI.com API configuration
-const API_KEY = 'aa391e7a30934e48b2a00827250402';
+window.API_KEY = 'aa391e7a30934e48b2a00827250402';
 const BASE_URL = 'https://api.weatherapi.com/v1';
 const POPULAR_CITIES = ['Istanbul', 'London', 'New York', 'Tokyo', 'Paris', 'Dubai', 'Singapore', 'Rome', 'Barcelona', 'Amsterdam'];
 
@@ -45,4 +45,3 @@ const WEATHER_EMOJIS = {
     'blizzard': '🌨️',
     'default': '🌡️'
 };
-

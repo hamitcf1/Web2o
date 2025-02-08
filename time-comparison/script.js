@@ -150,6 +150,49 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDisplay();
     }
 
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('mobile-menu-open');
+    }
+
+    // Responsive Controls Placement
+    function updateControlsPlacement() {
+        const navControls = document.querySelector('.nav-controls');
+        const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
+        const mobileLanguageSelector = document.querySelector('.mobile-language-selector');
+        const themeToggle = document.getElementById('theme-toggle');
+        const languageSelector = document.querySelector('.language-selector');
+
+        if (window.innerWidth <= 768) {
+            // Move to mobile menu
+            if (themeToggle && mobileThemeToggle) {
+                mobileThemeToggle.innerHTML = '';
+                mobileThemeToggle.appendChild(themeToggle.cloneNode(true));
+            }
+            if (languageSelector && mobileLanguageSelector) {
+                mobileLanguageSelector.innerHTML = '';
+                mobileLanguageSelector.appendChild(languageSelector.cloneNode(true));
+            }
+            navControls.style.display = 'none';
+        } else {
+            // Restore to original nav controls
+            navControls.style.display = 'flex';
+            if (mobileMenu) {
+                mobileMenu.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+            }
+        }
+    }
+
+    // Expose toggleMobileMenu globally
+    window.toggleMobileMenu = toggleMobileMenu;
+
+    // Initial placement and responsive updates
+    window.addEventListener('load', updateControlsPlacement);
+    window.addEventListener('resize', updateControlsPlacement);
+
     // Event Listeners
     adjustTimeButtons.forEach(button => {
         button.addEventListener('click', (e) => {
