@@ -294,6 +294,7 @@ body {
     color: var(--secondary-text);
     margin-bottom: 2rem;
     max-width: 600px;
+    text-align: center;
 }
 
 .cta-button {

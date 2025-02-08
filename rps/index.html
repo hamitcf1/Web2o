@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="../shared-theme.css">
     <link rel="stylesheet" href="../project-nav.css">
     <link rel="stylesheet" href="../theme-toggle.css">
-    <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true" type="image/x-icon" /> 
+    <link rel="stylesheet" href="../language-selector.css">
+    <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true" type="image/x-icon" />
+
 </head>
 <body>
     <div class="project-nav">
         <a href="../index.html" class="project-nav-button">
             <i class="fas fa-arrow-left"></i>
-            Back to Portfolio
+            <span data-translate="back_to_portfolio">Back to Portfolio</span>
         </a>
         <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
             <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
@@ -38,52 +40,73 @@
                 </g>
             </svg>
         </button>
+        <div class="language-selector">
+            <div class="selected-language">
+                <i class="fas fa-globe"></i>
+                <span class="current-lang">English</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="language-dropdown">
+                <div class="language-option" data-lang="en">
+                    <i class="fas fa-check"></i>
+                    <span>English</span>
+                </div>
+                <div class="language-option" data-lang="tr">
+                    <i class="fas fa-check"></i>
+                    <span>Türkçe</span>
+                </div>
+                <div class="language-option" data-lang="ru">
+                    <i class="fas fa-check"></i>
+                    <span>Русский</span>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container">
-        <h1>Rock Paper Scissors</h1>
+        <h1 data-translate="rock_paper_scissors">Rock Paper Scissors</h1>
         <div class="score-board">
             <div class="score">
-                <p>You</p>
+                <p data-translate="you">You</p>
                 <span id="player-score">0</span>
             </div>
             <div class="score">
-                <p>Ties</p>
+                <p data-translate="ties">Ties</p>
                 <span id="tie-score">0</span>
             </div>
             <div class="score">
-                <p>Computer</p>
+                <p data-translate="computer">Computer</p>
                 <span id="computer-score">0</span>
             </div>
         </div>
         <div class="game-area">
-            <div id="result" class="result">Choose your weapon!</div>
+            <div id="result" class="result" data-translate="choose_your_weapon">Choose your weapon!</div>
             <div class="choices">
                 <button class="choice" data-choice="rock" title="Choose Rock">
                     <span class="choice-icon">✊</span>
-                    <span class="choice-label">Rock</span>
+                    <span class="choice-label" data-translate="rock">Rock</span>
                 </button>
                 <button class="choice" data-choice="paper" title="Choose Paper">
                     <span class="choice-icon">✋</span>
-                    <span class="choice-label">Paper</span>
+                    <span class="choice-label" data-translate="paper">Paper</span>
                 </button>
                 <button class="choice" data-choice="scissors" title="Choose Scissors">
                     <span class="choice-icon">✌️</span>
-                    <span class="choice-label">Scissors</span>
+                    <span class="choice-label" data-translate="scissors">Scissors</span>
                 </button>
             </div>
         </div>
         <div class="controls">
             <button id="reset" class="control-btn" title="Reset all scores and history">
                 <i class="fas fa-redo"></i>
-                Reset Game
+                <span data-translate="reset">Reset Game</span>
             </button>
             <button id="autoplay" class="control-btn" title="Start automatic gameplay simulation">
                 <i class="fas fa-play"></i>
-                Auto Play
+                <span data-translate="auto_play">Auto Play</span>
             </button>
         </div>
         <div class="history-section">
-            <h2>Game History</h2>
+            <h2 data-translate="game_history">Game History</h2>
             <div id="history-list" class="history-list"></div>
         </div>
     </div>
@@ -91,7 +114,7 @@
     <div id="contact-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Get in Touch</h2>
+            <h2 data-translate="get_in_touch">Get in Touch</h2>
             <div class="contact-links">
                 <a href="https://github.com/hamitcf1" class="contact-link">
                     <i class="fab fa-github"></i>
@@ -116,13 +139,16 @@
         <div class="footer-content">
             <a href="mailto:contact@hamitcf.dev?subject=Let's%20Work%20Together&body=Hi%20Hamit%2C%0D%0A%0D%0AI'd%20like%20to%20discuss%20a%20potential%20project%20with%20you.%0D%0A%0D%0ABest%20regards" class="contact-btn">
                 <i class="fas fa-envelope"></i>
-                Get in Touch
+                <span data-translate="get_in_touch">Get in Touch</span>
             </a>
-            <p class="copyright">© 2024 HamitCF. All rights reserved.</p>
+            <p class="copyright" data-translate="copyright">© 2024 HamitCF. All rights reserved.</p>
+            <p class="made-with" data-translate="made_with">Made with 🫶🏻 of Karina.</p>
         </div>
     </footer>
     <script src="script.js"></script>
     <script src="../theme-toggle.js"></script>
+    <script src="../language-selector.js"></script>
+    <script src="../translations.js"></script>
     <script src="../modal.js"></script>
 </body>
 </html> 

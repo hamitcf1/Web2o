@@ -167,31 +167,46 @@ window.translations = {
         rps_desc: "Animasyonlu geçişler ve skor takibi olan klasik oyun.",
         weather_title: "Dinamik Hava Durumu Uygulaması",
         weather_desc: "Dinamik arka planlar, gerçek zamanlı güncellemeler ve 3 günlük tahminli modern hava durumu uygulaması.",
-        time_comparison_title: "Zaman Karşılaştırma",
+        time_comparison_title: "Saat Karşılaştırma",
         time_comparison_desc: "New York ve İstanbul için modern tarzda zaman karşılaştırma aracı.",
         live_demo: "Canlı Demo",
         upcoming_project: "Yaklaşan Proje",
         upcoming_desc: "Bu henüz açıklanmamış bir proje, ama yakında sizlerle!",
         coming_soon: "Çok Yakında",
         qr_code_title: "QR Kod Oluşturucu ve Tarayıcı",
-        qr_code_desc: "Kullanıcıların QR kodları oluşturmasına ve taramasına izin veren modern bir web uygulaması. Koyu mod desteği ve çoklu dil işlevselliği ile güzel bir arayüz.",
+        qr_code_desc: "Kullanıcıların QR kodları oluşturmasına ve taramasına izin veren modern bir web uygulaması. Koyu mod desteği ve çoklu dil işlevselliği ile guzel bir arayüz.",
         // projects //
 
         // other //
         close: "×",
         back_to_portfolio: "Portföye Dön",
-        time_comparison: "Zaman Karşılaştırma",
+        time_comparison: "Saat Karşılaştırma",
                 // time_comparison //
-                time_comparison: "Zaman Karşılaştırma",
+                time_comparison: "Saat Karşılaştırma",
                 minutes: "dakika",
                 hours: "saat",
                 time_difference: "+8 Saat",
                 sync_times: "Senkronize Et",
-                direct_input: "Direk Giriş",
+                direct_input: "Direkt Giriş",
                 a24_hour: "24 Saat",
                 time: "Zaman",
                 date: "Tarih",
                 // time_comparison //
+
+                //rps//
+                rock_paper_scissors: "Taş! Kağıt! Makas!",
+                you: "Sen",
+                ties: "Berabere",
+                computer: "Bilgisayar",
+                rock: "Taş",
+                paper: "Kağıt",
+                scissors: "Makas",
+                auto_play: "Otomatik Oyna",
+                reset: "Sıfırla",
+                choose_your_weapon: "Silahını Seç!",
+                game_history: "Oyun Geçmişi",
+                //rps//
+
         // other //
 
         // senior_dev //
@@ -300,7 +315,7 @@ window.translations = {
         // section titles //
 
         // hero //
-        hero_title: "Разработчик программного обеспечения",
+        hero_title: "Разработчик П. О.",
         hero_subtitle: "Я разработчик программного обеспечения и люблю писать код",
         hero_subtitle2: "Этот веб-сайт — отражение моей работы.",
         hero_subtitle3: "Ниже вы найдете все мои проекты, опыт, детали образования и отзывы обо мне.",
@@ -343,6 +358,20 @@ window.translations = {
                 time: "Время",
                 date: "Дата",
                 // time_comparison //
+
+                // Камень, ножницы, бумага //
+                rock_paper_scissors: "Камень! Бумага! Ножницы!",
+                you: "Ты",
+                ties: "Ничья",
+                computer: "Компьютер",
+                rock: "Камень",
+                paper: "Бумага",
+                scissors: "Ножницы",
+                auto_play: "Автоигра",
+                reset: "Сбросить",
+                choose_your_weapon: "Выбери свое оружие!",
+                game_history: "История игры",
+                // Камень, ножницы, бумага //
         // other //
 
         // senior_dev //
@@ -379,7 +408,7 @@ window.translations = {
         // courses //
 
         // reviews //
-        review1: "\"Обожаю, обожаю, обожаю!\"",
+        review1: "\"Всё ради любви!!\"",
         review2: "\"Показывает большой потенциал в разработке программного обеспечения и алгоритмическом мышлении.\"",
         review3: "\"Постоянно выдает высококачественную работу и демонстрирует надежные практики программирования.\"",
         review4: "\"Один из лучших студентов, которых я встречал на буткемпе.\"",
