@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="../shared-theme.css">
     <link rel="stylesheet" href="../project-nav.css">
     <link rel="stylesheet" href="../theme-toggle.css">
+    <link rel="stylesheet" href="../language-selector.css">
     <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true" type="image/x-icon" /> 
 </head>
 <body>
     <div class="project-nav">
         <a href="../index.html" class="project-nav-button">
             <i class="fas fa-arrow-left"></i>
-            Back to Portfolio
+            <span data-translate="back_to_portfolio">Back to Portfolio</span>
         </a>
         <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
             <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
@@ -38,6 +39,27 @@
                 </g>
             </svg>
         </button>
+        <div class="language-selector">
+            <div class="selected-language">
+                <i class="fas fa-globe"></i>
+                <span class="current-lang">English</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="language-dropdown">
+                <div class="language-option" data-lang="en">
+                    <i class="fas fa-check"></i>
+                    <span>English</span>
+                </div>
+                <div class="language-option" data-lang="tr">
+                    <i class="fas fa-check"></i>
+                    <span>Türkçe</span>
+                </div>
+                <div class="language-option" data-lang="ru">
+                    <i class="fas fa-check"></i>
+                    <span>Русский</span>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="display">
@@ -94,13 +116,16 @@
         <div class="footer-content">
             <a href="mailto:contact@hamitcf.dev?subject=Let's%20Work%20Together&body=Hi%20Hamit%2C%0D%0A%0D%0AI'd%20like%20to%20discuss%20a%20potential%20project%20with%20you.%0D%0A%0D%0ABest%20regards" class="contact-btn">
                 <i class="fas fa-envelope"></i>
-                Get in Touch
+                <span data-translate="get_in_touch">Get in Touch</span>
             </a>
-            <p class="copyright">© 2024 HamitCF. All rights reserved.</p>
+            <p class="copyright" data-translate="copyright">© 2024 HamitCF. All rights reserved.</p>
+            <p class="made-with" data-translate="made_with">Made with 🫶🏻 of Karina.</p>
         </div>
     </footer>
     <script src="script.js"></script>
     <script src="../theme-toggle.js"></script>
+    <script src="../language-selector.js"></script>
+    <script src="../translations.js"></script>
     <script src="../modal.js"></script>
 </body>
 </html> 

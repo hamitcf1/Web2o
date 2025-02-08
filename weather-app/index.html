@@ -6,6 +6,11 @@
     <title>Weather App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../language-selector.css">
+    <link rel="stylesheet" href="../theme-toggle.css">
+    <script src="../language-selector.js"></script>
+    <script src="../translations.js"></script>
+    <script src="../theme-toggle.js"></script>
     <style>
         .search-box {
             margin-bottom: 20px;
@@ -23,7 +28,7 @@
             <i class="fas fa-location-crosshairs"></i>
         </button>
         <div class="search-wrapper">
-            <input type="text" id="search-input" placeholder="Search city...">
+            <input type="text" id="search-input" placeholder="Search city..." data-translate="search">
             <button id="clear-search" class="clear-search" style="display: none;">
                 <i class="fas fa-xmark"></i>
             </button>
@@ -35,6 +40,12 @@
         <div class="local-time">
             <div class="local-time-display"></div>
             <div class="local-date-display"></div>
+        </div>
+        <div class="language-selector">
+            <div class="selected-language">
+                <i class="fas fa-globe"></i>
+                <span class="current-lang">English</span>
+            </div>
         </div>
     </div>
 
@@ -63,21 +74,21 @@
                 <div class="detail">
                     <i class="fas fa-temperature-half"></i>
                     <div>
-                        <span class="label">Feels Like</span>
+                        <span class="label" data-translate="feels_like">Feels Like</span>
                         <span class="value feels-like"></span>
                     </div>
                 </div>
                 <div class="detail">
                     <i class="fas fa-droplet"></i>
                     <div>
-                        <span class="label">Humidity</span>
+                        <span class="label" data-translate="humidity">Humidity</span>
                         <span class="value humidity"></span>
                     </div>
                 </div>
                 <div class="detail">
                     <i class="fas fa-wind"></i>
                     <div>
-                        <span class="label">Wind</span>
+                        <span class="label" data-translate="wind">Wind</span>
                         <span class="value wind-speed"></span>
                     </div>
                 </div>
@@ -85,7 +96,7 @@
             
             <!-- Saatlik tahmin -->
             <div class="hourly-forecast">
-                <h3>24-Hour Forecast</h3>
+                <h3 data-translate="a24_hour_forecast">24-Hour Forecast</h3>
                 <div class="hourly-scroll">
                     <div class="hourly-items"></div>
                 </div>
@@ -93,14 +104,19 @@
 
             <!-- 3 günlük tahmin -->
             <div class="daily-forecast">
-                <h3>3-Day Forecast</h3>
-                <div class="daily-items"></div>
+                <div class="daily-forecast-header">
+                    <h3 data-translate="a3_day_forecast">3-Day Forecast</h3>
+                    <button class="toggle-daily-forecast ios-button" title="Toggle Daily Forecast">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="daily-items" style="display: none;"></div>
             </div>
         </div>
         <footer class="footer">
-            <p>Powered by WeatherAPI.com</p>
-            <p>©️ 2025 HamitCF. All rights reserved.</p>
-            <p>Made with 🫶🏻 of Karina</p>
+            <p data-translate="powered_by">Powered by WeatherAPI.com</p>
+            <p data-translate="copyright"> 2025 HamitCF. All rights reserved.</p>
+            <p data-translate="made_with">Made with of Karina</p>
         </footer>
     </div>
 

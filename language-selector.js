@@ -30,15 +30,42 @@ class LanguageSelector {
         this.selector = document.querySelector('.language-selector');
         this.selectedLang = this.selector.querySelector('.selected-language');
         this.currentLangText = this.selector.querySelector('.current-lang');
-        this.dropdown = this.selector.querySelector('.language-dropdown');
-        this.options = this.selector.querySelectorAll('.language-option');
+        this.globeIcon = this.selector.querySelector('.fa-globe');
+        
+        // Define the order of languages with additional info
+        this.languageData = [
+            { code: 'en', name: 'English', color: '#3498db', soundFile: 'en_select.mp3' },
+            { code: 'tr', name: 'Türkçe', color: '#e74c3c', soundFile: 'tr_select.mp3' },
+            { code: 'ru', name: 'Русский', color: '#2ecc71', soundFile: 'ru_select.mp3' }
+        ];
         
         // Get saved language or default to 'en'
         this.currentLang = localStorage.getItem('language') || 'en';
         
+        // Create audio element for language selection sound
+        this.createAudioElement();
+        
         // Initialize
         this.init();
         this.bindEvents();
+    }
+    
+    createAudioElement() {
+        this.audioElement = new Audio();
+        this.audioElement.volume = 0.3; // Soft volume
+    }
+    
+    playLanguageSound(langCode) {
+        try {
+            // Attempt to play a language-specific sound
+            const selectedLang = this.languageData.find(lang => lang.code === langCode);
+            if (selectedLang && selectedLang.soundFile) {
+                this.audioElement.src = `sounds/${selectedLang.soundFile}`;
+                this.audioElement.play().catch(e => console.log('Audio play failed:', e));
+            }
+        } catch (error) {
+            console.error('Error playing language sound:', error);
+        }
     }
     
     init() {
@@ -53,49 +80,41 @@ class LanguageSelector {
     }
     
     bindEvents() {
-        // Toggle dropdown
+        // Cycle languages on click with enhanced interaction
         this.selectedLang.addEventListener('click', () => {
-            this.selector.classList.toggle('active');
-        });
-        
-        // Handle language selection
-        this.options.forEach(option => {
-            option.addEventListener('click', () => {
-                const newLang = option.dataset.lang;
-                if (newLang !== this.currentLang) {
-                    this.currentLang = newLang;
-                    localStorage.setItem('language', newLang);
-                    document.documentElement.lang = newLang;
-                    this.updateLanguageUI();
-                    this.translatePage();
-                }
-                this.selector.classList.remove('active');
-            });
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!this.selector.contains(e.target)) {
-                this.selector.classList.remove('active');
-            }
+            const currentIndex = this.languageData.findIndex(lang => lang.code === this.currentLang);
+            const nextIndex = (currentIndex + 1) % this.languageData.length;
+            const newLang = this.languageData[nextIndex].code;
+            
+            // Add rotation animation
+            this.selectedLang.classList.add('rotating');
+            setTimeout(() => {
+                this.selectedLang.classList.remove('rotating');
+            }, 500);
+            
+            // Play language selection sound
+            this.playLanguageSound(newLang);
+            
+            this.currentLang = newLang;
+            localStorage.setItem('language', newLang);
+            document.documentElement.lang = newLang;
+            this.updateLanguageUI();
+            this.translatePage();
         });
     }
     
     updateLanguageUI() {
-        // Update selected language text
-        const selectedOption = this.selector.querySelector(`[data-lang="${this.currentLang}"]`);
-        if (selectedOption) {
-            this.currentLangText.textContent = selectedOption.querySelector('span').textContent;
-        }
+        // Remove previous language classes
+        this.selector.classList.remove('en', 'tr', 'ru');
         
-        // Update checkmarks
-        this.options.forEach(option => {
-            if (option.dataset.lang === this.currentLang) {
-                option.classList.add('selected');
-            } else {
-                option.classList.remove('selected');
-            }
-        });
+        // Add current language class
+        this.selector.classList.add(this.currentLang);
+        
+        // Update selected language text
+        const selectedLang = this.languageData.find(lang => lang.code === this.currentLang);
+        if (selectedLang) {
+            this.currentLangText.textContent = selectedLang.name;
+        }
     }
     
     translatePage() {

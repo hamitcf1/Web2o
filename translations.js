@@ -40,6 +40,44 @@ window.translations = {
         close: "×",
         back_to_portfolio: "Back to Portfolio",
         time_comparison: "Time Comparison",
+                // time_comparison //
+                time_comparison: "Time Comparison",
+                minutes: "minutes",
+                hours: "hours",
+                time_difference: "+8 Hours",
+                sync_times: "Sync Times",
+                direct_input: "Direct Input",
+                a24_hour: "24 Hours",
+                time: "Time",
+                date: "Date",
+                // time_comparison //
+
+                //rps//
+                rock_paper_scissors: "Rock! Paper! Scissors!",
+                you: "You",
+                ties: "Ties",
+                computer: "Computer",
+                rock: "Rock",
+                paper: "Paper",
+                scissors: "Scissors",
+                auto_play: "Auto Play",
+                reset: "Reset",
+                choose_your_weapon: "Choose Your Weapon!",
+                game_history: "Game History",
+                //rps//
+
+                //weather//
+                weather: "Weather",
+                location: "Location",
+                search: "Search city...",
+                feels_like: "Feels Like",
+                humidity: "Humidity",
+                wind: "Wind",
+                temperature: "Temperature",
+                a24_hour_forecast: "24-Hour Forecast",
+                a3_day_forecast: "3-Day Forecast",
+                powered_by: "Powered by WeatherAPI.com",
+                //weather//
         // other //
 
         // senior_dev //
@@ -139,7 +177,34 @@ window.translations = {
         switch_camera: "Switch Camera",
         use_qr: "Use QR Code",
         //qr_code//
+
+        // Weather Descriptions
+            clear_sky: "Clear Sky",
+            few_clouds: "Few Clouds",
+            scattered_clouds: "Scattered Clouds",
+            broken_clouds: "Broken Clouds",
+            overcast_clouds: "Overcast Clouds",
+            light_rain: "Light Rain",
+            moderate_rain: "Moderate Rain",
+            heavy_rain: "Heavy Rain",
+            thunderstorm: "Thunderstorm",
+            snow: "Snow",
+            mist: "Mist",
+            fog: "Fog"
+        },
+
+        // Daily Forecast
+        daily_forecast: {
+            today: "Today",
+            tomorrow: "Tomorrow",
+            day_after_tomorrow: "Day After Tomorrow",
+            high_temp: "High",
+            low_temp: "Low",
+            precipitation: "Precipitation",
+            wind_speed: "Wind",
+
     },
+
     tr: {
         // section titles //
         projects: "Projeler",
@@ -207,6 +272,18 @@ window.translations = {
                 game_history: "Oyun Geçmişi",
                 //rps//
 
+                //weather//
+                weather: "Hava Durumu",
+                location: "Konum",
+                search: "Şehir ara...",
+                feels_like: "Hissedilen",
+                humidity: "Nem",
+                wind: "Rüzgar",
+                temperature: "Sıcaklık",
+                a24_hour_forecast: "24 Saatlik Tahmin",
+                a3_day_forecast: "3 Günlük Tahmin",
+                powered_by: "WaetherAPI.com tarafından güçlendirilmiştir.",
+                //weather//
         // other //
 
         // senior_dev //
@@ -303,8 +380,32 @@ window.translations = {
         history: "Geçmiş",
         clear_history: "Geçmişi Temizle",
         switch_camera: "Kamerayı Değiştir",
-        use_qr: "QR Kodu Kullan"
+        use_qr: "QR Kodu Kullan",
         //qr_code//
+
+            clear_sky: "Açık Gökyüzü",
+            few_clouds: "Az Bulutlu",
+            scattered_clouds: "Dağınık Bulutlu",
+            broken_clouds: "Parçalı Bulutlu",
+            overcast_clouds: "Çok Bulutlu",
+            light_rain: "Hafif Yağmur",
+            moderate_rain: "Orta Şiddetli Yağmur",
+            heavy_rain: "Şiddetli Yağmur",
+            thunderstorm: "Gökgürültülü Fırtına",
+            snow: "Kar",
+            mist: "Hafif Sis",
+            fog: "Sis",
+
+
+
+            today: "Bugün",
+            tomorrow: "Yarın",
+            day_after_tomorrow: "Yarından Sonraki Gün",
+            high_temp: "Yüksek",
+            low_temp: "Düşük",
+            precipitation: "Yağış",
+            wind_speed: "Rüzgar",
+
     },
     ru: {
         // section titles //
@@ -372,6 +473,19 @@ window.translations = {
                 choose_your_weapon: "Выбери свое оружие!",
                 game_history: "История игры",
                 // Камень, ножницы, бумага //
+
+                // weather //
+                weather: "Погода",
+                location: "Местоположение",
+                search: "Поиск по городу...",
+                feels_like: "Ощущается как",
+                humidity: "Влажность",
+                wind: "Ветер",
+                temperature: "Температура",
+                a24_hour_forecast: "Предвидение за 24 часа",
+                a3_day_forecast: "Предвидение за 3 дня",
+                powered_by: "Powered by WeatherAPI.com.",
+                // weather //
         // other //
 
         // senior_dev //
@@ -468,9 +582,31 @@ window.translations = {
         history: "История",
         clear_history: "Очистить Историю",
         switch_camera: "Переключить Камеру",
-        use_qr: "Использовать QR-Код"
+        use_qr: "Использовать QR-Код",
         //qr_code//
-    }
+
+            clear_sky: "Ясное Небо",
+            few_clouds: "Малооблачно",
+            scattered_clouds: "Рассеянные Облака",
+            broken_clouds: "Переменная Облачность",
+            overcast_clouds: "Пасмурно",
+            light_rain: "Легкий Дождь",
+            moderate_rain: "Умеренный Дождь",
+            heavy_rain: "Сильный Дождь",
+            thunderstorm: "Гроза",
+            snow: "Снег",
+            mist: "Легкий Туман",
+
+        daily_forecast: {
+            today: "Сегодня",
+            tomorrow: "Завтра",
+            day_after_tomorrow: "Послезавтра",
+            high_temp: "Макс",
+            low_temp: "Мин",
+            precipitation: "Осадки",
+            wind_speed: "Ветер",
+        },
+        }
 };
 
 // Add language selection and highlighting functionality
