@@ -5,21 +5,19 @@ window.translations = {
         experience: "Experience",
         education: "Education",
         reviews: "Reviews",
-        qr_title: "QR Code Generator and Scanner",
-        weather_title: "Weather App",
         // section titles //
 
         // hero //
         hero_title: "Software Developer",
         hero_subtitle: "I am a software developer and I love to code.",
-        hero_subtitle2: "This website is a reflection of my work.",
-        hero_subtitle3: "You can find all my projects, experiences, education details and reviews about me down below.",
-        hero_subtitle4: "If you have any questions or inquiries, please don't hesitate to click the button.",
+        hero_subtitle2: "You can find all my projects, experiences, education details and reviews about me down below.",
+        hero_subtitle3: "If you have any questions or inquiries, please don't hesitate to click the button.",
         // hero //
 
 
         get_in_touch: "Get in Touch",
         // projects //
+        index_title: "Portfolio | Software Developer",
         ollama_title: "Ollama Local Chatbot",
         ollama_desc: "Local chatbot using Ollama and DeepSeek-R1 + DeepSeek-Coder - FastAPI.",
         calculator_title: "Web Calculator",
@@ -102,6 +100,7 @@ window.translations = {
         yildiz_university: "Yildiz Technical University",
         computer_science: "Computer Science",
         courses: "Courses, Skills, and certificates:",
+        graduated: "Graduated in 2024",
         // education //
 
         // courses //
@@ -193,18 +192,7 @@ window.translations = {
             snow: "Snow",
             mist: "Mist",
             fog: "Fog"
-        },
-
-        // Daily Forecast
-        daily_forecast: {
-            today: "Today",
-            tomorrow: "Tomorrow",
-            day_after_tomorrow: "Day After Tomorrow",
-            high_temp: "High",
-            low_temp: "Low",
-            precipitation: "Precipitation",
-            wind_speed: "Wind",
-
+        
     },
 
     tr: {
@@ -218,7 +206,6 @@ window.translations = {
         // hero //
         hero_title: "Yazılım Geliştirici",
         hero_subtitle: "Ben bir yazılım geliştiricisiyim ve kod yazmayı seviyorum.",
-        hero_subtitle2: "Bu web sitesi çalışmalarımın bir yansımasıdır.",
         hero_subtitle3: "Aşağıda tüm projelerimi, deneyimlerimi, eğitim detaylarımı ve hakkımdaki değerlendirmeleri bulabilirsiniz.",
         hero_subtitle4: "Herhangi bir sorunuz veya talebiniz varsa, lütfen butona tıklamaktan çekinmeyin.",
         // hero //
@@ -226,6 +213,7 @@ window.translations = {
         get_in_touch: "İletişime Geç",
         
         // projects //
+        index_title: "Portföy | Yazılım Geliştirici",
         ollama_title: "Ollama Yerel Sohbet Botu",
         ollama_desc: "Ollama ve DeepSeek-R1 + DeepSeek-Coder kullanan yerel sohbet botu - FastAPI.",
         calculator_title: "Web Hesap Makinesi",
@@ -308,6 +296,7 @@ window.translations = {
         yildiz_university: "Yıldız Teknik Üniversitesi",
         computer_science: "Bilgisayar Mühendisliği",
         courses: "Dersler, yetenekler ve sertifikalar:",
+        graduated: "2024'de mezun oldu",
         // education //
 
         // courses //
@@ -399,15 +388,6 @@ window.translations = {
             fog: "Sis",
 
 
-
-            today: "Bugün",
-            tomorrow: "Yarın",
-            day_after_tomorrow: "Yarından Sonraki Gün",
-            high_temp: "Yüksek",
-            low_temp: "Düşük",
-            precipitation: "Yağış",
-            wind_speed: "Rüzgar",
-
     },
     es: {
         // títulos de sección //
@@ -420,7 +400,6 @@ window.translations = {
         // héroe //
         hero_title: "Desarrollador de Software",
         hero_subtitle: "Soy un desarrollador de software y me encanta programar.",
-        hero_subtitle2: "Este sitio web es un reflejo de mi trabajo.",
         hero_subtitle3: "Aquí puedes encontrar todos mis proyectos, experiencias, detalles educativos y reseñas sobre mí.",
         hero_subtitle4: "Si tienes alguna pregunta o consulta, no dudes en hacer clic en el botón.",
         // héroe //
@@ -428,6 +407,7 @@ window.translations = {
         get_in_touch: "Contáctame",
         
         // proyectos //
+        index_title: "Portfolio | Desarrollo de Software",
         ollama_title: "Chatbot Local con Ollama",
         ollama_desc: "Chatbot local utilizando Ollama y DeepSeek-R1 + DeepSeek-Coder - FastAPI.",
         calculator_title: "Calculadora Web",
@@ -509,6 +489,7 @@ window.translations = {
         yildiz_university: "Universidad Técnica de Yildiz",
         computer_science: "Ciencias de la Computación",
         courses: "Cursos, Habilidades y Certificados:",
+        graduated: "Graduado en 2024",
         // educación //
 
         // cursos //
@@ -610,7 +591,6 @@ window.translations = {
         // qəhrəman hissəsi //
         hero_title: "Proqram Təminatı Tərtibatçısı",
         hero_subtitle: "Mən proqram təminatı tərtibatçısıyam və kod yazmağı sevirəm.",
-        hero_subtitle2: "Bu vebsayt mənim işimin əksidir.",
         hero_subtitle3: "Aşağıda bütün layihələrimi, təcrübələrimi, təhsil detalları və haqqımdakı rəyləri tapa bilərsiniz.",
         hero_subtitle4: "Hər hansı bir sualınız və ya sorğunuz varsa, düyməyə klikləməkdən çəkinməyin.",
         // qəhrəman hissəsi //
@@ -618,6 +598,7 @@ window.translations = {
         get_in_touch: "Əlaqə saxlayın",
         
         // layihələr //
+        index_title: "Portfel | Proqram Təminatı Tərtibatı",
         ollama_title: "Ollama Yerli Çatbot",
         ollama_desc: "Ollama və DeepSeek-R1 + DeepSeek-Coder - FastAPI istifadə edərək yerli çatbot.",
         calculator_title: "Veb Kalkulyator",
@@ -699,6 +680,7 @@ window.translations = {
         yildiz_university: "Yıldız Texniki Universiteti",
         computer_science: "Kompüter Elmləri",
         courses: "Kurslar, Bacarıqlar və Sertifikatlar:",
+        graduated: "2024-dən istifadə etdi",
         // təhsil //
 
         // kurslar //
@@ -767,9 +749,9 @@ window.translations = {
         // section titles //
 
         // hero //
+        index_title: "Портфолио - Разработчик П. О.",
         hero_title: "Разработчик П. О.",
         hero_subtitle: "Я разработчик программного обеспечения и люблю писать код",
-        hero_subtitle2: "Этот веб-сайт — отражение моей работы.",
         hero_subtitle3: "Ниже вы найдете все мои проекты, опыт, детали образования и отзывы обо мне.",
         hero_subtitle4: "Если у вас есть вопросы или запросы, не стесняйтесь нажимать на кнопку.",
         // hero //
@@ -859,6 +841,7 @@ window.translations = {
         yildiz_university: "Университет Йылдыз",
         computer_science: "Компьютерные Науки",
         courses: "Курсы, навыки и сертификаты:",
+        graduated: "Вышел в 2024",
         // education //
 
         // courses //
