@@ -88,9 +88,11 @@ body {
     padding: 1rem 2rem;
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
     color: var(--nav-text);
@@ -114,35 +116,55 @@ body {
 }
 
 .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-.theme-toggle {
-    --size: 18px;
-    background: none;
-    border: none;
-    padding: 0;
-    inline-size: var(--size);
-    block-size: var(--size);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    outline-offset: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--nav-text);
+/* Enhanced light mode visibility */
+html[data-theme='light'] .project-nav {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #1a1a1a !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
-.theme-toggle > svg {
-    inline-size: 100%;
-    block-size: 100%;
-    stroke-linecap: round;
-    color: var(--nav-text);
+html[data-theme='light'] .project-nav-button {
+    color: #1a1a1a !important;
+}
+
+html[data-theme='light'] .nav-controls {
+    color: #1a1a1a !important;
+}
+
+html[data-theme='light'] .theme-toggle,
+html[data-theme='light'] .language-selector {
+    color: #1a1a1a !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+html[data-theme='light'] .theme-toggle svg,
+html[data-theme='light'] .language-selector i {
+    color: #1a1a1a !important;
+}
+
+/* Enhanced light mode text visibility */
+html[data-theme='light'] .project-nav-button span,
+html[data-theme='light'] .nav-controls .current-lang,
+html[data-theme='light'] .theme-toggle,
+html[data-theme='light'] .language-selector,
+html[data-theme='light'] .language-selector span,
+html[data-theme='light'] .language-selector i {
+    color: #1a1a1a !important;
+}
+
+/* Light mode theme toggle background */
+html[data-theme='light'] .theme-toggle {
+    background: rgba(0, 0, 0, 0.609) !important;
+    color: #1a1a1a !important;
+    border-radius: 50% !important;
 }
 
 .time-comparison-container {

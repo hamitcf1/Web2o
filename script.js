@@ -6,14 +6,7 @@ const navLinks = document.querySelector('.nav-links');
 
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-theme');
-    
-    // Update theme icon
-    if (body.classList.contains('dark-theme')) {
-        themeIcon.textContent = '☀️';
-    } else {
-        themeIcon.textContent = '🌙';
-    }
-}); 
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     // Get all nav links

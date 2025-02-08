@@ -275,6 +275,9 @@ body {
 }
 
 .hero-content {
+    text-align: center;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 1;
 }

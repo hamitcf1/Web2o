@@ -417,6 +417,21 @@ document.addEventListener('DOMContentLoaded', () => {
         showPopularCities();
     });
 
+    // Search input event listener for Enter key
+    searchInput.addEventListener('keypress', (e) => {
+        // Check if the pressed key is Enter (key code 13)
+        if (e.key === 'Enter') {
+            const location = searchInput.value.trim();
+            if (location) {
+                getWeatherData(location);
+                popularCitiesList.classList.remove('show');
+                
+                // Optional: Blur the input to dismiss mobile keyboard
+                searchInput.blur();
+            }
+        }
+    });
+
     // Ses kontrolü
     document.querySelector('.sound-toggle').addEventListener('click', function() {
         this.classList.toggle('active');
@@ -443,6 +458,21 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleWeatherSound(soundType);
     });
 
-    // Başlangıçta İstanbul'un hava durumunu göster
-    getWeatherData('Istanbul');
+    // Başlangıçta kullanıcının konumunun hava durumunu göster
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                const { latitude, longitude } = position.coords;
+                getWeatherData(`${latitude},${longitude}`);
+            },
+            error => {
+                console.error('Konum alınamadı:', error);
+                // Fallback to a default city if geolocation fails
+                getWeatherData('Antalya');
+            }
+        );
+    } else {
+        // Fallback for browsers that don't support geolocation
+        getWeatherData('Antalya');
+    }
 });

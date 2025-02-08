@@ -1,7 +1,10 @@
 function setupContactModal() {
     const modal = document.getElementById('contact-modal');
+    if (!modal) return; // Exit if modal doesn't exist
+
     const contactBtns = document.querySelectorAll('.contact-btn');
     const closeBtn = modal.querySelector('.close');
+    if (!closeBtn) return; // Exit if close button doesn't exist
 
     contactBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -21,4 +24,9 @@ function setupContactModal() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', setupContactModal); 
+// Only setup modal if document is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupContactModal);
+} else {
+    setupContactModal();
+}

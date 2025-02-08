@@ -45,12 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatDate(date) {
-        return date.toLocaleDateString('en-US', {
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric'
-        });
+        // Use the current language from localStorage or default to 'en'
+        const currentLang = localStorage.getItem('language') || 'en';
+        const dateFormatOptions = window.translations[currentLang].date_format;
+        
+        return date.toLocaleDateString(currentLang, dateFormatOptions);
     }
 
     function formatInputDate(date) {
