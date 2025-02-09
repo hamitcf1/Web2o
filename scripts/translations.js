@@ -7,12 +7,12 @@ window.translations = {
         reviews: "Reviews",
         // section titles //
 
-        // hero //
+        // hero index//
         hero_title: "Software Developer",
         hero_subtitle: "I am a software developer and I love to code.",
         hero_subtitle2: "You can find all my projects, experiences, education details and reviews about me down below.",
         hero_subtitle3: "If you have any questions or inquiries, please don't hesitate to click the button.",
-        // hero //
+        // hero index//
 
 
         get_in_touch: "Get in Touch",
@@ -34,7 +34,6 @@ window.translations = {
         coming_soon: "Coming Soon!",
         qr_code_title: "QR Code Generator & Scanner",
         qr_code_desc: "A modern web application that allows users to generate and scan QR codes. Features a beautiful UI with dark mode support and multi-language functionality.",
-        debt_tracker_title: "Debt Tracker",
         debt_tracker_desc: "A web application that allows users to manage their debts effectively. It provides a user-friendly interface for adding, tracking, and categorizing debts. The application also includes features such as debt reminders and analytics to help users stay on top of their finances.",
         // projects //
 
@@ -193,7 +192,41 @@ window.translations = {
             thunderstorm: "Thunderstorm",
             snow: "Snow",
             mist: "Mist",
-            fog: "Fog"
+            fog: "Fog",
+
+        // Debt Tracker //
+            title_debt_tracker: "Debt Tracker | Financial Management",
+            //hero//
+            hero_title_debt_tracker: "Track Your Debts & Loans",
+            hero_subtitle_debt_tracker: ">Manage your financial obligations and plan your path to becoming debt-free.",
+            //hero//
+            nav_title_debt_tracker: "Debt Tracker",
+            //
+            add_new_debt: "Add New Debt/Loan",
+            bank_name: "Bank/Lender Name",
+            bank_name_placeholder: "Enter bank or lender name",
+            total_amount: "Total Amount",
+            total_amount_placeholder: "Enter total debt amount",
+            interest_rate: "Interest Rate (%)",
+            interest_rate_placeholder: "Enter annual interest rate",
+            add_debt_button: "Add Debt",
+            monthly_salary: "Your Monthly Salary",
+            monthly_salary_placeholder: "Enter your monthly salary",
+            your_debts: "Your Debts",
+            financial_summary: "Financial Summary",
+            total_debt: "Total Debt",
+            monthly_payment: "Monthly Payment",
+            time_to_debt_free: "Time to Debt-Free",
+            debt_to_income: "Debt-to-Income Ratio",
+            months: "months",
+            currency: "Currency",
+            amount: "Amount",
+            clear_data: "Clear All Data",
+            clear_data_confirm: "Are you sure you want to clear all debt tracker data? This action cannot be undone.",
+            insufficient_payment: "Insufficient payment amount. Please enter a value greater than 0.",
+            not_applicable: "N/A",
+            //
+
         
     },
 
@@ -208,8 +241,8 @@ window.translations = {
         // hero //
         hero_title: "Yazılım Geliştirici",
         hero_subtitle: "Ben bir yazılım geliştiricisiyim ve kod yazmayı seviyorum.",
-        hero_subtitle3: "Aşağıda tüm projelerimi, deneyimlerimi, eğitim detaylarımı ve hakkımdaki değerlendirmeleri bulabilirsiniz.",
-        hero_subtitle4: "Herhangi bir sorunuz veya talebiniz varsa, lütfen butona tıklamaktan çekinmeyin.",
+        hero_subtitle2: "Aşağıda tüm projelerimi, deneyimlerimi, eğitim detaylarımı ve hakkımdaki değerlendirmeleri bulabilirsiniz.",
+        hero_subtitle3: "Herhangi bir sorunuz veya talebiniz varsa, lütfen butona tıklamaktan çekinmeyin.",
         // hero //
 
         get_in_touch: "İletişime Geç",
@@ -232,7 +265,7 @@ window.translations = {
         coming_soon: "Çok Yakında",
         qr_code_title: "QR Kod Oluşturucu ve Tarayıcı",
         qr_code_desc: "Kullanıcıların QR kodları oluşturmasına ve taramasına izin veren modern bir web uygulaması. Koyu mod desteği ve çoklu dil işlevselliği ile guzel bir arayüz.",
-        debt_tracker: "Borç Takipçisi",
+        debt_tracker_title: "Borç Takipçisi",
         debt_tracker_desc: "Borç takipçisi uygulaması, borçların takip edilmesine ve kategorilere ayarlanmasına izin veren bir web uygulaması.",
         // projects //
 
@@ -378,18 +411,51 @@ window.translations = {
         use_qr: "QR Kodu Kullan",
         //qr_code//
 
-            clear_sky: "Açık Gökyüzü",
-            few_clouds: "Az Bulutlu",
-            scattered_clouds: "Dağınık Bulutlu",
-            broken_clouds: "Parçalı Bulutlu",
-            overcast_clouds: "Çok Bulutlu",
-            light_rain: "Hafif Yağmur",
-            moderate_rain: "Orta Şiddetli Yağmur",
-            heavy_rain: "Şiddetli Yağmur",
-            thunderstorm: "Gökgürültülü Fırtına",
-            snow: "Kar",
-            mist: "Hafif Sis",
-            fog: "Sis",
+        clear_sky: "Açık Gökyüzü",
+        few_clouds: "Az Bulutlu",
+        scattered_clouds: "Dağınık Bulutlu",
+        broken_clouds: "Parçalı Bulutlu",
+        overcast_clouds: "Çok Bulutlu",
+        light_rain: "Hafif Yağmur",
+        moderate_rain: "Orta Şiddetli Yağmur",
+        heavy_rain: "Şiddetli Yağmur",
+        thunderstorm: "Gökgürültülü Fırtına",
+        snow: "Kar",
+        mist: "Hafif Sis",
+        fog: "Sis",
+
+        // Debt Tracker //
+            title_debt_tracker: "Borç Takipçisi | Finansal Yönetim",
+            //hero//
+            hero_title_debt_tracker: "Borçlarınızı ve Kredilerinizi Takip Edin",
+            hero_subtitle_debt_tracker: ">Borçlarınızı ve Kredilerinizi Takip Edin. Hedefinize Ulaşmak için Planlama Yapın.",
+            //hero//
+            nav_title_debt_tracker: "Borç Takipçisi",
+            //
+            add_new_debt: "Yeni Borç/Ek Kredi Ekle",
+            bank_name: "Banka/Borç Veren Adı",
+            bank_name_placeholder: "Banka veya borç veren adını girin",
+            total_amount: "Toplam Tutar",
+            total_amount_placeholder: "Toplam borç miktarını girin",
+            interest_rate: "Faiz Oranı (%)",
+            interest_rate_placeholder: "Yıllık faiz oranını girin",
+            add_debt_button: "Borç/Ek Kredi Ekle",
+            monthly_salary: "Aylık Maaşınız",
+            monthly_salary_placeholder: "Aylık maaşınızı girin",
+            your_debts: "Borçlarınız",
+            financial_summary: "Finansal Özet",
+            total_debt: "Toplam Borç",
+            monthly_payment: "Aylık Ödemeler",
+            time_to_debt_free: "Borç bitene kadar zaman",
+            debt_to_income: "Gelir-Borç Oranı",
+            months: "ay",
+            currency: "Para Birimi",
+            amount: "Miktar",
+            clear_data: "Verileri Temizle",
+            clear_data_confirm: "Borç Takipçisi verilerini tamamen silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+            insufficient_payment: "Yetersiz ödeme miktarı. Lütfen 0'dan buyuk bir değer girin.",
+            not_applicable: "N/A",
+        //
 
 
     },
@@ -404,8 +470,8 @@ window.translations = {
         // héroe //
         hero_title: "Desarrollador de Software",
         hero_subtitle: "Soy un desarrollador de software y me encanta programar.",
-        hero_subtitle3: "Aquí puedes encontrar todos mis proyectos, experiencias, detalles educativos y reseñas sobre mí.",
-        hero_subtitle4: "Si tienes alguna pregunta o consulta, no dudes en hacer clic en el botón.",
+        hero_subtitle2: "Aquí puedes encontrar todos mis proyectos, experiencias, detalles educativos y reseñas sobre mí.",
+        hero_subtitle3: "Si tienes alguna pregunta o consulta, no dudes en hacer clic en el botón.",
         // héroe //
 
         get_in_touch: "Contáctame",
@@ -585,6 +651,38 @@ window.translations = {
         snow: "Nieve",
         mist: "Niebla",
         fog: "Neblina",
+
+            //  Seguimiento de Deudas //
+        title_debt_tracker: "Seguimiento de Deudas | Gestión Financiera",
+        //hero//
+        hero_title_debt_tracker: "Sigue tus Deudas y Préstamos",
+        hero_subtitle_debt_tracker: "Administra tus obligaciones financieras y planifica tu camino para liberarte de deudas.",
+        //hero//
+        nav_title_debt_tracker: "Seguimiento de Deudas",
+        //
+        add_new_debt: "Agregar Nueva Deuda/Préstamo",
+        bank_name: "Nombre del Banco/Prestamista",
+        bank_name_placeholder: "Introduce el nombre del banco o prestamista",
+        total_amount: "Monto Total",
+        total_amount_placeholder: "Introduce el monto total de la deuda",
+        interest_rate: "Tasa de Interés (%)",
+        interest_rate_placeholder: "Introduce la tasa de interés anual",
+        add_debt_button: "Agregar Deuda",
+        monthly_salary: "Tu Salario Mensual",
+        monthly_salary_placeholder: "Introduce tu salario mensual",
+        your_debts: "Tus Deudas",
+        financial_summary: "Resumen Financiero",
+        total_debt: "Deuda Total",
+        monthly_payment: "Pago Mensual",
+        time_to_debt_free: "Tiempo para Liberarse de Deudas",
+        debt_to_income: "Relación Deuda-Ingreso",
+        months: "meses",
+        currency: "Moneda",
+        amount: "Monto",
+        clear_data: "Borrar Todos los Datos",
+        clear_data_confirm: "¿Estás seguro de que quieres borrar todos los datos del seguimiento de deudas? Esta acción no se puede deshacer.",
+        insufficient_payment: "Monto de pago insuficiente. Introduce un valor mayor que 0.",
+        not_applicable: "N/A",
     },
     az: {
         // bölmə başlıqları //
@@ -597,8 +695,8 @@ window.translations = {
         // qəhrəman hissəsi //
         hero_title: "Proqram Təminatı Tərtibatçısı",
         hero_subtitle: "Mən proqram təminatı tərtibatçısıyam və kod yazmağı sevirəm.",
-        hero_subtitle3: "Aşağıda bütün layihələrimi, təcrübələrimi, təhsil detalları və haqqımdakı rəyləri tapa bilərsiniz.",
-        hero_subtitle4: "Hər hansı bir sualınız və ya sorğunuz varsa, düyməyə klikləməkdən çəkinməyin.",
+        hero_subtitle2: "Aşağıda bütün layihələrimi, təcrübələrimi, təhsil detalları və haqqımdakı rəyləri tapa bilərsiniz.",
+        hero_subtitle3: "Hər hansı bir sualınız və ya sorğunuz varsa, düyməyə klikləməkdən çəkinməyin.",
         // qəhrəman hissəsi //
 
         get_in_touch: "Əlaqə saxlayın",
@@ -746,7 +844,40 @@ window.translations = {
         heavy_rain: "Güclü Yağış",
         thunderstorm: "İldırım",
         snow: "Qar",
-        fog: "Duman"
+        fog: "Duman",
+
+                //  Borc İzləyicisi //
+        title_debt_tracker: "Borc İzləyicisi | Maliyyə İdarəetməsi",
+        //hero//
+        hero_title_debt_tracker: "Borc və Kreditlərinizi İzləyin",
+        hero_subtitle_debt_tracker: "Maliyyə öhdəliklərinizi idarə edin və borcsuz olma yolunuzu planlaşdırın.",
+        //hero//
+        nav_title_debt_tracker: "Borc İzləyicisi",
+        //
+        add_new_debt: "Yeni Borc/Kredit Əlavə Et",
+        bank_name: "Bank/Kredit Verən Adı",
+        bank_name_placeholder: "Bank və ya kredit verənin adını daxil edin",
+        total_amount: "Ümumi Məbləğ",
+        total_amount_placeholder: "Ümumi borc məbləğini daxil edin",
+        interest_rate: "Faiz Dərəcəsi (%)",
+        interest_rate_placeholder: "İllik faiz dərəcəsini daxil edin",
+        add_debt_button: "Borc Əlavə Et",
+        monthly_salary: "Aylıq Maaşınız",
+        monthly_salary_placeholder: "Aylıq maaşınızı daxil edin",
+        your_debts: "Borcunuz",
+        financial_summary: "Maliyyə Xülasəsi",
+        total_debt: "Ümumi Borc",
+        monthly_payment: "Aylıq Ödəniş",
+        time_to_debt_free: "Borcdan Qurtulma Müddəti",
+        debt_to_income: "Borc-Gəlir Nisbəti",
+        months: "ay",
+        currency: "Valyuta",
+        amount: "Məbləğ",
+        clear_data: "Bütün Məlumatları Sil",
+        clear_data_confirm: "Bütün borc izləyici məlumatlarını silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz.",
+        insufficient_payment: "Ödəniş məbləği kifayət deyil. 0-dan böyük bir dəyər daxil edin.",
+        not_applicable: "N/A",
+
     },
     ru: {
         // section titles //
@@ -760,8 +891,8 @@ window.translations = {
         index_title: "Портфолио - Разработчик П. О.",
         hero_title: "Разработчик П. О.",
         hero_subtitle: "Я разработчик программного обеспечения и люблю писать код",
-        hero_subtitle3: "Ниже вы найдете все мои проекты, опыт, детали образования и отзывы обо мне.",
-        hero_subtitle4: "Если у вас есть вопросы или запросы, не стесняйтесь нажимать на кнопку.",
+        hero_subtitle2: "Ниже вы найдете все мои проекты, опыт, детали образования и отзывы обо мне.",
+        hero_subtitle3: "Если у вас есть вопросы или запросы, не стесняйтесь нажимать на кнопку.",
         // hero //
 
         get_in_touch: "Связаться",
@@ -783,6 +914,7 @@ window.translations = {
         coming_soon: "Скоро",
         qr_code_title: "Генератор и Сканер QR-Кодов",
         qr_code_desc: "Современное веб-приложение, позволяющее пользователям генерировать и сканировать QR-коды. Красивый интерфейс с поддержкой темного режима и многоязычной функциональностью.",
+        debt_tracker_desc: "Приложение для отслеживания долгов — это веб-приложение, которое позволяет пользователям отслеживать свои долги и распределять их по категориям.",
         // projects //
 
         // other //
@@ -926,19 +1058,39 @@ window.translations = {
         switch_camera: "Переключить Камеру",
         use_qr: "Использовать QR-Код",
         //qr_code//
+                //  Трекер Долгов //
+        title_debt_tracker: "Трекер Долгов | Финансовое Управление",
+        //hero//
+        hero_title_debt_tracker: "Отслеживайте Свои Долги и Кредиты",
+        hero_subtitle_debt_tracker: "Управляйте своими финансовыми обязательствами и планируйте путь к свободе от долгов.",
+        //hero//
+        nav_title_debt_tracker: "Трекер Долгов",
+        //
+        add_new_debt: "Добавить Новый Долг/Кредит",
+        bank_name: "Название Банка/Кредитора",
+        bank_name_placeholder: "Введите название банка или кредитора",
+        total_amount: "Общая Сумма",
+        total_amount_placeholder: "Введите общую сумму долга",
+        interest_rate: "Процентная Ставка (%)",
+        interest_rate_placeholder: "Введите годовую процентную ставку",
+        add_debt_button: "Добавить Долг",
+        monthly_salary: "Ваш Ежемесячный Доход",
+        monthly_salary_placeholder: "Введите ваш ежемесячный доход",
+        your_debts: "Ваши Долги",
+        financial_summary: "Финансовый Обзор",
+        total_debt: "Общий Долг",
+        monthly_payment: "Ежемесячный Платеж",
+        time_to_debt_free: "Время до Освобождения от Долгов",
+        debt_to_income: "Соотношение Долга к Доходу",
+        months: "месяцев",
+        currency: "Валюта",
+        amount: "Сумма",
+        clear_data: "Очистить Все Данные",
+        clear_data_confirm: "Вы уверены, что хотите очистить все данные трекера долгов? Это действие нельзя отменить.",
+        insufficient_payment: "Недостаточная сумма платежа. Пожалуйста, введите значение больше 0.",
+        not_applicable: "Н/Д",
 
-            clear_sky: "Ясное Небо",
-            few_clouds: "Малооблачно",
-            scattered_clouds: "Рассеянные Облака",
-            broken_clouds: "Переменная Облачность",
-            overcast_clouds: "Пасмурно",
-            light_rain: "Легкий Дождь",
-            moderate_rain: "Умеренный Дождь",
-            heavy_rain: "Сильный Дождь",
-            thunderstorm: "Гроза",
-            snow: "Снег",
-            mist: "Легкий Туман",
-        }
+    }
 
         
 };

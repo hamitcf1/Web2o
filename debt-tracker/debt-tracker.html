@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <title data-translate="title">Debt Tracker | Financial Management</title>
+    <title data-translate="title_debt_tracker">Debt Tracker | Financial Management</title>
     <link rel="stylesheet" href="/styles/index-styles.css">
     <link rel="stylesheet" href="/styles/animations.css">
     <link rel="stylesheet" href="/styles/theme-toggle.css">
@@ -17,7 +17,7 @@
     <nav class="navbar">
         <div class="nav-brand">
             <i class="fas fa-money-bill-wave brand-icon"></i>
-            <span data-translate="nav_title">Debt Tracker</span>
+            <span data-translate="nav_title_debt_tracker">Debt Tracker</span>
         </div>
         <div class="nav-controls">
             <div class="currency-selector">
@@ -31,20 +31,6 @@
                 <div class="selected-language">
                     <i class="fas fa-globe"></i>
                     <span class="current-lang">English</span>
-                </div>
-                <div class="language-dropdown">
-                    <div class="language-option" data-lang="en">
-                        <i class="fas fa-check"></i>
-                        <span>English</span>
-                    </div>
-                    <div class="language-option" data-lang="tr">
-                        <i class="fas fa-check"></i>
-                        <span>Türkçe</span>
-                    </div>
-                    <div class="language-option" data-lang="ru">
-                        <i class="fas fa-check"></i>
-                        <span>Русский</span>
-                    </div>
                 </div>
             </div>
             <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
@@ -71,8 +57,8 @@
 
     <section class="hero">
         <div class="hero-content animate fade-in-left">
-            <h1 data-translate="hero_title">Track Your Debts & Loans</h1>
-            <p data-translate="hero_subtitle">Manage your financial obligations and plan your path to becoming debt-free.</p>
+            <h1 data-translate="hero_title_debt_tracker">Track Your Debts & Loans</h1>
+            <p data-translate="hero_subtitle_debt_tracker">Manage your financial obligations and plan your path to becoming debt-free.</p>
         </div>
     </section>
 
@@ -82,15 +68,15 @@
             <form id="debtForm">
                 <div class="form-group">
                     <label for="bankName" data-translate="bank_name">Bank/Lender Name</label>
-                    <input type="text" id="bankName" required data-translate-placeholder="bank_name_placeholder" placeholder="Enter bank or lender name">
+                    <input type="text" id="bankName" required data-translate-placeholder="bank_name_placeholder" placeholder="-">
                 </div>
                 <div class="form-group">
                     <label for="debtAmount" data-translate="total_amount">Total Amount</label>
-                    <input type="number" id="debtAmount" required data-translate-placeholder="total_amount_placeholder" placeholder="Enter total debt amount">
+                    <input type="number" id="debtAmount" required data-translate-placeholder="total_amount_placeholder" placeholder="-">
                 </div>
                 <div class="form-group">
                     <label for="interestRate" data-translate="interest_rate">Interest Rate (%)</label>
-                    <input type="number" id="interestRate" required data-translate-placeholder="interest_rate_placeholder" placeholder="Enter annual interest rate" step="0.01">
+                    <input type="number" id="interestRate" required data-translate-placeholder="interest_rate_placeholder" placeholder="-" step="0.01">
                 </div>
                 <button type="submit" class="add-debt-btn" data-translate="add_debt_button">Add Debt</button>
             </form>
@@ -98,7 +84,7 @@
 
         <div class="form-group animate fade-in-up">
             <label for="monthlySalary" data-translate="monthly_salary">Your Monthly Salary</label>
-            <input type="number" id="monthlySalary" data-translate-placeholder="monthly_salary_placeholder" placeholder="Enter your monthly salary">
+            <input type="number" id="monthlySalary" data-translate-placeholder="monthly_salary_placeholder" placeholder="₺/$/€">
         </div>
 
         <div class="debt-list animate fade-in-up">
@@ -130,8 +116,8 @@
         </div>
     </main>
 
-    <script src="/scripts/debt-tracker-translations.js"></script>
-    <script src="/scripts/language-selector.js"></script>
+    <script src="/scripts/translations.js"></script>
     <script src="/debt-tracker/debt-tracker.js"></script>
+    <script src="/scripts/language-selector.js"></script>
 </body>
 </html>
