@@ -1,10 +1,15 @@
 # Web2o 🌐 Innovative Web Applications Ecosystem
 
+## 📊 Project Status
+
+![GitHub Stars](https://img.shields.io/github/stars/hamitcf1/Web2o)
+![GitHub Forks](https://img.shields.io/github/forks/hamitcf1/Web2o)
+![GitHub Issues](https://img.shields.io/github/issues/hamitcf1/Web2o)
+![License](https://img.shields.io/github/license/hamitcf1/Web2o)
+
 ## 🏆 Project Overview
 
 Web2o is a cutting-edge, open-source collection of modern web applications that demonstrates the power of vanilla JavaScript, responsive design, and innovative user experiences. Our mission is to create lightweight, performant, and user-friendly web tools that showcase advanced web development techniques.
-
-![Project Banner](https://placeholder-banner-url.com/web2o-banner.png)
 
 ### 🌟 Key Differentiators
 - **Pure Vanilla JavaScript**: No heavy frameworks
@@ -109,13 +114,6 @@ Web2o is a cutting-edge, open-source collection of modern web applications that 
 4. Submit a pull request
 
 **Detailed contribution guidelines available in [CONTRIBUTING.md](CONTRIBUTING.md)**
-
-## 📊 Project Status
-
-![GitHub Stars](https://img.shields.io/github/stars/hamitcf1/Web2o)
-![GitHub Forks](https://img.shields.io/github/forks/hamitcf1/Web2o)
-![GitHub Issues](https://img.shields.io/github/issues/hamitcf1/Web2o)
-![License](https://img.shields.io/github/license/hamitcf1/Web2o)
 
 ## 🌐 Community & Support
 
