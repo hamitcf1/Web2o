@@ -34,6 +34,8 @@ window.translations = {
         coming_soon: "Coming Soon!",
         qr_code_title: "QR Code Generator & Scanner",
         qr_code_desc: "A modern web application that allows users to generate and scan QR codes. Features a beautiful UI with dark mode support and multi-language functionality.",
+        debt_tracker_title: "Debt Tracker",
+        debt_tracker_desc: "A web application that allows users to manage their debts effectively. It provides a user-friendly interface for adding, tracking, and categorizing debts. The application also includes features such as debt reminders and analytics to help users stay on top of their finances.",
         // projects //
 
         // other //
@@ -230,6 +232,8 @@ window.translations = {
         coming_soon: "Çok Yakında",
         qr_code_title: "QR Kod Oluşturucu ve Tarayıcı",
         qr_code_desc: "Kullanıcıların QR kodları oluşturmasına ve taramasına izin veren modern bir web uygulaması. Koyu mod desteği ve çoklu dil işlevselliği ile guzel bir arayüz.",
+        debt_tracker: "Borç Takipçisi",
+        debt_tracker_desc: "Borç takipçisi uygulaması, borçların takip edilmesine ve kategorilere ayarlanmasına izin veren bir web uygulaması.",
         // projects //
 
         // other //
@@ -424,6 +428,8 @@ window.translations = {
         coming_soon: "¡Próximamente!",
         qr_code_title: "Generador y Escáner de Códigos QR",
         qr_code_desc: "Una aplicación web moderna que permite a los usuarios generar y escanear códigos QR. Cuenta con una hermosa interfaz de usuario con soporte para modo oscuro y funcionalidad multilingüe.",
+        debt_tracker_title: "Seguimiento de Deudas",
+        debt_tracker_desc: "Una aplicación web para llevar el control deudas de clientes. Cuenta con un panel de administración y un sistema de autenticación de usuarios.",
         // proyectos //
 
         // otros //
@@ -615,6 +621,8 @@ window.translations = {
         coming_soon: "Tezliklə!",
         qr_code_title: "QR Kod Yaradıcı və Oxuyucu",
         qr_code_desc: "İstifadəçilərə QR kodları yaratmaq və skan etmək imkanı verən müasir veb tətbiq. Gözəl interfeys, qaranlıq rejim dəstəyi və çoxdilli funksionallıq mövcuddur.",
+        debt_tracker_desc: "Borçların qanunlandırılması və tətbiqləri ilə əlaqəli bir veb tətbiqdir.",
+        debt_tracker_title: "Qanunlandırılmış Borçlar",
         // layihələr //
 
         // digər //
