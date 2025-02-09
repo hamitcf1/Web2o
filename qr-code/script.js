@@ -287,7 +287,7 @@ themeToggle.addEventListener('click', () => {
         html.setAttribute('data-theme', 'dark');
     }
 });
-
+/*
 // Language Selector
 class LanguageSelector {
     constructor() {
@@ -453,6 +453,7 @@ function updateTranslations() {
         }
     });
 }
+    */
 
 function clearHistory() {
     localStorage.removeItem('qrHistory');

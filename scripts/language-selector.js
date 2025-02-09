@@ -1,38 +1,3 @@
-const translations = {
-    en: {
-        projects: "Projects",
-        experience: "Experience",
-        education: "Education",
-        reviews: "Reviews",
-        getInTouch: "Get in Touch",
-        upcoming: "Upcoming Project"
-    },
-    tr: {
-        projects: "Projeler",
-        experience: "Deneyim",
-        education: "Eğitim",
-        reviews: "Değerlendirmeler",
-        getInTouch: "İletişime Geç",
-        upcoming: "Gelecek Proje"
-    },
-    ru: {
-        projects: "Проекты",
-        experience: "Опыт",
-        education: "Образование",
-        reviews: "Отзывы",
-        getInTouch: "Связаться",
-        upcoming: "Предстоящий проект"
-    },
-    es: {
-        projects: "Proyectos",
-        experience: "Experiencia",
-        education: "Educación",
-        reviews: "Resenias",
-        getInTouch: "Contacto",
-        upcoming: "Proyecto Futuro"
-    }
-};
-
 class LanguageSelector {
     constructor() {
         this.selector = document.querySelector('.language-selector');

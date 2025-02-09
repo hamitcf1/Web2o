@@ -151,7 +151,7 @@ input[type="text"]:focus {
     transform: translate(-50%, -50%);
     width: 40px;
     height: 40px;
-    background-image: url('https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true');
+    background-image: url('https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

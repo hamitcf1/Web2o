@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <title data-translate="qr_title">QR Code Generator & Reader</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../animations.css">
-    <link rel="stylesheet" href="../theme-toggle.css">
-    <link rel="stylesheet" href="../language-selector.css">
+    <title data-translate="title">QR Code Generator & Reader</title>
+    <link rel="stylesheet" href="../styles/index-styles.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    <link rel="stylesheet" href="../styles/theme-toggle.css">
+    <link rel="stylesheet" href="../styles/language-selector.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/my-notion-face-transparent.png?raw=true" type="image/x-icon" /> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="../translations.js"></script>
+    <script src="../scripts/translations.js"></script>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script src="script.js" defer></script>
+    <script src="../scripts/theme-toggle.js" defer></script>
+    <script src="../scripts/language-selector.js" defer></script>
 </head>
 <body>
     <div class="project-nav">
@@ -49,21 +50,6 @@
             <div class="selected-language">
                 <i class="fas fa-globe"></i>
                 <span class="current-lang">English</span>
-                
-            </div>
-            <div class="language-dropdown">
-                <div class="language-option" data-lang="en">
-                    <i class="fas fa-check"></i>
-                    <span>English</span>
-                </div>
-                <div class="language-option" data-lang="tr">
-                    <i class="fas fa-check"></i>
-                    <span>Türkçe</span>
-                </div>
-                <div class="language-option" data-lang="ru">
-                    <i class="fas fa-check"></i>
-                    <span>Русский</span>
-                </div>
             </div>
         </div>
     </div>
