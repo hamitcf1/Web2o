@@ -1,0 +1,66 @@
+.project-nav {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    z-index: 1000;
+    align-items: center;
+}
+
+.project-nav-button {
+    background: var(--accent);
+    color: white !important;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.project-nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
+}
+
+.project-nav .theme-toggle {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    padding: 0.8rem !important;
+    inline-size: auto !important;
+    block-size: auto !important;
+    background: var(--nav-bg) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 2rem !important;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-nav .theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.project-nav .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .project-nav {
+        top: 1rem;
+        left: 1rem;
+        flex-direction: row;
+    }
+
+    .project-nav-button,
+    .project-nav .theme-toggle {
+        padding: 0.6rem 1.2rem !important;
+        font-size: 0.8rem;
+    }
+} 
