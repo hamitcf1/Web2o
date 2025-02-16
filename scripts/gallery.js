@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tags: ['#PolyEsther', ' #Dizayn', ' #3Dprint']
         },
         {
-            src: 'https://instagram.fayt2-1.fna.fbcdn.net/v/t51.2885-15/479713139_17845723029418163_7393307294946971024_n.webp?efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE0NDAuc2RyLmY3NTc2MS5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fayt2-1.fna.fbcdn.net&_nc_cat=111&_nc_oc=Q6cZ2AGgaklKzat4d0xX9IgSxzv0b59jbO_jIr-smojhpIe8G9xcpsyyRN5RhyikYFFzzVc&_nc_ohc=D2UAxFE0ZGUQ7kNvgFHBvkg&_nc_gid=28d0b316ffa5478a8daed21853bbd1e0&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzU2OTM4NDA0OTIxOTc3MjIwMg%3D%3D.3-ccb7-5&oh=00_AYDlDDVtQ6ITuUyA71MV5MPPjQCP47H5rs9T4gOQMrkuCw&oe=67B7F7DE&_nc_sid=7a9f4b',
+            src: '/assets/photos/8.jpg',
             title: '',
             description: '',
             tags: ['#', ' #', ' #']
