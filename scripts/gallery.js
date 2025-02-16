@@ -79,9 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             src: '/assets/photos/8.jpg',
-            title: '',
-            description: '',
-            tags: ['#', ' #', ' #']
+            title: 'EAT ME',
+            description: 'All needs substance.',
+            tags: ['#Funny', ' #-2', ' #hollow']
+        },
+        {
+            src: '/assets/photos/9.jpg',
+            title: 'Substitute',
+            description: 'Just a basic replacement',
+            tags: ['#more', ' #god', ' #no']
         },
     ];
 
