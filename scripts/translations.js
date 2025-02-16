@@ -5,6 +5,7 @@ window.translations = {
         experience: "Experience",
         education: "Education",
         reviews: "Reviews",
+        gallery: "Gallery",
         // section titles //
 
         // hero index//
@@ -14,6 +15,12 @@ window.translations = {
         hero_subtitle3: "If you have any questions or inquiries, please don't hesitate to click the button.",
         // hero index//
 
+        //hero gallery//
+        hero_gallery_title: "Dynamic Photo Gallery",
+        hero_gallery_desc1: "Everything is down below",
+        hero_gallery_desc2: "You can find all my photos down below",
+        time_comparison: "Time Comparison",
+        //hero gallery//
 
         get_in_touch: "Get in Touch",
         // projects //
@@ -152,14 +159,14 @@ window.translations = {
         // where //
 
         // footer //
-        copyright: "©️ 2025 HamitCF. All rights reserved.",
-        made_with: "Made with 🫶🏻 of Karina.",
+        copyright: " 2025 HamitCF. All rights reserved.",
+        made_with: "Made with of Karina.",
         // footer //
 
         // language //
         english: "English",
-        turkish: "Türkçe",
-        russian: "Русский",
+        turkish: "Turkish",
+        russian: "Russian",
         // language //
 
         // qr_code //
@@ -225,9 +232,9 @@ window.translations = {
             clear_data_confirm: "Are you sure you want to clear all debt tracker data? This action cannot be undone.",
             insufficient_payment: "Insufficient payment amount. Please enter a value greater than 0.",
             not_applicable: "N/A",
-            //
+        //
 
-        
+
     },
 
     tr: {
@@ -236,6 +243,7 @@ window.translations = {
         experience: "Deneyim",
         education: "Eğitim",
         reviews: "Değerlendirmeler",
+        gallery: "Galeri",
         // section titles //
 
         // hero //
@@ -244,6 +252,12 @@ window.translations = {
         hero_subtitle2: "Aşağıda tüm projelerimi, deneyimlerimi, eğitim detaylarımı ve hakkımdaki değerlendirmeleri bulabilirsiniz.",
         hero_subtitle3: "Herhangi bir sorunuz veya talebiniz varsa, lütfen butona tıklamaktan çekinmeyin.",
         // hero //
+
+        //hero gallery//
+        hero_gallery_title: "Dinamik Fotoğraf Galerisi",
+        hero_gallery_desc1: "Her şey aşağıda",
+        hero_gallery_desc2: "Tüm fotoğraflarımı aşağıda bulabilirsiniz",
+        //hero gallery//
 
         get_in_touch: "İletişime Geç",
         
@@ -384,8 +398,8 @@ window.translations = {
         // where //
 
         // footer //
-        copyright: "©️ 2025 HamitCF. Tüm hakları saklıdır.",
-        made_with: "Karina'nın 🫶🏻 ile yapılmıştır.",
+        copyright: " 2025 HamitCF. Tüm hakları saklıdır.",
+        made_with: "Karina'nın ile yapılmıştır.",
         // footer //
 
         // language //
@@ -459,12 +473,14 @@ window.translations = {
 
 
     },
+
     es: {
         // títulos de sección //
         projects: "Proyectos",
         experience: "Experiencia",
         education: "Educación",
         reviews: "Reseñas",
+        gallery: "Galería",
         // títulos de sección //
 
         // héroe //
@@ -473,6 +489,12 @@ window.translations = {
         hero_subtitle2: "Aquí puedes encontrar todos mis proyectos, experiencias, detalles educativos y reseñas sobre mí.",
         hero_subtitle3: "Si tienes alguna pregunta o consulta, no dudes en hacer clic en el botón.",
         // héroe //
+
+        //hero gallery//
+        hero_gallery_title: "Galería de Fotos Dinámica",
+        hero_gallery_desc1: "Todo está abajo",
+        hero_gallery_desc2: "Puedes encontrar todas mis fotos abajo",        
+        //hero gallery//
 
         get_in_touch: "Contáctame",
         
@@ -612,8 +634,8 @@ window.translations = {
         // dónde //
 
         // pie de página //
-        copyright: "©️ 2025 HamitCF. Todos los derechos reservados.",
-        made_with: "Hecho con 🫶🏻 por Karina.",
+        copyright: " 2025 HamitCF. Todos los derechos reservados.",
+        made_with: "Hecho con de Karina.",
         // pie de página //
 
         // idioma //
@@ -690,6 +712,7 @@ window.translations = {
         experience: "Təcrübə",
         education: "Təhsil",
         reviews: "Rəylər",
+        gallery: "Qalereya",
         // bölmə başlıqları //
 
         // qəhrəman hissəsi //
@@ -699,12 +722,18 @@ window.translations = {
         hero_subtitle3: "Hər hansı bir sualınız və ya sorğunuz varsa, düyməyə klikləməkdən çəkinməyin.",
         // qəhrəman hissəsi //
 
+        //hero gallery//
+        hero_gallery_title: "Dinamik Foto Qalereya",
+        hero_gallery_desc1: "Hər şey aşağıdadır",
+        hero_gallery_desc2: "Bütün fotolarımı aşağıda tapa bilərsiniz",        
+        //hero gallery//
+
         get_in_touch: "Əlaqə saxlayın",
         
         // layihələr //
         index_title: "Portfel | Proqram Təminatı Tərtibatı",
         ollama_title: "Ollama Yerli Çatbot",
-        ollama_desc: "Ollama və DeepSeek-R1 + DeepSeek-Coder - FastAPI istifadə edərək yerli çatbot.",
+        ollama_desc: "Ollama və DeepSeek-R1 + DeepSeek-Coder istifadə edərək yerli çatbot.",
         calculator_title: "Veb Kalkulyator",
         calculator_desc: "Sadə riyazi əməliyyatları və klaviatura dəstəyini dəstəkləyən şık kalkulyator tətbiqi.",
         rps_title: "Daş, Kağız, Qayçı",
@@ -801,8 +830,8 @@ window.translations = {
         // kurslar //
 
                 // footer //
-                copyright: "©️ 2025 HamitCF. Tüm hakları saklıdır.",
-                made_with: "Karina'nın 🫶🏻 ile yapılmıştır.",
+                copyright: " 2025 HamitCF. Tüm hakları saklıdır.",
+                made_with: "Karina'nın ile yapılmıştır.",
                 // footer //
 
         // rəylər //
@@ -814,7 +843,7 @@ window.translations = {
         review6: "\"Əla tələbədir, hər zaman yeni şeylər öyrənməyə can atır.\"",
         review7: "\"Miyav Miyav. Miyav Miyav Miyav, Miyav Miyav! 😼🐱‍💻\"",
         review8: "\"İT sahəsində möhkəm bir təməl və detallara diqqətli yanaşma ilə Keyfiyyətə Nəzarət sahəsində inkişaf davam edir. Davamlı öyrənmə və praktiki təcrübə sahədə möhkəm bacarıqlar formalaşdırır.\"",
-        review9: "\"Proqram testinə struktur yanaşma müşahidə olunur, sənaye alətləri və ən yaxşı təcrübələrə diqqət yetirilir. Problemləri müəyyən etmək və keyfiyyəti təmin etmək qabiliyyəti QA sahəsində perspektivli gələcək vəd edir.\"",
+        review9: "\"Proqram testinə struktur yanaşma müşahidə olunur, sənaye alətləri və ən yaxşı təcrübələrə diqqət yetirilir. Problemləri müəyyən etmək və keyfiyyəti təmin etmək qabiliyyəti, QA sahəsində perspektivli gələcək vəd edir.\"",
         // rəylər //
 
         // dillər //
@@ -875,7 +904,7 @@ window.translations = {
         amount: "Məbləğ",
         clear_data: "Bütün Məlumatları Sil",
         clear_data_confirm: "Bütün borc izləyici məlumatlarını silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz.",
-        insufficient_payment: "Ödəniş məbləği kifayət deyil. 0-dan böyük bir dəyər daxil edin.",
+        insufficient_payment: "Ödəniş məbləği kifayət deyil. Lütfen 0-dan böyük bir dəyər daxil edin.",
         not_applicable: "N/A",
 
     },
@@ -885,6 +914,7 @@ window.translations = {
         experience: "Опыт",
         education: "Образование",
         reviews: "Отзывы",
+        gallery: "Галерея",
         // section titles //
 
         // hero //
@@ -894,6 +924,12 @@ window.translations = {
         hero_subtitle2: "Ниже вы найдете все мои проекты, опыт, детали образования и отзывы обо мне.",
         hero_subtitle3: "Если у вас есть вопросы или запросы, не стесняйтесь нажимать на кнопку.",
         // hero //
+
+        //hero gallery//
+        hero_gallery_title: "Динамическая фотогалерея",
+        hero_gallery_desc1: "Все находится ниже",
+        hero_gallery_desc2: "Вы можете найти все мои фото ниже",           
+        //hero gallery//
 
         get_in_touch: "Связаться",
         
@@ -1032,8 +1068,8 @@ window.translations = {
         // where //
 
         // footer //
-        copyright: "©️ 2025 HamitCF. Все права защищены.",
-        made_with: "Сделано с 🫶🏻 Карины.",
+        copyright: " 2025 HamitCF. Все права защищены.",
+        made_with: "Сделано с de Карины.",
         // footer //
 
         // language //
@@ -1090,82 +1126,5 @@ window.translations = {
         insufficient_payment: "Недостаточная сумма платежа. Пожалуйста, введите значение больше 0.",
         not_applicable: "Н/Д",
 
-    }
-
-        
+    },
 };
-
-// Add language selection and highlighting functionality
-function initializeLanguageSelector() {
-    const languageBtn = document.querySelector('.language-btn');
-    if (!languageBtn) return; // Exit if language button doesn't exist
-
-    const languageMenu = document.querySelector('.language-menu');
-    if (!languageMenu) return; // Exit if language menu doesn't exist
-
-    const languageOptions = document.querySelectorAll('.language-option');
-    if (!languageOptions.length) return; // Exit if no language options exist
-
-    // Get current language from localStorage or default to 'en'
-    const currentLang = localStorage.getItem('selectedLanguage') || 'en';
-    
-    // Set initial selected language
-    languageOptions.forEach(option => {
-        const lang = option.getAttribute('data-lang');
-        if (lang === currentLang) {
-            option.classList.add('selected');
-        } else {
-            option.classList.remove('selected');
-        }
-    });
-
-    // Toggle language menu
-    languageBtn.addEventListener('click', () => {
-        languageMenu.classList.toggle('show');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!languageMenu.contains(event.target) && !languageBtn.contains(event.target)) {
-            languageMenu.classList.remove('show');
-        }
-    });
-
-    // Language selection
-    languageOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const selectedLang = option.getAttribute('data-lang');
-            
-            // Remove selected class from all options
-            languageOptions.forEach(opt => opt.classList.remove('selected'));
-            
-            // Add selected class to clicked option
-            option.classList.add('selected');
-            
-            // Update translations
-            translatePage(selectedLang);
-            
-            // Store selected language
-            localStorage.setItem('selectedLanguage', selectedLang);
-            
-            // Close language menu
-            languageMenu.classList.remove('show');
-        });
-    });
-}
-
-// Only initialize if document is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeLanguageSelector);
-} else {
-    initializeLanguageSelector();
-}
-
-// Function to translate page
-function translatePage(lang) {
-    const translateElements = document.querySelectorAll('[data-translate]');
-    translateElements.forEach(element => {
-        const key = element.getAttribute('data-translate');
-        element.textContent = window.translations[lang][key];
-    });
-}
