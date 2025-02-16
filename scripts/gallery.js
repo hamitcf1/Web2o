@@ -39,37 +39,37 @@ document.addEventListener('DOMContentLoaded', () => {
             src: '/assets/photos/1.jpg',
             title: 'Harkan Kunn',
             description: 'He needs you.',
-            tags: ['#Family', '#Harkan', '#Escape']
+            tags: ['#Family', ' #Harkan', ' #Escape']
         },
         {
             src: '/assets/photos/2.jpg',
             title: 'Bon Appetit',
             description: 'The best restaurant in town.',
-            tags: ['#French', '#Food', '#Restaurant']
+            tags: ['#French', ' #Food', ' #Restaurant']
         },
         {
             src: '/assets/photos/3.jpg',
             title: 'He is Watching',
             description: 'Look into his eyes.',
-            tags: ['#Cosm', '#Shi', '#Ku']
+            tags: ['#Cosm', ' #Shi', ' #Ku']
         },
         {
             src: '/assets/photos/4.jpg',
             title: 'Apple Candy',
             description: 'OMG How shiny it is?',
-            tags: ['#Gloss', '#kids', '#Apple']
+            tags: ['#Gloss', ' #kids', ' #Apple']
         },
         {
             src: '/assets/photos/5.jpg',
             title: 'Snowy Peak',
             description: 'You will freeze',
-            tags: ['#dawn', '#icesickle']
+            tags: ['#dawn', ' #icesickle']
         },
         {
             src: '/assets/photos/6.jpg',
             title: 'GaGa',
             description: '#?#?_',
-            tags: ['#liver', '#live', '#love']
+            tags: ['#liver', ' #live', ' #love']
         },
         {
             src: '/assets/photos/7.jpg',
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             src: '/assets/photos/8.jpg',
             title: '',
             description: '',
-            tags: ['#', '#', '#']
+            tags: ['#', ' #', ' #']
         },
     ];
 
