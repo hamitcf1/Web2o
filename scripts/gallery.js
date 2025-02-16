@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryImages = [
         {
             src: '/assets/photos/1.jpg',
-            title: 'Harkan',
+            title: 'Harkan Kunn',
             description: 'He needs you.',
             tags: ['#Family', '#Harkan', '#Escape']
         },
@@ -49,33 +49,33 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             src: '/assets/photos/3.jpg',
-            title: 'Starry Night',
-            description: 'Milky way over a peaceful landscape',
-            tags: ['#Astronomy', '#Night', '#Stars']
+            title: 'He is Watching',
+            description: 'Look into his eyes.',
+            tags: ['#Cosm', '#Shi', '#Ku']
         },
         {
             src: '/assets/photos/4.jpg',
-            title: 'Forest Path',
-            description: 'Sunlight filtering through dense trees',
-            tags: ['#Forest', '#Nature', '#Trees']
+            title: 'Apple Candy',
+            description: 'OMG How shiny it is?',
+            tags: ['#Gloss', '#kids', '#Apple']
         },
         {
             src: '/assets/photos/5.jpg',
-            title: 'Snow Mountain',
-            description: 'Snow-capped mountain peaks at sunrise',
-            tags: ['#Mountains', '#Snow', '#Sunrise']
+            title: 'Snowy Peak',
+            description: 'You will freeze',
+            tags: ['#dawn', '#icesickle']
         },
         {
             src: '/assets/photos/6.jpg',
-            title: 'Desert Landscape',
-            description: 'Vast desert with rolling sand dunes',
-            tags: ['#Desert', '#Landscape', '#Sand']
+            title: 'GaGa',
+            description: '#?#?_',
+            tags: ['#liver', '#live', '#love']
         },
         {
             src: '/assets/photos/7.jpg',
-            title: 'Desert Landscape',
-            description: 'Vast desert with rolling sand dunes',
-            tags: ['#Desert', '#Landscape', '#Sand']
+            title: 'KFK Craft',
+            description: 'Özel dizayn ve kaliteli baskı',
+            tags: ['#PolyEsther', ' #Dizayn', ' #3Dprint']
         },
         {
             src: '/assets/photos/8.jpg',
