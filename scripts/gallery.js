@@ -48,13 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
             tags: ['#French', ' #Food', ' #Restaurant']
         },
         {
-            src: '/assets/photos/3.jpg',
+            src: 'https://lh3.googleusercontent.com/pw/AP1GczP-aqCUXHHn60DYld7n7vzRmAZUAytVTwQ5ZxejivFkwEY1bhv0MJadIsXMQD7LwDlRL51JqIrgYE5bMGKz36PTHZR8nn2jdKiXm1FGzVZ8wLYsvTX3NuzUnXfWM0CrYZROuRempqmn4R9NY11ic7qRUQ=w653-h954-s-no-gm?authuser=0',
             title: 'He is Watching',
             description: 'Look into his eyes.',
             tags: ['#Cosm', ' #Shi', ' #Ku']
         },
         {
-            src: '/assets/photos/4.jpg',
+            src: 'https://drive.google.com/file/d/1ntK2pb2y6dSzFMbOfjQCDmJevG9b3JuG/view?usp=sharing',
             title: 'Apple Candy',
             description: 'OMG How shiny it is?',
             tags: ['#Gloss', ' #kids', ' #Apple']
