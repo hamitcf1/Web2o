@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tags: ['#Cosm', ' #Shi', ' #Ku']
         },
         {
-            src: 'https://drive.google.com/file/d/1ntK2pb2y6dSzFMbOfjQCDmJevG9b3JuG/view?usp=sharing',
+            src: '',
             title: 'Apple Candy',
             description: 'OMG How shiny it is?',
             tags: ['#Gloss', ' #kids', ' #Apple']
