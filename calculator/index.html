@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <title>Calculator</title>
+    <title data-translate="calculator_title">Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="../styles/index-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/shared-theme.css">
     <link rel="stylesheet" href="../styles/project-nav.css">
@@ -15,37 +17,47 @@
     <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" /> 
 </head>
 <body>
-    <div class="project-nav">
-        <a href="../index.html" class="project-nav-button">
-            <i class="fas fa-arrow-left"></i>
-            <span data-translate="back_to_portfolio">Back to Portfolio</span>
-        </a>
-        <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
-            <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                <mask class="moon" id="moon-mask">
-                    <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                    <circle cx="24" cy="10" r="6" fill="black" />
-                </mask>
-                <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-                <g class="sun-beams" stroke="currentColor">
-                    <line x1="12" y1="1" x2="12" y2="3" />
-                    <line x1="12" y1="21" x2="12" y2="23" />
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                    <line x1="1" y1="12" x2="3" y2="12" />
-                    <line x1="21" y1="12" x2="23" y2="12" />
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </g>
-            </svg>
-        </button>
-        <div class="language-selector">
-            <div class="selected-language">
-                <i class="fas fa-globe"></i>
-                <span class="current-lang">English</span>
+   <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/index.html"><i class="fas fa-code brand-icon"></i></a>
+            <span data-translate="hamit">HamitCF</span>
+        </div>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                <svg class="sun-and-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
+                    <mask class="moon" id="moon-mask">
+                        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                        <circle cx="24" cy="10" r="6" fill="black" />
+                    </mask>
+                    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                    <g class="sun-beams" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </g>
+                </svg>
+            </button>
+            <div class="language-selector">
+                <div class="selected-language">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">English</span>
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content animate fade-in-left">
+            <h1 data-translate="calculator_title">Calculator</h1>
+            <p data-translate="calculator_desc">Simple and efficient calculator.</p>
+        </div>
+    </section>
+
     <div class="container">
         <div class="display">
             <div class="previous-operand"></div>
@@ -56,20 +68,20 @@
             <button class="special">±</button>
             <button class="special">%</button>
             <button class="operator">÷</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
             <button class="operator">×</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
             <button class="operator">−</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
             <button class="operator">+</button>
             <button class="span-two">0</button>
-            <button>.</button>
+            <button class="number">.</button>
             <button class="operator">=</button>
         </div>
         <div id="contact-modal" class="modal">

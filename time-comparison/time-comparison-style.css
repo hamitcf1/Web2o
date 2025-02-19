@@ -1,7 +1,7 @@
 :root {
-    --background-dark: #121212;
-    --text-primary: #f0f0f0;
-    --text-secondary: #a0a0a0;
+    --background-dark: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #999999;
     --border-color: #2c2c2c;
     --accent-color: #007AFF;
     --accent-hover: #0056b3;
@@ -25,7 +25,7 @@
     --newyork-light: rgba(10, 132, 255, 0.1);
     --card-bg: rgba(30, 30, 30, 0.8);
     --apple-blur: blur(20px);
-    --nav-bg: #1a1a1a;
+    --nav-bg: #000000;
     --text: #fff;
     --accent: #007AFF;
     --nav-text: #fff;
@@ -48,12 +48,12 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
-    --background-primary: #1a1a1a;
-    --background-secondary: #1e1e1e;
+    --background-primary: #000000;
+    /*--background-secondary: #1e1e1e;*/
     --text-primary: #fff;
     --text-secondary: #aaa;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --card-bg: #2d2d2d;
+    /*--border-color: rgba(255, 255, 255, 0.1);*/
+    /*--card-bg: #2d2d2d;*/
     --hover-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -79,49 +79,32 @@ body {
     padding-right: 1rem;
 }
 
-.project-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 64px;
-    padding: 1rem 2rem;
-    background: var(--nav-bg);
-    backdrop-filter: blur(10px);
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--nav-text);
-    box-shadow: var(--card-shadow);
-}
+
 
 .project-nav-button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--nav-text);
-    text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 24px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .project-nav-button:hover {
-    background: rgba(0, 122, 255, 0.1);
-    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.nav-controls {
-    display: flex !important;
-    align-items: center !important;
-    gap: 1rem !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+.project-nav-button i {
+    font-size: 0.9rem;
 }
+
 
 /* Enhanced light mode visibility */
 html[data-theme='light'] .project-nav {
@@ -511,33 +494,7 @@ html[data-theme='light'] .theme-toggle {
     transition: color var(--transition-speed) ease;
 }
 
-.back-button {
-    display: none;
-}
 
-.back-to-portfolio {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
-    background: var(--card-bg);
-    backdrop-filter: var(--apple-blur);
-    -webkit-backdrop-filter: var(--apple-blur);
-    padding: 12px 20px;
-    border-radius: 12px;
-    color: var(--text-primary);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.back-to-portfolio:hover {
-    background: rgba(0, 122, 255, 0.2);
-    color: #007AFF;
-}
 
 .footer-content {
     display: flex;
@@ -683,4 +640,37 @@ html[data-theme='light'] .theme-toggle {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.language-selector {
+    position: relative;
+}
+
+.selected-language {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--input-bg);
+    border-radius: 5px;
+    padding: 0.5rem;
+    display: none;
+    z-index: 10;
+}
+
+.language-option {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.language-option:hover {
+    background: var(--bg-color);
 }

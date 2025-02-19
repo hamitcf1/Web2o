@@ -12,27 +12,17 @@
     <link rel="stylesheet" href="/styles/language-selector.css">
     <link rel="stylesheet" href="/debt-tracker/debt-tracker.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" />
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-brand">
-            <i class="fas fa-money-bill-wave brand-icon"></i>
-            <span data-translate="nav_title_debt_tracker">Debt Tracker</span>
+            <a href="/index.html"><i class="fas fa-code brand-icon"></i></a>
+            <span data-translate="hamit">HamitCF</span>
+        </div>
+        <div class="nav-links">
         </div>
         <div class="nav-controls">
-            <div class="currency-selector">
-                <select id="currencySelect" class="currency-select">
-                    <option value="TRY">TRY</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                </select>
-            </div>
-            <div class="language-selector">
-                <div class="selected-language">
-                    <i class="fas fa-globe"></i>
-                    <span class="current-lang">English</span>
-                </div>
-            </div>
             <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
                 <svg class="sun-and-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
                     <mask class="moon" id="moon-mask">
@@ -52,6 +42,19 @@
                     </g>
                 </svg>
             </button>
+            <div class="language-selector">
+                <div class="selected-language">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">English</span>
+                </div>
+            </div>
+            <div class="currency-selector">
+                <select id="currencySelect" class="currency-select">
+                    <option value="TRY">TRY</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </div>
         </div>
     </nav>
 

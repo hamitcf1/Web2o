@@ -48,29 +48,37 @@ body.night { background: linear-gradient(180deg, #1a1a1a, #2c3e50); }
     flex-direction: column;
 }
 
-.back-to-portfolio {
+.project-nav {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 1rem;
+    left: 1rem;
     z-index: 1001;
-    background: var(--card-bg);
-    backdrop-filter: var(--apple-blur);
-    -webkit-backdrop-filter: var(--apple-blur);
-    padding: 12px 20px;
-    border-radius: var(--border-radius);
-    color: var(--text-color);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    transition: var(--transition);
 }
 
-.back-to-portfolio:hover {
-    background: rgba(0, 122, 255, 0.2);
-    color: #007AFF;
+.project-nav-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.project-nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-nav-button i {
+    font-size: 0.9rem;
+}
+
 
 .local-time {
     display: flex;

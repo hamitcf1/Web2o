@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <title data-translate="time_comparison">Time Comparison</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/index-styles.css">
     <link rel="stylesheet" href="../styles/animations.css">
     <link rel="stylesheet" href="../styles/theme-toggle.css">
     <link rel="stylesheet" href="time-comparison-style.css">
@@ -15,31 +16,11 @@
     <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" />
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="hamburger-menu" onclick="toggleMobileMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <div class="mobile-menu" id="mobileMenu">
-                <div class="mobile-menu-controls">
-                    <div class="mobile-theme-toggle">
-                        <!-- Theme toggle will be dynamically inserted here by JavaScript -->
-                    </div>
-                    <div class="mobile-language-selector">
-                        <!-- Language selector will be dynamically inserted here by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <div class="project-nav">
-        <a href="https://hamitcf.netlify.app" class="project-nav-button">
-            <i class="fas fa-arrow-left"></i>
-            <span data-translate="back_to_portfolio">Back to Portfolio</span>
-        </a>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/index.html"><i class="fas fa-code brand-icon"></i></a>
+            <span data-translate="hamit">HamitCF</span>
+        </div>
         <div class="nav-controls">
             <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
                 <svg class="sun-and-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
@@ -65,23 +46,9 @@
                     <i class="fas fa-globe"></i>
                     <span class="current-lang">English</span>
                 </div>
-                <div class="language-dropdown">
-                    <div class="language-option" data-lang="en">
-                        <i class="fas fa-check"></i>
-                        <span>English</span>
-                    </div>
-                    <div class="language-option" data-lang="tr">
-                        <i class="fas fa-check"></i>
-                        <span>Türkçe</span>
-                    </div>
-                    <div class="language-option" data-lang="ru">
-                        <i class="fas fa-check"></i>
-                        <span>Русский</span>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="container">
         <div class="time-comparison-container animate fade-in-up">
