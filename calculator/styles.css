@@ -101,13 +101,9 @@ button.special:hover {
     background: var(--special-hover);
 }
 
-button:not(.operator):not(.special) {
+button.number {
     background: var(--number-bg);
     font-size: 1.8rem;
-}
-
-button:not(.operator):not(.special):hover {
-    background: var(--number-hover);
 }
 
 .span-two {
@@ -116,6 +112,7 @@ button:not(.operator):not(.special):hover {
     padding-left: 1.5rem;
     justify-content: flex-start;
     width: 100%;
+    background: var(--number-bg);
     aspect-ratio: auto;
 }
 

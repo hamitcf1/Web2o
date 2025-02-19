@@ -7,46 +7,56 @@
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <title data-translate="rps_title">Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="../styles/index-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../styles/shared-theme.css">
-    <link rel="stylesheet" href="../styles/project-nav.css">
     <link rel="stylesheet" href="../styles/theme-toggle.css">
     <link rel="stylesheet" href="../styles/language-selector.css">
     <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" />
 
 </head>
 <body>
-    <div class="project-nav">
-        <a href="../index.html" class="project-nav-button">
-            <i class="fas fa-arrow-left"></i>
-            <span data-translate="back_to_portfolio">Back to Portfolio</span>
-        </a>
-        <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
-            <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                <mask class="moon" id="moon-mask">
-                    <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                    <circle cx="24" cy="10" r="6" fill="black" />
-                </mask>
-                <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-                <g class="sun-beams" stroke="currentColor">
-                    <line x1="12" y1="1" x2="12" y2="3" />
-                    <line x1="12" y1="21" x2="12" y2="23" />
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                    <line x1="1" y1="12" x2="3" y2="12" />
-                    <line x1="21" y1="12" x2="23" y2="12" />
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </g>
-            </svg>
-        </button>
-        <div class="language-selector">
-            <div class="selected-language">
-                <i class="fas fa-globe"></i>
-                <span class="current-lang">English</span>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/index.html"><i class="fas fa-code brand-icon"></i></a>
+            <span data-translate="hamit">HamitCF</span>
+        </div>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                <svg class="sun-and-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
+                    <mask class="moon" id="moon-mask">
+                        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                        <circle cx="24" cy="10" r="6" fill="black" />
+                    </mask>
+                    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                    <g class="sun-beams" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </g>
+                </svg>
+            </button>
+            <div class="language-selector">
+                <div class="selected-language">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">English</span>
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content animate fade-in-left">
+            <h1 data-translate="rps_title">Track Your Debts & Loans</h1>
+            <p data-translate="rps_desc">Manage your financial obligations and plan your path to becoming debt-free.</p>
+        </div>
+    </section>
+
     <div class="container">
         <h1 data-translate="rock_paper_scissors">Rock Paper Scissors</h1>
         <div class="score-board">
@@ -95,37 +105,9 @@
             <div id="history-list" class="history-list"></div>
         </div>
     </div>
-    <div id="toast" class="toast"></div>
-    <div id="contact-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 data-translate="get_in_touch">Get in Touch</h2>
-            <div class="contact-links">
-                <a href="https://github.com/hamitcf1" class="contact-link">
-                    <i class="fab fa-github"></i>
-                    GitHub
-                </a>
-                <a href="https://linkedin.com/in/hamitcf" class="contact-link">
-                    <i class="fab fa-linkedin"></i>
-                    LinkedIn
-                </a>
-                <a href="https://twitter.com/hamitcf" class="contact-link">
-                    <i class="fab fa-x-twitter"></i>
-                    X
-                </a>
-                <a href="mailto:hamitfindik2@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    hamitfindik2@gmail.com
-                </a>
-            </div>
-        </div>
-    </div>
+    
     <footer class="footer">
         <div class="footer-content">
-            <a href="mailto:contact@hamitcf.dev?subject=Let's%20Work%20Together&body=Hi%20Hamit%2C%0D%0A%0D%0AI'd%20like%20to%20discuss%20a%20potential%20project%20with%20you.%0D%0A%0D%0ABest%20regards" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span data-translate="get_in_touch">Get in Touch</span>
-            </a>
             <p class="copyright" data-translate="copyright">© 2024 HamitCF. All rights reserved.</p>
             <p class="made-with" data-translate="made_with">Made with 🫶🏻 of Karina.</p>
         </div>
