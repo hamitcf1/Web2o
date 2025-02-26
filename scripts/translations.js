@@ -136,11 +136,9 @@ window.translations = {
 
         // people //
         karina_blanchette: "Karina Blanchette",
-        dr_adnan_ceylan: "Dr. Adnan Ceylan",
-        canan_gunduz: "Canan Gündüz",
         kaan_seckin: "Kaan Seçkin",
         teoman_yucel: "Teoman Yücel",
-        omer_ozan_cayli: "Omer Ozan Caylı",
+        omer_ozan_cayli: "Ömer Ozan Çaylı",
         riba_chickenlegs: "Riba Chickenlegs",
         vefa_alas: "Vefa Alas",
         altay_uslu: "Altay Uslu",
@@ -375,11 +373,9 @@ window.translations = {
 
         // people //
         karina_blanchette: "Karina Blanchette",
-        dr_adnan_ceylan: "Dr. Adnan Ceylan",
-        canan_gunduz: "Canan Gündüz",
         kaan_seckin: "Kaan Seçkin",
         teoman_yucel: "Teoman Yücel",
-        omer_ozan_cayli: "Omer Ozan Caylı",
+        omer_ozan_cayli: "Ömer Ozan Çaylı",
         riba_chickenlegs: "Riba Chickenlegs",
         vefa_alas: "Vefa Alas",
         altay_uslu: "Altay Uslu",
@@ -611,11 +607,9 @@ window.translations = {
 
         // personas //
         karina_blanchette: "Karina Blanchette",
-        dr_adnan_ceylan: "Dr. Adnan Ceylan",
-        canan_gunduz: "Canan Gündüz",
         kaan_seckin: "Kaan Seçkin",
         teoman_yucel: "Teoman Yücel",
-        omer_ozan_cayli: "Omer Ozan Caylı",
+        omer_ozan_cayli: "Ömer Ozan Çaylı",
         riba_chickenlegs: "Riba Chickenlegs",
         vefa_alas: "Vefa Alas",
         altay_uslu: "Altay Uslu",
