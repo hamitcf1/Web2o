@@ -160,7 +160,7 @@ window.translations = {
 
         // footer //
         copyright: "©️ 2025 HamitCF. All rights reserved.",
-        made_with: "Made with of 💖 Karina.",
+        made_with: "Made with 💖 of Karina.",
         // footer //
 
         // language //
