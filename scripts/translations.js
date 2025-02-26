@@ -159,8 +159,8 @@ window.translations = {
         // where //
 
         // footer //
-        copyright: " 2025 HamitCF. All rights reserved.",
-        made_with: "Made with of Karina.",
+        copyright: "©️ 2025 HamitCF. All rights reserved.",
+        made_with: "Made with of 💖 Karina.",
         // footer //
 
         // language //
@@ -399,7 +399,7 @@ window.translations = {
 
         // footer //
         copyright: " 2025 HamitCF. Tüm hakları saklıdır.",
-        made_with: "Karina'nın ile yapılmıştır.",
+        made_with: "Karina'nın 💖 ile yapılmıştır.",
         // footer //
 
         // language //
@@ -635,7 +635,7 @@ window.translations = {
 
         // pie de página //
         copyright: " 2025 HamitCF. Todos los derechos reservados.",
-        made_with: "Hecho con de Karina.",
+        made_with: "Hecho con 💖 de Karina.",
         // pie de página //
 
         // idioma //
@@ -831,7 +831,7 @@ window.translations = {
 
                 // footer //
                 copyright: " 2025 HamitCF. Tüm hakları saklıdır.",
-                made_with: "Karina'nın ile yapılmıştır.",
+                made_with: "Karina'nın 💖 ile yapılmıştır.",
                 // footer //
 
         // rəylər //
@@ -1069,7 +1069,7 @@ window.translations = {
 
         // footer //
         copyright: " 2025 HamitCF. Все права защищены.",
-        made_with: "Сделано с de Карины.",
+        made_with: "Сделано с 💖 Карины.",
         // footer //
 
         // language //
