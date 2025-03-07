@@ -20,7 +20,7 @@
 .selected-language:hover {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 .selected-language:active {

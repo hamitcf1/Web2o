@@ -1,21 +1,24 @@
 :root {
+    --background: #000000;
+    --text: #ffffff;
+    --secondary-text: #eeeeee;
+    --accent: #007AFF;
+    --card-bg: #1c1c1e;
+    --nav-bg: rgba(0, 0, 0, 0.068);
+    --nav-text: #ffffff;
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+[data-theme="light"] {
     --background: #ffffff;
     --text: #000000;
     --secondary-text: #666666;
     --accent: #007AFF;
     --card-bg: #f5f5f7;
-    --nav-bg: rgba(255, 255, 255, 0.8);
+    --nav-bg: rgba(255, 255, 255, 0.014);
     --nav-text: #000000;
 }
 
-[data-theme="dark"] {
-    --background: #000000;
-    --text: #ffffff;
-    --secondary-text: #999999;
-    --card-bg: #1c1c1e;
-    --nav-bg: rgba(0, 0, 0, 0.8);
-    --nav-text: #ffffff;
-}
 
 * {
     margin: 0;
@@ -24,7 +27,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-family);
     background-color: var(--background);
     color: var(--text);
     transition: background-color 0.3s, color 0.3s;
@@ -117,6 +120,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+    border-radius: 0.8rem;
 }
 
 .nav-links a {
@@ -138,12 +142,25 @@ body {
 }
 
 .nav-links a:hover {
-    background: rgba(0, 122, 255, 0.1);
-    color: var(--accent);
-    transform: translateY(-1px);
+    border: 2px solid transparent;
+    border-color: var(--accent);
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 .nav-links a:hover i {
+    opacity: 1;
+}
+
+.nav-links a.active {
+    border: 2px solid transparent;
+    border-color: var(--accent);
+    background-color: rgba(0, 122, 255, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+}
+
+.nav-links a.active i {
     opacity: 1;
     transform: scale(1.1);
 }
@@ -228,10 +245,7 @@ body {
     }
 }
 
-!!!!!yoket
-[data-theme="dark"] .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
+
 
 .hero {
     height: 100vh;
@@ -344,8 +358,6 @@ body {
 }
 
 .project-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
     border-radius: 1.5rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -356,12 +368,23 @@ body {
     overflow: hidden;
 }
 
+
+
 .project-content {
+    background: var(--card-bg);
     padding: 2rem;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
+
+.project-card:hover {
+    border: 0.4px solid transparent;
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+}
+
+
 
 .project-header {
     margin-bottom: 1rem;
@@ -595,14 +618,7 @@ body {
     opacity: 0.8;
 }
 
-/* Dark theme adjustments */
-[data-theme="dark"] .project-card {
-    background: rgba(255, 255, 255, 0.05);
-}
 
-[data-theme="dark"] .project-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
 
 @media (max-width: 768px) {
     .project-grid {
@@ -927,18 +943,7 @@ body {
     text-overflow: ellipsis;
 }
 
-/* Dark theme adjustments */
-[data-theme="dark"] .review-card {
-    background: rgba(255, 255, 255, 0.05);
-}
 
-[data-theme="dark"] .review-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .reviewer {
-    border-top-color: rgba(255, 255, 255, 0.1);
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -977,13 +982,7 @@ html {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark theme adjustments */
-[data-theme="dark"] .project-card:hover,
-[data-theme="dark"] .timeline-content:hover,
-[data-theme="dark"] .education-content:hover,
-[data-theme="dark"] .review-card:hover {
-    background: rgba(28, 28, 30, 0.95);
-}
+
 
 /* Add subtle gradient border on hover */
 .project-card::before,
