@@ -33,6 +33,8 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+
+
 .navbar {
     position: fixed;
     top: 0;
@@ -63,7 +65,7 @@ body {
 }
 
 .nav-brand:hover .brand-icon {
-    transform: rotate(20deg);
+    transform: scale(1.05);
 }
 
 .mobile-menu-btn {
@@ -126,43 +128,41 @@ body {
 .nav-links a {
     color: var(--text);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     padding: 0.5rem 1rem;
     border-radius: 0.8rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.nav-links a i {
-    font-size: 1rem;
-    opacity: 0.8;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    transform: scale(1);
 }
 
 .nav-links a:hover {
-    border: 2px solid transparent;
     border-color: var(--accent);
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
-.nav-links a:hover i {
-    opacity: 1;
+.nav-links a:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
 }
 
 .nav-links a.active {
-    border: 2px solid transparent;
     border-color: var(--accent);
     background-color: rgba(0, 122, 255, 0.2);
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
-.nav-links a.active i {
-    opacity: 1;
-    transform: scale(1.1);
+.nav-links a.active:hover {
+    transform: scale(1.05);
+}
+
+.nav-links a.active:active {
+    transform: scale(0.98);
 }
 
 .nav-controls {
@@ -295,11 +295,14 @@ body {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 1;
-
+    text-align: center;
+    line-height: 1.6;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     color: var(--text);
     margin-bottom: 1.2rem;
     font-weight: 700;
@@ -318,6 +321,26 @@ body {
     margin-right: auto;
 }
 
+.location {
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--text);
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -1.2rem;
+    margin-bottom: 0.7rem;
+
+}
+
+.location:hover i {
+    animation: clickable(1.5) 0.3s ease-in-out;
+    color: var(--accent);
+}
+
 .cta-button {
     background-color: var(--accent);
     color: white;
@@ -332,12 +355,12 @@ body {
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
+    transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 .cta-button:active {
-    transform: translateY(0);
+    transform: scale(1);
 }
 
 .projects {
@@ -347,6 +370,7 @@ body {
 }
 
 .projects h2 {
+    text-align: center;
     font-size: 2.5rem;
     margin-bottom: 2rem;
 }
@@ -366,9 +390,21 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background: var(--card-bg);
+    border: 2px solid transparent;
+    transform: scale(1);
 }
 
+.project-card:hover {
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+}
 
+.project-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
+}
 
 .project-content {
     background: var(--card-bg);
@@ -377,14 +413,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-.project-card:hover {
-    border: 0.4px solid transparent;
-    border-color: var(--accent);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
-}
-
-
 
 .project-header {
     margin-bottom: 1rem;
@@ -459,8 +487,8 @@ body {
 .project-link:hover {
     background: var(--accent);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 .project-link.disabled {
@@ -645,6 +673,7 @@ body {
 }
 
 .section h2 {
+    text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
     padding: 0 2rem;
@@ -656,6 +685,7 @@ body {
 
 /* Timeline styles for Experience */
 .timeline {
+    align-content: center;
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
@@ -704,6 +734,8 @@ body {
     min-height: 200px;
     display: flex;
     flex-direction: column;
+    border: 2px solid transparent;
+    transform: scale(1);
 }
 
 .timeline-content h3 {
@@ -756,6 +788,17 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.timeline-content:hover {
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+}
+
+.timeline-content:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
+}
+
 /* Education styles */
 .education-content {
     background: var(--card-bg);
@@ -764,6 +807,8 @@ body {
     border-radius: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    border: 2px solid transparent;
+    transform: scale(1);
 }
 
 .education-main {
@@ -798,8 +843,9 @@ body {
 .courses li {
     opacity: 0;
     transform: translateY(20px);
-    background: rgba(255, 255, 255, 0.5);
     padding: 1rem 1.5rem;
+    background-color: #333131;
+    border: 2px solid transparent;
     border-radius: 1rem;
     color: var(--text);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -841,12 +887,15 @@ body {
     opacity: 1;
 }
 
-[data-theme="dark"] .courses li {
-    background: rgba(255, 255, 255, 0.1);
+.education-content:hover {
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
-[data-theme="dark"] .courses li:hover {
-    background: rgba(255, 255, 255, 0.15);
+.education-content:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
 }
 
 /* Reviews styles */
@@ -868,12 +917,19 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 300px;
+    border: 2px solid transparent;
+    transform: scale(1);
 }
 
 .review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+}
+
+.review-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
 }
 
 .review-icon {
@@ -1075,6 +1131,7 @@ html {
 }
 
 .modal-close:hover {
+    color: var(--accent);
     background: rgba(0, 0, 0, 0.1);
     transform: rotate(90deg);
 }
@@ -1094,18 +1151,17 @@ html {
     background: rgba(53, 51, 51, 0.5);
     color: var(--text);
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-link:hover {
-    transform: translateX(8px);
-    background: rgba(0, 122, 255, 0.1);
-    color: var(--accent);
+    border: 1px solid transparent;
+    border-color: var(--accent);
+    background: rgba(53, 51, 51, 0.5);
     box-shadow: 0 4px 12px rgba(0, 122, 255, 0.1);
 }
 
-.contact-link i {
-    font-size: 1.2rem;
+.contact-link:hover i {
+    color: var(--accent);
 }
 
 /* Update course items styling */
@@ -1248,37 +1304,37 @@ html {
 
 /* Timeline content hover */
 .timeline-item:hover .timeline-content {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 /* Education content hover */
 .education-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 /* Project card hover */
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 /* Review card hover */
 .review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 /* Course item hover */
 .courses li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.8);
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 /* Dark theme hover effects */
