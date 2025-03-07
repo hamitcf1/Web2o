@@ -256,7 +256,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 .hero::before {
@@ -271,7 +271,7 @@ body {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.08;
+    opacity: 0.04;
     z-index: -1;
     filter: grayscale(100%);
     animation: float 4s ease-in-out infinite;
@@ -304,16 +304,16 @@ body {
 .hero h1 {
     font-size: 4rem;
     color: var(--text);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.6;
     word-spacing: 0.2rem;
 }
 
 .hero p {
     font-size: 1.2rem;
     color: var(--secondary-text);
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.2rem;
     max-width: 600px;
     text-align: center;
     line-height: 1.6;
@@ -344,6 +344,42 @@ body {
     transform: scale(1.2);
     color: var(--accent);
 }
+
+.tech-stack {
+    background: #111; /* Dark theme */
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logos-wrapper {
+    width: 100%;
+    overflow: hidden; /* Ensures clean animation */
+    position: relative;
+}
+
+.logos {
+    display: flex;
+    gap: 30px;
+    user-select: none;
+    cursor: grab;
+    transition: transform 0.2s ease-out;
+    white-space: nowrap;
+}
+
+.logos img {
+    height: 50px;
+    filter: brightness(0.8);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.logos img:hover {
+    transform: scale(1.2);
+    filter: brightness(1);
+}
+
 
 .cta-button {
     background-color: var(--accent);
@@ -817,6 +853,7 @@ body {
 
 .education-main {
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .education-main h3 {
@@ -832,6 +869,7 @@ body {
 }
 
 .courses h4 {
+    text-align: center;
     color: var(--text);
     margin-bottom: 1rem;
     font-size: 1.2rem;

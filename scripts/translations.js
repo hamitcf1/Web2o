@@ -74,19 +74,6 @@ window.translations = {
                 game_history: "Game History",
                 //rps//
 
-                //weather//
-                weather: "Weather",
-                location: "Location",
-                search: "Search city...",
-                feels_like: "Feels Like",
-                humidity: "Humidity",
-                wind: "Wind",
-                temperature: "Temperature",
-                a24_hour_forecast: "24-Hour Forecast",
-                a3_day_forecast: "3-Day Forecast",
-                powered_by: "Powered by WeatherAPI.com",
-                //weather//
-        // other //
 
         // senior_dev //
         senior_dev: "Senior Developer",

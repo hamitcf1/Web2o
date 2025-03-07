@@ -167,3 +167,58 @@ document.querySelector(".location").addEventListener("mouseleave", function () {
     icon.className = originalClass; // Restore original FontAwesome class
     icon.innerHTML = ""; // Remove emoji text
 });
+
+const techStack = document.querySelector(".logos");
+let isDragging = false;
+let startX, scrollLeft;
+let autoScrollSpeed = 1; // Adjust speed
+let autoScroll;
+let isAutoScrolling = true; // Track auto-scroll state
+
+// Duplicate logos for infinite effect
+techStack.innerHTML += techStack.innerHTML;
+
+function startDragging(e) {
+    isDragging = true;
+    isAutoScrolling = false; // Stop auto-scroll
+    clearInterval(autoScroll);
+    startX = e.pageX - techStack.offsetLeft;
+    scrollLeft = techStack.scrollLeft;
+    techStack.style.cursor = "grabbing";
+}
+
+function stopDragging() {
+    isDragging = false;
+    techStack.style.cursor = "grab";
+    isAutoScrolling = true; // Restart auto-scroll
+    startAutoScroll();
+}
+
+function drag(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - techStack.offsetLeft;
+    const walk = (x - startX) * 2; // Adjust sensitivity
+    techStack.scrollLeft = scrollLeft - walk;
+}
+
+// Auto-Scroll Logic (Fixed Infinite Loop)
+function startAutoScroll() {
+    autoScroll = setInterval(() => {
+        if (isAutoScrolling) {
+            techStack.scrollLeft += autoScrollSpeed;
+            if (techStack.scrollLeft >= techStack.scrollWidth / 2) {
+                techStack.scrollLeft = 0; // Reset for infinite effect
+            }
+        }
+    }, 20);
+}
+
+// Event Listeners
+techStack.addEventListener("mousedown", startDragging);
+window.addEventListener("mouseup", stopDragging);
+techStack.addEventListener("mousemove", drag);
+
+// Start Auto-Scroll on Load
+startAutoScroll();
+
