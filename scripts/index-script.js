@@ -136,3 +136,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+document.querySelector(".location").addEventListener("mouseenter", function () {
+    let icon = this.querySelector("i");
+    let icons = ["<i class='fa-solid fa-sun'></i>", "<i class='fa-solid fa-umbrella-beach'></i>", '<i class="fas fa-map-marker-alt"></i>']; 
+    let index = 0;
+
+    // Store the original FontAwesome icon class
+    let originalClass = icon.className;
+
+    let interval = setInterval(() => {
+        if (index < icons.length) {
+            if (index < 2) {
+                icon.className = "";  // Remove FontAwesome class
+                icon.innerHTML = icons[index]; // Replace with flag
+            } else {
+                icon.className = originalClass; // Restore FontAwesome class
+                icon.innerHTML = ""; // Remove emoji text
+            }
+            index++;
+        } else {
+            clearInterval(interval); // Stop after cycling
+        }
+    }, 600);
+});
+
+// Stop animation on mouse leave
+document.querySelector(".location").addEventListener("mouseleave", function () {
+    let icon = this.querySelector("i");
+    icon.className = originalClass; // Restore original FontAwesome class
+    icon.innerHTML = ""; // Remove emoji text
+});
