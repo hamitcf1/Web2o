@@ -10,8 +10,6 @@ class LanguageSelector {
             { code: 'en', name: 'English', color: '#3498db', soundFile: 'en_select.mp3' },
             { code: 'tr', name: 'Türkçe', color: '#e74c3c', soundFile: 'en_select2.mp3' },
             { code: 'ru', name: 'Русский', color: '#2ecc71', soundFile: 'en_select3.mp3' },
-            { code: 'es', name: 'Español', color: '#9b59b6', soundFile: 'en_select.mp3' },
-            { code: 'az', name: 'Azerbaijani', color: '#f1c40f', soundFile: 'en_select2.mp3'}
         ];
         
         // Get saved language or default to 'en'
@@ -80,7 +78,7 @@ class LanguageSelector {
     
     updateLanguageUI() {
         // Remove previous language classes
-        this.selector.classList.remove('en', 'tr', 'ru', 'es', 'az');
+        this.selector.classList.remove('en', 'tr', 'ru');
         
         // Add current language class
         this.selector.classList.add(this.currentLang);

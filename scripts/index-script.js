@@ -222,3 +222,15 @@ techStack.addEventListener("mousemove", drag);
 // Start Auto-Scroll on Load
 startAutoScroll();
 
+
+document.querySelector(".dropbtn").addEventListener("click", function () {
+    document.querySelector(".dropdown-content").classList.toggle("show");
+});
+
+document.querySelector(".dropbtn").addEventListener("click", function () {
+    document.querySelector(".dropdown-content").classList.toggle("show");
+});
+
+
+
+

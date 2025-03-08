@@ -345,40 +345,25 @@ body {
     color: var(--accent);
 }
 
-.tech-stack {
-    background: #111; /* Dark theme */
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
+.age {
     align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    color: var(--text);
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -1rem;
+    margin-bottom: 0.7rem;
 }
 
-.logos-wrapper {
-    width: 100%;
-    overflow: hidden; /* Ensures clean animation */
-    position: relative;
-}
-
-.logos {
-    display: flex;
-    gap: 30px;
-    user-select: none;
-    cursor: grab;
-    transition: transform 0.2s ease-out;
-    white-space: nowrap;
-}
-
-.logos img {
-    height: 50px;
-    filter: brightness(0.8);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-}
-
-.logos img:hover {
+.age:hover i {
     transform: scale(1.2);
-    filter: brightness(1);
+    color: var(--accent);
 }
+
 
 
 .cta-button {
@@ -733,6 +718,8 @@ body {
 }
 
 .timeline-item {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 2rem;
     position: relative;
     padding-left: 2rem;
@@ -753,6 +740,7 @@ body {
     background-color: var(--accent);
     border-radius: 1.5px;
 }
+    
 
 .timeline-item::after {
     content: '';
@@ -764,6 +752,7 @@ body {
     border-radius: 50%;
     background-color: var(--accent);
 }
+    
 
 .timeline-content {
     background: var(--card-bg);
@@ -834,10 +823,6 @@ body {
     box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
-.timeline-content:active {
-    transform: scale(0.98);
-    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
-}
 
 /* Education styles */
 .education-content {
