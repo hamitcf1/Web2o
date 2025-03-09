@@ -2,6 +2,7 @@
     --win-color: #34C759;
     --lose-color: #FF3B30;
     --draw-color: #FF9500;
+    --accent: #007AFF;
 }
 
 .container {
@@ -41,6 +42,7 @@ h1 {
 
 .score:hover {
     transform: translateY(-5px);
+    border-color: var(--accent);
 }
 
 .score p {
