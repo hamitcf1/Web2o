@@ -1,46 +1,58 @@
-// Create an Intersection Observer
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        // Add animation class when element is in view
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
-            observer.unobserve(entry.target); // Stop observing once animated
+// Scramble Effect
+
+document.addEventListener("DOMContentLoaded", function () {
+    function scrambleEffect(element, duration = 1000) {
+        const originalText = element.getAttribute("data-text").split("");
+        const chars = "!@#$%^&*()_+{}:?><,./;'[]-=";
+        let iterations = 10;
+        let scrambledArray = [...originalText];
+        let count = 0;
+
+        function updateScramble() {
+            if (count < iterations) {
+                scrambledArray = scrambledArray.map((char, i) =>
+                    Math.random() > 0.5 ? chars[Math.floor(Math.random() * chars.length)] : originalText[i]
+                );
+                element.textContent = scrambledArray.join("");
+                count++;
+                setTimeout(updateScramble, duration / iterations);
+            }
         }
-    });
-}, {
-    threshold: 0.1, // Trigger when at least 10% of the element is visible
-    rootMargin: '50px' // Start animation slightly before element comes into view
-});
-
-// Observe all elements with animate class
-document.addEventListener('DOMContentLoaded', () => {
-    // Get all elements to animate
-    const animatedElements = document.querySelectorAll('.animate');
-    
-    // Start observing each element
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
-
-    // Add smooth scrolling to navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const section = document.querySelector(this.getAttribute('href'));
-            section.scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-});
-
-// Add this to your existing script.js or create a new animations.js file
-document.addEventListener('scroll', () => {
-    // Add class to navbar when scrolling
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+        updateScramble();
     }
-}); 
+
+    function restoreTextLetterByLetter(element, duration = 1000) {
+        const originalText = element.getAttribute("data-text").split("");
+        const chars = "!@#$%^&*()_+{}:?><,./;'[]-=";
+        let scrambledArray = [...element.textContent];
+        let currentIndex = 0;
+
+        function restoreLetter() {
+            if (currentIndex < originalText.length) {
+                let iterations = 5;
+                let innerCount = 0;
+
+                function innerScramble() {
+                    if (innerCount < iterations) {
+                        scrambledArray[currentIndex] = chars[Math.floor(Math.random() * chars.length)];
+                        element.textContent = scrambledArray.join("");
+                        innerCount++;
+                        setTimeout(innerScramble, duration / (iterations * originalText.length));
+                    } else {
+                        scrambledArray[currentIndex] = originalText[currentIndex];
+                        element.textContent = scrambledArray.join("");
+                        currentIndex++;
+                        setTimeout(restoreLetter, duration / originalText.length);
+                    }
+                }
+                innerScramble();
+            }
+        }
+        restoreLetter();
+    }
+
+    document.querySelectorAll(".scramble-text").forEach((element) => {
+        element.addEventListener("mouseenter", () => scrambleEffect(element));
+        element.addEventListener("mouseleave", () => restoreTextLetterByLetter(element));
+    });
+});

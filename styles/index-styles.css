@@ -793,6 +793,10 @@ body {
     padding: 0;
 } 
 
+.timeline-content li {
+    padding-bottom: 1rem;
+}
+
 .company-info {
     display: flex;
     align-items: center;
