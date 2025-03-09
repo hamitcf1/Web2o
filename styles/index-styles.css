@@ -786,6 +786,13 @@ body {
     margin-bottom: 1rem;
 }
 
+.timeline-content ul {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    list-style: none;
+    padding: 0;
+} 
+
 .company-info {
     display: flex;
     align-items: center;
