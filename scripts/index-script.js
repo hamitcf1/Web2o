@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Animate course items when they come into view
-    const courseItems = document.querySelectorAll('.courses li');
+    const courseItems = document.querySelectorAll('.courses li, .course-item');
     const courseObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -222,15 +222,31 @@ techStack.addEventListener("mousemove", drag);
 // Start Auto-Scroll on Load
 startAutoScroll();
 
+// Animate course items
+function animateCourses() {
+    const courseItems = document.querySelectorAll('.courses li, .course-item');
+    courseItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('animate');
+        }, 100 * index);
+    });
+}
 
-document.querySelector(".dropbtn").addEventListener("click", function () {
-    document.querySelector(".dropdown-content").classList.toggle("show");
+// Call animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    animateHero();
+    animateAbout();
+    animateTimeline();
+    animateProjects();
+    animateCourses();
+    animateReviews();
+    animateContact();
 });
 
 document.querySelector(".dropbtn").addEventListener("click", function () {
     document.querySelector(".dropdown-content").classList.toggle("show");
 });
 
-
-
-
+document.querySelector(".dropbtn").addEventListener("click", function () {
+    document.querySelector(".dropdown-content").classList.toggle("show");
+});

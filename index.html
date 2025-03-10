@@ -284,43 +284,37 @@
 		-->
 </section>
 <section id="experience" class="section">
-		<h2 class="animate fade-in-up" data-translate="experience">Experience</h2>
-		<div class="timeline">
-				<div class="timeline-item animate fade-in-left delay-1">
-						<div class="timeline-content">
-								<h3 data-translate="qa_automation_engineer">QA Automation Engineer</h3>
-								<div class="company-info">
-										<i class="fas fa-building company-icon"></i>
-										<p class="company scramble-text" data-text="Pegasus Yazılım">Pegasus Yazılım</p>
-								</div>
-								<p class="period">2024 - Present</p>
-								<p class="description">
-								<ul>
-										<li class="description-item" data-translate="qae_di1">• Completed automated test frameworks using Selenium, and JavaScript</li>
-										<li class="description-item" data-translate="qae_di2">• Executed API tests using Postman to validate backend functionality.</li>
-										<li class="description-item" data-translate="qae_di3">• Collaborated with development teams to implement best practices for software quality.</li>
-								</ul>
-								</p>
-						</div>
-				</div>
-				<div class="timeline-item animate fade-in-left delay-2">
-						<div class="timeline-content">
-								<h3 data-translate="qa_engineer">Full Stack Developer</h3>
-								<div class="company-info">
-										<i class="fas fa-building company-icon"></i>
-										<p class="company scramble-text" data-text="Lake Place Design">Lake Place Design</p>
-								</div>
-								<p class="period">2023 - 2024</p>
-								<p class="description"><ul>
-										<li class="description-item" data-translate="qae_di4">• Conducted manual and automated testing to ensure the reliability of web application.</li>
-										<li class="description-item" data-translate="qae_di5"> • Executed test plans, test cases, and regression testing scenarios.</li>
-										<li class="description-item" data-translate="qae_di6">• Reported and tracked defects using Linear and worked closely with developers.</li>
+    <h2 class="animate fade-in-up" data-translate="experience">Experience</h2>
+    <div class="experience-grid">
+        <div class="experience-card animate fade-in-up delay-1">
+            <div class="experience-header">
+                <i class="fas fa-briefcase"></i>
+                <h3>QA Automation Engineer</h3>
+                <p class="company scramble-text" data-text="Pegasus Yazılım">Pegasus Yazılım</p>
+                <p class="date">2023 - Present</p>
+            </div>
+            <ul class="experience-details">
+                <li>Completed automated test frameworks using Selenium, and JavaScript</li>
+                <li>Executed API tests using Postman to validate backend functionality.</li>
+                <li>Collaborated with development teams to implement best practices for software quality.</li>
+            </ul>
+        </div>
 
-								</ul>
-								</p>
-						</div>
-				</div>
-		</div>
+        <div class="experience-card animate fade-in-up delay-2">
+            <div class="experience-header">
+                <i class="fas fa-laptop-code"></i>
+                <h3>QA Engineer</h3>
+                <p class="company scramble-text" data-text="Lake Place Design">Lake Place Design</p>
+                <p class="date">2019 - 2022</p>
+								<p class="location"><i class="fas fa-map-marker-alt"></i>Houston, TX</p>
+            </div>
+            <ul class="experience-details">
+                <li>Conducted manual and automated testing to ensure the reliability of web application.</li>
+                <li>Executed test plans, test cases, and regression testing scenarios.</li>
+                <li>Reported and tracked defects using Linear and worked closely with developers.</li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 <section id="education" class="section">
@@ -334,37 +328,37 @@
 				<div class="courses">
 						<h4 data-translate="courses">Courses, Skills and certificates:</h4>
 						<ul>
-								<li class="course-item">
-										<i id="intro_to_programming" class="fas fa-code course-icon"></i>
-										<span data-translate="intro_to_programming">Introduction to Programming</span>
+								<li class="course-item" data-course-id="intro_programming">
+										<i class="fas fa-code course-icon"></i>
+										<span data-translate="introduction_to_programming">Introduction to Programming</span>
 								</li>
-								<li>
-										<i id="data_structures" class="fas fa-diagram-project course-icon"></i>
-										<span data-translate="data_structures">Data Structures and Algorithms</span>
+								<li class="course-item" data-course-id="software_engineering">
+										<i class="fas fa-cogs course-icon"></i>
+										<span data-translate="software_engineering">Software Engineering</span>
 								</li>
-								<li>
+								<li class="course-item" data-course-id="manual_testing">
+										<i class="fas fa-clipboard-check course-icon"></i>
+										<span data-translate="manual_testing">Manual Testing</span>
+								</li>
+								<li class="course-item" data-course-id="test_automation">
+										<i class="fas fa-robot course-icon"></i>
+										<span data-translate="test_automation">Test Automation</span>
+								</li>
+								<li class="course-item" data-course-id="data_structures">
+										<i class="fas fa-project-diagram course-icon"></i>
+										<span data-translate="data_structures">Data Structures</span>
+								</li>
+								<li class="course-item" data-course-id="web_development">
 										<i class="fas fa-globe course-icon"></i>
 										<span data-translate="web_development">Web Development</span>
 								</li>
-								<li>
+								<li class="course-item" data-course-id="api_testing">
 										<i class="fas fa-laptop-code course-icon"></i>
-										<span data-translate="software_development">Software Development</span>
+										<span data-translate="api_testing">API Testing</span>
 								</li>
-								<li>
+								<li class="course-item" data-course-id="quality_assurance">
 										<i class="fas fa-check-circle course-icon"></i>
 										<span data-translate="quality_assurance">Quality Assurance</span>
-								</li>
-								<li>
-										<i  class="fas fa-robot course-icon"></i>
-										<span data-translate="test_automation">Test Automation</span>
-								</li>
-								<li>
-										<i class="fas fa-certificate course-icon"></i>
-										<span data-translate="software_engineering">Software Engineering</span>
-								</li>
-								<li>
-										<i class="fas fa-bug course-icon"></i>
-										<span data-translate="manual_testing">Manual Testing</span>
 								</li>
 						</ul>
 				</div>
@@ -550,28 +544,17 @@
 
 <footer class="footer">
 		<div class="footer-content">
-				<p data-translate="copyright">©️ 2025 HamitCF. All rights reserved.</p>
-				<p data-translate="made_with">Made with 💖 of Karina.</p>
+				<p data-translate="copyright"> 2025 HamitCF. All rights reserved.</p>
+				<p data-translate="made_with">Made with of Karina.</p>
 		</div>
 </footer>
 <script src="/scripts/theme-toggle.js" defer></script>
 <script src="/scripts/index-script.js"></script>
 <script src="/scripts/modal.js"></script>
 <script src="/scripts/animations.js"></script>
-<script>
-		document.querySelectorAll('.course-item').forEach(item => {
-				item.addEventListener('mouseenter', () => {
-						document.body.style.filter = 'blur(5px)';
-				});
-		
-				item.addEventListener('mouseleave', () => {
-				document.body.style.filter = 'none';
-		});
-});
-</script>
-<!--<script src="/scripts/translations.js" defer></script>
-<script src="/scripts/language-selector.js"></script>-->
-
+<script src="/scripts/nested-popups.js"></script>
+<script src="/scripts/translations.js" defer></script>
+<script src="/scripts/language-selector.js"></script>
 		
 </body>
 </html>
