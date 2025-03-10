@@ -3,8 +3,10 @@
     --text: #ffffff;
     --secondary-text: #eeeeee;
     --accent: #007AFF;
+    --box-shadow: 0 4px 15px #007bffb6;
+    --box-shadow-idle: 0 4px 15px #007bff40;
     --card-bg: #1c1c1e;
-    --nav-bg: rgba(0, 0, 0, 0.068);
+    --nav-bg: rgba(255, 255, 255, 0);
     --course-bg: #2c2c2e;
     --nav-text: #ffffff;
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -14,9 +16,9 @@
     --background: #ffffff;
     --text: #000000;
     --secondary-text: #666666;
-    --accent: #007AFF;
+    --accent: #004187;
+    --box-shadow: 0 4px 15px #004187;
     --card-bg: #f5f5f7;
-    --nav-bg: rgba(255, 255, 255, 0.014);
     --course-bg: #f0f0f3;
     --nav-text: #000000;
 }
@@ -42,7 +44,7 @@ body {
     top: 0;
     width: 100%;
     padding: 1rem 2rem;
-    background: var(--nav-bg);
+    background: none;
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
@@ -144,20 +146,19 @@ body {
 .nav-links a:hover {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 .nav-links a:active {
     transform: scale(0.98);
-    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 .nav-links a.active {
     border-color: var(--accent);
     background-color: rgba(0, 122, 255, 0.2);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
-}
+    box-shadow: var(--box-shadow);}
 
 .nav-links a.active:hover {
     transform: scale(1.05);
@@ -383,8 +384,7 @@ body {
 
 .cta-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
-}
+    box-shadow: var(--box-shadow);}
 
 .cta-button:active {
     transform: scale(1);
@@ -417,7 +417,7 @@ body {
 .project-card {
     border-radius: 1.5rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-idle);
     position: relative;
     z-index: 1;
     display: flex;
@@ -431,13 +431,11 @@ body {
 .project-card:hover {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
-}
+    box-shadow: var(--box-shadow);}
 
 .project-card:active {
     transform: scale(0.98);
-    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
-}
+    box-shadow: var(--box-shadow);}
 
 .project-content {
     background: var(--card-bg);
@@ -521,8 +519,7 @@ body {
     background: var(--accent);
     color: white;
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
-}
+    box-shadow: var(--box-shadow);}
 
 .project-link.disabled {
     opacity: 0.6;
@@ -730,7 +727,7 @@ body {
     background: var(--card-bg);
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-idle);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -809,7 +806,7 @@ body {
     background: var(--card-bg);
     padding: 2.5rem;
     border-radius: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-idle);
     transition: all 0.3s ease;
     border: 2px solid transparent;
     transform: scale(1);
@@ -896,10 +893,10 @@ body {
 
 .courses li:hover,
 .course-item:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: var(--card-bg);
     border-color: var(--accent);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow);
     z-index: 10;
 }
 
@@ -931,12 +928,12 @@ body {
 .education-content:hover {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 .education-content:active {
     transform: scale(0.98);
-    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 /* Reviews styles */
@@ -953,7 +950,7 @@ body {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-idle);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -1167,7 +1164,7 @@ html {
     position: relative;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow-idle);
 }
 
 .modal-close {
@@ -1212,7 +1209,7 @@ html {
     border: 1px solid transparent;
     border-color: var(--accent);
     background: rgba(53, 51, 51, 0.5);
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 .contact-link:hover i {
@@ -1263,6 +1260,10 @@ html {
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.my-name {
+    color: var(--accent);
 }
 
 .footer-links {
@@ -1362,35 +1363,35 @@ html {
 .timeline-item:hover .timeline-content {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 /* Education content hover */
 .education-content:hover {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 /* Project card hover */
 .project-card:hover {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 /* Review card hover */
 .review-card:hover {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 /* Course item hover */
 .courses li:hover {
     border-color: var(--accent);
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 /* Dark theme hover effects */
@@ -1414,18 +1415,18 @@ html {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+    box-shadow: var(--box-shadow);
 }
 
 .switch-button:hover {
     background-color: #005ecb;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+    box-shadow: var(--box-shadow);
 }
 
 .switch-button:active {
     transform: translateY(1px);
-    box-shadow: 0 2px 10px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 /* Back to Portfolio Button Styling */
@@ -1446,12 +1447,12 @@ html {
     background-color: var(--accent);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+    box-shadow: var(--box-shadow);
 }
 
 .back-to-portfolio:active {
     transform: translateY(1px);
-    box-shadow: 0 2px 10px rgba(0, 122, 255, 0.2);
+    box-shadow: var(--box-shadow);
 }
 
 /* Course item popup styles */
@@ -1474,7 +1475,7 @@ html {
     padding: 1rem;
     width: max-content;
     min-width: 200px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow);
     opacity: 0;
     visibility: hidden;
     transform: translateX(10px);
@@ -1516,7 +1517,7 @@ html {
 }
 
 .course-popup li:hover {
-    background-color: var(--accent);
+    background-color: var(--card-bg);
     transform: scale(1.05);
 }
 
@@ -1596,7 +1597,7 @@ html {
     padding: 1rem;
     width: max-content;
     min-width: 180px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow);
     opacity: 0;
     visibility: hidden;
     transform: translateX(10px);
@@ -1638,7 +1639,8 @@ html {
 }
 
 .nested-popup li:hover {
-    background-color: var(--accent);
+    background-color: var(--card-bg);
+    border-color: var(--accent);
     transform: scale(1.05);
 }
 
@@ -1745,13 +1747,14 @@ html {
     background: var(--card-bg);
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .experience-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent);
+    box-shadow: var(--box-shadow);
 }
 
 .experience-header {
@@ -1820,7 +1823,7 @@ html {
     background: var(--card-bg);
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid transparent;
     position: relative;
@@ -1836,7 +1839,7 @@ html {
     height: 100%;
     background: linear-gradient(90deg, 
         transparent,
-        rgba(0, 122, 255, 0.2),
+        var(--accent),
         transparent
     );
     transform: skewX(-25deg);
@@ -1858,14 +1861,6 @@ html {
     display: none;
 }
 
-@keyframes shine {
-    display: none;
-}
-
-@keyframes sweep {
-    display: none;
-}
-
 .review-card,
 .experience-card {
     position: relative;
@@ -1881,7 +1876,7 @@ html {
     height: 100%;
     background: linear-gradient(90deg, 
         transparent 0%,
-        rgba(0, 122, 255, 0.4) 50%,
+        var(--accent) 50%,
         transparent 100%
     );
     transform: skewX(-25deg);

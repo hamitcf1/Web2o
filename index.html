@@ -74,6 +74,7 @@
 		</div>
 </nav>
 
+<div class="main-content">
 <section class="hero" id="hero">
 		<div class="hero-content animate fade-in-left">
 				<h1>Senior QA Engineer</h1>
@@ -133,6 +134,7 @@
 								</div>
 						</div>
 				</div>
+				
 				<div class="project-card animate scale-up delay-3">
 						<div class="project-image debt-tracker-img"></div>
 						<div class="project-content">
@@ -216,73 +218,9 @@
 						</div>
 				</div>
 				<!-- Reserved for upcoming projects?!-->
-				<!--
-				<div class="project-card animate scale-up delay-1">
-						<div class="project-image weather-img"></div>
-						<div class="project-content">
-								<div class="project-header">
-										<div class="project-title">
-												<i class="fas fa-cloud-sun project-icon"></i>
-												<h3 data-translate="weather_title">Dynamic Weather App</h3>
-										</div>
-								</div>
-								<p data-translate="weather_desc">Modern weather application with dynamic backgrounds, real-time updates, and 3-day forecast. Features beautiful animations and time-based themes.</p>
-								<div class="project-links">
-										<a href="weather-app/index.html" class="project-link live-demo">
-												<i class="fas fa-play"></i>
-												<span data-translate="live_demo">Live Demo</span>
-										</a>
-										<a href="https://github.com/hamitcf1/Web2o/tree/main/weather-app" class="project-link github" target="_blank">
-												<i class="fab fa-github"></i>
-												<span>GitHub</span>
-										</a>
-								</div>
-						</div>
-				<div class="project-card animate scale-up delay-8">
-						<div class="project-image upcoming-img"></div>
-						<div class="project-content">
-								<div class="project-header">
-										<div class="project-title">
-												<i class="fas fa-rocket project-icon"></i>
-												<h3 data-translate="upcoming_project">Upcoming Project 3</h3>
-										</div>
-								</div>
-								<p data-translate="upcoming_desc">A groundbreaking project that will push the boundaries of what's possible!</p>
-								<div class="project-links">
-										<span class="project-link disabled">
-												<i class="fas fa-clock"></i> <span data-translate="coming_soon">Coming Soon</span>
-										</span>
-										<span class="project-link disabled">
-												<i class="fab fa-github"></i> <span data-translate="coming_soon">Coming Soon</span>
-										</span>
-								</div>
-						</div>
-				</div>
-
-				
-		</div>
-		<div class="project-card animate scale-up delay-5">
-						<div class="project-image calculator-img"></div>
-						<div class="project-content">
-								<div class="project-header">
-										<div class="project-title">
-												<i class="fas fa-square-root-variable project-icon"></i>
-												<h3 data-translate="calculator_title">Web Calculator</h3>
-										</div>
-								</div>
-								<p data-translate="calculator_desc">A sleek calculator app with basic arithmetic operations and keyboard support</p>
-								<div class="project-links">
-										<a href="calculator/index.html" class="project-link">
-												<i class="fas fa-play"></i> <span data-translate="live_demo">Live Demo</span>
-										</a>
-										<a href="https://github.com/hamitcf1/calculator" class="project-link">
-												<i class="fab fa-github"></i> <span data-translate="github">GitHub</span>
-										</a>
-								</div>
-						</div>
-				</div>
-		-->
+			</div>
 </section>
+
 <section id="experience" class="section">
     <h2 class="animate fade-in-up" data-translate="experience">Experience</h2>
     <div class="experience-grid">
@@ -293,11 +231,12 @@
                 <h3>QA Automation Engineer</h3>
                 <p class="company scramble-text" data-text="Pegasus Yazılım">Pegasus Yazılım</p>
                 <p class="date">2023 - Present</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i>Antalya, Turkey</p>
             </div>
             <ul class="experience-details">
-                <li>Completed automated test frameworks using Selenium, and JavaScript</li>
-                <li>Executed API tests using Postman to validate backend functionality.</li>
-                <li>Collaborated with development teams to implement best practices for software quality.</li>
+                <li data-translate="experience_details_li1">Completed automated test frameworks using Selenium, and JavaScript.</li>
+                <li data-translate="experience_details_li2">Executed API tests using Postman to validate backend functionality.</li>
+                <li data-translate="experience_details_li3">Collaborated with development teams to implement best practices for software quality.</li>
             </ul>
         </div>
 
@@ -311,11 +250,29 @@
 								<p class="location"><i class="fas fa-map-marker-alt"></i>Houston, TX</p>
             </div>
             <ul class="experience-details">
-                <li>Conducted manual and automated testing to ensure the reliability of web application.</li>
-                <li>Executed test plans, test cases, and regression testing scenarios.</li>
-                <li>Reported and tracked defects using Linear and worked closely with developers.</li>
+                <li data-translate="experience_details_li4">Conducted manual and automated testing to ensure the reliability of web application.</li>
+                <li data-translate="experience_details_li5">Executed test plans, test cases, and regression testing scenarios.</li>
+                <li data-translate="experience_details_li6">Reported and tracked defects using Linear and worked closely with developers.</li>
             </ul>
         </div>
+
+				<div class="experience-card animate fade-in-up delay-3">
+					<div class="card-shine"></div>		
+					<div class="experience-header">
+							<i class="fas fa-graduation-cap"></i>
+							<h3>Junior QA</h3>
+							<p class="company scramble-text" data-text="Krom Yazılım">Krom Yazılım</p>
+							<p class="date">2018 - 2019</p>
+							<p class="location"><i class="fas fa-map-marker-alt"></i>Konya, Turkey</p>
+						</div>
+						<ul class="experience-details">
+							<li data-translate="experience_details_li7">Learned and practiced manual and automated testing.</li>
+							<li data-translate="experience_details_li8">Learn and practiced test case writing.</li>
+							<li data-translate="experience_details_li9">Learn and practiced test case execution.</li>
+						</ul>
+				</div>
+
+				
     </div>
 </section>
 
@@ -555,8 +512,9 @@
 
 <footer class="footer">
 		<div class="footer-content">
-				<p data-translate="copyright"> 2025 HamitCF. All rights reserved.</p>
-				<p data-translate="made_with">Made with of Karina.</p>
+				<p data-translate="made_with">Made with of Karina by</p>
+				<p class="my-name" data-translate="my_name">Hamit Can FINDIK</p>
+				<p data-translate="copyright"> Copyright © 2025. All rights reserved..</p>
 		</div>
 </footer>
 <script src="/scripts/theme-toggle.js" defer></script>
@@ -567,5 +525,6 @@
 <script src="/scripts/translations.js" defer></script>
 <script src="/scripts/language-selector.js"></script>
 		
+</div>
 </body>
 </html>

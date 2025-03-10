@@ -8,6 +8,7 @@ const courseData = {
     // Introduction to Programming course
     "intro_programming": {
         title: "Programming Languages",
+        translateKey: "programming_languages_title",
         items: [
             {
                 icon: "fab fa-python",
@@ -69,6 +70,7 @@ const courseData = {
     // Test Automation course
     "test_automation": {
         title: "Test Automation Tools",
+        translateKey: "test_automation_title",
         items: [
             {
                 icon: "fas fa-vial",
@@ -113,6 +115,7 @@ const courseData = {
     // Software Engineering course
     "software_engineering": {
         title: "Software Engineering Topics",
+        translateKey: "software_engineering_title",
         items: [
             {
                 icon: "fas fa-sitemap",
@@ -135,6 +138,7 @@ const courseData = {
     // Manual Testing course
     "manual_testing": {
         title: "Manual Testing Types",
+        translateKey: "manual_testing_title",
         items: [
             {
                 icon: "fas fa-check-square",
@@ -157,6 +161,7 @@ const courseData = {
     // Data Structures course
     "data_structures": {
         title: "Data Structure Topics",
+        translateKey: "data_structures_title",
         items: [
             {
                 icon: "fas fa-list",
@@ -179,6 +184,7 @@ const courseData = {
     // Web Development course
     "web_development": {
         title: "Web Technologies",
+        translateKey: "web_development_title",
         items: [
             {
                 icon: "fab fa-html5",
@@ -201,6 +207,7 @@ const courseData = {
     // Software Development course
     "api_testing": {
         title: "API Testing",
+        translateKey: "api_testing_title",
         items: [
             {
                 icon: "fas fa-server",
@@ -218,6 +225,7 @@ const courseData = {
     // Quality Assurance course
     "quality_assurance": {
         title: "QA Processes",
+        translateKey: "quality_assurance_title",
         items: [
             {
                 icon: "fas fa-clipboard-list",

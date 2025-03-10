@@ -175,9 +175,6 @@ let autoScrollSpeed = 1; // Adjust speed
 let autoScroll;
 let isAutoScrolling = true; // Track auto-scroll state
 
-// Duplicate logos for infinite effect
-techStack.innerHTML += techStack.innerHTML;
-
 function startDragging(e) {
     isDragging = true;
     isAutoScrolling = false; // Stop auto-scroll
