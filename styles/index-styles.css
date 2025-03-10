@@ -732,31 +732,13 @@ body {
     padding: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid transparent;
     position: relative;
     overflow: hidden;
+    border: 2px solid transparent;
 }
 
 .experience-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(0, 122, 255, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.experience-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: var(--accent);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
-}
-
-.experience-card:hover::before {
-    transform: translateX(100%);
+    display: none;
 }
 
 .experience-header {
@@ -773,6 +755,7 @@ body {
 
 .experience-card:hover .experience-header i {
     transform: scale(1.1) rotate(10deg);
+    color: var(--accent);
 }
 
 .experience-header h3 {
@@ -961,13 +944,16 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .review-card {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -975,41 +961,41 @@ body {
     flex-direction: column;
     min-height: 300px;
     border: 2px solid transparent;
-    transform: scale(1);
 }
 
-.review-card:hover {
-    border-color: var(--accent);
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
-}
-
-.review-card:active {
-    transform: scale(0.98);
-    box-shadow: 0 5px 10px rgba(0, 122, 255, 0.1);
+.review-card::before {
+    display: none;
 }
 
 .review-icon {
     color: var(--accent);
-    font-size: 1.5rem;
+    font-size: 2rem;
     opacity: 0.3;
     margin-bottom: 1rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
 }
 
 .review-card:hover .review-icon {
-    opacity: 0.8;
-    transform: rotate(-10deg);
+    opacity: 1;
+    transform: scale(1.1) rotate(-10deg);
 }
 
 .review-text {
+    color: var(--secondary-text);
     font-size: 1.1rem;
-    color: var(--text);
     margin-bottom: 1.5rem;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-family);
     position: relative;
     z-index: 1;
     flex-grow: 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    line-height: 1.6;
+}
+
+.review-card:hover .review-text {
+    color: var(--text);
 }
 
 .reviewer {
@@ -1018,7 +1004,10 @@ body {
     gap: 1rem;
     margin-top: auto;
     padding-top: 1rem;
-    border-top: 0.5px solid var(--secondary-text);
+    border-top: 1px solid rgba(0, 122, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
 }
 
 .reviewer-avatar {
@@ -1030,7 +1019,7 @@ body {
 }
 
 .review-card:hover .reviewer-avatar {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(10deg);
     opacity: 1;
 }
 
@@ -1040,12 +1029,18 @@ body {
 }
 
 .reviewer-name {
-    color: var(--accent);
+    color: var(--secondary-text);
     font-weight: 500;
     margin-bottom: 0.3rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.review-card:hover .reviewer-name {
+    color: var(--accent);
+    transform: translateX(5px);
 }
 
 .reviewer-title {
@@ -1054,9 +1049,12 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
+.review-card:hover .reviewer-title {
+    transform: translateX(5px);
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -1098,44 +1096,45 @@ html {
 
 
 /* Add subtle gradient border on hover */
-.project-card::before,
-.timeline-content::before,
-.education-content::before,
-.review-card::before {
+.card-shine {
     content: '';
     position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.5),
-        rgba(0, 122, 255, 0.5)
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(0, 122, 255, 0.4) 50%,
+        transparent 100%
     );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-                 linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
+    transform: skewX(-25deg);
+    transition: all 0.7s ease-in-out;
+    z-index: 1;
     pointer-events: none;
+    opacity: 0;
 }
 
-.project-card:hover::before,
-.timeline-content:hover::before,
-.education-content:hover::before,
-.review-card:hover::before {
+.review-card:hover .card-shine,
+.experience-card:hover .card-shine {
+    left: 150%;
     opacity: 1;
+}
+
+.project-card:hover .card-shine,
+.timeline-content:hover .card-shine,
+.education-content:hover .card-shine,
+.courses li:hover .card-shine {
+    left: 150%;
+    transition: left 0.7s ease-in-out;
 }
 
 /* Add relative positioning for gradient border */
 .project-card,
 .timeline-content,
 .education-content,
-.review-card {
+.review-card,
+.courses li {
     position: relative;
 }
 
@@ -1832,49 +1831,68 @@ html {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: -100%;
+    width: 50%;
     height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(0, 122, 255, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.experience-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: var(--accent);
-    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(0, 122, 255, 0.2),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: all 0.7s ease-in-out;
+    z-index: 1;
 }
 
 .experience-card:hover::before {
-    transform: translateX(100%);
+    left: 150%;
 }
 
-.experience-card:hover .experience-header i {
-    transform: scale(1.1) rotate(10deg);
-    color: var(--accent);
+.review-card::before,
+.experience-card::before {
+    display: none;
 }
 
-.experience-header i {
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.review-card:hover::before,
+.experience-card:hover::before {
+    display: none;
 }
 
-.experience-card:hover .experience-header .company {
-    color: var(--accent);
-    transform: scale(1.05);
+@keyframes shine {
+    display: none;
 }
 
-.experience-header .company {
-    font-size: 1.1rem;
-    color: var(--secondary-text);
-    margin-bottom: 0.3rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+@keyframes sweep {
+    display: none;
 }
 
-.experience-card:hover .experience-details li {
-    color: var(--text);
-    transform: translateX(5px);
+.review-card,
+.experience-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-shine {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(0, 122, 255, 0.4) 50%,
+        transparent 100%
+    );
+    transform: skewX(-25deg);
+    transition: all 0.7s ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.review-card:hover .card-shine,
+.experience-card:hover .card-shine {
+    left: 150%;
+    opacity: 1;
 }
