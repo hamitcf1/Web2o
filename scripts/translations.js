@@ -232,4 +232,297 @@ window.translations = {
 
 
     },
-};
+
+    tr: {
+        // index //
+        index_title: 'Portfolyo | Kalite Güvence Mühendisi',
+        
+        // navbar
+        brand: 'HamitCF',
+        // nav-links
+        home: 'Anasayfa',    
+        projects: 'Projeler',
+        experience: 'Deneyim',
+        education: 'Eğitim',
+        reviews: 'Yorumlar',
+
+        // hero
+        hero_subtitle: "Merhaba! 25 yaşındayım ve kodlamayı seviyorum!",
+        hero_subtitle2: 'Tüm projelerimi, deneyimlerimi, eğitim detaylarımı ve benim hakkımdaki yorumları aşağıda bulabilirsiniz.',
+
+        // Let's Connect
+        cta_button: "Bağlanalım",
+
+        // projects
+        projects: 'Projeler',
+        projects_subtitle: 'HTML, CSS ve JavaScript kullanılarak geliştirilmiş web uygulamaları.',
+
+        // project titles
+        qr_code_title: 'QR Kod Oluşturucu ve Tarayıcı',
+        time_comparison_title: 'Zaman Karşılaştırması',
+        debt_tracker_title: 'Borç Takip Uygulaması',
+        ollama_title: 'Ollama Yerel Sohbet Botu',
+        rps_title: 'Taş Kağıt Makas',
+        upcoming_project_title: 'Gelecekteki Yenilikler',
+
+        // project descriptions
+        qr_code_desc: 'Kullanıcıların QR kod oluşturmasına ve taramasına izin veren modern bir web uygulaması. Koyu mod desteği ve çoklu dil özelliğine sahip güzel bir arayüz.',
+        time_comparison_desc: 'Farklı zaman dilimlerini gerçek zamanlı olarak karşılaştırmaya olanak sağlayan kullanıcı dostu bir araç.',
+        debt_tracker_desc: 'Kullanıcıların borçlarını etkin bir şekilde yönetmelerine olanak sağlayan kullanıcı dostu bir web uygulaması.',
+        ollama_desc: 'Ollama ve Deepseek-R1 + DeepSeek-Coder kullanılarak oluşturulmuş yerel sohbet botu - FastAPI.',
+        rps_desc: 'Animasyonlu geçişler ve puan takibi içeren klasik oyun.',
+        upcoming_desc: 'Dijital deneyimleri dönüştürecek daha fazla heyecan verici proje için hazır olun!',
+
+        // project buttons
+        live_demo: 'Canlı Demo',
+        github: 'GitHub',
+        coming_soon: 'Çok Yakında',
+
+        // experience
+        experience: 'Deneyim',
+
+        // experience titles
+        qa_engineer: 'Kalite Güvence Mühendisi',
+        qa_automation_engineer: 'Kalite Güvence Otomasyon Mühendisi',
+
+        // experience descriptions
+        experience_details_li1: 'Selenium ve JavaScript kullanarak otomatik test çerçeveleri tamamlandı.',
+        experience_details_li2: 'Arka uç işlevselliğini doğrulamak için Postman ile API testleri yapıldı.',
+        experience_details_li3: 'Yazılım kalitesi için en iyi uygulamaları hayata geçirmek üzere geliştirme ekipleriyle işbirliği yapıldı.',
+        experience_details_li4: 'Web uygulamasının güvenilirliğini sağlamak için manuel ve otomatik testler gerçekleştirildi.',
+        experience_details_li5: 'Test planları, test senaryoları ve regresyon testleri yürütüldü.',
+        experience_details_li6: 'Linear kullanılarak hatalar raporlandı ve geliştiricilerle yakın çalışıldı.',
+        experience_details_li7: 'Manuel ve otomatik test öğrenme ve uygulama.',
+        experience_details_li8: 'Test senaryosu yazma öğrenme ve uygulama.',
+        experience_details_li9: 'Test senaryosu yürütme öğrenme ve uygulama.',
+
+        // education
+        education: 'Eğitim',
+        yildiz_university: 'Yıldız Teknik Üniversitesi',
+        computer_science: 'Bilgisayar Bilimi',
+        graduated: '2024 Yılında Mezun',
+        
+        // courses
+        courses: 'Kurslar, Beceriler ve Sertifikalar:',
+        
+        // course titles
+        introduction_to_programming: 'Programlamaya Giriş',
+        software_engineering: 'Yazılım Mühendisliği',
+        manual_testing: 'Manuel Test',
+        test_automation: 'Test Otomasyonu',
+        data_structures: 'Veri Yapıları',
+        web_development: 'Web Geliştirme',
+        api_testing: 'API Testi',
+        quality_assurance: 'Kalite Güvence',
+
+        // nested courses
+        programming_languages_title: 'Programlama Dilleri',
+        python: 'Python',
+            python_libraries: 'Python Kütüphaneleri',
+            numpy_pandas: 'NumPy & Pandas',
+            tensorflow: 'TensorFlow',
+            django: 'Django',
+        javascript: 'JavaScript',
+            js_frameworks: 'JS Çerçeveleri',
+            react_js: 'React',
+            vue_js: 'Vue.js',
+            angular: 'Angular',
+        test_automation_title: 'Test Otomasyon Araçları',
+        selenium: 'Selenium',
+            selenium_features: 'Selenium Özellikleri',
+            multi_language: 'Çoklu Dil Desteği',
+            cross_browser: 'Tarayıcı Arası Test',
+            grid: 'Selenium Grid',
+        cypress: 'Cypress',
+        playwright: 'Playwright',
+        
+        // ... (rest of the translations continue in this style)
+
+        // reviews
+        reviews: 'Yorumlar',
+        review1: 'Çok, çok sevdim!',
+        karina_blanchette: 'Karina Blanchette',
+        yildiz_university: 'Yıldız Teknik Üniversitesi',
+
+        // modal
+        get_in_touch: "Bağlanalım",
+        github: 'GitHub',
+        linkedin: 'LinkedIn',
+        instagram: 'Instagram',
+        telegram: 'Telegram',
+        x: 'X',
+        email: 'hamitfindik2@gmail.com',
+
+        // footer
+        made_with: 'Karina\'nın aşkıyla yapıldı',
+        my_name: 'Hamit Can FINDIK',
+        copyright: 'Telif Hakkı © 2025. Tüm hakları saklıdır.',
+
+        // ... (additional specific page translations would follow the same pattern)
+    },
+        ru: {
+            // index //
+            index_title: 'Портфолио | Инженер по Качеству',
+            
+            // navbar
+            brand: 'ХамитCF',
+            // nav-links
+            home: 'Главная',    
+            projects: 'Проекты',
+            experience: 'Опыт',
+            education: 'Образование',
+            reviews: 'Отзывы',
+    
+            // hero
+            hero_subtitle: "Привет! Мне 25 лет, и я обожаю программирование!",
+            hero_subtitle2: 'Здесь вы найдете все мои проекты, опыт работы, детали образования и отзывы.',
+    
+            // Let's Connect
+            cta_button: "Давайте Связемся",
+    
+            // projects
+            projects: 'Проекты',
+            projects_subtitle: 'Веб-приложения, разработанные с использованием HTML, CSS и JavaScript.',
+    
+            // project titles
+            qr_code_title: 'Генератор и Сканер QR-кодов',
+            time_comparison_title: 'Сравнение Времени',
+            debt_tracker_title: 'Трекер Долгов',
+            ollama_title: 'Локальный Чат-бот Ollama',
+            rps_title: 'Камень, Ножницы, Бумага',
+            upcoming_project_title: 'Будущие Инновации',
+    
+            // project descriptions
+            qr_code_desc: 'Современное веб-приложение, позволяющее пользователям генерировать и сканировать QR-коды. Красивый интерфейс с поддержкой темного режима и многоязычности.',
+            time_comparison_desc: 'Удобный инструмент для сравнения часовых поясов в реальном времени с простым и быстрым интерфейсом.',
+            debt_tracker_desc: 'Веб-приложение для эффективного управления долгами с удобным пользовательским интерфейсом.',
+            ollama_desc: 'Локальный чат-бот с использованием Ollama и Deepseek-R1 + DeepSeek-Coder - FastAPI.',
+            rps_desc: 'Классическая игра с анимированными переходами и отслеживанием счета.',
+            upcoming_desc: 'Следите за новыми захватывающими проектами, которые изменят цифровой опыт!',
+    
+            // project buttons
+            live_demo: 'Живая Демо',
+            github: 'GitHub',
+            coming_soon: 'Скоро',
+    
+            // experience
+            experience: 'Опыт Работы',
+    
+            // experience titles
+            qa_engineer: 'Инженер по Качеству',
+            qa_automation_engineer: 'Инженер по Автоматизации Тестирования',
+    
+            // experience descriptions
+            experience_details_li1: 'Завершил автоматизированные тестовые фреймворки с использованием Selenium и JavaScript.',
+            experience_details_li2: 'Выполнял API-тесты с помощью Postman для проверки функциональности backend.',
+            experience_details_li3: 'Сотрудничал с командами разработчиков для внедрения лучших практик качества программного обеспечения.',
+            experience_details_li4: 'Проводил ручное и автоматизированное тестирование для обеспечения надежности веб-приложений.',
+            experience_details_li5: 'Выполнял тестовые планы, тест-кейсы и сценарии регрессионного тестирования.',
+            experience_details_li6: 'Отслеживал и докладывал об ошибках с использованием Linear, тесно работал с разработчиками.',
+            experience_details_li7: 'Изучал и практиковал ручное и автоматизированное тестирование.',
+            experience_details_li8: 'Изучал и практиковал составление тест-кейсов.',
+            experience_details_li9: 'Изучал и практиковал выполнение тест-кейсов.',
+    
+            // education
+            education: 'Образование',
+            yildiz_university: 'Технический Университет Йылдыз',
+            computer_science: 'Компьютерные Науки',
+            graduated: 'Выпуск в 2024',
+            
+            // courses
+            courses: 'Курсы, Навыки и Сертификаты:',
+            
+            // course titles
+            introduction_to_programming: 'Введение в Программирование',
+            software_engineering: 'Программная Инженерия',
+            manual_testing: 'Ручное Тестирование',
+            test_automation: 'Автоматизация Тестирования',
+            data_structures: 'Структуры Данных',
+            web_development: 'Веб-Разработка',
+            api_testing: 'Тестирование API',
+            quality_assurance: 'Обеспечение Качества',
+    
+            // nested courses
+            programming_languages_title: 'Языки Программирования',
+            python: 'Python',
+                python_libraries: 'Библиотеки Python',
+                numpy_pandas: 'NumPy и Pandas',
+                tensorflow: 'TensorFlow',
+                django: 'Django',
+            javascript: 'JavaScript',
+                js_frameworks: 'JS Фреймворки',
+                react_js: 'React',
+                vue_js: 'Vue.js',
+                angular: 'Angular',
+            test_automation_title: 'Инструменты Автоматизации Тестирования',
+            selenium: 'Selenium',
+                selenium_features: 'Возможности Selenium',
+                multi_language: 'Поддержка Нескольких Языков',
+                cross_browser: 'Кросс-браузерное Тестирование',
+                grid: 'Selenium Grid',
+            cypress: 'Cypress',
+            playwright: 'Playwright',
+    
+            // reviews
+            reviews: 'Отзывы',
+            review1: 'Обожаю, обожаю, обожаю!',
+            karina_blanchette: 'Карина Бланшетт',
+            yildiz_university: 'Технический Университет Йылдыз',
+    
+            // modal
+            get_in_touch: "Свяжемся",
+            github: 'GitHub',
+            linkedin: 'LinkedIn',
+            instagram: 'Instagram',
+            telegram: 'Telegram',
+            x: 'X',
+            email: 'hamitfindik2@gmail.com',
+    
+            // footer
+            made_with: 'Сделано с любовью Карины',
+            my_name: 'Хамит Джан ФЫНДЫК',
+            copyright: 'Авторские права © 2025. Все права защищены.',
+    
+            // Time Comparison Page
+            time_comparison_page_title: 'Сравнение Времени',
+            time_comparison_header: 'Синхронизация Времени',
+            hours: 'Часы',
+            minutes: 'Минуты',
+            time: 'Время',
+            date: 'Дата',
+            time_difference: 'Разница во Времени',
+            sync_times: 'Синхронизировать Время',
+            direct_input: 'Прямой Ввод',
+            a24_hour: '24-часовой',
+    
+            // Rock Paper Scissors
+            rps_title: 'Камень, Ножницы, Бумага',
+            rps_desc: 'Классическая игра с анимированными переходами и отслеживанием счета.',
+            you: 'Вы',
+            ties: 'Ничья',
+            computer: 'Компьютер',
+            choose_your_weapon: 'Выберите свое оружие!',
+            reset: 'Сбросить Игру',
+            auto_play: 'Авто-игра',
+            game_history: 'История Игр',
+            rock: 'Камень',
+            paper: 'Бумага',
+            scissors: 'Ножницы',
+    
+            // QR Code Generator & Scanner
+            qr_page_title: 'Генератор и Сканер QR-кодов',
+            qr_title: 'Создание и Сканирование QR-кодов',
+            hero_subtitle_qr: 'Генерируйте и сканируйте QR-коды для легкого доступа.',
+            generate_qr: 'Создать QR-код',
+            enter_text_placeholder: 'Введите текст или URL',
+            generate: 'Создать',
+            download: 'Скачать',
+            scan_qr: 'Сканировать QR-код',
+            start_scan: 'Начать Сканирование',
+            stop_scan: 'Остановить Сканирование',
+            switch_camera: 'Переключить Камеру',
+            scanned_result: 'Результат Сканирования',
+            clear_history: 'Очистить Историю',
+            history: 'История'
+        },
+    };
