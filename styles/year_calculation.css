@@ -1,0 +1,40 @@
+.year_calculation_content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-content: center;
+}
+
+.year_card {
+    display: center;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--box-shadow-idle);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 2px solid transparent;
+  }
+
+.first_year,
+.second_year {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+  .first_year_input,
+  .second_year_input {
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5rem;
+    box-shadow: var(--box-shadow-idle);
+    background-color: var(--card-bg);
+    border: 2px solid transparent;
+    color: var(--text);
+  }

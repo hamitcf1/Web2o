@@ -580,70 +580,6 @@ body {
     opacity: 0.8;
 }
 
-.calculator-img {
-    background: linear-gradient(45deg, #1a1a1a, #333);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.calculator-img::after {
-    content: '\f1ec';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    font-size: 4rem;
-    color: #fff;
-    opacity: 0.8;
-}
-
-.weather-img {
-    background: linear-gradient(45deg, #1a1a1a, #333);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.weather-img::after {
-    content: '\f2c9';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    font-size: 4rem;
-    color: #fff;
-    opacity: 0.8;
-}
-
-.time-comparison-img {
-    background: linear-gradient(45deg, #1a1a1a, #333);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.time-comparison-img::after {
-    content: '\f017';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    font-size: 4rem;
-    color: #fff;
-    opacity: 0.8;
-}
-
-.debt-tracker-img {
-    background: linear-gradient(45deg, #1a1a1a, #333);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.debt-tracker-img::after {
-    content: '\f0e4';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    font-size: 4rem;
-    color: #fff;
-    opacity: 0.8;
-}
-
 .upcoming-img {
     background: linear-gradient(45deg, #1a1a1a, #333);
     display: flex;
@@ -660,22 +596,21 @@ body {
     opacity: 0.8;
 }
 
-.qr-code-img {
+.year_calculation-img {
     background: linear-gradient(45deg, #1a1a1a, #333);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.qr-code-img::after {
-    content: '\f029';
+.year_calculation-img::after {
+    content: '\f073';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     font-size: 4rem;
     color: #fff;
     opacity: 0.8;
 }
-
 
 
 @media (max-width: 768px) {

@@ -24,17 +24,11 @@ window.translations = {
             projects_subtitle:'Solely used HTML, CSS, and JavaScript to develop web apps.',
 
                 //project titles
-                qr_code_title:'QR Code Generator & Scanner',
-                time_comparison_title:'Time Comparison',
-                debt_tracker_title:'Debt Tracker',
                 ollama_title:'Ollama Local Chatbot',
                 rps_title:'Rock Paper Scissors',
                 upcoming_project_title:'Future Innovations',
 
                 //project descriptions
-                qr_code_desc:'A modern web application that allows users to generate and scan QR codes. Features a beautiful UI with dark mode support and multi-language functionality.',
-                time_comparison_desc:'A tool that allows users to compare different time zones in real time. It provides a user-friendly interface with a simple interface and fast performance.',
-                debt_tracker_desc:'A web application that allows users to manage their debts effectively. It provides a user-friendly interface for adding, tracking, and categorizing debts.',
                 ollama_desc:'Local chatbot using Ollama and Deepseek-R1 + DeepSeek-Coder - FastAPI.',
                 rps_desc:'Classic game with animated transitions and score tracking.',
                 upcoming_desc:'Stay tuned for more exciting projects that will transform digital experiences!',
@@ -185,18 +179,6 @@ window.translations = {
                 my_name:'Hamit Can FINDIK',
                 copyright:'Copyright © 2025. All rights reserved.',
 
-            //time comparison page
-                time_comparison_page_title:'Time Comparison',
-                time_comparison_header:'Time Synchronization',
-                hours:'Hours',
-                minutes:'Minutes',
-                time:'Time',
-                date:'Date',
-                time_difference:'Time Difference',
-                sync_times:'Sync Times',
-                direct_input:'Direct Input',
-                a24_hour:'24-Hour',
-
             // Rock Paper Scissors 
                 rps_title:'Rock Paper Scissors',
                 rps_desc:'Manage your financial obligations and plan your path to becoming debt-free.',
@@ -214,22 +196,9 @@ window.translations = {
                 paper:"Paper",
                 scissors:"Scissors",
 
-            //QR Code Generator & Scanner
-            qr_page_title:'QR Code Generator & Scanner',
-            qr_title:'Create & Scan QR Codes',
-            hero_subtitle_qr:'Generate and scan QR codes for easy access.',
-            generate_qr:"Generate QR Code",
-            enter_text_placeholder:"Enter text or URL",
-            generate:"Generate",
-            download:"Download",
-            scan_qr:"Scan QR Code",
-            start_scan:"Start Scanner",
-            stop_scan:"Stop Scanner",
-            switch_camera:"Switch Camera",
-            scanned_result:"Scanned Result",
-            clear_history:"Clear History",
-            history:"History"
-
+                // Year Calculation
+                year_calculation_page_title:'Year Calculation',
+                
 
     },
         tr: {
@@ -257,17 +226,11 @@ window.translations = {
                 projects_subtitle:'Yalnızca HTML, CSS ve JavaScript kullanarak web uygulamaları geliştirdim.',
     
                     //proje başlıkları
-                    qr_code_title:'QR Kod Üretici & Tarayıcı',
-                    time_comparison_title:'Zaman Karşılaştırma',
-                    debt_tracker_title:'Borç Takipçisi',
                     ollama_title:'Ollama Yerel Sohbet Botu',
                     rps_title:'Taş Kağıt Makas',
                     upcoming_project_title:'Gelecek Yenilikler',
     
                     //proje açıklamaları
-                    qr_code_desc:'Kullanıcıların QR kodları oluşturmasına ve taramasına olanak tanıyan modern bir web uygulaması. Karanlık mod desteği ve çok dilli özellikler içeren şık bir arayüze sahiptir.',
-                    time_comparison_desc:'Farklı zaman dilimlerini gerçek zamanlı olarak karşılaştırmanıza olanak tanıyan bir araç. Basit ve hızlı bir arayüz sunar.',
-                    debt_tracker_desc:'Kullanıcıların borçlarını etkili bir şekilde yönetmelerini sağlayan bir web uygulaması. Borç ekleme, takip etme ve kategorize etme özelliklerine sahiptir.',
                     ollama_desc:'Ollama ve Deepseek-R1 + DeepSeek-Coder ile geliştirilen yerel sohbet botu - FastAPI tabanlı.',
                     rps_desc:'Animasyonlu geçişler ve skor takibi içeren klasik oyun.',
                     upcoming_desc:'Dijital deneyimleri dönüştürecek heyecan verici projeler için bizi takipte kalın!',
@@ -314,7 +277,7 @@ window.translations = {
                     quality_assurance:'Kalite Güvencesi',
     
                     //alt kurslar
-                    programming_languages_title:'Programlama Dilleri',
+                    sub_title_programming:'Programlama Dilleri',
                     python:'Python',
                         python_libraries:'Python Kütüphaneleri',
                         numpy_pandas:'NumPy & Pandas',
@@ -416,19 +379,6 @@ window.translations = {
                     made_with:'Karina sevgisiyle yapıldı, tarafından',
                     my_name:'Hamit Can FINDIK',
                     copyright:'Telif Hakkı © 2025. Tüm hakları saklıdır.',
-
-                                // Zaman Karşılaştırma Sayfası
-                time_comparison_page_title:'Zaman Karşılaştırma',
-                time_comparison_header:'Zaman Senkronizasyonu',
-                hours:'Saat',
-                minutes:'Dakika',
-                time:'Zaman',
-                date:'Tarih',
-                time_difference:'Zaman Farkı',
-                sync_times:'Zamanları Senkronize Et',
-                direct_input:'Doğrudan Giriş',
-                a24_hour:'24 Saatlik',
-
             // Taş Kağıt Makas
                 rps_title:'Taş Kağıt Makas',
                 rps_desc:'Mali yükümlülüklerinizi yönetin ve borçsuz bir geleceğe doğru yol haritanızı oluşturun.',
@@ -446,21 +396,6 @@ window.translations = {
                 paper:"Kağıt",
                 scissors:"Makas",
 
-            // QR Kod Oluşturucu ve Tarayıcı
-            qr_page_title:'QR Kod Oluşturucu ve Tarayıcı',
-            qr_title:'QR Kodları Oluştur ve Tara',
-            hero_subtitle_qr:'Kolay erişim için QR kodları oluşturun ve tarayın.',
-            generate_qr:"QR Kod Oluştur",
-            enter_text_placeholder:"Metin veya URL girin",
-            generate:"Oluştur",
-            download:"İndir",
-            scan_qr:"QR Kodu Tara",
-            start_scan:"Tarayıcıyı Başlat",
-            stop_scan:"Tarayıcıyı Durdur",
-            switch_camera:"Kamerayı Değiştir",
-            scanned_result:"Taranan Sonuç",
-            clear_history:"Geçmişi Temizle",
-            history:"Geçmiş"
     },
 
     ru: {
@@ -488,17 +423,11 @@ window.translations = {
             projects_subtitle:'Я разрабатываю веб-приложения, используя только HTML, CSS и JavaScript.',
 
                 //заголовки проектов
-                qr_code_title:'Генератор & Сканер QR-кодов',
-                time_comparison_title:'Сравнение времени',
-                debt_tracker_title:'Трекер долгов',
                 ollama_title:'Локальный чат-бот Ollama',
                 rps_title:'Камень, ножницы, бумага',
                 upcoming_project_title:'Предстоящие новинки',
 
                 //описания проектов
-                qr_code_desc:'Современное веб-приложение, позволяющее пользователям создавать и сканировать QR-коды. Имеет элегантный интерфейс с поддержкой тёмного режима и многоязычностью.',
-                time_comparison_desc:'Инструмент, позволяющий сравнивать разные часовые пояса в реальном времени. Обеспечивает простой и быстрый интерфейс.',
-                debt_tracker_desc:'Веб-приложение для эффективного управления долгами. Позволяет добавлять, отслеживать и классифицировать долги.',
                 ollama_desc:'Локальный чат-бот, разработанный с помощью Ollama и Deepseek-R1 + DeepSeek-Coder на основе FastAPI.',
                 rps_desc:'Классическая игра с анимационными переходами и системой подсчёта очков.',
                 upcoming_desc:'Следите за нами, чтобы не пропустить захватывающие проекты, которые изменят цифровой опыт!',
@@ -648,23 +577,11 @@ window.translations = {
                 my_name:'Хамит Джан ФЫНДЫК',
                 copyright:'Авторские права © 2025. Все права защищены.',
 
-                            // Страница сравнения времени
-                            time_comparison_page_title:'Сравнение времени',
-                            time_comparison_header:'Синхронизация времени',
-                            hours:'Часы',
-                            minutes:'Минуты',
-                            time:'Время',
-                            date:'Дата',
-                            time_difference:'Разница во времени',
-                            sync_times:'Синхронизировать время',
-                            direct_input:'Прямой ввод',
-                            a24_hour:'24-часовой формат',
-            
-                        // Камень Ножницы Бумага
-                            rps_title:'Камень, ножницы, бумага',
-                            rps_desc:'Управляйте своими финансовыми обязательствами и планируйте путь к освобождению от долгов.',
-                            
-                            // Кнопки игры "Камень, ножницы, бумага"
+                // Камень Ножницы Бумага
+                rps_title:'Камень, ножницы, бумага',
+                rps_desc:'Управляйте своими финансовыми обязательствами и планируйте путь к освобождению от долгов.',
+                
+                // Кнопки игры "Камень, ножницы, бумага"
                             rock_paper_scissors:'Камень, ножницы, бумага',
                             you:'вы',
                             ties:'ничья',
@@ -676,22 +593,6 @@ window.translations = {
                             rock:"Камень",
                             paper:"Бумага",
                             scissors:"Ножницы",
-            
-                        // Генератор и сканер QR-кодов
-                        qr_page_title:'Генератор и сканер QR-кодов',
-                        qr_title:'Создание и сканирование QR-кодов',
-                        hero_subtitle_qr:'Создавайте и сканируйте QR-коды для удобного доступа.',
-                        generate_qr:"Создать QR-код",
-                        enter_text_placeholder:"Введите текст или URL",
-                        generate:"Создать",
-                        download:"Скачать",
-                        scan_qr:"Сканировать QR-код",
-                        start_scan:"Запустить сканер",
-                        stop_scan:"Остановить сканер",
-                        switch_camera:"Переключить камеру",
-                        scanned_result:"Результат сканирования",
-                        clear_history:"Очистить историю",
-                        history:"История"
             },
 
 }

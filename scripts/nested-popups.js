@@ -8,7 +8,7 @@ const courseData = {
     // Introduction to Programming course
     "intro_programming": {
         title: "Programming Languages",
-        translateKey: "programming_languages_title",
+        translateKey: "sub_title_programming",
         items: [
             {
                 icon: "fab fa-python",
