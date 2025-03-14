@@ -13,7 +13,7 @@ class LanguageSelector {
         ];
         
         // Get saved language or default to 'en'
-        this.currentLang = localStorage.getItem('language') || 'en';
+        this.currentLang = localStorage.getItem('language') || 'tr';
         
         // Create audio element for language selection sound
         this.createAudioElement();
