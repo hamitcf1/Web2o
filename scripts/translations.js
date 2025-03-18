@@ -42,6 +42,7 @@ window.translations = {
                 experience:'Experience',
 
                 //experience titles
+                jr_frontend_developer:'Jr. Frontend Developer',
                 qa_engineer:'QA Engineer',
                 qa_automation_engineer:'QA Automation Engineer',
 
@@ -52,9 +53,12 @@ window.translations = {
                 experience_details_li4:'Conducted manual and automated testing to ensure the reliability of web application.',
                 experience_details_li5:'Executed test plans, test cases, and regression testing scenarios.',
                 experience_details_li6:'Reported and tracked defects using Linear and worked closely with developers.',
-                experience_details_li7:'Learned and practiced manual and automated testing.',
-                experience_details_li8:'Learn and practiced test case writing.',
-                experience_details_li9:'Learn and practiced test case execution.',
+                /**
+                 * Web development.
+                 */
+                experience_details_li7:'Web development.',
+                experience_details_li8:'Website management.',
+                experience_details_li9:'Introducted to programming - HTML, CSS, JavaScript.',
 
                 //education
                 education:'Education',
@@ -253,9 +257,9 @@ window.translations = {
                     experience_details_li4:'Web uygulamalarının güvenilirliğini sağlamak için manuel ve otomatik testler gerçekleştirdim.',
                     experience_details_li5:'Test planları, test senaryoları ve regresyon testleri yürüttüm.',
                     experience_details_li6:'Linear kullanarak hata raporlama ve takip işlemleri yaptım, geliştiricilerle yakın çalıştım.',
-                    experience_details_li7:'Manuel ve otomatik test süreçlerini öğrendim ve uyguladım.',
-                    experience_details_li8:'Test senaryosu yazımı üzerine çalıştım ve deneyim kazandım.',
-                    experience_details_li9:'Test senaryosu yürütme süreçlerini öğrendim ve uyguladım.',
+                    experience_details_li7:'Web geliştirme.',
+                    experience_details_li8:'Web sitesi yönetim.',
+                    experience_details_li9:'Programlamaya giriş - HTML, CSS, JavaScript.',
     
                     //eğitim
                     education:'Eğitim',
@@ -450,9 +454,9 @@ window.translations = {
                 experience_details_li4:'Проводил как ручное, так и автоматизированное тестирование для обеспечения надежности веб-приложений.',
                 experience_details_li5:'Разрабатывал тест-планы, тест-кейсы и выполнял регрессионное тестирование.',
                 experience_details_li6:'Использовал Linear для отслеживания багов и работал в тесном сотрудничестве с разработчиками.',
-                experience_details_li7:'Изучал и применял процессы ручного и автоматического тестирования.',
-                experience_details_li8:'Приобрел опыт в написании тест-кейсов.',
-                experience_details_li9:'Овладел процессами выполнения тест-кейсов.',
+                experience_details_li7:'Веб-разработка.',
+                experience_details_li8:'Веб-сайт управление.',
+                experience_details_li9:'Программирование ввод - HTML, CSS, JavaScript.',
 
                 //образование
                 education:'Образование',
