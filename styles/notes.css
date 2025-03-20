@@ -1,0 +1,579 @@
+/* Notes Page Specific Styles */
+
+/* Reset and base styles for fullscreen mode */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+body.fullscreen-notes {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--background);
+}
+
+/* Only override navbar position/transparency for fullscreen, not the general styling */
+.fullscreen-notes .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(var(--card-bg-rgb), 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+.fullscreen-content {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.fullscreen-map {
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    padding-top: 60px; /* To account for fixed navbar */
+    box-sizing: border-box;
+    position: relative;
+}
+
+.notes-canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.fullscreen-map .notes-canvas svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.notes-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+    background-color: rgba(var(--card-bg-rgb), 0.5);
+    padding: 10px;
+    border-radius: 25px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow-idle);
+}
+
+.control-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--box-shadow);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+.control-btn.active {
+    background-color: var(--accent);
+    color: var(--card-bg);
+}
+
+/* Node styling for Obsidian-like look */
+.notes-canvas svg {
+    background-color: var(--background);
+}
+
+.link {
+    stroke: rgba(var(--accent-rgb), 0.3);
+    stroke-width: 1px;
+}
+
+.link.strong {
+    stroke: rgba(var(--accent-rgb), 0.5);
+    stroke-width: 2px;
+}
+
+/* Obsidian-style node circles */
+.node circle {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.node:hover circle {
+    filter: brightness(1.2);
+    stroke-width: 3px;
+}
+
+/* Node labels */
+.node-label {
+    fill: var(--text);
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.node:hover .node-label {
+    opacity: 1;
+}
+
+/* For legacy compatibility */
+.note-node {
+    display: none; /* Hide the old styled nodes */
+}
+
+/* Note Node Styles */
+.note-node {
+    position: absolute;
+    background-color: var(--card-bg);
+    border: 2px solid var(--accent);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: var(--text);
+    min-width: 150px;
+    max-width: 250px;
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1);
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+.note-node:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+    border-color: var(--accent-hover);
+}
+
+.note-node:active {
+    cursor: grabbing;
+}
+
+.note-node-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 1rem;
+}
+
+.note-node-preview {
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-height: 3.6rem;
+    color: var(--secondary-text);
+}
+
+/* Node connections */
+.node-link {
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-opacity: 0.7;
+    fill: none;
+    transition: stroke-opacity 0.3s ease;
+}
+
+.node-link:hover {
+    stroke-opacity: 1;
+    stroke-width: 3;
+}
+
+/* Modal for displaying full note */
+.note-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.note-modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.note-modal-content {
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    max-width: 800px;
+    width: 80%;
+    max-height: 80vh;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-modal.show .note-modal-content {
+    transform: scale(1);
+}
+
+.note-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.note-modal-header h2 {
+    margin: 0;
+    color: var(--accent);
+}
+
+.note-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.note-modal-close:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.note-content {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+    line-height: 1.6;
+}
+
+/* Markdown content styling */
+.note-content h1, 
+.note-content h2, 
+.note-content h3, 
+.note-content h4, 
+.note-content h5, 
+.note-content h6 {
+    color: var(--accent);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.note-content p {
+    margin-bottom: 1rem;
+}
+
+.note-content ul, 
+.note-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.note-content li {
+    margin-bottom: 0.5rem;
+}
+
+.note-content code {
+    background-color: rgba(128, 128, 128, 0.2);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.3rem;
+    font-family: monospace;
+}
+
+.note-content pre {
+    background-color: rgba(128, 128, 128, 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.note-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.note-content blockquote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+    margin-left: 0;
+    color: var(--secondary-text);
+}
+
+.note-content img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+}
+
+.note-content a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.note-content a:hover {
+    text-decoration: underline;
+}
+
+.note-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.note-content th, 
+.note-content td {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    padding: 0.5rem;
+}
+
+.note-content th {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--card-bg);
+    margin: 10vh auto;
+    padding: 2rem;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 1rem;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal-content.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close-button {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--secondary-text);
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: var(--accent);
+}
+
+#modal-title {
+    color: var(--accent);
+    margin-top: 0;
+    padding-right: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background-color: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+}
+
+.modal-body {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+/* Markdown styling */
+.modal-body h1,
+.modal-body h2,
+.modal-body h3,
+.modal-body h4,
+.modal-body h5,
+.modal-body h6 {
+    color: var(--accent);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.modal-body h1 { font-size: 1.8rem; }
+.modal-body h2 { font-size: 1.6rem; }
+.modal-body h3 { font-size: 1.4rem; }
+.modal-body h4 { font-size: 1.2rem; }
+.modal-body h5 { font-size: 1.1rem; }
+.modal-body h6 { font-size: 1rem; }
+
+.modal-body p {
+    margin-bottom: 1rem;
+}
+
+.modal-body ul,
+.modal-body ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.modal-body li {
+    margin-bottom: 0.5rem;
+}
+
+.modal-body blockquote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+    margin-left: 0;
+    color: var(--secondary-text);
+    font-style: italic;
+}
+
+.modal-body a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.modal-body a:hover {
+    text-decoration: underline;
+}
+
+.modal-body pre {
+    background-color: rgba(var(--accent-rgb), 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.modal-body code {
+    background-color: rgba(var(--accent-rgb), 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.3rem;
+    font-family: monospace;
+}
+
+.modal-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.modal-body th,
+.modal-body td {
+    border: 1px solid rgba(var(--accent-rgb), 0.2);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.modal-body th {
+    background-color: rgba(var(--accent-rgb), 0.1);
+}
+
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.modal-body hr {
+    border: 0;
+    height: 1px;
+    background-color: rgba(var(--accent-rgb), 0.2);
+    margin: 2rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .notes-map {
+        height: 70vh;
+    }
+    
+    .note-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .note-node {
+        min-width: 120px;
+        max-width: 200px;
+    }
+}

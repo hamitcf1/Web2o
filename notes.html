@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes | HamitCF</title>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="styles/index-styles.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/theme-toggle.css">
+    <link rel="stylesheet" href="styles/language-selector.css">
+    <link rel="stylesheet" href="styles/mobile.css">
+    <link rel="stylesheet" href="styles/notes.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" />
+</head>
+<body class="fullscreen-notes">
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html"><i class="fas fa-code brand-icon"></i></a>
+            <span data-translate="brand">HamitCF</span>
+        </div>
+        <button class="mobile-menu-btn">
+            <span class="hamburger"></span>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span data-translate="home">Home</span>
+            </a>
+            <a href="notes.html" class="active">
+                <i class="fas fa-sticky-note"></i>
+                <span data-translate="notes">Notes</span>
+            </a>
+        </div>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                <svg class="sun-and-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
+                    <mask class="moon" id="moon-mask">
+                        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                        <circle cx="24" cy="10" r="6" fill="black" />
+                    </mask>
+                    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                    <g class="sun-beams" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </g>
+                </svg>
+            </button>
+            <div class="language-selector">
+                <div class="selected-language">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">English</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="fullscreen-content">
+        <div class="fullscreen-map">
+            <div class="notes-canvas" id="notes-canvas">
+                <!-- Notes nodes will be dynamically added here -->
+            </div>
+            
+            <div class="notes-controls">
+                <button class="control-btn" id="toggle-animation" title="Toggle Animation">
+                    <i class="fas fa-water"></i>
+                </button>
+                <button class="control-btn" id="zoom-in" title="Zoom In">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="control-btn" id="zoom-out" title="Zoom Out">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="control-btn" id="refresh-notes" title="Refresh Notes">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note Content Modal -->
+    <div class="modal" id="note-modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2 id="modal-title">Note Title</h2>
+            <div class="tags-container" id="modal-tags"></div>
+            <div class="modal-body" id="modal-body">Note content will appear here</div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/language-selector.js"></script>
+    <script src="scripts/notes.js"></script>
+</body>
+</html>
