@@ -11,6 +11,7 @@ window.translations = {
                 experience:'Experience',
                 education:'Education',
                 reviews:'Reviews',
+                notes:'Notes',
                 //gallery:'Gallery',
             //hero
             hero_subtitle:"Hi there! I'm 25, and I love coding!",
@@ -217,6 +218,7 @@ window.translations = {
                     experience:'Deneyim',
                     education:'Eğitim',
                     reviews:'Yorumlar',
+                    notes:'Notlar',
                     //gallery:'Galeri',
                 //hero
                 hero_subtitle:"Merhaba! Ben 25 yaşındayım ve kodlamayı seviyorum!",
@@ -400,6 +402,8 @@ window.translations = {
                 paper:"Kağıt",
                 scissors:"Makas",
 
+
+
     },
 
     ru: {
@@ -414,6 +418,7 @@ window.translations = {
                 experience:'Опыт',
                 education:'Образование',
                 reviews:'Отзывы',
+                notes:'Заметки',
                 //gallery:'Галерея',
             //hero
             hero_subtitle:"Привет! Мне 25 лет, и я люблю программировать!",

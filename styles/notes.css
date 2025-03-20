@@ -118,13 +118,15 @@ body.fullscreen-notes {
     background-color: var(--background);
 }
 
-.link {
+.node-link {
     stroke: rgba(var(--accent-rgb), 0.3);
     stroke-width: 1px;
+    fill: none;
+    transition: stroke 0.3s ease;
 }
 
-.link.strong {
-    stroke: rgba(var(--accent-rgb), 0.5);
+.node-link:hover {
+    stroke: rgba(var(--accent-rgb), 0.7);
     stroke-width: 2px;
 }
 
@@ -206,20 +208,6 @@ body.fullscreen-notes {
     -webkit-box-orient: vertical;
     max-height: 3.6rem;
     color: var(--secondary-text);
-}
-
-/* Node connections */
-.node-link {
-    stroke: var(--accent);
-    stroke-width: 2;
-    stroke-opacity: 0.7;
-    fill: none;
-    transition: stroke-opacity 0.3s ease;
-}
-
-.node-link:hover {
-    stroke-opacity: 1;
-    stroke-width: 3;
 }
 
 /* Modal for displaying full note */

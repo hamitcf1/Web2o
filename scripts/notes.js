@@ -178,17 +178,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Create link elements
-        const linkElements = svg.selectAll("path.node-link")
+        const linkElements = mainGroup.selectAll("path.node-link")
             .data(connections)
             .enter()
             .append("path")
             .attr("class", "node-link")
             .attr("id", (d, i) => `link-${i}`)
-            .attr("stroke-width", d => Math.min(1 + d.strength * 0.5, 3))
-            .attr("stroke", "rgba(var(--accent-rgb), 0.3)")
-            .attr("fill", "none")
-            .each(updateLinkPath);
-
+            .attr("stroke-width", d => Math.min(2 + d.strength * 1, 5))
+            .attr("stroke", "rgba(var(--accent-rgb), 0.5)")
+            .attr("fill", "none");
+            
+        // Log connections for debugging
+        console.log("Connections created:", connections.length);
+        connections.forEach(c => {
+            console.log(`Connection: ${c.source.title} <-> ${c.target.title} (Shared tags: ${c.sharedTags.join(', ')})`);
+        });
+        
+        // Function to update link paths
+        function updateLinkPath(d) {
+            const sourceX = d.source.position.x;
+            const sourceY = d.source.position.y;
+            const targetX = d.target.position.x;
+            const targetY = d.target.position.y;
+            
+            const dx = targetX - sourceX;
+            const dy = targetY - sourceY;
+            const dr = Math.sqrt(dx * dx + dy * dy);
+            
+            d3.select(this).attr("d", `M ${sourceX},${sourceY} A ${dr},${dr} 0 0,1 ${targetX},${targetY}`);
+        }
+        
+        // Update all link paths
+        function updateAllLinks() {
+            mainGroup.selectAll("path.node-link").each(updateLinkPath);
+        }
+        
+        // Update link paths initially
+        updateAllLinks();
+        
         // Create a node for each note using D3
         const nodesGroup = mainGroup.selectAll("g.node")
             .data(notes)
@@ -255,19 +282,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function dragNode(event, d) {
         isDragging = true;
+        
+        // Update position during drag
         event.subject.fx = event.x;
         event.subject.fy = event.y;
         
-        // Update node position
-        d3.select(this)
+        // Update node position in D3
+        d3.select(`#node-${d.id}`)
             .attr("transform", `translate(${event.x}, ${event.y})`);
         
+        // Update temporary position for link updates
+        d.position.x = event.x;
+        d.position.y = event.y;
+        
         // Update links
-        mainGroup.selectAll(".link")
-            .attr("x1", link => link.source.id === d.id ? event.x : link.source.position.x)
-            .attr("y1", link => link.source.id === d.id ? event.y : link.source.position.y)
-            .attr("x2", link => link.target.id === d.id ? event.x : link.target.position.x)
-            .attr("y2", link => link.target.id === d.id ? event.y : link.target.position.y);
+        updateAllLinks();
     }
     
     function endDrag(event, d) {
@@ -374,11 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Update links
-        mainGroup.selectAll(".link")
-            .attr("x1", d => d.source.position.x)
-            .attr("y1", d => d.source.position.y)
-            .attr("x2", d => d.target.position.x)
-            .attr("y2", d => d.target.position.y);
+        updateAllLinks();
     }
     
     // Process click on node to open note content
