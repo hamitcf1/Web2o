@@ -1,13 +1,14 @@
 .settings-panel {
     display: none;
     position: fixed;
-    top: 0;
+    top: 60px; /* Below navbar */
     right: 0;
     width: 300px;
-    height: 100%;
+    height: calc(100% - 60px); /* Account for navbar height */
     background-color: var(--bg-color);
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    border-left: 1px solid var(--border-color);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Below navbar (1000) but above content */
     transition: transform 0.3s ease;
     padding: 20px;
     transform: translateX(100%);
@@ -145,4 +146,12 @@
 /* Hover states */
 .settings-group input[type="range"]:hover {
     opacity: 1;
+}
+
+:root {
+    --border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme {
+    --border-color: rgba(255, 255, 255, 0.1);
 }
