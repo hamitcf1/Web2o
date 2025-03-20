@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/language-selector.css">
     <link rel="stylesheet" href="styles/mobile.css">
     <link rel="stylesheet" href="styles/notes.css">
+    <link rel="stylesheet" href="styles/settings-panel.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Favicon -->
@@ -65,9 +66,9 @@
     </nav>
 
     <div class="fullscreen-content">
-        <div class="fullscreen-map">
-            <div class="notes-canvas" id="notes-canvas">
-                <!-- Notes nodes will be dynamically added here -->
+        <div class="notes-map">
+            <div id="notes-canvas" class="notes-canvas">
+                <!-- Notes will be rendered here by D3.js -->
             </div>
             
             <div class="notes-controls">
@@ -83,27 +84,59 @@
                 <button class="control-btn" id="refresh-notes" title="Refresh Notes">
                     <i class="fas fa-sync-alt"></i>
                 </button>
+                <button class="control-btn" id="open-settings" title="Customize Nodes">
+                    <i class="fas fa-cog"></i>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Note Content Modal -->
-    <div class="modal" id="note-modal">
-        <div class="modal-content">
-            <span class="close-button" id="close-modal">&times;</span>
-            <h2 id="modal-title">Note Title</h2>
-            <div class="tags-container" id="modal-tags"></div>
-            <div class="modal-body" id="modal-body">Note content will appear here</div>
+    <!-- Note Modal -->
+    <div id="note-modal" class="note-modal">
+        <div class="note-modal-content">
+            <span class="close">&times;</span>
+            <h2 id="note-title"></h2>
+            <div id="note-tags" class="note-tags"></div>
+            <div id="note-content" class="note-content"></div>
         </div>
     </div>
 
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="settings-panel">
+        <div class="settings-content">
+            <span class="close-settings">&times;</span>
+            <h2>Node Settings</h2>
+            <div class="settings-group">
+                <label for="node-size">Node Size</label>
+                <input type="range" id="node-size" min="20" max="100" value="40">
+            </div>
+            <div class="settings-group">
+                <label for="link-strength">Link Strength</label>
+                <input type="range" id="link-strength" min="0" max="1" step="0.1" value="0.1">
+            </div>
+            <div class="settings-group">
+                <label for="repulsion-strength">Repulsion Strength</label>
+                <input type="range" id="repulsion-strength" min="-500" max="-50" value="-200">
+            </div>
+            <div class="settings-group">
+                <label for="animation-speed">Animation Speed</label>
+                <input type="range" id="animation-speed" min="0.1" max="1" step="0.1" value="0.3">
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading notes...</p>
+    </div>
+
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="scripts/theme-toggle.js"></script>
     <script src="scripts/language-selector.js"></script>
-    <script src="scripts/notes.js"></script>
     <script src="scripts/translations.js"></script>
-    <script src="scripts/language-selector.js"></script>
+    <script src="scripts/notes.js"></script>
 </body>
 </html>

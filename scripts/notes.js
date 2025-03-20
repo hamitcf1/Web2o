@@ -1,508 +1,631 @@
-// Interactive Notes System for Web2o
-// Author: HamitCF
+/**
+ * Interactive Notes System
+ * 
+ * A dynamic visualization of markdown notes with D3.js
+ * Features:
+ * - Fetches markdown files from GitHub repository
+ * - Creates interactive nodes for each note
+ * - Implements physics-based animation
+ * - Supports zoom and pan
+ * - Displays note content in a modal
+ * - Includes settings panel for customization
+ */
 
-// Fetch and render notes
-document.addEventListener('DOMContentLoaded', function() {
-    // DOM elements
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
     const notesCanvas = document.getElementById('notes-canvas');
+    const noteModal = document.getElementById('note-modal');
+    const closeButton = document.querySelector('.note-modal .close');
+    const noteTitle = document.getElementById('note-title');
+    const noteTags = document.getElementById('note-tags');
+    const noteContent = document.getElementById('note-content');
+    const loadingIndicator = document.getElementById('loading-indicator');
+    
+    // Control buttons
     const toggleAnimationBtn = document.getElementById('toggle-animation');
     const zoomInBtn = document.getElementById('zoom-in');
     const zoomOutBtn = document.getElementById('zoom-out');
     const refreshNotesBtn = document.getElementById('refresh-notes');
-    const noteModal = document.getElementById('note-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalBody = document.getElementById('modal-body');
-    const modalTags = document.getElementById('modal-tags');
-    const closeModal = document.getElementById('close-modal');
-    
-    // Constants for physics
-    const REPULSION_STRENGTH = 150;
-    const ATTRACTION_STRENGTH = 0.1;
-    const VELOCITY_DECAY = 0.7;
-    const MAX_VELOCITY = 5;
+    const openSettingsBtn = document.getElementById('open-settings');
+    const settingsPanel = document.getElementById('settings-panel');
+    const closeSettingsBtn = document.querySelector('.close-settings');
+
+    // Settings inputs
+    const nodeSizeInput = document.getElementById('node-size');
+    const linkStrengthInput = document.getElementById('link-strength');
+    const repulsionStrengthInput = document.getElementById('repulsion-strength');
+    const animationSpeedInput = document.getElementById('animation-speed');
     
     // State variables
     let notes = [];
+    let simulation;
+    let svg;
+    let container;
+    let linkElements;
+    let nodeElements;
+    let labelElements;
+    let width = notesCanvas.clientWidth;
+    let height = notesCanvas.clientHeight;
     let animationActive = true;
     let isDragging = false;
-    let velocities = {};
     let currentZoom = 1;
+    let velocities = {};
+    let transform = d3.zoomIdentity;
     
-    // Get dimensions of the container
-    const width = notesCanvas.clientWidth;
-    const height = notesCanvas.clientHeight;
+    // Physics parameters (now controlled by settings)
+    let REPULSION_STRENGTH = -200;
+    let LINK_STRENGTH = 0.1;
+    let DAMPING_FACTOR = 0.95;
+    let COLLISION_RADIUS = 40;
+    let ANIMATION_SPEED = 0.3;
     
-    // Create SVG container
-    const svg = d3.select(notesCanvas)
-        .append('svg')
-        .attr('width', '100%')
-        .attr('height', '100%');
+    // Initialize the visualization
+    initVisualization();
     
-    // Create a group for zoom/pan
-    const mainGroup = svg.append('g');
+    // Event listeners for controls
+    toggleAnimationBtn.addEventListener('click', toggleAnimation);
+    zoomInBtn.addEventListener('click', () => zoomBy(1.2));
+    zoomOutBtn.addEventListener('click', () => zoomBy(0.8));
+    refreshNotesBtn.addEventListener('click', refreshNotes);
+    openSettingsBtn.addEventListener('click', toggleSettings);
+    closeSettingsBtn.addEventListener('click', toggleSettings);
+
+    // Settings event listeners
+    nodeSizeInput.addEventListener('input', updateNodeSize);
+    linkStrengthInput.addEventListener('input', updateLinkStrength);
+    repulsionStrengthInput.addEventListener('input', updateRepulsionStrength);
+    animationSpeedInput.addEventListener('input', updateAnimationSpeed);
+
+    // Initialize slider values
+    updateSliderTrack(nodeSizeInput);
+    updateSliderTrack(linkStrengthInput);
+    updateSliderTrack(repulsionStrengthInput);
+    updateSliderTrack(animationSpeedInput);
+
+    // Close modal when clicking the close button
+    closeButton.addEventListener('click', closeNoteModal);
     
-    // Create zoom behavior
-    const zoom = d3.zoom()
-        .scaleExtent([0.1, 3])
-        .on('zoom', (event) => {
-            mainGroup.attr('transform', event.transform);
-            currentZoom = event.transform.k;
-        });
-    
-    // Apply zoom behavior to SVG
-    svg.call(zoom);
-    
-    // Zoom controls
-    zoomInBtn.addEventListener('click', () => {
-        svg.transition().duration(300).call(zoom.scaleBy, 1.3);
-    });
-    
-    zoomOutBtn.addEventListener('click', () => {
-        svg.transition().duration(300).call(zoom.scaleBy, 0.7);
-    });
-    
-    // Toggle animation
-    toggleAnimationBtn.addEventListener('click', () => {
-        animationActive = !animationActive;
-        toggleAnimationBtn.classList.toggle('active', animationActive);
-        if (animationActive) {
-            requestAnimationFrame(animate);
+    // Close modal when clicking outside the modal content
+    noteModal.addEventListener('click', (event) => {
+        if (event.target === noteModal) {
+            closeNoteModal();
         }
     });
     
-    // Refresh notes
-    refreshNotesBtn.addEventListener('click', () => {
-        fetchNotes();
-    });
+    // Window resize handler
+    window.addEventListener('resize', debounce(() => {
+        width = notesCanvas.clientWidth;
+        height = notesCanvas.clientHeight;
+        if (svg) {
+            svg.attr('width', width).attr('height', height);
+            simulation.force('center', d3.forceCenter(width / 2, height / 2));
+            simulation.alpha(0.3).restart();
+        }
+    }, 250));
     
-    // Fetch notes from the repository
+    /**
+     * Initialize the D3 visualization
+     */
+    function initVisualization() {
+        // Create SVG element
+        svg = d3.select(notesCanvas)
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height);
+        
+        // Create container for zoom/pan
+        container = svg.append('g');
+        
+        // Add zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on('zoom', (event) => {
+                transform = event.transform;
+                container.attr('transform', transform);
+            });
+        
+        svg.call(zoom);
+        
+        // Add mouse events for canvas dragging
+        notesCanvas.addEventListener('mousedown', () => {
+            notesCanvas.classList.add('dragging');
+        });
+        
+        document.addEventListener('mouseup', () => {
+            notesCanvas.classList.remove('dragging');
+        });
+        
+        // Fetch notes from GitHub
+        fetchNotes();
+    }
+    
+    /**
+     * Fetch notes from the GitHub repository
+     */
     async function fetchNotes() {
+        showLoading(true);
+        
         try {
+            console.log('Fetching notes from GitHub repository...');
             const repoUrl = 'https://api.github.com/repos/hamitcf1/Web2o/contents/notes';
             const response = await fetch(repoUrl);
+            
+            if (!response.ok) {
+                throw new Error(`Failed to fetch notes: ${response.status} ${response.statusText}`);
+            }
+            
             const files = await response.json();
             
             // Filter markdown files
             const mdFiles = files.filter(file => file.name.endsWith('.md'));
+            console.log(`Found ${mdFiles.length} markdown files`);
             
             // Fetch content of each file
             notes = await Promise.all(mdFiles.map(async (file, index) => {
-                const contentResponse = await fetch(file.download_url);
-                const content = await contentResponse.text();
-                
-                // Extract title and tags from frontmatter if present
-                let title = file.name.replace('.md', '');
-                let tags = [];
-                let parsedContent = content;
-                
-                // Check for frontmatter
-                const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
-                if (frontmatterMatch) {
-                    const frontmatter = frontmatterMatch[1];
-                    parsedContent = frontmatterMatch[2];
+                try {
+                    console.log(`Fetching content for: ${file.name}`);
+                    const contentResponse = await fetch(file.download_url);
                     
-                    // Extract title
-                    const titleMatch = frontmatter.match(/title:\s*(.*)/);
-                    if (titleMatch) {
-                        title = titleMatch[1].trim();
+                    if (!contentResponse.ok) {
+                        console.error(`Failed to fetch content for ${file.name}`);
+                        return null;
                     }
                     
-                    // Extract tags
-                    const tagsMatch = frontmatter.match(/tags:\s*\[(.*)\]/);
-                    if (tagsMatch) {
-                        tags = tagsMatch[1].split(',').map(tag => tag.trim());
-                    }
+                    const content = await contentResponse.text();
+                    
+                    // Parse frontmatter and content
+                    const { title, tags, parsedContent } = parseMarkdownFile(file.name, content);
+                    
+                    // Generate initial position
+                    const x = Math.random() * (width * 0.8) + width * 0.1;
+                    const y = Math.random() * (height * 0.8) + height * 0.1;
+                    
+                    return {
+                        id: index,
+                        title: title,
+                        content: parsedContent,
+                        tags: tags,
+                        x: x,
+                        y: y,
+                        path: file.path,
+                        url: file.download_url
+                    };
+                } catch (error) {
+                    console.error(`Error processing ${file.name}:`, error);
+                    return null;
                 }
-                
-                // Generate random position for the node
-                const x = Math.random() * (width * 0.8) + width * 0.1;
-                const y = Math.random() * (height * 0.8) + height * 0.1;
-                
-                return {
-                    id: index,
-                    title: title,
-                    content: parsedContent,
-                    tags: tags,
-                    position: { x: x, y: y },
-                    path: file.path
-                };
             }));
             
-            // Initialize velocities
-            notes.forEach(note => {
-                velocities[note.id] = { x: 0, y: 0 };
-            });
+            // Filter out null entries (failed fetches)
+            notes = notes.filter(note => note !== null);
+            console.log(`Successfully processed ${notes.length} notes`);
             
-            // Render notes
-            renderNotes();
+            // Create links between notes based on shared tags
+            const links = createLinks(notes);
             
-            // Start animation
-            if (animationActive) {
-                requestAnimationFrame(animate);
-            }
+            // Render the visualization
+            renderVisualization(notes, links);
+            
         } catch (error) {
             console.error('Error fetching notes:', error);
+            showError('Failed to load notes. Please try again later.');
+        } finally {
+            showLoading(false);
         }
     }
     
-    // Render notes using D3
-    function renderNotes() {
-        // Clear previous elements
-        mainGroup.selectAll('.link').remove();
-        mainGroup.selectAll('.node').remove();
+    /**
+     * Parse a markdown file to extract frontmatter and content
+     */
+    function parseMarkdownFile(filename, content) {
+        // Default values
+        let title = filename.replace('.md', '');
+        let tags = [];
+        let parsedContent = content;
         
-        // Create links first so they are behind nodes
-        const connections = [];
+        // Check for frontmatter
+        const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
         
-        // Create connections between nodes with shared tags
-        for (let i = 0; i < notes.length; i++) {
-            const nodeA = notes[i];
+        if (frontmatterMatch) {
+            const frontmatter = frontmatterMatch[1];
+            parsedContent = frontmatterMatch[2];
             
-            for (let j = i + 1; j < notes.length; j++) {
-                const nodeB = notes[j];
-                
-                // Find shared tags
-                if (nodeA.tags && nodeB.tags) {
-                    const sharedTags = nodeA.tags.filter(tag => nodeB.tags.includes(tag));
-                    
-                    if (sharedTags.length > 0) {
-                        connections.push({
-                            source: nodeA,
-                            target: nodeB,
-                            strength: sharedTags.length,
-                            sharedTags: sharedTags
+            // Extract title
+            const titleMatch = frontmatter.match(/title:\s*(.*)/);
+            if (titleMatch) {
+                title = titleMatch[1].trim();
+            }
+            
+            // Extract tags
+            const tagsMatch = frontmatter.match(/tags:\s*\[(.*)\]/);
+            if (tagsMatch) {
+                tags = tagsMatch[1].split(',')
+                    .map(tag => tag.trim().replace(/['"]/g, ''));
+            }
+        }
+        
+        return { title, tags, parsedContent };
+    }
+    
+    /**
+     * Create links between notes based on shared tags
+     */
+    function createLinks(notes) {
+        const links = [];
+        
+        // Create a map of tags to notes
+        const tagMap = {};
+        notes.forEach(note => {
+            note.tags.forEach(tag => {
+                if (!tagMap[tag]) {
+                    tagMap[tag] = [];
+                }
+                tagMap[tag].push(note.id);
+            });
+        });
+        
+        // Create links for notes that share tags
+        Object.values(tagMap).forEach(noteIds => {
+            if (noteIds.length > 1) {
+                for (let i = 0; i < noteIds.length; i++) {
+                    for (let j = i + 1; j < noteIds.length; j++) {
+                        links.push({
+                            source: noteIds[i],
+                            target: noteIds[j]
                         });
                     }
                 }
             }
-        }
-        
-        // Create link elements
-        const linkElements = mainGroup.selectAll("path.node-link")
-            .data(connections)
-            .enter()
-            .append("path")
-            .attr("class", "node-link")
-            .attr("id", (d, i) => `link-${i}`)
-            .attr("stroke-width", d => Math.min(2 + d.strength * 1, 5))
-            .attr("stroke", "rgba(var(--accent-rgb), 0.5)")
-            .attr("fill", "none");
-            
-        // Log connections for debugging
-        console.log("Connections created:", connections.length);
-        connections.forEach(c => {
-            console.log(`Connection: ${c.source.title} <-> ${c.target.title} (Shared tags: ${c.sharedTags.join(', ')})`);
         });
         
-        // Function to update link paths
-        function updateLinkPath(d) {
-            const sourceX = d.source.position.x;
-            const sourceY = d.source.position.y;
-            const targetX = d.target.position.x;
-            const targetY = d.target.position.y;
-            
-            const dx = targetX - sourceX;
-            const dy = targetY - sourceY;
-            const dr = Math.sqrt(dx * dx + dy * dy);
-            
-            d3.select(this).attr("d", `M ${sourceX},${sourceY} A ${dr},${dr} 0 0,1 ${targetX},${targetY}`);
-        }
+        return links;
+    }
+    
+    /**
+     * Render the visualization with D3
+     */
+    function renderVisualization(nodes, links) {
+        console.log('Render Visualization called with nodes:', nodes, 'and links:', links);
+        // Clear previous elements
+        container.selectAll('*').remove();
         
-        // Update all link paths
-        function updateAllLinks() {
-            mainGroup.selectAll("path.node-link").each(updateLinkPath);
-        }
+        // Create force simulation
+        simulation = d3.forceSimulation(nodes)
+            .force('link', d3.forceLink(links).id(d => d.id).strength(LINK_STRENGTH))
+            .force('charge', d3.forceManyBody().strength(REPULSION_STRENGTH))
+            .force('center', d3.forceCenter(width / 2, height / 2))
+            .force('collision', d3.forceCollide().radius(COLLISION_RADIUS))
+            .on('tick', ticked);
         
-        // Update link paths initially
-        updateAllLinks();
+        // Create links
+        linkElements = container.append('g')
+            .attr('class', 'links')
+            .selectAll('line')
+            .data(links)
+            .enter().append('line')
+            .attr('class', 'node-link');
         
-        // Create a node for each note using D3
-        const nodesGroup = mainGroup.selectAll("g.node")
-            .data(notes)
-            .enter()
-            .append("g")
-            .attr("class", "node")
-            .attr("id", d => `node-${d.id}`)
-            .attr("transform", d => `translate(${d.position.x}, ${d.position.y})`)
+        // Create nodes
+        const nodeGroup = container.append('g')
+            .attr('class', 'nodes')
+            .selectAll('.node')
+            .data(nodes)
+            .enter().append('g')
+            .attr('class', 'node')
             .call(d3.drag()
-                .on("start", startDrag)
-                .on("drag", dragNode)
-                .on("end", endDrag));
-                
-        // Add circles to nodes (Obsidian-style)
-        nodesGroup.append("circle")
-            .attr("r", d => Math.min(30, 15 + d.content.length / 500))
-            .attr("fill", d => {
-                // Color based on tags
-                if (d.tags && d.tags.length) {
-                    if (d.tags.includes("javascript")) return "rgba(246, 211, 101, 0.7)";
-                    if (d.tags.includes("python")) return "rgba(110, 220, 156, 0.7)";
-                    if (d.tags.includes("css")) return "rgba(159, 175, 245, 0.7)";
-                    if (d.tags.includes("html")) return "rgba(241, 144, 102, 0.7)";
-                    if (d.tags.includes("development")) return "rgba(128, 222, 234, 0.7)";
-                    if (d.tags.includes("testing")) return "rgba(186, 104, 200, 0.7)";
-                }
-                return "rgba(149, 157, 165, 0.7)";
-            })
-            .attr("stroke", d => {
-                if (d.tags && d.tags.length) {
-                    if (d.tags.includes("javascript")) return "#f6d365";
-                    if (d.tags.includes("python")) return "#6edc9c";
-                    if (d.tags.includes("css")) return "#9faff5";
-                    if (d.tags.includes("html")) return "#f19066";
-                    if (d.tags.includes("development")) return "#80deea";
-                    if (d.tags.includes("testing")) return "#ba68c8";
-                }
-                return "#959da5";
-            })
-            .attr("stroke-width", 2);
-            
-        // Add labels below nodes
-        nodesGroup.append("text")
-            .attr("dy", d => Math.min(30, 15 + d.content.length / 500) + 15)
-            .attr("text-anchor", "middle")
-            .attr("class", "node-label")
-            .text(d => d.title.length > 15 ? d.title.substring(0, 15) + "..." : d.title);
+                .on('start', dragStarted)
+                .on('drag', dragged)
+                .on('end', dragEnded));
         
-        // Add click event for nodes
-        nodesGroup.on("click", function(event, d) {
+        // Add circles to nodes
+        nodeElements = nodeGroup.append('circle')
+            .attr('r', 20)
+            .attr('fill', d => getNodeColor(d.tags))
+            .attr('stroke', 'var(--node-border)')
+            .attr('stroke-width', 2);
+        
+        // Add labels to nodes
+        labelElements = nodeGroup.append('text')
+            .attr('class', 'node-label')
+            .attr('text-anchor', 'middle')
+            .attr('dy', '0.35em')
+            .text(d => d.title.length > 12 ? d.title.substring(0, 10) + '...' : d.title);
+        
+        // Add click event to nodes
+        nodeGroup.on('click', (event, d) => {
             if (!isDragging) {
-                event.stopPropagation();
-                openNote(d);
+                openNoteModal(d);
             }
         });
+        
+        // Initialize velocities for animation
+        nodes.forEach(node => {
+            velocities[node.id] = { x: 0, y: 0 };
+        });
     }
     
-    // Drag handlers
-    function startDrag(event, d) {
+    /**
+     * Get a color for a node based on its tags
+     */
+    function getNodeColor(tags) {
+        if (!tags || tags.length === 0) {
+            return 'var(--node-default)';
+        }
+        
+        // Simple hash function for tag-based colors
+        const tag = tags[0];
+        let hash = 0;
+        for (let i = 0; i < tag.length; i++) {
+            hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        
+        const hue = Math.abs(hash % 360);
+        return `hsla(${hue}, 70%, 60%, 0.8)`;
+    }
+    
+    /**
+     * Update positions on each tick of the simulation
+     */
+    function ticked() {
+        // Update link positions
+        linkElements
+            .attr('x1', d => d.source.x)
+            .attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x)
+            .attr('y2', d => d.target.y);
+        
+        // Update node positions
+        nodeElements
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y);
+        
+        // Update label positions
+        labelElements
+            .attr('x', d => d.x)
+            .attr('y', d => d.y);
+    }
+    
+    /**
+     * Handle start of drag
+     */
+    function dragStarted(event, d) {
         isDragging = false;
-        event.subject.fx = event.subject.x;
-        event.subject.fy = event.subject.y;
+        
+        if (!event.active) {
+            simulation.alphaTarget(0.3).restart();
+        }
+        
+        d.fx = d.x;
+        d.fy = d.y;
     }
     
-    function dragNode(event, d) {
+    /**
+     * Handle drag
+     */
+    function dragged(event, d) {
         isDragging = true;
-        
-        // Update position during drag
-        event.subject.fx = event.x;
-        event.subject.fy = event.y;
-        
-        // Update node position in D3
-        d3.select(`#node-${d.id}`)
-            .attr("transform", `translate(${event.x}, ${event.y})`);
-        
-        // Update temporary position for link updates
-        d.position.x = event.x;
-        d.position.y = event.y;
-        
-        // Update links
-        updateAllLinks();
+        d.fx = event.x;
+        d.fy = event.y;
     }
     
-    function endDrag(event, d) {
-        // Update node position in our data
-        event.subject.x = event.x;
-        event.subject.y = event.y;
-        event.subject.fx = null;
-        event.subject.fy = null;
+    /**
+     * Handle end of drag
+     */
+    function dragEnded(event, d) {
+        if (!event.active) {
+            simulation.alphaTarget(0);
+        }
         
-        // Set a timeout to distinguish between click and drag
+        // Keep the node fixed at its new position
         setTimeout(() => {
             isDragging = false;
         }, 100);
     }
     
-    // Animation function
-    function animate() {
-        if (animationActive) {
-            // Apply physics for each node
-            applyForces();
-            
-            // Update node positions
-            updateNodePositions();
-            
-            // Request next frame
-            requestAnimationFrame(animate);
-        }
-    }
-    
-    // Apply forces to nodes
-    function applyForces() {
-        // Reset forces
-        notes.forEach(nodeA => {
-            velocities[nodeA.id].x *= VELOCITY_DECAY;
-            velocities[nodeA.id].y *= VELOCITY_DECAY;
-            
-            // Apply forces from other nodes
-            notes.forEach(nodeB => {
-                if (nodeA.id !== nodeB.id) {
-                    // Calculate distance between nodes
-                    const dx = nodeB.position.x - nodeA.position.x;
-                    const dy = nodeB.position.y - nodeA.position.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    // Skip if too far
-                    if (distance > 500) return;
-                    
-                    // Normalize direction
-                    const nx = dx / distance;
-                    const ny = dy / distance;
-                    
-                    // Check for collision
-                    const radiusA = Math.min(30, 15 + Math.sqrt(nodeA.content.length) / 500);
-                    const radiusB = Math.min(30, 15 + Math.sqrt(nodeB.content.length) / 500);
-                    const minDistance = radiusA + radiusB + 10;
-                    
-                    if (distance < minDistance) {
-                        // Repulsion (stronger when closer)
-                        const repulsionForce = REPULSION_STRENGTH / distance;
-                        velocities[nodeA.id].x -= nx * repulsionForce;
-                        velocities[nodeA.id].y -= ny * repulsionForce;
-                    }
-                    
-                    // Attraction for nodes with shared tags
-                    const sharedTags = nodeA.tags && nodeB.tags 
-                        ? nodeA.tags.filter(tag => nodeB.tags.includes(tag)) 
-                        : [];
-                    
-                    if (sharedTags.length > 0) {
-                        const attractionForce = ATTRACTION_STRENGTH * distance * sharedTags.length;
-                        velocities[nodeA.id].x += nx * attractionForce;
-                        velocities[nodeA.id].y += ny * attractionForce;
-                    }
-                }
+    /**
+     * Open the note modal with content
+     */
+    function openNoteModal(note) {
+        console.log('Opening note:', note.title);
+        
+        // Set modal title
+        noteTitle.textContent = note.title;
+        
+        // Clear and add tags
+        noteTags.innerHTML = '';
+        if (note.tags && note.tags.length > 0) {
+            note.tags.forEach(tag => {
+                const tagElement = document.createElement('span');
+                tagElement.className = 'note-tag';
+                tagElement.textContent = tag;
+                noteTags.appendChild(tagElement);
             });
-            
-            // Limit velocity
-            const speed = Math.sqrt(
-                velocities[nodeA.id].x * velocities[nodeA.id].x + 
-                velocities[nodeA.id].y * velocities[nodeA.id].y
-            );
-            
-            if (speed > MAX_VELOCITY) {
-                velocities[nodeA.id].x = (velocities[nodeA.id].x / speed) * MAX_VELOCITY;
-                velocities[nodeA.id].y = (velocities[nodeA.id].y / speed) * MAX_VELOCITY;
-            }
-        });
-    }
-    
-    // Update node positions based on velocities
-    function updateNodePositions() {
-        notes.forEach(node => {
-            // Update position
-            node.position.x += velocities[node.id].x;
-            node.position.y += velocities[node.id].y;
-            
-            // Keep in bounds
-            node.position.x = Math.max(50, Math.min(width - 50, node.position.x));
-            node.position.y = Math.max(50, Math.min(height - 50, node.position.y));
-            
-            // Update SVG elements
-            d3.select(`#node-${node.id}`)
-                .attr("transform", `translate(${node.position.x}, ${node.position.y})`);
-        });
-        
-        // Update links
-        updateAllLinks();
-    }
-    
-    // Process click on node to open note content
-    function openNote(d) {
-        console.log('Opening note:', d.title); // Debug
-        
-        // Skip if dragging to avoid opening note when drag ends
-        if (isDragging) {
-            console.log('Skipping openNote because isDragging is true');
-            return;
         }
         
-        // Set modal content
-        modalTitle.textContent = d.title;
-        
+        // Set content
         try {
-            // Parse markdown with marked.js
-            const parsedContent = marked.parse(d.content);
-            modalBody.innerHTML = parsedContent;
-            
-            // Set tags
-            let tagsHTML = '';
-            if (d.tags && d.tags.length) {
-                tagsHTML = d.tags.map(tag => `<span class="tag">#${tag}</span>`).join(' ');
-            }
-            modalTags.innerHTML = tagsHTML;
-            
-            // Show modal explicitly - first set display property
-            noteModal.style.display = 'block';
-            // Use timeout to ensure browser has processed the display change
-            setTimeout(() => {
-                noteModal.classList.add('show');
-                document.querySelector('.modal-content').classList.add('show');
-            }, 10);
-            
-            // Add event handler for links in the note content
-            const links = modalBody.querySelectorAll('a');
-            links.forEach(link => {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
+            noteContent.innerHTML = marked.parse(note.content);
         } catch (error) {
             console.error('Error parsing markdown:', error);
-            // Show error message in modal
-            modalBody.innerHTML = `<p>Error displaying content: ${error.message}</p><pre>${d.content}</pre>`;
-            noteModal.style.display = 'block';
-            noteModal.classList.add('show');
+            noteContent.textContent = note.content;
         }
+        
+        // Show modal
+        noteModal.style.display = 'block';
+        
+        // Force reflow
+        void noteModal.offsetHeight;
+        
+        // Add show class for animation
+        noteModal.classList.add('show');
     }
     
-    // Close modal handler
-    closeModal.addEventListener('click', () => {
-        document.querySelector('.modal-content').classList.remove('show');
-        // Use setTimeout to allow the animation to finish before hiding the modal
+    /**
+     * Close the note modal
+     */
+    function closeNoteModal() {
+        noteModal.classList.remove('show');
+        
         setTimeout(() => {
-            noteModal.classList.remove('show');
-            setTimeout(() => {
-                noteModal.style.display = 'none';
-            }, 300);
+            noteModal.style.display = 'none';
         }, 300);
-    });
-    
-    // Close modal when clicking outside content
-    noteModal.addEventListener('click', (e) => {
-        if (e.target === noteModal) {
-            document.querySelector('.modal-content').classList.remove('show');
-            // Use setTimeout to allow the animation to finish before hiding the modal
-            setTimeout(() => {
-                noteModal.classList.remove('show');
-                setTimeout(() => {
-                    noteModal.style.display = 'none';
-                }, 300);
-            }, 300);
-        }
-    });
-    
-    // Helper function to get a preview of the note content
-    function getPreview(content, maxLength) {
-        // Strip markdown syntax (basic approach)
-        let text = content
-            .replace(/#+\s+(.*)/g, '$1') // Headers
-            .replace(/\*\*(.*)\*\*/g, '$1') // Bold
-            .replace(/\*(.*)\*/g, '$1') // Italic
-            .replace(/\[(.*)\]\(.*\)/g, '$1') // Links
-            .replace(/```[^`]*```/g, '') // Code blocks
-            .replace(/`([^`]*)`/g, '$1') // Inline code
-            .replace(/^\s*>\s*(.*)/gm, '$1') // Blockquotes
-            .replace(/^\s*[-*+]\s+(.*)/gm, '$1') // Unordered lists
-            .replace(/^\s*\d+\.\s+(.*)/gm, '$1') // Ordered lists
-            .trim();
-        
-        // Truncate to maxLength
-        if (text.length > maxLength) {
-            text = text.substring(0, maxLength) + '...';
-        }
-        
-        return text;
     }
     
-    // Initialize
-    fetchNotes();
+    /**
+     * Toggle settings panel
+     */
+    function toggleSettings() {
+        console.log('Toggling settings panel');
+        if (settingsPanel.classList.contains('active')) {
+            // Hide panel
+            settingsPanel.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                settingsPanel.classList.remove('active');
+            }, 300);
+        } else {
+            // Show panel
+            settingsPanel.classList.add('active');
+            settingsPanel.style.transform = 'translateX(0)';
+        }
+    }
+
+    /**
+     * Update slider track color based on value
+     */
+    function updateSliderTrack(slider) {
+        const min = slider.min;
+        const max = slider.max;
+        const value = slider.value;
+        const percentage = ((value - min) / (max - min)) * 100;
+        slider.style.setProperty('--value', `${percentage}%`);
+    }
+
+    /**
+     * Update node size from settings
+     */
+    function updateNodeSize() {
+        const value = parseInt(nodeSizeInput.value);
+        console.log('Updating node size to:', value);
+        COLLISION_RADIUS = value;
+        updateSliderTrack(nodeSizeInput);
+        if (simulation) {
+            simulation.force('collision', d3.forceCollide().radius(COLLISION_RADIUS));
+            updateVisualization();
+        }
+        // Update node elements size
+        if (nodeElements) {
+            nodeElements.attr('r', value / 2);
+        }
+    }
+
+    /**
+     * Update link strength from settings
+     */
+    function updateLinkStrength() {
+        LINK_STRENGTH = parseFloat(linkStrengthInput.value);
+        updateSliderTrack(linkStrengthInput);
+        if (simulation) {
+            simulation.force('link').strength(LINK_STRENGTH);
+            updateVisualization();
+        }
+    }
+
+    /**
+     * Update repulsion strength from settings
+     */
+    function updateRepulsionStrength() {
+        REPULSION_STRENGTH = parseInt(repulsionStrengthInput.value);
+        updateSliderTrack(repulsionStrengthInput);
+        if (simulation) {
+            simulation.force('charge').strength(REPULSION_STRENGTH);
+            updateVisualization();
+        }
+    }
+
+    /**
+     * Update animation speed from settings
+     */
+    function updateAnimationSpeed() {
+        ANIMATION_SPEED = parseFloat(animationSpeedInput.value);
+        updateSliderTrack(animationSpeedInput);
+        if (simulation && animationActive) {
+            simulation.alpha(ANIMATION_SPEED).restart();
+        }
+    }
+
+    /**
+     * Update visualization after settings change
+     */
+    function updateVisualization() {
+        if (simulation && animationActive) {
+            simulation.alpha(ANIMATION_SPEED).restart();
+        }
+    }
+
+    /**
+     * Toggle animation on/off
+     */
+    function toggleAnimation() {
+        console.log('Toggle Animation called. Current state:', animationActive);
+        animationActive = !animationActive;
+        
+        if (animationActive) {
+            console.log('Animation activated.');
+            toggleAnimationBtn.innerHTML = '<i class="fas fa-water"></i>';
+            simulation.alpha(ANIMATION_SPEED).restart();
+        } else {
+            console.log('Animation deactivated.');
+            toggleAnimationBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            simulation.stop();
+        }
+    }
+    
+    /**
+     * Zoom by a factor
+     */
+    function zoomBy(factor) {
+        currentZoom *= factor;
+        currentZoom = Math.max(0.1, Math.min(4, currentZoom));
+        
+        const newTransform = d3.zoomIdentity
+            .translate(transform.x, transform.y)
+            .scale(currentZoom);
+        
+        svg.transition()
+            .duration(300)
+            .call(svg.zoom().transform, newTransform);
+    }
+    
+    /**
+     * Refresh notes from the repository
+     */
+    function refreshNotes() {
+        fetchNotes();
+    }
+    
+    /**
+     * Show/hide loading indicator
+     */
+    function showLoading(show) {
+        loadingIndicator.style.display = show ? 'flex' : 'none';
+    }
+    
+    /**
+     * Show error message
+     */
+    function showError(message) {
+        // Could implement a toast or other notification here
+        console.error(message);
+    }
+    
+    /**
+     * Debounce function for performance
+     */
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
 });
