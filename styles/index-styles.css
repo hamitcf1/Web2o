@@ -569,15 +569,15 @@ body {
     opacity: 0.8;
 }
 
-.chatbot-img {
+.grid-img {
     background: linear-gradient(45deg, #1a1a1a, #333);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.chatbot-img::after {
-    content: '\f086';
+.grid-img::after {
+    content: '\f00a';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     font-size: 4rem;
