@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App | Web2o</title>
+    <link rel="stylesheet" href="/styles/index-styles.css">
+    <link rel="stylesheet" href="/styles/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html"><i class="fas fa-code brand-icon"></i></a>
+            <span>HamitCF</span>
+        </div>
+        <button class="mobile-menu-btn">
+            <span class="hamburger"></span>
+        </button>
+        <div class="nav-links">
+            <a href="index.html#hero"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="index.html#projects"><i class="fas fa-laptop-code"></i><span>Projects</span></a>
+            <a href="index.html#experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
+            <a href="index.html#education"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
+            <a href="index.html#reviews"><i class="fas fa-star"></i><span>Reviews</span></a>
+        </div>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+                <svg class="sun-and-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
+                    <mask class="moon" id="moon-mask">
+                        <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                        <circle cx="24" cy="10" r="6" fill="black" />
+                    </mask>
+                    <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                    <g class="sun-beams" stroke="currentColor">
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <section class="projects" style="padding-top: 7rem; max-width: 500px; margin: 0 auto;">
+            <h2 class="animate fade-in-up"><i class="fas fa-list-check project-icon"></i> To-Do List</h2>
+            <form id="todo-form" class="animate fade-in-left" autocomplete="off" style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                <input id="todo-input" type="text" placeholder="Add a new task..." style="flex:1; padding: 1rem; border-radius: 0.8rem; border: none; background: var(--card-bg); color: var(--text); font-size: 1.1rem;" required />
+                <button type="submit" style="padding: 1rem 1.5rem; border-radius: 0.8rem; background: var(--accent); color: #fff; border: none; font-size: 1.1rem; box-shadow: var(--box-shadow); cursor: pointer;">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </form>
+            <ul id="todo-list" class="animate fade-in-right" style="list-style: none; padding: 0;"></ul>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Made with love by</p>
+            <p class="my-name">Hamit Can FINDIK</p>
+            <p> Copyright © 2025. All rights reserved..</p>
+        </div>
+    </footer>
+
+    <script src="/scripts/theme-toggle.js" defer></script>
+    <script>
+    // To-Do App Functionality
+    const todoForm = document.getElementById('todo-form');
+    const todoInput = document.getElementById('todo-input');
+    const todoList = document.getElementById('todo-list');
+
+    // Load todos from localStorage
+    let todos = JSON.parse(localStorage.getItem('todos-web2o')) || [];
+
+    function renderTodos() {
+        todoList.innerHTML = '';
+        todos.forEach((todo, idx) => {
+            const li = document.createElement('li');
+            li.style.display = 'flex';
+            li.style.alignItems = 'center';
+            li.style.justifyContent = 'space-between';
+            li.style.padding = '1rem';
+            li.style.marginBottom = '1rem';
+            li.style.background = 'var(--card-bg)';
+            li.style.borderRadius = '0.8rem';
+            li.style.boxShadow = 'var(--box-shadow-idle)';
+            li.style.transition = 'background 0.3s';
+
+            const left = document.createElement('div');
+            left.style.display = 'flex';
+            left.style.alignItems = 'center';
+            left.style.gap = '1rem';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = todo.completed;
+            checkbox.style.width = '1.2rem';
+            checkbox.style.height = '1.2rem';
+            checkbox.addEventListener('change', () => {
+                todos[idx].completed = !todos[idx].completed;
+                saveTodos();
+                renderTodos();
+            });
+
+            const span = document.createElement('span');
+            span.textContent = todo.text;
+            span.style.textDecoration = todo.completed ? 'line-through' : 'none';
+            span.style.color = todo.completed ? 'var(--secondary-text)' : 'var(--text)';
+            span.style.fontSize = '1.1rem';
+            span.style.transition = 'color 0.3s, text-decoration 0.3s';
+
+            left.appendChild(checkbox);
+            left.appendChild(span);
+
+            const removeBtn = document.createElement('button');
+            removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+            removeBtn.style.background = 'none';
+            removeBtn.style.border = 'none';
+            removeBtn.style.color = 'var(--accent)';
+            removeBtn.style.fontSize = '1.2rem';
+            removeBtn.style.cursor = 'pointer';
+            removeBtn.title = 'Delete';
+            removeBtn.addEventListener('click', () => {
+                todos.splice(idx, 1);
+                saveTodos();
+                renderTodos();
+            });
+
+            li.appendChild(left);
+            li.appendChild(removeBtn);
+            todoList.appendChild(li);
+        });
+    }
+
+    function saveTodos() {
+        localStorage.setItem('todos-web2o', JSON.stringify(todos));
+    }
+
+    todoForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const text = todoInput.value.trim();
+        if (text) {
+            todos.unshift({ text, completed: false });
+            saveTodos();
+            renderTodos();
+            todoInput.value = '';
+        }
+    });
+
+    // Initial render
+    renderTodos();
+    </script>
+</body>
+</html>

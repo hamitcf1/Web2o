@@ -403,6 +403,12 @@ body {
     margin-bottom: 3rem;
 }
 
+.todo-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 61rem;
+}
+
 
 .projects p {
     text-align: center;
