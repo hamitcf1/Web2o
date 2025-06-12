@@ -41,28 +41,7 @@ const courseData = {
                 icon: "fab fa-js",
                 name: "JavaScript",
                 translateKey: "javascript",
-                hasChildren: true,
-                children: {
-                    title: "JS Frameworks",
-                    translateKey: "js_frameworks",
-                    items: [
-                        {
-                            icon: "fab fa-react",
-                            name: "React",
-                            translateKey: "react_js"
-                        },
-                        {
-                            icon: "fab fa-vuejs",
-                            name: "Vue.js",
-                            translateKey: "vue_js"
-                        },
-                        {
-                            icon: "fab fa-angular",
-                            name: "Angular",
-                            translateKey: "angular"
-                        }
-                    ]
-                }
+                hasChildren: false,
             }
         ]
     },
@@ -76,7 +55,7 @@ const courseData = {
                 icon: "fas fa-vial",
                 name: "Selenium",
                 translateKey: "selenium",
-                hasChildren: true,
+                hasChildren: false,
                 children: {
                     title: "Selenium Features",
                     translateKey: "selenium_features",
@@ -98,11 +77,6 @@ const courseData = {
                         }
                     ]
                 }
-            },
-            {
-                icon: "fas fa-vial",
-                name: "Cypress",
-                translateKey: "cypress"
             },
             {
                 icon: "fas fa-vial",
@@ -157,30 +131,7 @@ const courseData = {
             }
         ]
     },
-    
-    // Data Structures course
-    "data_structures": {
-        title: "Data Structure Topics",
-        translateKey: "data_structures_title",
-        items: [
-            {
-                icon: "fas fa-list",
-                name: "Arrays & Lists",
-                translateKey: "arrays_lists"
-            },
-            {
-                icon: "fas fa-project-diagram",
-                name: "Graphs & Trees",
-                translateKey: "graphs_trees"
-            },
-            {
-                icon: "fas fa-sort",
-                name: "Sorting Algorithms",
-                translateKey: "sorting_algorithms"
-            }
-        ]
-    },
-    
+        
     // Web Development course
     "web_development": {
         title: "Web Technologies",

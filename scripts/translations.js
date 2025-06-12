@@ -32,7 +32,7 @@ window.translations = {
                 //project descriptions
                 ollama_desc:'Local chatbot using Ollama and Deepseek-R1 + DeepSeek-Coder - FastAPI.',
                 rps_desc:'Classic game with animated transitions and score tracking.',
-                upcoming_desc:'Stay tuned for more exciting projects that will transform digital experiences!',
+                year_calculation_desc:'Stay tuned for more exciting projects that will transform digital experiences!',
 
                 //project buttons
                 live_demo:'Live Demo',
@@ -48,19 +48,15 @@ window.translations = {
                 qa_automation_engineer:'QA Automation Engineer',
 
                 //experience descriptions
-                experience_details_li1:'Completed automated test frameworks using Selenium, and JavaScript.',
-                experience_details_li2:'Executed API tests using Postman to validate backend functionality.',
-                experience_details_li3:'Collaborated with development teams to implement best practices for software quality.',
-                experience_details_li4:'Conducted manual and automated testing to ensure the reliability of web application.',
-                experience_details_li5:'Executed test plans, test cases, and regression testing scenarios.',
-                experience_details_li6:'Reported and tracked defects using Linear and worked closely with developers.',
-                /**
-                 * Web development.
-                 */
-                experience_details_li7:'Web development.',
-                experience_details_li8:'Website management.',
-                experience_details_li9:'Introducted to programming - HTML, CSS, JavaScript.',
-
+                experience_details_li1:'Developed and maintained end-to-end automated test frameworks using Playwright and JavaScript, reducing manual testing time by 40%.',
+                experience_details_li2:'Designed and executed comprehensive API testing workflows via Postman, ensuring accurate validation of back-end micro-services.',
+                experience_details_li3:'Increased test coverage by 35%, resulting in a 20% higher defect detection rate during release cycles.',
+                experience_details_li4:'Performed comprehensive manual testing on web-based platforms to ensure application stability and performance',
+                experience_details_li5:'Designed and executed detailed test plans, test cases, and regression scenarios for new feature rollouts.',
+                experience_details_li6:'Utilized ClickUp for defect tracking and collaborated directly with developers to expedite bug resolution and improve code quality.',
+                
+                experience_details_li7:'Led website redesign projects, optimizing UI/UX and improving user engagement by 25%.',
+                experience_details_li8:'Improved front-end code consistency and conducted usability testing, leading to a 20% reduction in reported production issues.',experience_details_li9:'Introducted to programming - HTML, CSS, JavaScript.',
                 //education
                 education:'Education',
                 yildiz_university:'Yildiz Technical University',
@@ -206,7 +202,7 @@ window.translations = {
                 
 
     },
-        tr: {
+      /*  tr: {
             // anasayfa //
                 index_title:'Portföy | QA Mühendisi',
                 
