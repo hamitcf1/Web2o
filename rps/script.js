@@ -117,7 +117,10 @@ class RockPaperScissors {
         if (confirm('Are you sure you want to reset the game?')) {
             this.scores = { player: 0, computer: 0, ties: 0 };
             this.history = [];
-            this.updateScores('tie');
+            // Directly update the score displays to reflect reset
+            document.getElementById('player-score').textContent = this.scores.player;
+            document.getElementById('computer-score').textContent = this.scores.computer;
+            document.getElementById('tie-score').textContent = this.scores.ties;
             this.renderHistory();
             document.getElementById('result').textContent = 'Choose your weapon!';
             document.getElementById('result').className = 'result';
