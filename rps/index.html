@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-    <title data-translate="rps_title">Rock Paper Scissors</title>
+    <title rps_title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="animate.css">
     <link rel="stylesheet" href="../styles/index-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/theme-toggle.css">
-    <link rel="stylesheet" href="../styles/language-selector.css">
     <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" />
 
 </head>
@@ -19,7 +18,7 @@
     <nav class="navbar">
         <div class="nav-brand">
             <a href="/index.html"><i class="fas fa-code brand-icon"></i></a>
-            <span data-translate="brand">HamitCF</span>
+            <span>HamitCF</span>
         </div>
         <div class="nav-controls">
             <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
@@ -41,82 +40,74 @@
                     </g>
                 </svg>
             </button>
-            <div class="language-selector">
-                <div class="selected-language">
-                    <i class="fas fa-globe"></i>
-                    <span class="current-lang">English</span>
-                </div>
-            </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content animate fade-in-left">
-            <h1 data-translate="rps_title">Track Your Debts & Loans</h1>
-            <p data-translate="rps_desc">Manage your financial obligations and plan your path to becoming debt-free.</p>
+            <h1>Rock Paper Scissors</h1>
+            <p>Choose Rock, Paper, or Scissors to play against the computer!</p>
         </div>
     </section>
 
     <div class="container">
-        <h1 data-translate="rock_paper_scissors">Rock Paper Scissors</h1>
+        <h1>Rock Paper Scissors</h1>
         <div class="score-board">
             <div class="score">
-                <p data-translate="you">You</p>
+                <p>You</p>
                 <span id="player-score">0</span>
             </div>
             <div class="score">
-                <p data-translate="ties">Ties</p>
+                <p>Ties</p>
                 <span id="tie-score">0</span>
             </div>
             <div class="score">
-                <p data-translate="computer">Computer</p>
+                <p>Computer</p>
                 <span id="computer-score">0</span>
             </div>
         </div>
         <div class="game-area">
-            <div id="result" class="result" data-translate="choose_your_weapon">Choose your weapon!</div>
+            <div id="result" class="result">Choose your weapon!</div>
             <div class="choices">
                 <button class="choice" data-choice="rock" title="Choose Rock">
                     <span class="choice-icon">✊</span>
-                    <span class="choice-label" data-translate="rock">Rock</span>
+                    <span class="choice-label">Rock</span>
                 </button>
                 <button class="choice" data-choice="paper" title="Choose Paper">
                     <span class="choice-icon">✋</span>
-                    <span class="choice-label" data-translate="paper">Paper</span>
+                    <span class="choice-label">Paper</span>
                 </button>
                 <button class="choice" data-choice="scissors" title="Choose Scissors">
                     <span class="choice-icon">✌️</span>
-                    <span class="choice-label" data-translate="scissors">Scissors</span>
+                    <span class="choice-label">Scissors</span>
                 </button>
             </div>
         </div>
         <div class="controls">
             <button id="reset" class="control-btn" title="Reset all scores and history">
                 <i class="fas fa-redo"></i>
-                <span data-translate="reset">Reset Game</span>
+                <span>Reset Game</span>
             </button>
             <button id="autoplay" class="control-btn" title="Start automatic gameplay simulation">
                 <i class="fas fa-play"></i>
-                <span data-translate="auto_play">Auto Play</span>
+                <span>Auto Play</span>
             </button>
         </div>
         <div class="history-section">
-            <h2 data-translate="game_history">Game History</h2>
+            <h2>Game History</h2>
             <div id="history-list" class="history-list"></div>
         </div>
     </div>
     
     <footer class="footer">
 		<div class="footer-content">
-				<p data-translate="made_with">Made with of Karina by</p>
-				<p class="my-name" data-translate="my_name">Hamit Can FINDIK</p>
-				<p data-translate="copyright"> Copyright © 2025. All rights reserved..</p>
+				<p>Made with love by</p>
+				<p class="my-name">Hamit Can FINDIK</p>
+				<p> Copyright © 2025. All rights reserved..</p>
 		</div>
 	</footer>
     <script src="script.js"></script>
     <script src="../scripts/theme-toggle.js"></script>
-    <script src="../scripts/language-selector.js"></script>
-    <script src="../scripts/translations.js"></script>
     <script src="../scripts/modal.js"></script>
 </body>
 </html> 

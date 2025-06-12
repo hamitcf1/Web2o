@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="/styles/year_calculation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" /> 
-    <title data-translate="year_calculation_page_title">Year Calculation</title>
+    <title>Year Calculation</title>
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-brand">
       <a href="index.html"><i class="fas fa-code brand-icon"></i></a>
-      <span data-translate="brand">HamitCF</span>
+      <span>HamitCF</span>
     </div>
     <button class="mobile-menu-btn">
       <span class="hamburger"></span>
@@ -45,46 +45,68 @@
               </g>
           </svg>
       </button>
-      <div class="language-selector">
-        <div class="selected-language">
-          <i class="fas fa-globe"></i>
-          <span class="current-lang">English</span>
-        </div>
-      </div>
     </div>
   </nav>
 
   <div class="main-content">
     <section class="hero" id="hero">
       <div class="hero-content animate fade-in-left">
-        <h1 data-translate="year_calculation_title">Year Calculation</h1>
-        <p data-translate="year_calculation_hero_sub">How many years passed between two years.</p>
+        <h1>Year Calculation</h1>
+        <p>How many years passed between two years.</p>
       </div>
     </section>
   </div>
 
   <section id="year_calculation">
-    <div class="year_calculation_content">
-      <div class="year_card">
-        <div class="first_year">
-          <p class="first_year_label">First Year</p>
-          <input type="number" class="first_year_input" placeholder="Example: 1985">
+    <div class="year_calc_container">
+      <div class="year_calculation_content">
+        <div class="year_card">
+          <div class="first_year">
+            <span class="input-icon"><i class="fa-solid fa-calendar-days"></i></span>
+            <input type="number" class="first_year_input" aria-label="First Year" placeholder="1985">
+          </div>
+          <label class="first_year_label">First Year</label>
+        </div>
+        <div class="year_card">
+          <div class="second_year">
+            <span class="input-icon"><i class="fa-solid fa-calendar-check"></i></span>
+            <input type="number" class="second_year_input" aria-label="Second Year" placeholder="2025">
+          </div>
+          <label class="second_year_label">Second Year</label>
         </div>
       </div>
-      <div class="year_card">
-        <div class="second_year">
-          <p class="second_year_label">Second Year</p>
-          <input type="number" class="second_year_input" placeholder="Example: 2025">
-        </div>
+      <button class="calculate-btn" id="calculate-btn"><i class="fa-solid fa-equals"></i> Calculate</button>
+      <div class="result-card" id="result-card" aria-live="polite" style="display:none;">
+        <span class="result-icon"><i class="fa-solid fa-hourglass-half"></i></span>
+        <span id="result-text">0 years</span>
       </div>
     </div>
-    <button class="calculate-btn" id="calculate-btn">Calculate</button>
   </section>
+  <script>
+    // Simple JS for displaying the result (optional enhancement)
+    const btn = document.getElementById('calculate-btn');
+    const first = document.querySelector('.first_year_input');
+    const second = document.querySelector('.second_year_input');
+    const resultCard = document.getElementById('result-card');
+    const resultText = document.getElementById('result-text');
+    btn.addEventListener('click', () => {
+      const y1 = parseInt(first.value, 10);
+      const y2 = parseInt(second.value, 10);
+      if (!isNaN(y1) && !isNaN(y2)) {
+        const diff = Math.abs(y2 - y1);
+        resultText.textContent = `${diff} year${diff !== 1 ? 's' : ''}`;
+        resultCard.style.display = 'flex';
+        resultCard.classList.add('show');
+      } else {
+        resultText.textContent = 'Please enter both years.';
+        resultCard.style.display = 'flex';
+        resultCard.classList.add('show');
+      }
+    });
+  </script>
   <script src="scripts/animations.js"></script>
   <script src="scripts/index-script.js"></script>
-  <script src="scripts/language-selector.js"></script>
   <script src="scripts/modal.js"></script>
-  <script src="scripts/translations.js"></script>
   <script src="scripts/theme-toggle.js"></script>
   <script src="scripts/theme.js"></script>
 </body>
