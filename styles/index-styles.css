@@ -405,7 +405,6 @@ body {
 .projects p {
     text-align: center;
     font-size: 1.2rem;
-    margin-bottom: 2rem;
 }
 
 .project-grid {
@@ -445,9 +444,7 @@ body {
     flex-direction: column;
 }
 
-.project-header {
-    margin-bottom: 1rem;
-}
+
 
 .project-title {
     display: flex;

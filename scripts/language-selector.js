@@ -1,4 +1,4 @@
-class LanguageSelector {
+/* class LanguageSelector {
     constructor() {
         this.selector = document.querySelector('.language-selector');
         this.selectedLang = this.selector.querySelector('.selected-language');
@@ -116,3 +116,4 @@ class LanguageSelector {
 document.addEventListener('DOMContentLoaded', () => {
     new LanguageSelector();
 });
+*/ /* Language Selector Class */

@@ -1,4 +1,4 @@
-window.translations = {
+/* window.translations = {
     en: {
         // index //
             index_title:'Portfolio | QA Engineer',
@@ -602,3 +602,4 @@ window.translations = {
 
 }
 
+*/
