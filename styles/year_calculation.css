@@ -1,3 +1,10 @@
+.navlinks {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .year_calc_container {
   display: flex;
   flex-direction: column;
