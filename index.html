@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/styles/index-styles.css">
 <link rel="stylesheet" href="/styles/animations.css">
 <link rel="stylesheet" href="/styles/theme-toggle.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">"
 <link rel="icon" href="https://github.com/hamitcf1/Web2o/blob/main/assets/my-notion-face-transparent.png?raw=true" type="image/x-icon" /> 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8638772791098124"
      crossorigin="anonymous"></script>
@@ -84,7 +84,9 @@
 						<i class="fas fa-map-marker-alt"></i>
 						Antalya, Turkey
 				</div>
-				<p data-translate="hero_subtitle">Hi there! I'm 25, and I love coding!</p>
+				<p data-translate="hero_subtitle">
+				Hi there! I'm <span id="age"></span>, and I love coding!
+				</p>
 				<p data-translate="hero_subtitle2">You can find all my projects, experiences, education details and reviews about me down below.</p>
 		</div>
 		<button class="cta-button animate fade-in-right">Let's Connect</button>
@@ -114,20 +116,26 @@
 								</div>
 						</div>
 				</div>
+<div class="project-card animate scale-up delay-2">
+  <div class="project-image todo-img" 
+       style="background:linear-gradient(45deg, #1a1a1a, #333); display: flex; align-items: center; justify-content: center;">
 
-				<div class="project-card animate scale-up delay-2">
-    <div class="project-image todo-img" style="background:linear-gradient(45deg, #1a1a1a, #333); display: flex; align-items: center; justify-content: center;">
-        <i class="fas fa-list-check fa-2x" style="color: #fff; font-size: 3.4rem;"></i>
+    <!-- Kum saati ikonu (başlangıç hali) -->
+    <i class="fas fa-hourglass-start fa-2x hourglass" id="todo-hourglass" style="color: #fff; font-size: 3.4rem;"></i>
+  </div>
+</div>
+
+
     </div>
     <div class="project-content">
         <div class="project-header">
             <div class="project-title">
-                <i class="fas fa-list-check project-icon"></i>
-                <h3 id="todo_title">Todo List Application</h3>
+			<i class="fas fa-hourglass-start project-icon" id="hourglass"></i>
+                <h3 id="chrono_title">Chrono Foundry Web-Game</h3>
             </div>
-            <p>A modern, animated to-do list app with local storage and responsive design.</p>
+            <p>A web game based on time paradoxes. Simple html, css and js. "Chrono Foundry".</p>
             <div class="project-links">
-                <a href="todo.html" class="project-link">
+                <a href="https://chrono-foundry.netlify.app" class="project-link">
                     <i class="fas fa-play"></i> <span>Live Demo</span>
                 </a>
                 <a href="https://github.com/hamitcf1/Web2o/blob/main/todo.html" class="project-link">
@@ -459,7 +467,8 @@
 <script src="/scripts/modal.js"></script>
 <script src="/scripts/animations.js"></script>
 <script src="/scripts/nested-popups.js"></script>
-		
+<script src="/scripts/index-age.js"></script>
+<script src="/scripts/hourglass.js"></script>
 </div>
 </body>
 </html>
