@@ -559,15 +559,63 @@ body {
     background-repeat: no-repeat;
 }
 
-.rps-img {
+.bugun-img {
     background: linear-gradient(45deg, #1a1a1a, #333);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.rps-img::after {
-    content: '\f0b1';
+.bugun-img::after {
+    content: '\f4fd';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 4rem;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.telegram-img {
+    background: linear-gradient(45deg, #1a1a1a, #333);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.telegram-img::after {
+    content: '\f544';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 4rem;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.retro-img {
+    background: linear-gradient(45deg, #1a1a1a, #333);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.retro-img::after {
+    content: '\f11b';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 4rem;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.pearly-img {
+    background: linear-gradient(45deg, #1a1a1a, #333);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pearly-img::after {
+    content: '\f1ad';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     font-size: 4rem;
