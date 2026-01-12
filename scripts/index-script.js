@@ -247,3 +247,153 @@ document.querySelector(".dropbtn").addEventListener("click", function () {
 document.querySelector(".dropbtn").addEventListener("click", function () {
     document.querySelector(".dropdown-content").classList.toggle("show");
 });
+
+// Dynamic layout: set number of columns based on total card count and viewport
+(function(){
+    function debounce(fn, wait) {
+        let t;
+        return (...args) => { clearTimeout(t); t = setTimeout(()=>fn(...args), wait); };
+    }
+
+    function adjustProjectGrid() {
+        const grid = document.querySelector('.project-grid');
+        if (!grid) return;
+        const count = grid.querySelectorAll('.project-card').length;
+        if (count === 0) return;
+
+        // Prefer two rows when there are between 3 and 8 cards (user requested behavior)
+        let desiredRows = 1;
+        if (count > 1 && count <= 8) desiredRows = 2;
+        else if (count > 8) desiredRows = 2; // try to keep rows small; JS will cap by width
+
+        let columns = Math.ceil(count / desiredRows);
+
+        // Cap columns by how many can fit given min column width
+        const gridWidth = grid.clientWidth || document.documentElement.clientWidth;
+        const minColWidth = 220; // must match CSS minmax min
+        const maxFit = Math.max(1, Math.floor(gridWidth / minColWidth));
+        columns = Math.min(columns, maxFit);
+
+        // Cap to reasonable number to avoid too many small columns
+        columns = Math.min(columns, 6);
+
+        grid.style.setProperty('--project-columns', columns);
+    }
+
+    const debouncedAdjust = debounce(adjustProjectGrid, 120);
+    window.addEventListener('resize', debouncedAdjust);
+    document.addEventListener('DOMContentLoaded', () => { adjustProjectGrid();
+        // observe changes to the grid (e.g., dynamic adds/removes)
+        const grid = document.querySelector('.project-grid');
+        if (grid) {
+            const mo = new MutationObserver(() => adjustProjectGrid());
+            mo.observe(grid, { childList: true });
+        }
+    });
+})();
+
+// Adaptive typography: scale card title/description to keep consistent layout
+(function(){
+    function debounce(fn, wait) {
+        let t;
+        return (...args) => { clearTimeout(t); t = setTimeout(()=>fn(...args), wait); };
+    }
+
+    function fitCardText(card) {
+        const title = card.querySelector('.project-title h3');
+        const desc = card.querySelector('.project-content p');
+        const image = card.querySelector('.project-image');
+        const links = card.querySelector('.project-links');
+        const content = card.querySelector('.project-content');
+        if (!title || !desc || !content) return;
+
+        const cs = getComputedStyle(document.documentElement);
+        const rootFont = parseFloat(cs.fontSize) || 16;
+
+        // sizes in px
+        const maxTitle = 1.6 * rootFont; // px
+        const minTitle = 1.0 * rootFont;
+        const maxDesc = 1.05 * rootFont;
+        const minDesc = 0.8 * rootFont;
+
+        // available vertical space for title + desc
+        const contentStyle = getComputedStyle(content);
+        const paddingTop = parseFloat(contentStyle.paddingTop) || 0;
+        const paddingBottom = parseFloat(contentStyle.paddingBottom) || 0;
+
+        const imageH = image ? image.offsetHeight : 0;
+        const linksH = links ? links.offsetHeight : 0;
+
+        const available = card.clientHeight - imageH - linksH - paddingTop - paddingBottom - 18; // small safety gap
+
+        // start with max sizes
+        let titlePx = maxTitle;
+        let descPx = maxDesc;
+
+        // helper to apply sizes
+        function apply() {
+            card.style.setProperty('--title-size', Math.round(titlePx) + 'px');
+            card.style.setProperty('--desc-size', Math.round(descPx) + 'px');
+        }
+
+        apply();
+
+        // measure heights
+        function measuredHeight() {
+            // force reflow
+            const tH = title.scrollHeight;
+            const dH = desc.scrollHeight;
+            return tH + dH;
+        }
+
+        let totalH = measuredHeight();
+        let iter = 0;
+        // reduce desc first, then title if needed
+        while (totalH > available && iter < 30) {
+            if (descPx > minDesc + 0.5) {
+                descPx *= 0.94;
+            } else if (titlePx > minTitle + 0.5) {
+                titlePx *= 0.95;
+            } else {
+                // can't reduce further
+                break;
+            }
+            apply();
+            totalH = measuredHeight();
+            iter++;
+        }
+
+        // if there's a lot of spare space, nudge sizes up to max
+        iter = 0;
+        while (totalH < available - 24 && iter < 10) {
+            let increased = false;
+            if (descPx < maxDesc) { descPx = Math.min(maxDesc, descPx * 1.04); increased = true; }
+            if (titlePx < maxTitle && totalH < available - 24) { titlePx = Math.min(maxTitle, titlePx * 1.03); increased = true; }
+            if (!increased) break;
+            apply();
+            totalH = measuredHeight();
+            iter++;
+        }
+
+        // Final clamp to ensure not smaller than min
+        titlePx = Math.max(minTitle, Math.min(maxTitle, titlePx));
+        descPx = Math.max(minDesc, Math.min(maxDesc, descPx));
+        apply();
+    }
+
+    function adjustAll() {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(fitCardText);
+    }
+
+    const debounced = debounce(adjustAll, 120);
+    window.addEventListener('resize', debounced);
+    document.addEventListener('DOMContentLoaded', () => {
+        adjustAll();
+        const grid = document.querySelector('.project-grid');
+        if (grid) {
+            const mo = new MutationObserver(debounced);
+            mo.observe(grid, { childList: true, subtree: true });
+        }
+    });
+})();

@@ -423,14 +423,23 @@ body {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    /* columns are set dynamically by JS through --project-columns; minmax preserves responsive behavior */
+    grid-template-columns: repeat(var(--project-columns, 3), minmax(220px, 1fr));
+    gap: 2.5rem; /* larger gap helps prevent shadow overlap */
+    grid-auto-rows: 1fr; /* ensure each row's tracks are equal height */
+    align-items: stretch; /* make grid items stretch to match row height */
+    align-content: start; /* pack rows to the top when grid has extra space */
+    --project-columns: 3; /* default fallback */
+    padding-bottom: 1rem;
 }
 
 .project-card {
+    --title-size: 1.5rem; /* JS will override per-card when needed */
+    --desc-size: 1rem;   /* JS will override per-card when needed */
     border-radius: 1.5rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--box-shadow-idle);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s;
+    /* softened shadow to reduce visual overlap while keeping glow */
+    box-shadow: 0 10px 28px rgba(0,0,0,0.56), 0 0 36px rgba(12, 45, 80, 0.08);
     position: relative;
     z-index: 1;
     display: flex;
@@ -439,7 +448,19 @@ body {
     background: var(--card-bg);
     border: 2px solid transparent;
     transform: scale(1);
+    transform-origin: center top; /* keep top edges aligned when scaling */
+    min-height: 440px; /* consistent card height */
+    height: 100%;
+} 
+
+/* Reduce min-height on smaller screens */
+@media (max-width: 900px) {
+    .project-card { min-height: 380px; }
 }
+@media (max-width: 600px) {
+    .project-card { min-height: 320px; }
+}
+
 
 .project-card:hover {
     border-color: var(--accent);
@@ -468,12 +489,13 @@ body {
 
 .project-title h3 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: var(--title-size, 1.5rem);
     color: var(--text);
-    line-height: 1.2;
+    line-height: 1.15;
     display: flex;
     align-items: center;
-}
+    transition: font-size 0.14s ease;
+} 
 
 .project-icon {
     color: var(--accent);
@@ -494,14 +516,18 @@ body {
 .project-card p {
     color: var(--secondary-text);
     margin-bottom: 1.5rem;
-    line-height: 1.6;
+    line-height: 1.45;
     flex: 1;
-}
+    font-size: var(--desc-size, 1rem);
+    transition: font-size 0.14s ease;
+} 
 
 .project-links {
     display: flex;
-    gap: 1rem;
-    justify-content: space-between;
+    gap: 0.75rem;
+    justify-content: center; /* center the buttons */
+    flex-wrap: wrap; /* allow wrapping on small screens */
+    align-items: center;
     margin-top: auto;
     padding-top: 1rem;
 }
@@ -510,20 +536,37 @@ body {
     color: var(--accent);
     text-decoration: none;
     font-size: 0.9rem;
-    padding: 0.5rem 1.2rem;
-    border-radius: 1.5rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(0, 122, 255, 0.1);
+    padding: 0.45rem 0.9rem;
+    border-radius: 1.2rem;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.04);
     position: relative;
     z-index: 3;
     cursor: pointer;
-    flex: 1;
+    flex: 0 1 auto; /* don't force full width */
+    min-width: 110px; /* keep buttons a usable size */
     text-align: center;
     white-space: nowrap;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    box-sizing: border-box;
+}
+
+.project-link i { font-size: 0.95rem; }
+.project-link:hover { transform: translateY(-2px); background: var(--accent); color: #fff; box-shadow: 0 8px 20px rgba(11,64,140,0.25); }
+
+
+@media (max-width: 480px) {
+    .project-links {
+        gap: 0.6rem;
+    }
+    .project-link {
+        width: 100%;
+        min-width: unset;
+    }
 }
 
 .project-link:hover {
@@ -550,14 +593,19 @@ body {
 
 .project-image {
     width: 100%;
-    height: 200px;
-    background-color: var(--secondary-text);
+    height: 180px; /* slightly reduced to allow more room for content */
+    min-height: 140px;
+    background-color: rgba(255,255,255,0.03);
     border-radius: 1.5rem 1.5rem 0 0;
     margin-bottom: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .bugun-img {
     background: linear-gradient(45deg, #1a1a1a, #333);
@@ -671,6 +719,27 @@ body {
     opacity: 0.8;
 }
 
+/* Skyrim Aetherius preview badge */
+.skyaetherius-img {
+    background: linear-gradient(45deg, #0f1412, #2b261f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.skyaetherius-img::after {
+    content: 'SKYRIM COMPATIBLE';
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #d9b36a;
+    letter-spacing: 0.12rem;
+    background: rgba(0,0,0,0.25);
+    padding: 0.45rem 0.8rem;
+    border-radius: 0.25rem;
+    transform: translateY(-0.2rem);
+}
 
 @media (max-width: 768px) {
     .project-grid {
